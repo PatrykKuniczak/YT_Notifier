@@ -1,0 +1,11 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/*# sourceMappingURL=styles.css.map */

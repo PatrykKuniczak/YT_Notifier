@@ -1,0 +1,10 @@
+{
+  "name": "YT Plugin",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "YT Plugin for subscribe keywords",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YT Plugin"
+  }
+}
