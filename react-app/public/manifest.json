@@ -4,7 +4,7 @@
   "manifest_version": 3,
   "description": "YT Plugin for subscribe keywords",
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "index.html",
     "default_title": "YT Plugin"
   }
 }
