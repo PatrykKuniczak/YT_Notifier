@@ -4,8 +4,10 @@ const GlobalStyles = createGlobalStyle`
   *,
   *::before,
   *::after {
-    box-sizing: border-box;
     width: 0;
+
+    box-sizing: border-box;
+
     margin: 0;
     padding: 0;
     border: none;
