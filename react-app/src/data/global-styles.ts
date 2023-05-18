@@ -1,0 +1,15 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyles = createGlobalStyle`
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+`;
+
+export default GlobalStyles;
