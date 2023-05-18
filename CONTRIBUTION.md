@@ -5,7 +5,7 @@ GIT CLONE: [https://github.com/PatrykKuniczak/memesChat.git](https://github.com/
 ### CONFIGURE PRETTIER IN YOUR IDE:
 
     RUN "npm ci" IN FRONTEND DIR AND PRETTIER IS IN .\node_modules\prettier.
-    
+
 ##### E.G. FOR WEBSTORM:
 
 [Prettier config](https://blog.jetbrains.com/webstorm/2020/07/webstorm-2020-2/)
@@ -25,7 +25,7 @@ GIT CLONE: [https://github.com/PatrykKuniczak/memesChat.git](https://github.com/
             UPDATE METHOD: 'rebase'
             CLEAN WORKING TREE USING: 'stash' 
 
-### AFTER THIS STEPES:
+### AFTER THIS STEPS:
 
     START APP WITH: 'npm run dev'
 
