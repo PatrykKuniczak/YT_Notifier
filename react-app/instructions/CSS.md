@@ -17,16 +17,17 @@ Sections:
   gap: 1rem; /* In the end */
   
   /* Box Model */
-  width: 100px;
+  width: 100px; /* On first width and height */
   height: 100px;
- 
-  /* Rest of shape */
+
+  /* Rest */
+  overflow: hidden;  
+  box-sizing: border-box;
+
+  /* Margins and etc. */
   margin: 10px;
   padding: 10px;
   border: 10px solid #333;
-  
-  overflow: hidden;
-  box-sizing: border-box;
   
   /* Colors */
   background: #000;
