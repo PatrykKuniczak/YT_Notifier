@@ -4,9 +4,9 @@ CREATE INSIDE SRC:
 'assets' - Save here img and etc.,
 
 'data' - Save here global styles and themes:
-   global-styles.[js/ts],
   'themes':
     *-theme.[js/ts],
+  global-styles.[js/ts]
     
 'pages',
 
@@ -22,9 +22,11 @@ CREATE INSIDE SRC:
 
 'utils' - Save here function, which isn't a React hook,
 
-'interfaces',
+'interfaces':
+    *-interface.[js/ts],
 
-'types',
+'types':
+    *-type.[js/ts],
 
 'services' - Save here all queries,
 

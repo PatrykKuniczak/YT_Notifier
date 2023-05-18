@@ -10,12 +10,6 @@ GIT CLONE: [https://github.com/PatrykKuniczak/memesChat.git](https://github.com/
 
 [Prettier config](https://blog.jetbrains.com/webstorm/2020/07/webstorm-2020-2/)
 
-### CONFIGURE RELATIVE IMPORT PATHS IN YOUR IDE:
-
-    IN WEBSTORM GO TO SETTING:
-        EDITOR/CODE STYLE/TYPESCRIPT
-            [^] USE PATHS RELATIVE TO TSCONFIG.JSON
-
 ### CONFIGURE DEFAULT BRANCH UPDATE SETTINGS:
 
     IN WEBSTORM GO TO SETTING:
