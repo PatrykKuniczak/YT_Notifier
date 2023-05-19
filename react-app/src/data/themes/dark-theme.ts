@@ -1,5 +1,5 @@
-import { TTheme } from '../../types/theme-type.ts';
+import { createTheme } from '@mui/system';
 
-const THEME: TTheme = {};
+const THEME = createTheme({});
 
 export default THEME;
