@@ -34,10 +34,10 @@ Sections:
   color: #fff;
   
   /* Text */
+  text-align: right;
   font-family: sans-serif;
   font-size: 16px;
   line-height: 1.4;
-  text-align: right;
 
   /* Others */
   cursor: pointer;
