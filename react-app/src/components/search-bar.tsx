@@ -1,7 +1,8 @@
 import { styled } from '@mui/system';
 import Input, { InputProps } from '@mui/base/Input';
-import { forwardRef, Ref, useRef } from 'react';
+import { forwardRef, Ref } from 'react';
 import searchIcon from '../assets/search-icon.svg';
+import useFocus from '../hooks/use-focus.ts';
 
 const SearchBarStyles = styled('input')(({ theme }) =>
     theme.unstable_sx({
@@ -39,14 +40,7 @@ const StyledCustomInput = forwardRef<HTMLSpanElement | null, InputProps>(
     }
 );
 export default function StyledSearchBar() {
-    const ref = useRef<HTMLSpanElement | null>(null);
-
-    const inputRef =
-        ref.current && (ref.current.children[0] as HTMLSpanElement);
-
-    const focus = (): void => {
-        inputRef && inputRef.focus();
-    };
+    const { ref, focus } = useFocus();
 
     return (
         <StyledCustomInput
