@@ -1,6 +1,6 @@
 import { styled } from '@mui/system';
 
-const StyledTitleHeader = styled('header')(({ theme }) =>
+export const StyledTitleHeader = styled('header')(({ theme }) =>
     theme.unstable_sx({
         width: 290,
 
@@ -12,5 +12,3 @@ const StyledTitleHeader = styled('header')(({ theme }) =>
         fontWeight: 'fontWeight.title'
     })
 );
-
-export default StyledTitleHeader;

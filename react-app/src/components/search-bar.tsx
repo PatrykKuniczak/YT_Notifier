@@ -39,7 +39,7 @@ const StyledCustomInput = forwardRef<HTMLSpanElement | null, InputProps>(
         );
     }
 );
-export default function StyledSearchBar() {
+export function StyledSearchBar() {
     const { ref, focus } = useFocus();
 
     return (
