@@ -1,6 +1,18 @@
 import { createTheme } from '@mui/system';
 
 const THEME = createTheme({
+    unstable_sxConfig: {
+        size: {
+            style: ({ size }) => {
+                const { width, height } = size;
+
+                return {
+                    width,
+                    height
+                };
+            }
+        }
+    },
     palette: {
         background: {
             primary: '#fff',
