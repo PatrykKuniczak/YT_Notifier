@@ -24,14 +24,16 @@ const THEME = createTheme({
         }
     },
     typography: {
-        fontFamily: {
-            title: 'Helvetica, serif'
+        fontFamily: 'Helvetica, serif',
+        fontWeight: {
+            normal: '400',
+            bold: '700'
         },
         fontSize: {
-            title: 20
-        },
-        fontWeight: {
-            title: '700'
+            sm: 10,
+            md: 12,
+            l: 16,
+            xl: 24
         }
     }
 });
