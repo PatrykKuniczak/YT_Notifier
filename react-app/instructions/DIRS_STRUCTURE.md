@@ -6,6 +6,8 @@ CREATE INSIDE SRC:
 'data' - Save here global styles and themes:
   'themes':
     *-theme.[js/ts],
+  'mixins':
+    *-mixin.[js/ts]
   global-styles.[js/ts]
     
 'pages',

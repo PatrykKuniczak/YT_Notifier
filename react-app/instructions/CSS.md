@@ -2,6 +2,9 @@ Sections:
 
 ```css
 {
+  /* Mixins e.g unpack object with props inside theme.unstable_sx */
+  ...myMixin;
+    
   /* Positioning, start of this section should looks like in this example below */
   position: absolute;
   z-index: 10;
