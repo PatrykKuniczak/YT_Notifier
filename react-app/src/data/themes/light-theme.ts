@@ -20,19 +20,19 @@ const THEME = createTheme({
         },
         color: {
             primary: '#16121E',
+            secondary: '#f1f0f0',
             placeholder: '#16121E'
         }
     },
     typography: {
-        fontFamily: 'Helvetica, serif',
         fontWeight: {
             normal: '400',
             bold: '700'
         },
         fontSize: {
-            sm: 10,
-            md: 12,
-            l: 16,
+            sm: 16,
+            md: 18,
+            l: 20,
             xl: 24
         }
     }
