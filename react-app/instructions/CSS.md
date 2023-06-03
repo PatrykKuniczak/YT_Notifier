@@ -2,7 +2,7 @@ Sections:
 
 ```css
 {
-  /* Mixins e.g unpack object with props inside theme.unstable_sx */
+  /* Mixins */
   ...myMixin;
     
   /* Positioning, start of this section should looks like in this example below */
@@ -39,13 +39,14 @@ Sections:
   /* Text */
   text-align: right;
   font-family: sans-serif;
+  font-weight: bold;
   font-size: 16px;
   line-height: 1.4;
 
   /* Others */
   cursor: pointer;
   
-  /* Media Queries USE WITH NEW SYNTAX 'width > value' */
+  /* Media Queries USE NEW SYNTAX 'width > value' */
   @media(width > 100px) {
   }
   
