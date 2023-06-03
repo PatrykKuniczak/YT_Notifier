@@ -1,7 +1,8 @@
-export const textMixIn = {
-    fontStyle: 'normal',
+export const textMixin = {
+    color: '#16121E',
+
+    textAlign: 'center',
     fontSize: 'fontSize.md',
     fontWeight: 'fontWeight.normal',
-    textAlign: 'center',
-    color: '#16121E'
+    fontStyle: 'normal'
 };
