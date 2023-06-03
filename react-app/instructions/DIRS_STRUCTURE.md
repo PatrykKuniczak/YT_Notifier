@@ -18,6 +18,13 @@ CREATE INSIDE SRC:
   'ui' - Components without any fuctionallity,
   'fuctional' - E.g input,
   
+  Each should have: 
+    - atomic - For the smallest part
+    - micro - For group of atomic components 
+    - makro - For group of micro components (Group of macro components should be saved in 'layouts' directory)
+    
+    subdirectories
+  
 'routes',
 
 'hooks',
