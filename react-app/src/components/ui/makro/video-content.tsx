@@ -7,6 +7,7 @@ import { StyledVideoInfos } from '../micro/video-infos.tsx';
 export const StyledVideoContent = () => {
     return (
         <Stack
+            component={'article'}
             direction={'column'}
             justifyContent={'center'}
             spacing={1}
