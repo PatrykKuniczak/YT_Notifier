@@ -5,8 +5,9 @@ import darkTheme from './data/themes/dark-theme.ts';
 import { useEffect } from 'react';
 import { ThemeProvider } from '@mui/system';
 import { StyledTitleHeader } from './components/ui/atomic/title-header.ts';
-import { StyledVideoContent } from './components/ui/makro/video-content.tsx';
-import { StyledMainContainer } from './layouts/main-container.tsx';
+import { StyledMainContent } from './layouts/main-content.tsx';
+import { StyledVideoArticle } from './components/ui/makro/video-article.tsx';
+import { StyledVideosSection } from './layouts/videos-section.tsx';
 
 // FOR DEVELOPMENT TIME
 // const Dev = styled('div')({
@@ -24,11 +25,18 @@ function App() {
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
             <GlobalStyles />
             {/*<Dev>*/}
-            <StyledMainContainer>
+            <StyledMainContent>
                 <StyledTitleHeader> Znalezione Wideo </StyledTitleHeader>
 
-                <StyledVideoContent />
-            </StyledMainContainer>
+                <StyledVideosSection>
+                    <StyledVideoArticle />
+                    <StyledVideoArticle />
+                    <StyledVideoArticle />
+                    <StyledVideoArticle />
+                    <StyledVideoArticle />
+                    <StyledVideoArticle />
+                </StyledVideosSection>
+            </StyledMainContent>
             {/*</Dev>*/}
         </ThemeProvider>
     );

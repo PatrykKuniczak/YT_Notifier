@@ -1,17 +1,14 @@
-import { ReactNode } from 'react';
 import { Stack } from '@mui/system';
+import { ReactNode } from 'react';
 
-export const StyledMainContainer = ({ children }: { children: ReactNode }) => {
+export const StyledVideosSection = ({ children }: { children: ReactNode }) => {
     return (
         <Stack
-            component="main"
+            component="section"
             alignItems={'center'}
             spacing={1}
             sx={{
-                width: 290,
-                height: 600,
-
-                p: 2,
+                overflow: 'auto',
 
                 bgcolor: 'background.primary'
             }}>
@@ -19,3 +16,4 @@ export const StyledMainContainer = ({ children }: { children: ReactNode }) => {
         </Stack>
     );
 };
+export default {};

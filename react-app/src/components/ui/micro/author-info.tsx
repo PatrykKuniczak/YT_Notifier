@@ -8,6 +8,7 @@ export const StyledAuthorInfo = () => {
         <Stack
             direction={'row'}
             alignItems={'center'}
+            useFlexGap={true}
             spacing={1}>
             <StyledAvatar
                 src={thumbinail}
