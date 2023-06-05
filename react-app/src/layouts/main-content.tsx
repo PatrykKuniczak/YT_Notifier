@@ -14,8 +14,7 @@ export const StyledMainContent = ({ children }: { children: ReactNode }) => {
                 height: 600,
 
                 p: 2,
-                bgcolor: 'background.primary',
-                borderRadius: 3
+                bgcolor: 'background.primary'
             }}>
             {children}
         </Stack>
