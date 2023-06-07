@@ -46,6 +46,10 @@ Sections:
   /* Others */
   cursor: pointer;
   
+  /* Webkit */
+  ::-webkit-*{
+  }
+
   /* Media Queries USE NEW SYNTAX 'width > value' */
   @media(width > 100px) {
   }
