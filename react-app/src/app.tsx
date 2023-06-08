@@ -9,11 +9,6 @@ import { StyledMainContent } from './layouts/main-content.tsx';
 import { StyledVideoArticle } from './components/ui/makro/video-article.tsx';
 import { StyledVideosSection } from './layouts/videos-section.tsx';
 
-// FOR DEVELOPMENT TIME
-// const Dev = styled('div')({
-//     padding: 50
-// });
-
 function App() {
     const { isDarkMode, setTernaryDarkMode } = useTernaryDarkMode();
 
@@ -24,7 +19,6 @@ function App() {
     return (
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
             <GlobalStyles />
-            {/*<Dev>*/}
             <StyledMainContent>
                 <StyledTitleHeader> Znalezione Wideo </StyledTitleHeader>
 
@@ -37,7 +31,6 @@ function App() {
                     <StyledVideoArticle />
                 </StyledVideosSection>
             </StyledMainContent>
-            {/*</Dev>*/}
         </ThemeProvider>
     );
 }
