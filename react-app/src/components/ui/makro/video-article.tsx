@@ -11,7 +11,7 @@ export const StyledVideoArticle = () => (
         justifyContent={'center'}
         useFlexGap={true}
         spacing={1}
-        sx={{ p: 1, borderRadius: 1, bgcolor: 'color.secondary' }}>
+        sx={{ p: 1, borderRadius: 1, bgcolor: 'background.secondary' }}>
         <StyledThumbnail src={thumbinail} />
         <StyledAuthorInfo />
         <StyledVideoInfos />

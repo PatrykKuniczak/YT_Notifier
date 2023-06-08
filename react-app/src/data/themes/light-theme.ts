@@ -16,11 +16,11 @@ const THEME = createTheme({
     palette: {
         background: {
             primary: '#fff',
+            secondary: '#f1f0f0',
             searchBar: '#eeebeb'
         },
         color: {
             primary: '#16121E',
-            secondary: '#f1f0f0',
             placeholder: '#16121E'
         }
     },
