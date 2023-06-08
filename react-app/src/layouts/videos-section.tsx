@@ -13,7 +13,7 @@ export const StyledVideosSection = ({ children }: { children: ReactNode }) => (
             mb: 1,
             borderRadius: 1,
 
-            bgcolor: 'background.primry',
+            bgcolor: 'background.primary',
 
             '&::-webkit-scrollbar': {
                 width: 12
