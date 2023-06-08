@@ -30,10 +30,10 @@ CREATE INSIDE SRC:
 'utils' - Save here function, which isn't a React hook,
 
 'interfaces':
-    *-interface.[js/ts],
+    *.interface.[js/ts],
 
 'types':
-    *-type.[js/ts],
+    *.type.[js/ts],
 
 'services' - Save here all queries,
 
