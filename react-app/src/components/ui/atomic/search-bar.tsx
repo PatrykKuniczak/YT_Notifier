@@ -29,17 +29,14 @@ const SearchBarStyles = styled('input')(({ theme }) =>
 );
 
 const StyledCustomInput = forwardRef<HTMLSpanElement | null, InputProps>(
-    (props, ref) => {
-        return (
-            <Input
-                slots={{ root: 'span', input: SearchBarStyles }}
-                {...props}
-                ref={ref as Ref<HTMLDivElement>}
-            />
-        );
-    }
+    (props, ref) => (
+        <Input
+            slots={{ root: 'span', input: SearchBarStyles }}
+            {...props}
+            ref={ref as Ref<HTMLDivElement>}
+        />
+    )
 );
-
 export const StyledSearchBar = () => {
     const { ref, focus } = useFocus();
 
