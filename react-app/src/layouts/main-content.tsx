@@ -13,7 +13,6 @@ export const StyledMainContent = ({ children }: { children: ReactNode }) => {
                 width: 300,
                 height: 600,
 
-                p: 2,
                 bgcolor: 'background.primary'
             }}>
             {children}

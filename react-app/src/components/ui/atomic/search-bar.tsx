@@ -11,7 +11,7 @@ const SearchBarStyles = styled('input')(({ theme }) =>
         py: 0.5,
         pl: 3,
         pr: 0.5,
-        borderRadius: 50,
+        borderRadius: 10,
 
         background: `url(${searchIcon}) no-repeat scroll 6px 5.5px`,
         backgroundSize: 12,

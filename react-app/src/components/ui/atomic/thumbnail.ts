@@ -5,6 +5,6 @@ export const StyledThumbnail = styled('img')(({ theme }) =>
         width: 242,
         height: 144,
 
-        borderRadius: 2
+        borderRadius: 1
     })
 );

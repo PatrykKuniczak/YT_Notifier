@@ -35,6 +35,9 @@ const THEME = createTheme({
             l: 20,
             xl: 24
         }
+    },
+    shape: {
+        borderRadius: 6
     }
 });
 
