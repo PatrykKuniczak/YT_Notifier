@@ -10,6 +10,7 @@ export const StyledMainContent = ({ children }: { children: ReactNode }) => {
             useFlexGap={true}
             sx={{
                 position: 'relative',
+
                 width: 300,
                 height: 600,
 
