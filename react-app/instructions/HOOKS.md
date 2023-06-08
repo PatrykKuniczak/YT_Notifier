@@ -11,7 +11,7 @@ Custom hooks from outer libraries
 
 Custom hooks
 
-Fuctions (Utils)
+Functions (Utils)
 
 listeners from outer libriaries
 
