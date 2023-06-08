@@ -41,6 +41,7 @@ Sections:
   font-family: sans-serif;
   font-weight: bold;
   font-size: 16px;
+  font-style: normal;
   line-height: 1.4;
 
   /* Others */
