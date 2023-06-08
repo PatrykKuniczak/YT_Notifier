@@ -7,17 +7,17 @@ export const StyledVideoInfo = styled('header')(({ theme }) =>
 
         maxWidth: 242,
         maxHeight: '3.2rem',
+        lineHeight: '1.6rem',
 
         px: 0.2,
-
-        fontSize: 'fontSize.sm',
-        fontWeight: 'fontWeight.normal',
-        fontStyle: 'italic',
-        lineHeight: '1.6rem',
 
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         wordWrap: 'break-all',
+
+        fontWeight: 'fontWeight.normal',
+        fontSize: 'fontSize.sm',
+        fontStyle: 'italic',
 
         '&:first-of-type::after': {
             content: '""',
