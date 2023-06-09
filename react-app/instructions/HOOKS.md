@@ -11,7 +11,9 @@ Custom hooks from outer libraries
 
 Custom hooks
 
-listeners from outer libriaries
+Functions (Utils)
+
+Listeners from outer libriaries
 
 useEffects
 

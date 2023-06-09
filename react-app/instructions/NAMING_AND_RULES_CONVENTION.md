@@ -10,6 +10,7 @@ NAMING:
     For styled components use "Styled" prefix
     For react and SC components use 'CamelCase'
     For hooks use 'lowerCamelCase'
+    For mixin use 'lowerCamelCase' and sufix "Minin"
     
 RULES:
     On 'if', 'else if' and 'else' statements use curly brackets

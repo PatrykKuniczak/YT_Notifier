@@ -2,6 +2,9 @@ Sections:
 
 ```css
 {
+  /* Mixins */
+  ...myMixin;
+    
   /* Positioning, start of this section should looks like in this example below */
   position: absolute;
   z-index: 10;
@@ -34,15 +37,31 @@ Sections:
   color: #fff;
   
   /* Text */
-  font-family: sans-serif;
-  font-size: 16px;
-  line-height: 1.4;
   text-align: right;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.4;
 
   /* Others */
   cursor: pointer;
-  
-  /* Media Queries USE WITH NEW SYNTAX 'width > value' */
+
+  /* Pseudo classes */
+  :hover {
+      
+  }
+
+  /* Pseudo selectors */
+  ::after {
+      
+  }
+
+  /* Webkit */
+  ::-webkit-*{
+  }
+
+  /* Media Queries USE NEW SYNTAX 'width > value' */
   @media(width > 100px) {
   }
   
