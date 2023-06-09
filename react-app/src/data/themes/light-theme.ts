@@ -24,7 +24,7 @@ const THEME = createTheme({
         },
         color: {
             primary: '#16121E',
-            placeholder: '#16121E'
+            placeholder: '#050110'
         }
     },
     typography: {

@@ -1,5 +1,5 @@
 export const textMixin = {
-    color: '#16121E',
+    color: 'color.primary',
 
     textAlign: 'center',
     fontSize: 'fontSize.md',

@@ -6,8 +6,9 @@ const SearchBarInputStyles = styled('input')(({ theme }) =>
         width: '100%',
 
         px: 1,
-
         borderRadius: 10,
+
+        color: 'color.primary',
         background: 'transparent',
 
         '&::placeholder': {
