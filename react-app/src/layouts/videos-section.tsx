@@ -27,16 +27,18 @@ export const StyledVideosSection = ({ children }: { children: ReactNode }) => (
                 border: '2px solid transparent',
                 borderRadius: 10,
 
-                bgcolor: '#7846F0',
+                bgcolor: 'transparent',
                 backgroundClip: 'padding-box'
             },
 
-            '&::-webkit-scrollbar-thumb:hover': {
-                bgcolor: '#6833fc'
-            },
+            '&:hover': {
+                '&::-webkit-scrollbar-thumb': {
+                    bgcolor: '#7846F0'
+                },
 
-            '&::-webkit-scrollbar-thumb:active': {
-                bgcolor: '#581fe1'
+                '&::-webkit-scrollbar-thumb:active': {
+                    bgcolor: '#581fe1'
+                }
             }
         }}>
         {children}
