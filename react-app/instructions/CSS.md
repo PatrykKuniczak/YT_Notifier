@@ -46,7 +46,17 @@ Sections:
 
   /* Others */
   cursor: pointer;
-  
+
+  /* Pseudo classes */
+  :hover {
+      
+  }
+
+  /* Pseudo selectors */
+  ::after {
+      
+  }
+
   /* Webkit */
   ::-webkit-*{
   }
