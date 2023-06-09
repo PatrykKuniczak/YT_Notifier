@@ -13,7 +13,7 @@ Custom hooks
 
 Functions (Utils)
 
-listeners from outer libriaries
+Listeners from outer libriaries
 
 useEffects
 
