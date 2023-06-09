@@ -8,7 +8,7 @@ import { StyledTitleHeader } from './components/ui/atomic/title-header.ts';
 import { StyledMainContent } from './layouts/main-content.tsx';
 import { StyledVideoArticle } from './components/ui/makro/video-article.tsx';
 import { StyledVideosSection } from './layouts/videos-section.tsx';
-import { StyledSearchBar } from './components/functional/makro/search-bar.tsx';
+import { StyledSearchBar } from './components/functional/makro/searchBar/search-bar.tsx';
 
 function App() {
     const { isDarkMode, setTernaryDarkMode } = useTernaryDarkMode();
