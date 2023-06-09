@@ -11,13 +11,13 @@ const SearchBarInputStyles = styled('input')(({ theme }) =>
         color: 'color.primary',
         background: 'transparent',
 
-        '&::placeholder': {
-            color: 'color.placeholder'
-        },
-
         '&:focus': {
             outline: `1.5px solid ${theme.palette.background.searchBarFocusOutline}`,
             outlineOffset: 1
+        },
+
+        '&::placeholder': {
+            color: 'color.placeholder'
         }
     })
 );
