@@ -22,7 +22,7 @@ CREATE INSIDE SRC:
     - atomic - For the smallest part
     - micro - For group of atomic components 
     - makro - For group of micro components (Group of macro components should be saved in 'layouts' directory)
-      Makro should have subdirectories for group components with they logic
+      Makro should have subdirectories for grouping components with they logic
       e.g. 'searchBar':
         search-bar.tsx,
         useSearchBar.ts
