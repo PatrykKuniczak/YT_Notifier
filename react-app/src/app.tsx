@@ -2,24 +2,23 @@ import { useTernaryDarkMode } from 'usehooks-ts';
 import GlobalStyles from './data/global-styles.ts';
 import lightTheme from './data/themes/light-theme.ts';
 import darkTheme from './data/themes/dark-theme.ts';
-import { useEffect } from 'react';
 import { ThemeProvider } from '@mui/system';
 import { StyledTitleHeader } from './components/ui/atomic/title-header.ts';
 import { StyledMainContent } from './layouts/main-content.tsx';
 import { StyledVideoArticle } from './components/ui/makro/video-article.tsx';
 import { StyledVideosSection } from './layouts/videos-section.tsx';
+import { ThemeSwitch } from './components/functional/atomic/theme-switch.tsx';
 import { StyledSearchBar } from './components/functional/makro/searchBar/search-bar.tsx';
 
 function App() {
-    const { isDarkMode, setTernaryDarkMode } = useTernaryDarkMode();
-
-    useEffect(() => {
-        setTernaryDarkMode('light');
-    }, [setTernaryDarkMode]);
+    const { isDarkMode } = useTernaryDarkMode();
 
     return (
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
             <GlobalStyles />
+
+            <ThemeSwitch defaultChecked />
+
             <StyledMainContent>
                 <StyledTitleHeader> Znalezione Wideo </StyledTitleHeader>
 
