@@ -14,4 +14,6 @@ NAMING:
     
 RULES:
     On 'if', 'else if' and 'else' statements use curly brackets
+    In components or HTML tags place "on..." events, e.g "onClick" props in the end
+    e.g <input type='checkbox' aria-label="example' onClick={() => ...}/>
 ```
