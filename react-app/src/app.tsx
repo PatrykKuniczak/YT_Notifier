@@ -7,7 +7,6 @@ import { StyledTitleHeader } from './components/ui/atomic/title-header.ts';
 import { StyledMainContent } from './layouts/main-content.tsx';
 import { StyledVideoArticle } from './components/ui/makro/video-article.tsx';
 import { StyledVideosSection } from './layouts/videos-section.tsx';
-import { ThemeSwitch } from './components/functional/atomic/theme-switch.tsx';
 import { StyledSearchBar } from './components/functional/makro/searchBar/search-bar.tsx';
 
 function App() {
@@ -16,8 +15,6 @@ function App() {
     return (
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
             <GlobalStyles />
-
-            <ThemeSwitch defaultChecked />
 
             <StyledMainContent>
                 <StyledTitleHeader> Znalezione Wideo </StyledTitleHeader>

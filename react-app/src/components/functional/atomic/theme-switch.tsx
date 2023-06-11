@@ -5,7 +5,7 @@ import lightIcon from '../../../assets/light-icon.svg';
 import darkIcon from '../../../assets/dark-icon.svg';
 import { useTernaryDarkMode } from 'usehooks-ts';
 
-export const ThemeSwitch = (props: UseSwitchParameters) => {
+export const StyledThemeSwitch = (props: UseSwitchParameters) => {
     const { setTernaryDarkMode } = useTernaryDarkMode();
     const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
 
