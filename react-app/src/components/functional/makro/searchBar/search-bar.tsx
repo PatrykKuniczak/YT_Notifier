@@ -1,4 +1,4 @@
-import { StyledSearchIcon } from '../../../ui/atomic/search-icon.ts';
+import { StyledIcon } from '../../../ui/atomic/icon.ts';
 import { StyledSearchBarWrapper } from '../../atomic/search-bar-wrapper.ts';
 import searchIcon from '../../../../assets/search-icon.svg';
 import { StyledSearchBarInput } from '../../atomic/search-bar-input.tsx';
@@ -11,7 +11,7 @@ export const StyledSearchBar = () => {
 
     return (
         <StyledSearchBarWrapper onMouseOver={focus}>
-            <StyledSearchIcon
+            <StyledIcon
                 src={searchIcon}
                 width={20}
                 height={20}
