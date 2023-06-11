@@ -7,12 +7,7 @@ export const StyledMainContent = ({ children }: { children: ReactNode }) => (
         alignItems={'center'}
         spacing={1}
         useFlexGap={true}
-        sx={{
-            width: 300,
-            height: 600,
-
-            bgcolor: 'background.primary'
-        }}>
+        sx={{ p: 2, height: 'calc(100% - 56px)' }}>
         {children}
     </Stack>
 );

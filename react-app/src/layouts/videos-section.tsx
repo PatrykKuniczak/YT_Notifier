@@ -13,8 +13,6 @@ export const StyledVideosSection = ({ children }: { children: ReactNode }) => (
             mb: 1,
             borderRadius: 1,
 
-            bgcolor: 'background.primary',
-
             '&:hover': {
                 '&::-webkit-scrollbar-thumb': {
                     bgcolor: '#7846F0'

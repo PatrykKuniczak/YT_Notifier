@@ -8,6 +8,8 @@ import { StyledMainContent } from './layouts/main-content.tsx';
 import { StyledVideoArticle } from './components/ui/makro/video-article.tsx';
 import { StyledVideosSection } from './layouts/videos-section.tsx';
 import { StyledSearchBar } from './components/functional/makro/searchBar/search-bar.tsx';
+import { StyledHeaderContainer } from './components/ui/micro/header-container.tsx';
+import { StyledPageWrapper } from './components/ui/micro/page-wrapper.tsx';
 
 function App() {
     const { isDarkMode } = useTernaryDarkMode();
@@ -16,20 +18,24 @@ function App() {
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
             <GlobalStyles />
 
-            <StyledMainContent>
-                <StyledTitleHeader> Znalezione Wideo </StyledTitleHeader>
+            <StyledPageWrapper>
+                <StyledHeaderContainer />
 
-                <StyledSearchBar />
+                <StyledMainContent>
+                    <StyledTitleHeader> Znalezione Wideo </StyledTitleHeader>
 
-                <StyledVideosSection>
-                    <StyledVideoArticle />
-                    <StyledVideoArticle />
-                    <StyledVideoArticle />
-                    <StyledVideoArticle />
-                    <StyledVideoArticle />
-                    <StyledVideoArticle />
-                </StyledVideosSection>
-            </StyledMainContent>
+                    <StyledSearchBar />
+
+                    <StyledVideosSection>
+                        <StyledVideoArticle />
+                        <StyledVideoArticle />
+                        <StyledVideoArticle />
+                        <StyledVideoArticle />
+                        <StyledVideoArticle />
+                        <StyledVideoArticle />
+                    </StyledVideosSection>
+                </StyledMainContent>
+            </StyledPageWrapper>
         </ThemeProvider>
     );
 }
