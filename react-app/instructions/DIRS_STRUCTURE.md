@@ -42,5 +42,7 @@ CREATE INSIDE SRC:
 
 'services' - Save here all queries,
 
-'config'
+'config',
+
+'consts'
 ```
