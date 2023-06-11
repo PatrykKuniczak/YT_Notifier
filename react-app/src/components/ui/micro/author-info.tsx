@@ -1,7 +1,7 @@
 import { StyledAvatar } from '../atomic/avatar.ts';
 import { StyledAuthorName } from '../atomic/autor-name.ts';
 import { Stack } from '@mui/system';
-import thumbinail from '../../../assets/thumbnail.png';
+import thumbnail from '../../../assets/thumbnail.png';
 
 export const StyledAuthorInfo = () => (
     <Stack
@@ -10,7 +10,7 @@ export const StyledAuthorInfo = () => (
         useFlexGap={true}
         spacing={1}>
         <StyledAvatar
-            src={thumbinail}
+            src={thumbnail}
             width={24}
             height={24}
         />
