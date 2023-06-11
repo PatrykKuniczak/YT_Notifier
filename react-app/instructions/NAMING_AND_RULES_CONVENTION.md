@@ -8,6 +8,7 @@ NAMING:
     For types use "T" prefix, e.g 'TExampleType'
     
     For styled components use "Styled" prefix
+    For routes use "Route" sufix
     For react and SC components use 'CamelCase'
     For hooks use 'lowerCamelCase'
     For mixin use 'lowerCamelCase' and sufix "Minin"
