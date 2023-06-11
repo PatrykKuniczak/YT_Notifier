@@ -5,6 +5,8 @@ export const StyledPageWrapper = styled(Stack)(({ theme }) =>
         width: 300,
         height: 600,
 
-        bgcolor: 'background.primary'
+        bgcolor: 'background.primary',
+
+        transitionDuration: '0.5s'
     })
 );
