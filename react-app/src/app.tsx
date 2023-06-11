@@ -3,9 +3,10 @@ import GlobalStyles from './data/global-styles.ts';
 import lightTheme from './data/themes/light-theme.ts';
 import darkTheme from './data/themes/dark-theme.ts';
 import { ThemeProvider } from '@mui/system';
-import { StyledHeaderContainer } from './components/ui/micro/header-container.tsx';
+import { StyledHeaderContainer } from './layouts/header-container.tsx';
 import { StyledPageWrapper } from './components/ui/atomic/page-wrapper.tsx';
 import { Outlet } from 'react-router-dom';
+import { StyledNavbar } from './layouts/navbar.tsx';
 
 function App() {
     const { isDarkMode } = useTernaryDarkMode();
@@ -18,6 +19,8 @@ function App() {
                 <StyledHeaderContainer />
 
                 <Outlet />
+
+                <StyledNavbar />
             </StyledPageWrapper>
         </ThemeProvider>
     );

@@ -9,7 +9,7 @@ const THEME = createTheme({
             searchBar: '#eeebeb',
             searchBarFocusOutline: '#7846F0',
             searchIconFilter:
-                'invert(5%) sepia(5%) saturate(400%) hue-rotate(219deg) brightness(93%) contrast(93%)'
+                'invert(94%) sepia(0%) saturate(32%) hue-rotate(142deg) brightness(97%) contrast(93%)'
         },
         color: {
             primary: '#16121E',
