@@ -37,6 +37,7 @@ CREATE INSIDE SRC:
     *.interface.[js/ts],
 
 'types':
+    common.types.[js/ts] - For common/ungrouped types, 
     *.type.[js/ts],
 
 'services' - Save here all queries,
