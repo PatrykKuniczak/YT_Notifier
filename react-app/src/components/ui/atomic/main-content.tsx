@@ -1,13 +1,17 @@
-import { ReactNode } from 'react';
-import { Stack } from '@mui/system';
+import { Stack, styled } from '@mui/system';
+import { TChildren, TComponentTag } from '../../../types/common.types.ts';
 
-export const StyledMainContent = ({ children }: { children: ReactNode }) => (
-    <Stack
-        component="main"
-        alignItems={'center'}
-        spacing={1}
-        useFlexGap={true}
-        sx={{ p: 2, height: 'calc(100% - 56px)' }}>
-        {children}
-    </Stack>
+const MainContentStyles = styled(Stack)<TComponentTag>(({ theme }) =>
+    theme.unstable_sx({
+        alignItems: 'center',
+        gap: 1,
+
+        p: 2,
+
+        height: 'calc(100% - 56px)'
+    })
+);
+
+export const StyledMainContent = ({ children }: TChildren) => (
+    <MainContentStyles component="main">{children}</MainContentStyles>
 );
