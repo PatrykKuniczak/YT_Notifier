@@ -7,8 +7,7 @@ export const StyledVideoInfos = () => (
         spacing={1}>
         <Stack
             direction={'row'}
-            alignItems={'center'}
-            useFlexGap={true}>
+            alignItems={'center'}>
             <StyledVideoInfo>23h temu</StyledVideoInfo>
             <StyledVideoInfo>10000 views</StyledVideoInfo>
         </Stack>

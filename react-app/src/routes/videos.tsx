@@ -1,4 +1,4 @@
-import { StyledMainContent } from '../components/ui/atomic/main-content.tsx';
+import { StyledMainContent } from '../layouts/main-content.tsx';
 import { StyledTitleHeader } from '../components/ui/atomic/title-header.ts';
 import { StyledSearchBar } from '../components/functional/makro/searchBar/search-bar.tsx';
 import { StyledVideosSection } from '../components/ui/atomic/videos-section.tsx';

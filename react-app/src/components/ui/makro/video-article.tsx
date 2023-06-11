@@ -1,19 +1,25 @@
 import { StyledThumbnail } from '../atomic/thumbnail.ts';
-import { Stack } from '@mui/system';
-import thumbinail from '../../../assets/thumbnail.png';
+import { Stack, styled } from '@mui/system';
+import thumbnail from '../../../assets/thumbnail.png';
 import { StyledAuthorInfo } from '../micro/author-info.tsx';
 import { StyledVideoInfos } from '../micro/video-infos.tsx';
+import { TComponentTag } from '../../../types/common.types.ts';
 
+const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
+    theme.unstable_sx({
+        justifyContent: 'center',
+        gap: 1,
+
+        p: 1,
+
+        borderRadius: 1,
+        bgcolor: 'background.secondary'
+    })
+);
 export const StyledVideoArticle = () => (
-    <Stack
-        component={'article'}
-        direction={'column'}
-        justifyContent={'center'}
-        useFlexGap={true}
-        spacing={1}
-        sx={{ p: 1, borderRadius: 1, bgcolor: 'background.secondary' }}>
-        <StyledThumbnail src={thumbinail} />
+    <VideoArticleStyles component={'article'}>
+        <StyledThumbnail src={thumbnail} />
         <StyledAuthorInfo />
         <StyledVideoInfos />
-    </Stack>
+    </VideoArticleStyles>
 );

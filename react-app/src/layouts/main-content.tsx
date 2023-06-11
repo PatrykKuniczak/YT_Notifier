@@ -1,5 +1,5 @@
 import { Stack, styled } from '@mui/system';
-import { TChildren, TComponentTag } from '../../../types/common.types.ts';
+import { TChildren, TComponentTag } from '../types/common.types.ts';
 
 const MainContentStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
