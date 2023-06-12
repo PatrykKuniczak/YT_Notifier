@@ -1,20 +1,24 @@
-import { StyledSearchIcon } from '../../../ui/atomic/search-icon.ts';
+import { StyledIcon } from '../../../ui/atomic/icon.ts';
 import { StyledSearchBarWrapper } from '../../atomic/search-bar-wrapper.ts';
 import searchIcon from '../../../../assets/search-icon.svg';
 import { StyledSearchBarInput } from '../../atomic/search-bar-input.tsx';
 import { Ref } from 'react';
 import { useSearchBar } from './useSearchBar.ts';
+import { useTheme } from '@mui/system';
 
 export const StyledSearchBar = () => {
     const { ref, focus, clearContent, searchContent, handleContentChange } =
         useSearchBar();
 
+    const theme = useTheme();
+
     return (
         <StyledSearchBarWrapper onMouseOver={focus}>
-            <StyledSearchIcon
+            <StyledIcon
                 src={searchIcon}
                 width={20}
                 height={20}
+                sx={{ filter: `${theme.palette.background.searchIconFilter}` }}
             />
 
             <StyledSearchBarInput

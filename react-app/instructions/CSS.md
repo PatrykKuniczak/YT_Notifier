@@ -52,7 +52,7 @@ Sections:
       
   }
 
-  /* Pseudo selectors */
+  /* Pseudo elements */
   ::after {
       
   }

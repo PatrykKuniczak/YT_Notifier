@@ -5,10 +5,10 @@ const THEME = createTheme({
         background: {
             primary: '#16121E',
             secondary: '#1b1826',
+            purple: '#7846F0',
             searchBar: '#26203B',
             searchBarFocusOutline: '#5215e3',
-            searchIconFilter:
-                'invert(92%) sepia(8%) saturate(8%) hue-rotate(354deg) brightness(90%) contrast(96%)'
+            searchIconFilter: 'none'
         },
         color: {
             primary: '#e3e1e1',
