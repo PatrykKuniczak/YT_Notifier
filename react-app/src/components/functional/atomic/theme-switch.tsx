@@ -21,20 +21,20 @@ export const StyledThemeSwitch = (props: UseSwitchParameters) => {
         );
 
     return (
-        <SwitchRoot>
-            <SwitchTrack>
-                <SwitchThumb className={clsx(stateClasses)} />
-            </SwitchTrack>
-            <SwitchInput
+        <StyledSwitchRoot>
+            <StyledSwitchTrack>
+                <StyledSwitchThumb className={clsx(stateClasses)} />
+            </StyledSwitchTrack>
+            <StyledSwitchInput
                 {...getInputProps()}
                 aria-label="Theme switcher"
                 onClick={changeTheme}
             />
-        </SwitchRoot>
+        </StyledSwitchRoot>
     );
 };
 
-const SwitchRoot = styled('span')(({ theme }) =>
+const StyledSwitchRoot = styled('span')(({ theme }) =>
     theme.unstable_sx({
         position: 'relative',
 
@@ -45,7 +45,7 @@ const SwitchRoot = styled('span')(({ theme }) =>
     })
 );
 
-const SwitchTrack = styled('div')(({ theme }) =>
+const StyledSwitchTrack = styled('div')(({ theme }) =>
     theme.unstable_sx({
         width: 36,
         height: 20,
@@ -56,7 +56,7 @@ const SwitchTrack = styled('div')(({ theme }) =>
     })
 );
 
-const SwitchThumb = styled('span')(({ theme }) =>
+const StyledSwitchThumb = styled('span')(({ theme }) =>
     theme.unstable_sx({
         position: 'absolute',
 
@@ -106,7 +106,7 @@ const SwitchThumb = styled('span')(({ theme }) =>
     })
 );
 
-const SwitchInput = styled('input')(({ theme }) =>
+const StyledSwitchInput = styled('input')(({ theme }) =>
     theme.unstable_sx({
         position: 'absolute',
         zIndex: 1,
