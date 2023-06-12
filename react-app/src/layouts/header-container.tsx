@@ -7,6 +7,7 @@ const HeaderContainerStyles = styled(Stack)(({ theme }) =>
     theme.unstable_sx({
         justifyContent: 'space-between',
         alignItems: 'center',
+
         p: 1
     })
 );
