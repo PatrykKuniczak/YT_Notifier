@@ -6,7 +6,8 @@ const MainContentStyles = styled(Stack)<TComponentTag>(({ theme }) =>
         alignItems: 'center',
         gap: 1,
 
-        p: 2,
+        px: 2,
+        pb: 1,
 
         height: 'calc(100% - 56px)'
     })
