@@ -45,18 +45,14 @@ const SwitchRoot = styled('span')(({ theme }) =>
     })
 );
 
-const SwitchInput = styled('input')(({ theme }) =>
+const SwitchTrack = styled('div')(({ theme }) =>
     theme.unstable_sx({
-        position: 'absolute',
-        zIndex: 1,
+        width: 36,
+        height: 20,
 
-        inset: 1,
+        borderRadius: 10,
 
-        width: '100%',
-        height: '100%',
-
-        opacity: 0,
-        cursor: 'pointer'
+        bgcolor: 'background.purple'
     })
 );
 
@@ -110,13 +106,17 @@ const SwitchThumb = styled('span')(({ theme }) =>
     })
 );
 
-const SwitchTrack = styled('div')(({ theme }) =>
+const SwitchInput = styled('input')(({ theme }) =>
     theme.unstable_sx({
-        width: 36,
-        height: 20,
+        position: 'absolute',
+        zIndex: 1,
 
-        borderRadius: 10,
+        inset: 1,
 
-        bgcolor: 'background.purple'
+        width: '100%',
+        height: '100%',
+
+        opacity: 0,
+        cursor: 'pointer'
     })
 );
