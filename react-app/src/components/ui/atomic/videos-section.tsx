@@ -3,11 +3,12 @@ import { TChildren, TComponentTag } from '../../../types/common.types.ts';
 
 const VideosSectionStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
-        overflow: 'auto',
+        overflow: 'scroll',
 
         alignItems: 'center',
         gap: 1,
 
+        pb: 12,
         mb: 1,
         borderRadius: 1,
 
@@ -26,14 +27,19 @@ const VideosSectionStyles = styled(Stack)<TComponentTag>(({ theme }) =>
         },
 
         '&::-webkit-scrollbar-track': {
-            my: 1
+            mb: 12
         },
+
         '&::-webkit-scrollbar-thumb': {
             border: '2px solid transparent',
             borderRadius: 10,
 
             bgcolor: 'transparent',
             backgroundClip: 'padding-box'
+        },
+
+        '&::-webkit-scrollbar-corner': {
+            background: 'none'
         }
     })
 );
