@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { VideosRoute } from './routes/videos.tsx';
 
-const router = createBrowserRouter([
+const routerBrowser = createBrowserRouter([
     {
         path: '/',
         element: <App />,
@@ -27,6 +27,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <RouterProvider router={routerBrowser} />
     </React.StrictMode>
 );
