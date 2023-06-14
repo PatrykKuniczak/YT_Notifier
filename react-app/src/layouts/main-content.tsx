@@ -3,7 +3,6 @@ import { TChildren, TComponentTag } from '../types/common.types.ts';
 
 const MainContentStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
-        alignItems: 'center',
         gap: 1,
 
         px: 2,
