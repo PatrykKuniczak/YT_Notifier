@@ -10,6 +10,7 @@ import { StyledNavbar } from './layouts/navbar.tsx';
 import { StyledMainContent } from './layouts/main-content.tsx';
 import { StyledTitle } from './components/ui/atomic/shared/title-header.ts';
 import { useEffect, useState } from 'react';
+import { StyledSearchBar } from './components/functional/makro/searchBar/search-bar.tsx';
 
 function App() {
     const [title, setTitle] = useState('');
@@ -31,6 +32,8 @@ function App() {
 
                 <StyledMainContent>
                     <StyledTitle>{title}</StyledTitle>
+
+                    <StyledSearchBar />
 
                     <Outlet />
                 </StyledMainContent>

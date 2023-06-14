@@ -1,4 +1,8 @@
 export const scrollbarMixin = {
+    overflow: 'scroll',
+
+    pb: 12,
+
     '&:hover': {
         '&::-webkit-scrollbar-thumb': {
             bgcolor: '#7846F0'
@@ -14,7 +18,7 @@ export const scrollbarMixin = {
     },
 
     '&::-webkit-scrollbar-track': {
-        mb: 1
+        mb: 12
     },
 
     '&::-webkit-scrollbar-thumb': {

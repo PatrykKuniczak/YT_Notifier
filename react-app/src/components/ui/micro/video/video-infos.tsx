@@ -1,5 +1,5 @@
 import { Stack } from '@mui/system';
-import { StyledVideoInfo } from '../atomic/video/video-info.ts';
+import { StyledVideoInfo } from '../../atomic/video/video-info.ts';
 
 export const StyledVideoInfos = () => (
     <Stack
