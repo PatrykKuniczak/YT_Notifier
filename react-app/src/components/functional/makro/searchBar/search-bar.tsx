@@ -1,5 +1,5 @@
-import { StyledIcon } from '../../../ui/atomic/icon.ts';
-import { StyledSearchBarWrapper } from '../../../ui/atomic/search-bar-wrapper.ts';
+import { StyledIcon } from '../../../ui/atomic/shared/icon.ts';
+import { StyledSearchBarWrapper } from '../../../ui/atomic/shared/search-bar-wrapper.ts';
 import searchIcon from '../../../../assets/search-icon.svg';
 import { StyledSearchBarInput } from '../../atomic/search-bar-input.tsx';
 import { Ref } from 'react';

@@ -1,6 +1,6 @@
 import { Stack, styled } from '@mui/system';
-import { TChildren, TComponentTag } from '../../../types/common.types.ts';
-import { scrollbarMixin } from '../../../data/mixins/scrollbar-mixin.ts';
+import { TChildren, TComponentTag } from '../../../../types/common.types.ts';
+import { scrollbarMixin } from '../../../../data/mixins/scrollbar-mixin.ts';
 
 const VideosSectionStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
