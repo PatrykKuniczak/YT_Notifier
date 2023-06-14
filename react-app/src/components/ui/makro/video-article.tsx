@@ -18,7 +18,10 @@ const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
 );
 export const StyledVideoArticle = () => (
     <VideoArticleStyles component={'article'}>
-        <StyledThumbnail src={thumbnail} />
+        <StyledThumbnail
+            src={thumbnail}
+            alt={'YT Thumbnail'}
+        />
         <StyledAuthorInfo />
         <StyledVideoInfos />
     </VideoArticleStyles>

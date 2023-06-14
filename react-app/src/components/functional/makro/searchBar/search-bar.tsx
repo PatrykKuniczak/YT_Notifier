@@ -16,6 +16,7 @@ export const StyledSearchBar = () => {
         <StyledSearchBarWrapper onMouseOver={focus}>
             <StyledIcon
                 src={searchIcon}
+                alt={'Search magnifier'}
                 width={20}
                 height={20}
                 sx={{ filter: `${theme.palette.background.searchIconFilter}` }}
