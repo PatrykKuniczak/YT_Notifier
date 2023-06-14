@@ -1,8 +1,11 @@
 import { Stack, styled } from '@mui/system';
 import { TChildren, TComponentTag } from '../../../types/common.types.ts';
+import { scrollbarMixin } from '../../../data/mixins/scrollbar-mixin.ts';
 
 const VideosSectionStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
+        ...scrollbarMixin,
+
         overflow: 'scroll',
 
         alignItems: 'center',
@@ -12,34 +15,8 @@ const VideosSectionStyles = styled(Stack)<TComponentTag>(({ theme }) =>
         mb: 1,
         borderRadius: 1,
 
-        '&:hover': {
-            '&::-webkit-scrollbar-thumb': {
-                bgcolor: '#7846F0'
-            },
-
-            '&::-webkit-scrollbar-thumb:active': {
-                bgcolor: '#581fe1'
-            }
-        },
-
-        '&::-webkit-scrollbar': {
-            width: 12
-        },
-
         '&::-webkit-scrollbar-track': {
             mb: 12
-        },
-
-        '&::-webkit-scrollbar-thumb': {
-            border: '2px solid transparent',
-            borderRadius: 10,
-
-            bgcolor: 'transparent',
-            backgroundClip: 'padding-box'
-        },
-
-        '&::-webkit-scrollbar-corner': {
-            background: 'none'
         }
     })
 );
