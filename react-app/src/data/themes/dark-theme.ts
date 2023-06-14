@@ -4,14 +4,14 @@ const THEME = createTheme({
     palette: {
         background: {
             primary: '#16121E',
-            secondary: '#1b1826',
+            secondary: '#FFFFFF0C',
             purple: '#7846F0',
             searchBar: '#26203B',
             searchBarFocusOutline: '#5215e3',
             searchIconFilter: 'none'
         },
         color: {
-            primary: '#e3e1e1',
+            primary: '#E6E6E6',
             placeholder: '#D3D3D3'
         }
     },
