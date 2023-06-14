@@ -1,5 +1,5 @@
-import { StyledAvatar } from '../atomic/avatar.ts';
-import { StyledAuthorName } from '../atomic/autor-name.ts';
+import { StyledAvatar } from '../atomic/shared/avatar.ts';
+import { StyledAuthorName } from '../atomic/video/autor-name.ts';
 import { Stack } from '@mui/system';
 import thumbnail from '../../../assets/thumbnail.png';
 

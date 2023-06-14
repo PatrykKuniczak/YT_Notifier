@@ -1,7 +1,7 @@
 import { styled } from '@mui/system';
-import { textMixin } from '../../../data/mixins/text-mixin.ts';
+import { textMixin } from '../../../../data/mixins/text-mixin.ts';
 
-export const StyledTitleHeader = styled('header')(({ theme }) =>
+export const StyledTitle = styled('header')(({ theme }) =>
     theme.unstable_sx({
         ...textMixin,
 

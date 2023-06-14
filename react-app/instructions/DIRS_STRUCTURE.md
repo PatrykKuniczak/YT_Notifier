@@ -27,7 +27,8 @@ CREATE INSIDE SRC:
         search-bar.tsx,
         useSearchBar.ts
   
-'routes',
+'routes':
+    *.route.[js/ts],
 
 'hooks',
 

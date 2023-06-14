@@ -1,4 +1,4 @@
-import { StyledThumbnail } from '../atomic/thumbnail.ts';
+import { StyledThumbnail } from '../atomic/video/thumbnail.ts';
 import { Stack, styled } from '@mui/system';
 import thumbnail from '../../../assets/thumbnail.png';
 import { StyledAuthorInfo } from '../micro/author-info.tsx';

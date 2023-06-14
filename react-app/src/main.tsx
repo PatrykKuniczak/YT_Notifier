@@ -6,7 +6,7 @@ import {
     Navigate,
     RouterProvider
 } from 'react-router-dom';
-import { VideosRoute } from './routes/videos.tsx';
+import { VideosRoute } from './routes/videos.route.tsx';
 
 const routerBrowser = createBrowserRouter([
     {

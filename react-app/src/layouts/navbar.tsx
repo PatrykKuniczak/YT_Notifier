@@ -1,6 +1,6 @@
 import { Stack, styled } from '@mui/system';
 import { TComponentTag } from '../types/common.types.ts';
-import { StyledIcon } from '../components/ui/atomic/icon.ts';
+import { StyledIcon } from '../components/ui/atomic/shared/icon.ts';
 import searchIcon from '../assets/search-icon.svg';
 import savedTagsIcon from '../assets/saved-tags-icon.svg';
 import watchLaterIcon from '../assets/watch-later-icon.svg';
