@@ -5,6 +5,7 @@ import searchIcon from '../assets/search-icon.svg';
 import savedTagsIcon from '../assets/saved-tags-icon.svg';
 import watchLaterIcon from '../assets/watch-later-icon.svg';
 import { StyledButton } from '../components/functional/atomic/button.ts';
+import { useNavigate } from 'react-router-dom';
 
 const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
@@ -28,32 +29,39 @@ const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     })
 );
 
-export const StyledNavbar = () => (
-    <NavbarStyles
-        component="nav"
-        direction={'row'}>
-        <StyledButton>
-            <StyledIcon
-                src={searchIcon}
-                width={20}
-                height={20}
-            />
-        </StyledButton>
+export const StyledNavbar = () => {
+    const navigate = useNavigate();
 
-        <StyledButton>
-            <StyledIcon
-                src={savedTagsIcon}
-                width={20}
-                height={20}
-            />
-        </StyledButton>
+    return (
+        <NavbarStyles
+            component="nav"
+            direction={'row'}>
+            <StyledButton onClick={() => navigate('/')}>
+                <StyledIcon
+                    src={searchIcon}
+                    alt={'Search magnifier'}
+                    width={20}
+                    height={20}
+                />
+            </StyledButton>
 
-        <StyledButton>
-            <StyledIcon
-                src={watchLaterIcon}
-                width={20}
-                height={20}
-            />
-        </StyledButton>
-    </NavbarStyles>
-);
+            <StyledButton onClick={() => navigate('/store')}>
+                <StyledIcon
+                    src={savedTagsIcon}
+                    alt={'Saved tags navigation button'}
+                    width={20}
+                    height={20}
+                />
+            </StyledButton>
+
+            <StyledButton>
+                <StyledIcon
+                    src={watchLaterIcon}
+                    alt={'YT Watch Later navigation button'}
+                    width={20}
+                    height={20}
+                />
+            </StyledButton>
+        </NavbarStyles>
+    );
+};
