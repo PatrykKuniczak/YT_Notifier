@@ -1,10 +1,7 @@
 import { Stack, styled } from '@mui/system';
-import { TComponentTag } from '../../../../types/common.types.ts';
+import { TComponentTag, TVoid } from '../../../../types/common.types.ts';
 import { StyledKeyword } from '../../atomic/store/keyword.ts';
-import { StyledIcon } from '../../atomic/shared/icon.ts';
-import editIcon from '../../../../assets/edit-icon.svg';
-import trashIcon from '../../../../assets/trash-icon.svg';
-import { StyledButton } from '../../../functional/atomic/button.ts';
+import { StyledDeleteButton } from '../../../functional/micro/store/deleteButton/delete-button.tsx';
 
 const StoreListItem = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
@@ -25,7 +22,13 @@ const StoreListItem = styled(Stack)<TComponentTag>(({ theme }) =>
     })
 );
 
-export const StyledStoreItem = ({ keyword }: { keyword: string }) => (
+export const StyledStoreItem = ({
+    keyword,
+    changeModalVisibility
+}: {
+    keyword: string;
+    changeModalVisibility: TVoid;
+}) => (
     <StoreListItem
         component={'li'}
         direction={'row'}
@@ -38,19 +41,7 @@ export const StyledStoreItem = ({ keyword }: { keyword: string }) => (
             justifyContent={'space-between'}
             useFlexGap={true}
             spacing={1.5}>
-            <StyledButton sx={{ height: 16 }}>
-                <StyledIcon
-                    src={editIcon}
-                    alt={'Edit Button'}
-                />
-            </StyledButton>
-
-            <StyledButton sx={{ height: 16 }}>
-                <StyledIcon
-                    src={trashIcon}
-                    alt={'Trash Button'}
-                />
-            </StyledButton>
+            <StyledDeleteButton changeModalVisibility={changeModalVisibility} />
         </Stack>
     </StoreListItem>
 );
