@@ -10,7 +10,8 @@ CREATE INSIDE SRC:
     *-mixin.[js/ts]
   global-styles.[js/ts]
     
-'pages',
+'pages':
+    *.page.[jsx/tsx],
 
 'layouts' - Save here a part of page e.g navbar,
 
@@ -28,7 +29,7 @@ CREATE INSIDE SRC:
         useSearchBar.ts
   
 'routes':
-    *.route.[js/ts],
+    *.route.[jsx/tsx],
 
 'hooks',
 

@@ -9,6 +9,7 @@ NAMING:
     
     For styled components use "Styled" prefix
     For routes use "Route" sufix
+    For pages use "Page" sufix
     For react and SC components use 'CamelCase'
     For hooks use 'lowerCamelCase'
     For mixin use 'lowerCamelCase' and sufix "Minin"
