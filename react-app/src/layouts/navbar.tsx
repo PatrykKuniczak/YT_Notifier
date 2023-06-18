@@ -4,7 +4,7 @@ import { StyledIcon } from '../components/ui/atomic/shared/icon.ts';
 import searchIcon from '../assets/search-icon.svg';
 import savedTagsIcon from '../assets/saved-tags-icon.svg';
 import watchLaterIcon from '../assets/watch-later-icon.svg';
-import { StyledButton } from '../components/functional/atomic/button.ts';
+import { StyledButton } from '../components/functional/atomic/shared/button.ts';
 import { useNavigate } from 'react-router-dom';
 
 const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>

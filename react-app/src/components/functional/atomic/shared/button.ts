@@ -5,6 +5,8 @@ export const StyledButton = styled(Button)(({ theme }) =>
     theme.unstable_sx({
         height: 20,
 
+        color: '#fff',
+
         background: 'none',
 
         '&:hover': {

@@ -26,7 +26,7 @@ CREATE INSIDE SRC:
       Makro should have subdirectories for grouping components with they logic
       e.g. 'searchBar':
         search-bar.tsx,
-        useSearchBar.ts
+        use-search-bar.ts
   
 'routes':
     *.route.[jsx/tsx],

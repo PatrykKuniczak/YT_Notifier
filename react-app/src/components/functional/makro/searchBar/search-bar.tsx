@@ -1,9 +1,9 @@
 import { StyledIcon } from '../../../ui/atomic/shared/icon.ts';
 import { StyledSearchBarWrapper } from '../../../ui/atomic/shared/search-bar-wrapper.ts';
 import searchIcon from '../../../../assets/search-icon.svg';
-import { StyledSearchBarInput } from '../../atomic/search-bar-input.tsx';
+import { StyledSearchBarInput } from '../../atomic/shared/search-bar-input.tsx';
 import { Ref } from 'react';
-import { useSearchBar } from './useSearchBar.ts';
+import { useSearchBar } from './use-search-bar.ts';
 import { useTheme } from '@mui/system';
 
 export const StyledSearchBar = () => {
