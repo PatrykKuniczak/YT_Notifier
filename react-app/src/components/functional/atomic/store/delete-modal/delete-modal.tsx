@@ -25,7 +25,7 @@ const StyledModal = styled(Modal)(({ theme }) =>
         position: 'fixed',
         zIndex: 1,
 
-        inset: 1,
+        inset: 0,
 
         display: 'flex',
         alignItems: 'center',
@@ -38,7 +38,7 @@ const StyledBackdrop = styled(Backdrop)(({ theme }) =>
         position: 'fixed',
         zIndex: -1,
 
-        inset: 1,
+        inset: 0,
 
         bgcolor: '#0000007F'
     })
