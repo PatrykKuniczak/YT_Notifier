@@ -1,6 +1,6 @@
 import { Stack, styled } from '@mui/system';
 import { TComponentTag, TVoid } from '../../../../types/common.types.ts';
-import { StyledKeyword } from '../../atomic/store/keyword.tsx';
+import { StyledKeyword } from '../../../functional/atomic/store/keyword.tsx';
 import { StyledEditButton } from '../../../functional/micro/store/editButton/edit-button.tsx';
 import { StyledDeleteButton } from '../../../functional/micro/store/deleteButton/delete-button.tsx';
 import { useState } from 'react';
@@ -45,6 +45,7 @@ export const StyledStoreItem = ({
             <StyledKeyword
                 value={keyword}
                 openedInput={openedInput}
+                changeInputVisibility={changeInputVisibility}
             />
 
             <Stack

@@ -3,14 +3,21 @@ import { StyledSearchBarWrapper } from '../../../ui/atomic/shared/search-bar-wra
 import searchIcon from '../../../../assets/search-icon.svg';
 import { StyledSearchBarInput } from '../../atomic/shared/search-bar-input.tsx';
 import { Ref } from 'react';
-import { useSearchBar } from './use-search-bar.ts';
+import { useBasicLogic } from '../../../../hooks/use-basic-logic.ts';
 import { useTheme } from '@mui/system';
 
 export const StyledSearchBar = () => {
-    const { ref, focus, clearContent, searchContent, handleContentChange } =
-        useSearchBar();
+    const {
+        ref,
+        focus,
+        handleKeyEvent,
+        value: searchContent,
+        handleStateChange
+    } = useBasicLogic();
 
     const theme = useTheme();
+
+    const clearContent = () => handleStateChange('');
 
     return (
         <StyledSearchBarWrapper onMouseOver={focus}>
@@ -29,8 +36,8 @@ export const StyledSearchBar = () => {
                 aria-label="Search Bar"
                 placeholder={'Wyszukaj'}
                 value={searchContent}
-                onChange={event => handleContentChange(event.target.value)}
-                onKeyDown={event => event.key === 'Escape' && clearContent()}
+                onChange={event => handleStateChange(event.target.value)}
+                onKeyDown={event => handleKeyEvent(event, clearContent)}
             />
         </StyledSearchBarWrapper>
     );
