@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     border: none;
 
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Sans', sans-serif;
   }
 `;
 
