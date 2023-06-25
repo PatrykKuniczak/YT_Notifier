@@ -1,5 +1,5 @@
-import { StyledVideosSection } from '../components/ui/atomic/video/videos-section.tsx';
-import { StyledVideoArticle } from '../components/ui/makro/video/video-article.tsx';
+import { StyledVideosSection } from '../components/video/section/videos-section.tsx';
+import { StyledVideoArticle } from '../components/video/section/article/video-article.tsx';
 
 export const VideosRoute = () => {
     return (

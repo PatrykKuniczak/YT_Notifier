@@ -15,18 +15,11 @@ CREATE INSIDE SRC:
 
 'layouts' - Save here a part of page e.g navbar,
 
-'components' - Save here the smaller part or page, e.g buttons:
-  'ui' - Components without any fuctionallity,
-  'fuctional' - E.g input,
-  
-  Each should have these subdirectories:
-    - atomic - For the smallest part
-    - micro - For group of atomic components 
-    - makro - For group of micro components (Group of macro components should be saved in 'layouts' directory)
-      Makro should have subdirectories for grouping components with they logic
-      e.g. 'searchBar':
-        search-bar.tsx,
-        use-search-bar.ts
+'components' - Save here the smaller part or page, e.g buttons with they logic hooks:
+    'shared' - Save here components which can be used in many different components: 
+        *.[js/jsx/ts/tsx]
+    'componentName' - should have subdirectories with smaller parts of this component:
+        *.[js/jsx/ts/tsx]
   
 'routes':
     *.route.[jsx/tsx],
