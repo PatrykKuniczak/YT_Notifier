@@ -6,6 +6,7 @@ Sections:
   ...myMixin;
     
   /* Positioning, start of this section should looks like in this example below */
+  content: '';
   position: absolute;
   z-index: 10;
  
