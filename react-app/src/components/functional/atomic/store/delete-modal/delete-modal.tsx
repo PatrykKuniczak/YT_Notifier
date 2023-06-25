@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { TVoid } from '../../../../../types/common.types.ts';
 import { StyledModalContent } from '../../../../ui/atomic/store/modal-content.tsx';
 
-const Backdrop = forwardRef<
+const StyledMUIBackdrop = forwardRef<
     HTMLDivElement,
     { open: boolean; className: string }
 >((props, ref) => {
@@ -20,6 +20,17 @@ const Backdrop = forwardRef<
     );
 });
 
+const StyledBackdrop = styled(StyledMUIBackdrop)(({ theme }) =>
+    theme.unstable_sx({
+        position: 'fixed',
+        zIndex: -1,
+
+        inset: 0,
+
+        bgcolor: '#0000007F'
+    })
+);
+
 const StyledModal = styled(Modal)(({ theme }) =>
     theme.unstable_sx({
         position: 'fixed',
@@ -33,17 +44,6 @@ const StyledModal = styled(Modal)(({ theme }) =>
     })
 );
 
-const StyledBackdrop = styled(Backdrop)(({ theme }) =>
-    theme.unstable_sx({
-        position: 'fixed',
-        zIndex: -1,
-
-        inset: 0,
-
-        bgcolor: '#0000007F'
-    })
-);
-
 export const StyledDeleteModal = ({
     open,
     changeModalVisibility
@@ -53,8 +53,8 @@ export const StyledDeleteModal = ({
 }) => (
     <StyledModal
         open={open}
-        onClose={changeModalVisibility}
-        slots={{ backdrop: StyledBackdrop }}>
+        slots={{ backdrop: StyledBackdrop }}
+        onClose={changeModalVisibility}>
         <>
             <StyledModalContent changeModalVisibility={changeModalVisibility} />
         </>
