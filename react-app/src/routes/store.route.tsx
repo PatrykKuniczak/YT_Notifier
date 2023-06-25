@@ -1,7 +1,7 @@
-import { StyledStoreList } from '../components/ui/atomic/store/store-section.tsx';
-import { StyledStoreItem } from '../components/ui/makro/store/store-value.tsx';
-import { StyledDeleteModal } from '../components/functional/atomic/store/delete-modal/delete-modal.tsx';
-import { useDeleteModal } from '../components/functional/atomic/store/delete-modal/use-delete-modal.ts';
+import { StyledDeleteModal } from '../components/store/delete-modal/delete-modal.tsx';
+import { useDeleteModal } from '../components/store/delete-modal/use-delete-modal.ts';
+import { StyledStoreList } from '../components/store/list/store-list.tsx';
+import { StyledStoreItem } from '../components/store/list/item/store-value.tsx';
 
 export const StoreRoute = () => {
     const { open, changeModalVisibility } = useDeleteModal();

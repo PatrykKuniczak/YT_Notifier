@@ -1,6 +1,6 @@
 import { Stack, styled } from '@mui/system';
-import { StyledThemeSwitch } from '../components/functional/atomic/shared/theme-switch.tsx';
-import { StyledAvatar } from '../components/ui/atomic/shared/avatar.ts';
+import { StyledThemeSwitch } from '../components/shared/theme-switch.tsx';
+import { StyledAvatar } from '../components/shared/avatar.ts';
 import avatar from '../assets/thumbnail.png';
 
 const HeaderContainerStyles = styled(Stack)(({ theme }) =>
