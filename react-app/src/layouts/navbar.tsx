@@ -1,5 +1,5 @@
 import { Stack, styled } from '@mui/system';
-import { TComponentTag } from '../types/common.types.ts';
+import { TComponentTag, TVoid } from '../types/common.types.ts';
 import { StyledIcon } from '../components/ui/atomic/shared/icon.ts';
 import searchIcon from '../assets/search-icon.svg';
 import savedTagsIcon from '../assets/saved-tags-icon.svg';
@@ -29,14 +29,18 @@ const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     })
 );
 
-export const StyledNavbar = () => {
+export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
     const navigate = useNavigate();
 
     return (
         <NavbarStyles
             component="nav"
             direction={'row'}>
-            <StyledButton onClick={() => navigate('/')}>
+            <StyledButton
+                onClick={() => {
+                    navigate('/');
+                    focus();
+                }}>
                 <StyledIcon
                     src={searchIcon}
                     alt={'Search magnifier'}
@@ -45,7 +49,11 @@ export const StyledNavbar = () => {
                 />
             </StyledButton>
 
-            <StyledButton onClick={() => navigate('/store')}>
+            <StyledButton
+                onClick={() => {
+                    navigate('/store');
+                    focus();
+                }}>
                 <StyledIcon
                     src={savedTagsIcon}
                     alt={'Saved tags navigation button'}

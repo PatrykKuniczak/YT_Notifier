@@ -4,7 +4,7 @@ import IUseFocus from '../interfaces/use-focus.interface.ts';
 const useFocus = <T extends HTMLElement>(): IUseFocus<T> => {
     const ref = useRef<T | null>(null);
 
-    const focus = (): void => {
+    const focus = () => {
         ref.current && ref.current.focus();
     };
 
