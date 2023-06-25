@@ -52,7 +52,7 @@ const StyledSwitchTrack = styled('div')(({ theme }) =>
 
         borderRadius: 10,
 
-        bgcolor: 'background.purple'
+        backgroundColor: 'background.purple'
     })
 );
 
@@ -71,13 +71,13 @@ const StyledSwitchThumb = styled('span')(({ theme }) =>
         p: 0.2,
         borderRadius: '50%',
 
-        bgcolor: '#fff',
+        backgroundColor: '#fff',
 
         transform: 'translateX(0px)',
         transition: 'transform .5s ease-in-out',
 
         '&.focusVisible': {
-            bgcolor: '#dcc8ff'
+            backgroundColor: '#dcc8ff'
         },
 
         '&.checked': {
