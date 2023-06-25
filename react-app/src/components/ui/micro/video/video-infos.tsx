@@ -1,5 +1,6 @@
 import { Stack } from '@mui/system';
 import { StyledVideoInfo } from '../../atomic/video/video-info.ts';
+import { StyledVideoTitle } from '../../atomic/video/video-title.ts';
 
 export const StyledVideoInfos = () => (
     <Stack
@@ -7,14 +8,16 @@ export const StyledVideoInfos = () => (
         spacing={1}>
         <Stack
             direction={'row'}
-            alignItems={'center'}>
-            <StyledVideoInfo>23h temu</StyledVideoInfo>
-            <StyledVideoInfo>10000 views</StyledVideoInfo>
+            alignItems={'center'}
+            useFlexGap={true}
+            spacing={2}>
+            <StyledVideoInfo>11 miesięcy temu</StyledVideoInfo>
+            <StyledVideoInfo>1 mld wyświetleń</StyledVideoInfo>
         </Stack>
 
-        <StyledVideoInfo sx={{ alignSelf: 'start', fontSize: 'fontSize.md' }}>
+        <StyledVideoTitle>
             Hodujemy gatunek, który będzie dominował nad nami Hodujemy gatunek,
             który będzie dominował nad nami
-        </StyledVideoInfo>
+        </StyledVideoTitle>
     </Stack>
 );
