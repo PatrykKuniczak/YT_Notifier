@@ -23,7 +23,7 @@ const THEME = createTheme({
             bold: '700'
         },
         fontSize: {
-            sm: 16,
+            sm: 12,
             md: 18,
             l: 20,
             xl: 24
