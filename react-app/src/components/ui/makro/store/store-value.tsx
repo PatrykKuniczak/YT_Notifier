@@ -5,7 +5,7 @@ import { StyledEditButton } from '../../../functional/micro/store/editButton/edi
 import { StyledDeleteButton } from '../../../functional/micro/store/deleteButton/delete-button.tsx';
 import { useState } from 'react';
 
-const StoreListItem = styled(Stack)<TComponentTag>(({ theme }) =>
+const StyledStoreListItem = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
         gap: 1,
 
@@ -37,7 +37,7 @@ export const StyledStoreItem = ({
     const changeInputVisibility = () => setOpenedInput(prevState => !prevState);
 
     return (
-        <StoreListItem
+        <StyledStoreListItem
             component={'li'}
             direction={'row'}
             alignItems={'center'}
@@ -62,6 +62,6 @@ export const StyledStoreItem = ({
                     changeModalVisibility={changeModalVisibility}
                 />
             </Stack>
-        </StoreListItem>
+        </StyledStoreListItem>
     );
 };
