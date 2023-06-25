@@ -1,11 +1,15 @@
 export const scrollbarMixin = {
+    pb: 12,
+
+    overflow: 'scroll',
+
     '&:hover': {
         '&::-webkit-scrollbar-thumb': {
-            bgcolor: '#7846F0'
+            backgroundColor: '#7846F0'
         },
 
         '&::-webkit-scrollbar-thumb:active': {
-            bgcolor: '#581fe1'
+            backgroundColor: '#581fe1'
         }
     },
 
@@ -14,14 +18,14 @@ export const scrollbarMixin = {
     },
 
     '&::-webkit-scrollbar-track': {
-        mb: 1
+        mb: 12
     },
 
     '&::-webkit-scrollbar-thumb': {
         border: '2px solid transparent',
         borderRadius: 10,
 
-        bgcolor: 'transparent',
+        backgroundColor: 'transparent',
         backgroundClip: 'padding-box'
     },
 

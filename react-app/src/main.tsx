@@ -7,6 +7,7 @@ import {
     RouterProvider
 } from 'react-router-dom';
 import { VideosRoute } from './routes/videos.route.tsx';
+import { StoreRoute } from './routes/store.route.tsx';
 
 const routerBrowser = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const routerBrowser = createBrowserRouter([
             {
                 path: '',
                 element: <VideosRoute />
+            },
+            {
+                path: 'store',
+                element: <StoreRoute />
             }
         ]
     },

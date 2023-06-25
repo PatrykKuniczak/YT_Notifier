@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { styled } from '@mui/system';
 import useSwitch, { UseSwitchParameters } from '@mui/base/useSwitch';
-import lightIcon from '../../../assets/light-icon.svg';
-import darkIcon from '../../../assets/dark-icon.svg';
+import lightIcon from '../../../../assets/light-icon.svg';
+import darkIcon from '../../../../assets/dark-icon.svg';
 import { useTernaryDarkMode } from 'usehooks-ts';
 
 export const StyledThemeSwitch = (props: UseSwitchParameters) => {

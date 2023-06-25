@@ -4,8 +4,9 @@ const THEME = createTheme({
     palette: {
         background: {
             primary: '#fff',
-            secondary: '#f1f0f0',
+            secondary: '#eeecec',
             purple: '#7846F0',
+            grey: '#5b5b5e',
             searchBar: '#eeebeb',
             searchBarFocusOutline: '#7846F0',
             searchIconFilter:

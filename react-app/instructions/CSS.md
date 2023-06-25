@@ -6,6 +6,7 @@ Sections:
   ...myMixin;
     
   /* Positioning, start of this section should looks like in this example below */
+  content: '';
   position: absolute;
   z-index: 10;
  
@@ -19,13 +20,10 @@ Sections:
   align-items: center;
   gap: 1rem; /* In the end */
   
-  /* Box Model */
+  /* Box Model */  
+  box-sizing: border-box;
   width: 100px; /* On first width and height */
   height: 100px;
-
-  /* Rest */
-  overflow: hidden;  
-  box-sizing: border-box;
 
   /* Margins and etc. */
   margin: 10px;
@@ -44,7 +42,8 @@ Sections:
   font-style: normal;
   line-height: 1.4;
 
-  /* Others */
+  /* Others */  
+  overflow: hidden;
   cursor: pointer;
 
   /* Pseudo classes */

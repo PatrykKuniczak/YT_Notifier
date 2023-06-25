@@ -1,7 +1,7 @@
-import { StyledAvatar } from '../atomic/shared/avatar.ts';
-import { StyledAuthorName } from '../atomic/video/autor-name.ts';
+import { StyledAvatar } from '../../atomic/shared/avatar.ts';
+import { StyledAuthorName } from '../../atomic/video/autor-name.ts';
 import { Stack } from '@mui/system';
-import thumbnail from '../../../assets/thumbnail.png';
+import thumbnail from '../../../../assets/thumbnail.png';
 
 export const StyledAuthorInfo = () => (
     <Stack
