@@ -9,13 +9,13 @@ import { TVoid } from '../../../../types/common.types.ts';
 
 export const StyledSearchBar = forwardRef(
     ({ focus }: { focus: TVoid }, ref) => {
+        const theme = useTheme();
+
         const {
             handleKeyEvent,
             value: searchContent,
             handleStateChange
         } = useBasicLogic();
-
-        const theme = useTheme();
 
         const clearContent = () => handleStateChange('');
 
