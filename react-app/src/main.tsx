@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './app.tsx';
 import {
     createBrowserRouter,
     Navigate,
@@ -8,25 +7,40 @@ import {
 } from 'react-router-dom';
 import { VideosRoute } from './routes/videos.route.tsx';
 import { StoreRoute } from './routes/store.route.tsx';
+import AuthPage from './pages/auth/auth.page.tsx';
+import HomePage from './pages/home/home.page.tsx';
+import ProtectedPage from './pages/protected.page.tsx';
 
 const routerBrowser = createBrowserRouter([
     {
         path: '/',
-        element: <App />,
+        element: <ProtectedPage />,
         children: [
             {
-                path: '',
-                element: <VideosRoute />
+                path: 'auth',
+                element: <AuthPage />
             },
+
             {
-                path: 'store',
-                element: <StoreRoute />
+                path: '',
+                element: <HomePage />,
+                children: [
+                    {
+                        path: '',
+                        element: <VideosRoute />
+                    },
+                    {
+                        path: 'store',
+                        element: <StoreRoute />
+                    }
+                ]
+            },
+
+            {
+                path: '*',
+                element: <Navigate to={'/'} />
             }
         ]
-    },
-    {
-        path: '*',
-        element: <Navigate to={'/'} />
     }
 ]);
 
