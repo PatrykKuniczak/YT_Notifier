@@ -13,7 +13,6 @@ const EditButtonStyles = styled(StyledButton)(({ theme }) =>
 
         '&::before': {
             content: '""',
-
             position: 'absolute',
 
             bottom: 0,
