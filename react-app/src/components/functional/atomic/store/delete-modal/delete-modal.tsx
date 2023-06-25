@@ -27,7 +27,7 @@ const StyledBackdrop = styled(StyledMUIBackdrop)(({ theme }) =>
 
         inset: 0,
 
-        bgcolor: '#0000007F'
+        backgroundColor: '#0000007F'
     })
 );
 

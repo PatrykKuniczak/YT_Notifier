@@ -8,6 +8,6 @@ export const StyledModalButton = styled(StyledButton)(({ theme }) =>
 
         borderRadius: 10,
 
-        bgcolor: '#EF5D5D'
+        backgroundColor: '#EF5D5D'
     })
 );

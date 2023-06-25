@@ -15,7 +15,8 @@ const StyledStoreListItem = styled(Stack)<TComponentTag>(({ theme }) =>
         py: 0.5,
 
         borderRadius: 1,
-        bgcolor: 'background.secondary',
+
+        backgroundColor: 'background.secondary',
 
         cursor: 'pointer',
 

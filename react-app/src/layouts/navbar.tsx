@@ -23,7 +23,7 @@ const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
         p: 2,
         borderRadius: 10,
 
-        bgcolor: 'background.purple',
+        backgroundColor: 'background.purple',
 
         transform: `translateX(${(300 - 240) / 2}px)`
     })

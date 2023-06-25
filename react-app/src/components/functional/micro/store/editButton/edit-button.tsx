@@ -21,10 +21,9 @@ const EditButtonStyles = styled(StyledButton)(({ theme }) =>
             height: 3,
 
             mt: 1,
-
             borderRadius: 10,
 
-            bgcolor: '#7846F0',
+            backgroundColor: '#7846F0',
 
             transition: 'width 0.3s ease-in-out'
         },

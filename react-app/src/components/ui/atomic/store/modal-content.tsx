@@ -10,7 +10,7 @@ const ModalContentStyles = styled(Stack)(({ theme }) =>
 
         borderRadius: 1,
 
-        bgcolor: 'background.primary'
+        backgroundColor: 'background.primary'
     })
 );
 

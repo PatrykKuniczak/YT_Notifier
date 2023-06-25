@@ -13,7 +13,8 @@ const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
         p: 1,
 
         borderRadius: 1,
-        bgcolor: 'background.secondary',
+
+        backgroundColor: 'background.secondary',
 
         cursor: 'pointer'
     })

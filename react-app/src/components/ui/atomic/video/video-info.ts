@@ -11,13 +11,13 @@ export const StyledVideoInfo = styled('header')(({ theme }) =>
 
         px: 0.2,
 
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        wordWrap: 'break-all',
-
         fontWeight: 'fontWeight.normal',
         fontSize: 'fontSize.sm',
         fontStyle: 'italic',
+        wordWrap: 'break-all',
+        textOverflow: 'ellipsis',
+
+        overflow: 'hidden',
 
         '&:first-of-type::after': {
             content: '""',
