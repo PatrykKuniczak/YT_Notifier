@@ -1,6 +1,6 @@
 import { Stack, styled } from '@mui/system';
 import { StyledTitle } from '../shared/title-header.ts';
-import { StyledModalButton } from '../../../functional/atomic/store/delete-modal-button.ts';
+import { StyledModalButton } from '../../../functional/atomic/store/delete-modal/delete-modal-button.ts';
 import { TVoid } from '../../../../types/common.types.ts';
 
 const ModalContentStyles = styled(Stack)(({ theme }) =>

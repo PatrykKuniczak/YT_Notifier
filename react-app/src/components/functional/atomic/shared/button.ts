@@ -6,7 +6,6 @@ export const StyledButton = styled(Button)(({ theme }) =>
         height: 20,
 
         color: '#fff',
-
         background: 'none',
 
         '&:hover': {
