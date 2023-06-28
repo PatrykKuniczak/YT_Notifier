@@ -1,11 +1,13 @@
 import clsx from 'clsx';
-import { styled } from '@mui/system';
+import { styled, SxProps } from '@mui/system';
 import useSwitch, { UseSwitchParameters } from '@mui/base/useSwitch';
 import lightIcon from '../../assets/light-icon.svg';
 import darkIcon from '../../assets/dark-icon.svg';
 import { useTernaryDarkMode } from 'usehooks-ts';
 
-export const StyledThemeSwitch = (props: UseSwitchParameters) => {
+export const StyledThemeSwitch = (
+    props: UseSwitchParameters & { sx?: SxProps }
+) => {
     const { setTernaryDarkMode } = useTernaryDarkMode();
     const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
 
@@ -21,7 +23,7 @@ export const StyledThemeSwitch = (props: UseSwitchParameters) => {
         );
 
     return (
-        <StyledSwitchRoot>
+        <StyledSwitchRoot sx={props.sx}>
             <StyledSwitchTrack>
                 <StyledSwitchThumb className={clsx(stateClasses)} />
             </StyledSwitchTrack>
@@ -52,7 +54,7 @@ const StyledSwitchTrack = styled('div')(({ theme }) =>
 
         borderRadius: 10,
 
-        bgcolor: 'background.purple'
+        backgroundColor: 'background.purple'
     })
 );
 
@@ -71,13 +73,13 @@ const StyledSwitchThumb = styled('span')(({ theme }) =>
         p: 0.2,
         borderRadius: '50%',
 
-        bgcolor: '#fff',
+        backgroundColor: '#fff',
 
         transform: 'translateX(0px)',
         transition: 'transform .5s ease-in-out',
 
         '&.focusVisible': {
-            bgcolor: '#dcc8ff'
+            backgroundColor: '#dcc8ff'
         },
 
         '&.checked': {
