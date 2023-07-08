@@ -8,8 +8,8 @@ import { useTernaryDarkMode } from 'usehooks-ts';
 export const StyledThemeSwitch = (
     props: UseSwitchParameters & { sx?: SxProps }
 ) => {
-    const { setTernaryDarkMode } = useTernaryDarkMode();
-    const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
+    const { setTernaryDarkMode, isDarkMode } = useTernaryDarkMode();
+    const { getInputProps, checked, disabled, focusVisible } = useSwitch({ ...props, checked: isDarkMode });
 
     const stateClasses = {
         checked,
