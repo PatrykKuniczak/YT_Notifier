@@ -1,6 +1,8 @@
-import { css, keyframes, styled } from '@mui/system';
+import { styled } from '@mui/system';
 import useSnackbar from '@mui/base/useSnackbar';
 import { useEffect, useState } from 'react';
+import exclamationOctagonIcon from '../../assets/exclamation-octagon-icon.svg';
+import { StyledIcon } from './icon';
 
 const Snackbar = ({
     opened,
@@ -28,62 +30,49 @@ const Snackbar = ({
     return (
         <>
             {open && (
-                <CustomSnackbar {...getRootProps()}>{content}</CustomSnackbar>
+                <CustomSnackbar {...getRootProps()}>
+                    <StyledIcon
+                        src={exclamationOctagonIcon}
+                        alt={'Exclamation octagon'}
+                        width={20}
+                        height={20}
+                    />
+                    {content}
+                </CustomSnackbar>
             )}
         </>
     );
 };
 
-const grey = {
-    50: '#f6f8fa',
-    100: '#eaeef2',
-    200: '#d0d7de',
-    300: '#afb8c1',
-    400: '#8c959f',
-    500: '#6e7781',
-    600: '#57606a',
-    700: '#424a53',
-    800: '#32383f',
-    900: '#24292f'
-};
+const CustomSnackbar = styled('div')(({ theme }) =>
+    theme.unstable_sx({
+        position: 'absolute',
+        zIndex: 5500,
 
-const snackbarInRight = keyframes`
-  from {
-    transform: translateX(100%);
-  }
+        bottom: 16,
+        left: 'auto',
+        right: 16,
 
-  to {
-    transform: translateX(0);
-  }
-`;
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'start',
+        gap: '0.5rem',
 
-const CustomSnackbar = styled('div')(
-    ({ theme }) => css`
-        position: fixed;
-        z-index: 5500;
-        display: flex;
-        right: 16px;
-        bottom: 16px;
-        left: auto;
-        justify-content: start;
-        max-width: 560px;
-        min-width: 300px;
-        background-color: ${theme.palette.mode === 'dark'
-            ? grey[900]
-            : grey[50]};
-        border-radius: 8px;
-        border: 1px solid
-            ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
-        box-shadow: ${theme.palette.mode === 'dark'
-            ? `0 2px 8px rgb(0 0 0 / 0.5)`
-            : `0 2px 8px ${grey[200]}`};
-        padding: 0.75rem;
-        color: ${theme.palette.mode === 'dark' ? grey[50] : grey[900]};
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-weight: 600;
-        animation: ${snackbarInRight} 200ms;
-        transition: transform 0.2s ease-out;
-    `
+        width: 256,
+
+        padding: '0.75rem',
+
+        backgroundColor: theme.palette.background.snackbarBackground,
+        color: theme.palette.color.snackbarContent,
+
+        fontSize: '0.875rem',
+        wordBreak: 'break-word',
+
+        animation: '${snackbarInRight} 200ms',
+        transition: 'transform 0.2s ease-out',
+
+        borderRadius: 2
+    })
 );
 
 export default Snackbar;
