@@ -68,7 +68,6 @@ const CustomSnackbar = styled('div')(({ theme }) =>
         fontSize: '0.875rem',
         wordBreak: 'break-word',
 
-        animation: '${snackbarInRight} 200ms',
         transition: 'transform 0.2s ease-out',
 
         borderRadius: 2
