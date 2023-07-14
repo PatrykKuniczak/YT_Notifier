@@ -4,19 +4,18 @@ import { useLocalStorage, useMediaQuery, useUpdateEffect } from 'usehooks-ts';
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)';
 
-type TernaryDarkMode = 'system' | 'dark' | 'light';
+type TTernaryDarkMode = 'system' | 'dark' | 'light';
 
-interface UseTernaryDarkModeOutput {
+interface IUseTernaryDarkModeOutput {
     isDarkMode: boolean;
-    ternaryDarkMode: TernaryDarkMode;
-    setTernaryDarkMode: Dispatch<SetStateAction<TernaryDarkMode>>;
-    toggleTernaryDarkMode: () => void;
+    ternaryDarkMode: TTernaryDarkMode;
+    setTernaryDarkMode: Dispatch<SetStateAction<TTernaryDarkMode>>;
 }
 
-export function useTernaryDarkMode(): UseTernaryDarkModeOutput {
+export function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
     const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
     const [ternaryDarkMode, setTernaryDarkMode] =
-        useLocalStorage<TernaryDarkMode>(
+        useLocalStorage<TTernaryDarkMode>(
             'usehooks-ts-ternary-dark-mode',
             'system'
         );
@@ -45,19 +44,9 @@ export function useTernaryDarkMode(): UseTernaryDarkModeOutput {
         }
     }, [ternaryDarkMode, isDarkOS]);
 
-    function toggleTernaryDarkMode() {
-        const toggleDict: Record<TernaryDarkMode, TernaryDarkMode> = {
-            light: 'system',
-            system: 'dark',
-            dark: 'light'
-        };
-        setTernaryDarkMode(prevMode => toggleDict[prevMode]);
-    }
-
     return {
         isDarkMode,
         ternaryDarkMode,
-        setTernaryDarkMode,
-        toggleTernaryDarkMode
+        setTernaryDarkMode
     };
 }
