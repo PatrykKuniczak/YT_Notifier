@@ -3,7 +3,7 @@ import darkTheme from '../data/themes/dark-theme.ts';
 import lightTheme from '../data/themes/light-theme.ts';
 import GlobalStyles from '../data/global-styles.ts';
 import { ThemeProvider } from '@mui/system';
-import { useTernaryDarkMode } from 'usehooks-ts';
+import { useTernaryDarkMode } from '../hooks/use-ternary-darkmode';
 // import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const ProtectedPage = () => {
