@@ -10,11 +10,13 @@ const THEME = createTheme({
             searchBar: '#eeebeb',
             searchBarFocusOutline: '#7846F0',
             searchIconFilter:
-                'invert(94%) sepia(0%) saturate(32%) hue-rotate(142deg) brightness(97%) contrast(93%)'
+                'invert(94%) sepia(0%) saturate(32%) hue-rotate(142deg) brightness(97%) contrast(93%)',
+            snackbarBackground: '#ffbbbb'
         },
         color: {
             primary: '#16121E',
-            placeholder: '#050110'
+            placeholder: '#050110',
+            snackbarContent: '#1f1f1f'
         }
     },
     typography: {

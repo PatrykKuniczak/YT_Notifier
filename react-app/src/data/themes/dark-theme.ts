@@ -9,11 +9,13 @@ const THEME = createTheme({
             grey: '#5b5b5e',
             searchBar: '#26203B',
             searchBarFocusOutline: '#5215e3',
-            searchIconFilter: 'none'
+            searchIconFilter: 'none',
+            snackbarBackground: '#ffbbbb'
         },
         color: {
             primary: '#E6E6E6',
-            placeholder: '#D3D3D3'
+            placeholder: '#D3D3D3',
+            snackbarContent: '#1f1f1f'
         }
     },
     typography: {
