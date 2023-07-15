@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-
 import { useLocalStorage, useMediaQuery, useUpdateEffect } from 'usehooks-ts';
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)';
@@ -19,11 +18,11 @@ export function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
             'usehooks-ts-ternary-dark-mode',
             'system'
         );
+
     const [isDarkMode, setDarkMode] = useState<boolean>(
         isDarkOS ? isDarkOS : ternaryDarkMode === 'dark'
     );
 
-    // Update darkMode if os prefers changes
     useUpdateEffect(() => {
         if (ternaryDarkMode === 'system') {
             setDarkMode(isDarkOS);
