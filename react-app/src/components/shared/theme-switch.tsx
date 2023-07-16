@@ -8,7 +8,7 @@ import { useTernaryDarkMode } from '../../hooks/use-ternary-darkmode';
 export const StyledThemeSwitch = (
     props: UseSwitchParameters & { sx?: SxProps }
 ) => {
-    const { setTernaryDarkMode, isDarkMode } = useTernaryDarkMode();
+    const { changeTheme, isDarkMode } = useTernaryDarkMode();
     const { getInputProps, checked, disabled, focusVisible } = useSwitch({
         ...props,
         checked: isDarkMode
@@ -19,11 +19,6 @@ export const StyledThemeSwitch = (
         disabled,
         focusVisible
     };
-
-    const changeTheme = () =>
-        setTernaryDarkMode(prevState =>
-            prevState === 'dark' ? 'light' : 'dark'
-        );
 
     return (
         <StyledSwitchRoot sx={props.sx}>
