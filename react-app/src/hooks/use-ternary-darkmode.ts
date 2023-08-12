@@ -1,51 +1,43 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useLocalStorage, useMediaQuery, useUpdateEffect } from 'usehooks-ts';
+import { useLocalStorage, useMediaQuery } from 'usehooks-ts';
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)';
 
 type TTernaryDarkMode = 'system' | 'dark' | 'light';
 
 interface IUseTernaryDarkModeOutput {
-    isDarkMode: boolean;
     ternaryDarkMode: TTernaryDarkMode;
-    setTernaryDarkMode: Dispatch<SetStateAction<TTernaryDarkMode>>;
+    isDarkMode: boolean;
+    changeTheme: () => void;
 }
 
 export function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
-    const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
     const [ternaryDarkMode, setTernaryDarkMode] =
         useLocalStorage<TTernaryDarkMode>(
             'usehooks-ts-ternary-dark-mode',
             'system'
         );
 
-    const [isDarkMode, setDarkMode] = useState<boolean>(
-        isDarkOS ? isDarkOS : ternaryDarkMode === 'dark'
-    );
+    const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
 
-    useUpdateEffect(() => {
-        if (ternaryDarkMode === 'system') {
-            setDarkMode(isDarkOS);
-        }
-    }, [isDarkOS]);
+    const isDarkMode =
+        ternaryDarkMode === 'dark' ||
+        (ternaryDarkMode === 'system' && isDarkOS);
 
-    useEffect(() => {
-        switch (ternaryDarkMode) {
-            case 'light':
-                setDarkMode(false);
-                break;
-            case 'system':
-                setDarkMode(isDarkOS);
-                break;
-            case 'dark':
-                setDarkMode(true);
-                break;
-        }
-    }, [ternaryDarkMode, isDarkOS]);
+    const changeTheme = () =>
+        setTernaryDarkMode(prevState => {
+            switch (prevState) {
+                case 'light':
+                    return 'dark';
+                case 'system':
+                    return isDarkOS ? 'light' : 'dark';
+                case 'dark':
+                    return 'light';
+            }
+        });
 
     return {
-        isDarkMode,
         ternaryDarkMode,
-        setTernaryDarkMode
+        isDarkMode,
+        changeTheme
     };
 }
