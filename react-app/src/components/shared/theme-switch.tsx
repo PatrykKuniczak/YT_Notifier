@@ -3,24 +3,22 @@ import { styled, SxProps } from '@mui/system';
 import useSwitch, { UseSwitchParameters } from '@mui/base/useSwitch';
 import lightIcon from '../../assets/light-icon.svg';
 import darkIcon from '../../assets/dark-icon.svg';
-import { useTernaryDarkMode } from 'usehooks-ts';
+import { useTernaryDarkMode } from '../../hooks/use-ternary-darkmode';
 
 export const StyledThemeSwitch = (
     props: UseSwitchParameters & { sx?: SxProps }
 ) => {
-    const { setTernaryDarkMode } = useTernaryDarkMode();
-    const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
+    const { changeTheme, isDarkMode } = useTernaryDarkMode();
+    const { getInputProps, checked, disabled, focusVisible } = useSwitch({
+        ...props,
+        checked: isDarkMode
+    });
 
     const stateClasses = {
         checked,
         disabled,
         focusVisible
     };
-
-    const changeTheme = () =>
-        setTernaryDarkMode(prevState =>
-            prevState === 'dark' ? 'light' : 'dark'
-        );
 
     return (
         <StyledSwitchRoot sx={props.sx}>
