@@ -54,7 +54,8 @@ export const StyledDeleteModal = ({
     <StyledModal
         open={open}
         slots={{ backdrop: StyledBackdrop }}
-        onClose={changeModalVisibility}>
+        onClose={changeModalVisibility}
+        tabIndex={-1}>
         <Box>
             <StyledModalContent changeModalVisibility={changeModalVisibility} />
         </Box>
