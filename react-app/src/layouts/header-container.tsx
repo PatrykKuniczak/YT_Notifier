@@ -19,11 +19,9 @@ const HeaderContainerStyles = styled(Stack)(({ theme }) =>
 const StyledListbox = styled('ul')(({ theme }) =>
     theme.unstable_sx({
         position: 'absolute',
-        zIndex: 1,
 
         right: '-30px',
 
-        boxSizing: 'border-box',
         minWidth: '200px',
 
         margin: '12px 0',
@@ -37,7 +35,6 @@ const StyledListbox = styled('ul')(({ theme }) =>
 
         fontSize: '0.875rem',
 
-        overflow: 'auto',
         boxShadow: `0px 4px 30px ${theme.palette.background.secondary}`
     })
 );
@@ -58,10 +55,6 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) =>
         '&.Mui-focusVisible': {
             outline: `1px solid #fff`,
             backgroundColor: theme.palette.background.secondary
-        },
-
-        '&:last-of-type': {
-            borderBottom: 'none'
         }
     })
 );
@@ -72,7 +65,6 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
         alignItems: 'center',
         gap: '.5rem',
 
-        boxSizing: 'border-box',
         minHeight: 'calc(1.5em + 22px)',
 
         padding: '8px 14px',
