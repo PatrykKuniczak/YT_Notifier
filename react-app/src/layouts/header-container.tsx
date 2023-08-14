@@ -28,12 +28,12 @@ const StyledListbox = styled('ul')(({ theme }) =>
         padding: '6px',
         border: `1px solid ${theme.palette.background.secondary}`,
         borderRadius: '12px',
-        outline: '0px',
+        outline: 'transparent',
 
         background: theme.palette.background.primary,
         color: theme.palette.color.primary,
 
-        fontSize: '0.875rem',
+        fontSize: 'fontSize.sm',
 
         boxShadow: `0px 4px 30px ${theme.palette.background.secondary}`
     })
@@ -45,7 +45,7 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) =>
         borderRadius: '8px',
 
         userSelect: 'none',
-        cursor: 'default',
+        cursor: 'pointer',
         listStyle: 'none',
 
         '&:hover:not(.Mui-disabled)': {
@@ -70,11 +70,7 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
         padding: '8px 14px',
         borderRadius: '12px',
 
-        backgroundColor: 'transparent',
-
-        fontSize: '0.875rem',
-        fontWeight: 600,
-        lineHeight: 1.5
+        backgroundColor: 'transparent'
     })
 );
 
