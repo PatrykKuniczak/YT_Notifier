@@ -15,7 +15,7 @@ export const StyledButton = styled(Button)(({ theme }) =>
         },
 
         '&.Mui-focusVisible': {
-            outline: `1px auto ${theme.palette.background.focusOutline}`
+            outline: `2px solid ${theme.palette.background.focusOutline}`
         }
     })
 );
