@@ -11,7 +11,8 @@ const THEME = createTheme({
             searchBarFocusOutline: '#7846F0',
             searchIconFilter:
                 'invert(94%) sepia(0%) saturate(32%) hue-rotate(142deg) brightness(97%) contrast(93%)',
-            snackbarBackground: '#ffbbbb'
+            snackbarBackground: '#ffbbbb',
+            focusOutline: '#16121E'
         },
         color: {
             primary: '#16121E',

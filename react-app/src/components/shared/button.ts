@@ -12,6 +12,10 @@ export const StyledButton = styled(Button)(({ theme }) =>
             opacity: 0.8,
             filter: 'blur(0.3px)',
             cursor: 'pointer'
+        },
+
+        '&.Mui-focusVisible': {
+            outline: `2px solid ${theme.palette.background.focusOutline}`
         }
     })
 );

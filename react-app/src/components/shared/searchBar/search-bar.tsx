@@ -33,7 +33,6 @@ export const StyledSearchBar = forwardRef(
 
                 <StyledSearchBarInput
                     ref={ref as Ref<HTMLInputElement>}
-                    tabIndex={-1}
                     autoFocus={true}
                     aria-label="Search Bar"
                     placeholder={'Wyszukaj'}

@@ -1,5 +1,5 @@
 import { Modal } from '@mui/base';
-import { styled } from '@mui/system';
+import { Box, styled } from '@mui/system';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 import { TVoid } from '../../../types/common.types.ts';
@@ -54,9 +54,10 @@ export const StyledDeleteModal = ({
     <StyledModal
         open={open}
         slots={{ backdrop: StyledBackdrop }}
-        onClose={changeModalVisibility}>
-        <>
+        onClose={changeModalVisibility}
+        tabIndex={-1}>
+        <Box>
             <StyledModalContent changeModalVisibility={changeModalVisibility} />
-        </>
+        </Box>
     </StyledModal>
 );
