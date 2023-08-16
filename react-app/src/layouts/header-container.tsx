@@ -12,6 +12,7 @@ const HeaderContainerStyles = styled(Stack)(({ theme }) =>
     theme.unstable_sx({
         justifyContent: 'space-between',
         alignItems: 'center',
+
         p: 1
     })
 );
@@ -70,7 +71,9 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
         padding: '8px 14px',
         borderRadius: '12px',
 
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+
+        cursor: 'pointer'
     })
 );
 
