@@ -13,11 +13,13 @@ export const StoreRoute = () => {
 
     const deferredSearchParam = useDeferredValue(keywordSearchParam) || '';
 
-    const filteredKeywords = useMemo(() => {
-        return dummyKeywords.filter(keyword =>
-            keyword.includes(deferredSearchParam)
-        );
-    }, [deferredSearchParam]);
+    const filteredKeywords = useMemo(
+        () =>
+            dummyKeywords.filter(keyword =>
+                keyword.includes(deferredSearchParam)
+            ),
+        [deferredSearchParam]
+    );
 
     const { open, changeModalVisibility } = useDeleteModal();
 
@@ -26,6 +28,7 @@ export const StoreRoute = () => {
             <StyledStoreList>
                 {filteredKeywords.map(filteredKeyword => (
                     <StyledStoreItem
+                        key={filteredKeyword}
                         changeModalVisibility={changeModalVisibility}
                         keyword={filteredKeyword}
                     />
