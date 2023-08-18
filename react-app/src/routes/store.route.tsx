@@ -2,16 +2,15 @@ import { StyledDeleteModal } from '../components/store/delete-modal/delete-modal
 import { useDeleteModal } from '../components/store/delete-modal/use-delete-modal.ts';
 import { StyledStoreList } from '../components/store/list/store-list.tsx';
 import { StyledStoreItem } from '../components/store/list/item/store-value.tsx';
-import { useSearchParams } from 'react-router-dom';
 import { useDeferredValue, useMemo } from 'react';
+import { useSearch } from '../hooks/use-search.ts';
 
 const dummyKeywords = ['test', 'adam', 'john', 'smith'] as const;
 
 export const StoreRoute = () => {
-    const [searchParams] = useSearchParams();
-    const keywordSearchParam = searchParams.get('keyword');
+    const { keywordSearchParam } = useSearch();
 
-    const deferredSearchParam = useDeferredValue(keywordSearchParam) || '';
+    const deferredSearchParam = useDeferredValue(keywordSearchParam);
 
     const filteredKeywords = useMemo(
         () =>
