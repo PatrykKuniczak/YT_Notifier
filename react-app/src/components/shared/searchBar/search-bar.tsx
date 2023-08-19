@@ -14,10 +14,10 @@ export const StyledSearchBar = forwardRef(
 
         const { handleKeyEvent } = useBasicLogic();
         const {
-            clearKeywordSearchParam,
-            keywordSearchParam,
+            clearSearchParamValue,
+            searchParamValue,
             handleSearchParamsChange
-        } = useSearch();
+        } = useSearch('keyword');
 
         return (
             <StyledSearchBarWrapper onMouseOver={focus}>
@@ -36,12 +36,12 @@ export const StyledSearchBar = forwardRef(
                     autoFocus={true}
                     aria-label="Search Bar"
                     placeholder={'Wyszukaj'}
-                    value={keywordSearchParam}
+                    value={searchParamValue}
                     onChange={event =>
                         handleSearchParamsChange(event.target.value)
                     }
                     onKeyDown={event =>
-                        handleKeyEvent(event, clearKeywordSearchParam)
+                        handleKeyEvent(event, clearSearchParamValue)
                     }
                 />
             </StyledSearchBarWrapper>
