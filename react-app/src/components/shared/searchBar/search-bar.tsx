@@ -13,9 +13,8 @@ export const StyledSearchBar = forwardRef(
         const theme = useTheme();
 
         const { handleKeyEvent } = useBasicLogic();
-        const { keywordSearchParam, handleSearchParamsChange } = useSearch();
-
-        const clearContent = () => handleSearchParamsChange('');
+        const { clearContent, keywordSearchParam, handleSearchParamsChange } =
+            useSearch();
 
         return (
             <StyledSearchBarWrapper onMouseOver={focus}>
