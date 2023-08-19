@@ -21,6 +21,7 @@ const HomePage = () => {
                 <StyledSearchBar
                     ref={ref as Ref<HTMLInputElement>}
                     focus={focus}
+                    searchParamKey="keyword"
                 />
 
                 <Outlet />
