@@ -8,7 +8,11 @@ export const useSearch = () => {
         setSearchParams({ keyword: content });
     };
 
-    const clearContent = () => handleSearchParamsChange('');
+    const clearKeywordSearchParam = () => handleSearchParamsChange('');
 
-    return { clearContent, keywordSearchParam, handleSearchParamsChange };
+    return {
+        clearKeywordSearchParam,
+        keywordSearchParam,
+        handleSearchParamsChange
+    };
 };
