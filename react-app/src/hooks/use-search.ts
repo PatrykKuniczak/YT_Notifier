@@ -1,12 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 
-export const useSearch = (key: string) => {
+const SEARCH_VALUE = 'searchValue';
+
+export const useSearch = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const searchParamValue = searchParams.get(key) || '';
+    const searchParamValue = searchParams.get(SEARCH_VALUE) || '';
 
     const handleSearchParamsChange = (content: string) => {
         const allParams = Object.fromEntries(searchParams);
-        setSearchParams({ ...allParams, [key]: content });
+        setSearchParams({ ...allParams, [SEARCH_VALUE]: content });
     };
 
     const clearSearchParamValue = () => handleSearchParamsChange('');

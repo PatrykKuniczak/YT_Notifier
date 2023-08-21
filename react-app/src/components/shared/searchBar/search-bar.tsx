@@ -9,10 +9,7 @@ import { TVoid } from '../../../types/common.types.ts';
 import { useSearch } from '../../../hooks/use-search.ts';
 
 export const StyledSearchBar = forwardRef(
-    (
-        { focus, searchParamKey }: { focus: TVoid; searchParamKey: string },
-        ref
-    ) => {
+    ({ focus }: { focus: TVoid }, ref) => {
         const theme = useTheme();
 
         const { handleKeyEvent } = useBasicLogic();
@@ -20,7 +17,7 @@ export const StyledSearchBar = forwardRef(
             clearSearchParamValue,
             searchParamValue,
             handleSearchParamsChange
-        } = useSearch(searchParamKey);
+        } = useSearch();
 
         return (
             <StyledSearchBarWrapper onMouseOver={focus}>

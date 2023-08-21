@@ -5,15 +5,15 @@ import useFocus from '../../hooks/use-focus.ts';
 export const useHome = () => {
     const [title, setTitle] = useState('');
 
-    const location = useLocation();
+    const { pathname } = useLocation();
 
     const { ref, focus } = useFocus();
 
     useEffect(() => {
         setTitle(
-            location.pathname === '/' ? 'Znalezione Wideo' : 'Zapisane Frazy'
+            pathname === '/videos' ? 'Znalezione Wideo' : 'Zapisane Frazy'
         );
-    }, [location.pathname]);
+    }, [pathname]);
 
     return { title, location, ref, focus };
 };

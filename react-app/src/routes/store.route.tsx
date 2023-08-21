@@ -8,7 +8,7 @@ import { useSearch } from '../hooks/use-search.ts';
 const dummyKeywords = ['test', 'adam', 'john', 'smith'] as const;
 
 export const StoreRoute = () => {
-    const { searchParamValue } = useSearch('keyword');
+    const { searchParamValue } = useSearch();
 
     const deferredSearchParam = useDeferredValue(searchParamValue);
 
