@@ -38,7 +38,7 @@ export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
             direction={'row'}>
             <StyledButton
                 onClick={() => {
-                    navigate('/');
+                    navigate('/videos');
                     focus();
                 }}>
                 <StyledIcon

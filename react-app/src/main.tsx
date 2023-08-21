@@ -26,7 +26,7 @@ const routerBrowser = createBrowserRouter([
                 element: <HomePage />,
                 children: [
                     {
-                        path: '',
+                        path: 'videos',
                         element: <VideosRoute />
                     },
                     {
@@ -38,7 +38,7 @@ const routerBrowser = createBrowserRouter([
 
             {
                 path: '*',
-                element: <Navigate to={'/'} />
+                element: <Navigate to={'/videos'} />
             }
         ]
     }

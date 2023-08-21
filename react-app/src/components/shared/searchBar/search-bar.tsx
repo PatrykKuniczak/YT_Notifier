@@ -6,18 +6,18 @@ import { forwardRef, Ref } from 'react';
 import { useBasicLogic } from '../../../hooks/use-basic-logic.ts';
 import { useTheme } from '@mui/system';
 import { TVoid } from '../../../types/common.types.ts';
+import { useSearch } from '../../../hooks/use-search.ts';
 
 export const StyledSearchBar = forwardRef(
     ({ focus }: { focus: TVoid }, ref) => {
         const theme = useTheme();
 
+        const { handleKeyEvent } = useBasicLogic();
         const {
-            handleKeyEvent,
-            value: searchContent,
-            handleStateChange
-        } = useBasicLogic();
-
-        const clearContent = () => handleStateChange('');
+            clearSearchParamValue,
+            searchParamValue,
+            handleSearchParamsChange
+        } = useSearch();
 
         return (
             <StyledSearchBarWrapper onMouseOver={focus}>
@@ -36,9 +36,13 @@ export const StyledSearchBar = forwardRef(
                     autoFocus={true}
                     aria-label="Search Bar"
                     placeholder={'Wyszukaj'}
-                    value={searchContent}
-                    onChange={event => handleStateChange(event.target.value)}
-                    onKeyDown={event => handleKeyEvent(event, clearContent)}
+                    value={searchParamValue}
+                    onChange={event =>
+                        handleSearchParamsChange(event.target.value)
+                    }
+                    onKeyDown={event =>
+                        handleKeyEvent(event, clearSearchParamValue)
+                    }
                 />
             </StyledSearchBarWrapper>
         );
