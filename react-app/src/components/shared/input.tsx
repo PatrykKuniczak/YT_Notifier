@@ -14,7 +14,6 @@ const Input = (props: InputHTMLAttributes<HTMLInputElement>) => {
     return (
         <input
             {...props}
-            placeholder="Zmien slowo kluczowe"
             value={value as string}
             required={required}
             onChange={onChange}

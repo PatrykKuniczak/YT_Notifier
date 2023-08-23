@@ -65,7 +65,7 @@ const AddInput = () => {
                 required
                 style={{ width: '100%' }}>
                 <ErrorMessage />
-                <StyledKeywordInput />
+                <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
             </FormControl>
             <StyledSubmitButton type={'submit'}>
                 <StyledIcon

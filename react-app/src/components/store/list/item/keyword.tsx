@@ -69,6 +69,7 @@ export const StyledKeyword = ({
             style={{ width: '100%' }}>
             <ErrorMessage />
             <StyledKeywordInput
+                placeholder="Zmien słowo kluczowe"
                 onMouseOver={focus}
                 onKeyDown={event =>
                     handleKeyEvent(
