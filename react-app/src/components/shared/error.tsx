@@ -22,7 +22,8 @@ export const ErrorMessage = styled(props => {
     return showRequiredError ? <p {...props}>To pole jest wymagane!</p> : null;
 })(({ theme }) =>
     theme.unstable_sx({
-        color: 'color.danger',
-        mb: 0.5
+        mb: 0.5,
+
+        color: 'color.danger'
     })
 );

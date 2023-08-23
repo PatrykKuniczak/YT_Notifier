@@ -18,10 +18,10 @@ const StyledKeywordSpan = styled('span')(({ theme }) =>
     theme.unstable_sx({
         ...keywordStyles,
 
-        overflow: 'hidden',
-
         whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
+
+        overflow: 'hidden'
     })
 );
 
