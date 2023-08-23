@@ -1,8 +1,11 @@
 import { styled } from '@mui/system';
 import { textMixin } from '../../../../data/mixins/text-mixin.ts';
-import { Ref } from 'react';
 import { useBasicLogic } from '../../../../hooks/use-basic-logic.ts';
 import { IStyledKeyword } from '../../../../interfaces/use-keyword.interface.ts';
+import { useEditKeyword } from '../../../../hooks/use-edit-keyword.ts';
+import { FormControl } from '@mui/base';
+import Input from '../../../shared/input.tsx';
+import { ErrorMessage } from '../../../shared/error.tsx';
 
 const keywordStyles = {
     ...textMixin,
@@ -22,7 +25,7 @@ const StyledKeywordSpan = styled('span')(({ theme }) =>
     })
 );
 
-const StyledKeywordInput = styled('input')(({ theme }) =>
+const StyledKeywordInput = styled(Input)(({ theme }) =>
     theme.unstable_sx({
         ...keywordStyles,
 
@@ -41,30 +44,42 @@ export const StyledKeyword = ({
     openedInput,
     changeInputVisibility
 }: IStyledKeyword) => {
+    const { handleKeyEvent } = useBasicLogic();
     const {
+        focus,
         value: inputValue,
         handleStateChange,
-        ref,
-        focus,
-        handleKeyEvent
-    } = useBasicLogic(value);
+        previousValue,
+        handlePreviousValueChange
+    } = useEditKeyword(value);
+
+    const handleApplyingChanges = () => {
+        if (inputValue.length > 1) {
+            handlePreviousValueChange(inputValue);
+        }
+        changeInputVisibility();
+    };
 
     return openedInput ? (
-        <StyledKeywordInput
-            ref={ref as Ref<HTMLInputElement>}
-            autoFocus={true}
-            value={inputValue}
-            onMouseOver={focus}
-            onKeyDown={event =>
-                handleKeyEvent(
-                    event,
-                    changeInputVisibility,
-                    changeInputVisibility
-                )
-            }
+        <FormControl
+            defaultValue=""
+            required
             onChange={event => handleStateChange(event.target.value)}
-        />
+            value={inputValue}
+            style={{ width: '100%' }}>
+            <ErrorMessage />
+            <StyledKeywordInput
+                onMouseOver={focus}
+                onKeyDown={event =>
+                    handleKeyEvent(
+                        event,
+                        handleApplyingChanges,
+                        handleApplyingChanges
+                    )
+                }
+            />
+        </FormControl>
     ) : (
-        <StyledKeywordSpan>{inputValue}</StyledKeywordSpan>
+        <StyledKeywordSpan>{previousValue}</StyledKeywordSpan>
     );
 };
