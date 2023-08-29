@@ -4,6 +4,7 @@ import {ConfigService} from '@nestjs/config';
 import * as session from 'express-session';
 import * as passport from "passport";
 import * as cookieParser from "cookie-parser";
+import {SESSION_COOKIE_NAME} from "./constants";
 
 
 async function bootstrap() {
@@ -23,14 +24,14 @@ async function bootstrap() {
     app.use(cookieParser())
     app.use(
         session({
-            name: configService.get('SESSION_COOKIE_NAME'),
+            name: SESSION_COOKIE_NAME,
             secret: configService.get('SESSION_SECRET'),
             resave: false,
             saveUninitialized: false,
         })
     );
 
-    await app.listen(3001);
+    await app.listen(configService.get('SERVER_PORT'));
 }
 
 bootstrap();

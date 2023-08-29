@@ -2,6 +2,7 @@ import {Controller, Get, Post, Res, UseGuards} from '@nestjs/common';
 import {Response} from 'express';
 import {GoogleAuthGuard} from './googleAuth/google.guard';
 import {ConfigService} from "@nestjs/config";
+import {SESSION_COOKIE_NAME} from "../constants";
 
 @Controller('auth')
 export class AuthController {
@@ -21,6 +22,6 @@ export class AuthController {
 
     @Post('logout')
     logout(@Res({passthrough: true}) res: Response) {
-        res.clearCookie(this.configService.get('SESSION_COOKIE_NAME'));
+        res.clearCookie(SESSION_COOKIE_NAME);
     }
 }
