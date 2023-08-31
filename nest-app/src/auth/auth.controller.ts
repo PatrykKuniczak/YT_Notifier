@@ -1,8 +1,9 @@
-import {Controller, Get, Post, Res, UseGuards} from '@nestjs/common';
+import {Controller, Get, HttpCode, Post, Res, Session, UseGuards} from '@nestjs/common';
 import {Response} from 'express';
 import {GoogleAuthGuard} from './googleAuth/google.guard';
 import {ConfigService} from "@nestjs/config";
-import {SESSION_COOKIE_NAME} from "../constants";
+import {SessionGuard} from "./session/session.guard";
+import {destroySession} from "../utlis";
 
 @Controller('auth')
 export class AuthController {
@@ -20,8 +21,15 @@ export class AuthController {
         res.redirect(this.configService.get('FE_URL'));
     }
 
+    @Post('check')
+    @HttpCode(200)
+    @UseGuards(SessionGuard)
+    async check() {
+    }
+
     @Post('logout')
-    logout(@Res({passthrough: true}) res: Response) {
-        res.clearCookie(SESSION_COOKIE_NAME);
+    @UseGuards(SessionGuard)
+    logout(@Res() res: Response, @Session() session: Record<string, any>) {
+        destroySession(res, session, 200)
     }
 }

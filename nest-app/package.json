@@ -28,6 +28,7 @@
     "@nestjs/platform-express": "9.0.0",
     "@nestjs/typeorm": "10.0.0",
     "@types/passport-google-oauth20": "2.0.11",
+    "connect-typeorm": "2.0.0",
     "cookie-parser": "^1.4.6",
     "express-session": "1.17.3",
     "google-auth-library": "8.9.0",
