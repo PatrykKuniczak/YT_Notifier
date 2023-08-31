@@ -16,7 +16,6 @@ async function bootstrap() {
     const configService = app.get(ConfigService);
     const sessionRepository = app.get(DataSource).getRepository(SessionEntity);
 
-    // TODO: ZROB 2 ENV
     app.enableCors({
         origin: configService.get('FE_URL'),
         credentials: true
@@ -32,10 +31,10 @@ async function bootstrap() {
             saveUninitialized: false,
             cookie: {
                 maxAge: COOKIE_MAX_AGE,
-                httpOnly: true,
                 sameSite: 'lax',
-                signed: true
-                // secure: true TODO: FOR PROD
+                httpOnly: true,
+                signed: true,
+                secure: configService.get('COOKIE_SECURE') === 'true'
             },
             store: new TypeormStore({
                 cleanupLimit: configService.get('SESSION_CLEANUP_LIMIT'),
@@ -47,6 +46,7 @@ async function bootstrap() {
     app.use(cookieParser())
     app.use(passport.initialize());
     app.use(passport.session());
+
     await app.listen(configService.get('SERVER_PORT'));
 }
 

@@ -8,7 +8,9 @@ import {AuthModule} from './auth/auth.module';
 @Module({
     imports: [
         ConfigModule.forRoot({
-            isGlobal: true
+            isGlobal: true,
+            envFilePath: [`${process.cwd()}${process.env.NODE_ENV === 'production' ? '\\envs\\prod.env' : '\\envs\\local.env'}`,
+                `${process.cwd()}\\envs\\.env`]
         }),
         TypeOrmModule.forRootAsync(typeOrmConfig),
         UserModule,

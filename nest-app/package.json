@@ -8,8 +8,8 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start": "cross-env NODE_ENV=production nest start",
+    "start:dev": "cross-env NODE_ENV=development nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -30,6 +30,7 @@
     "@types/passport-google-oauth20": "2.0.11",
     "connect-typeorm": "2.0.0",
     "cookie-parser": "^1.4.6",
+    "cross-env": "7.0.3",
     "express-session": "1.17.3",
     "google-auth-library": "8.9.0",
     "passport": "0.6.0",
