@@ -1,26 +1,17 @@
-GIT CLONE: [https://github.com/PatrykKuniczak/memesChat.git](https://github.com/PatrykKuniczak/YT_Search_Plugin.git)
+### ENVS
 
-### START YOUR WORK WITH CREATE FEATURE BRANCH FROM 'DEV'.
+In /nest-app/envs
 
-### CONFIGURE PRETTIER IN YOUR IDE:
+Create .env file, with that structure:
 
-    RUN "npm ci" IN FRONTEND DIR AND PRETTIER IS IN .\node_modules\prettier.
+GOOGLE_CLIENT_ID=
 
-##### E.G. FOR WEBSTORM:
+GOOGLE_CLIENT_SECRET=
 
-[Prettier config](https://blog.jetbrains.com/webstorm/2020/07/webstorm-2020-2/)
+GOOGLE_CALLBACK_URL=http://localhost:3001/api/auth/redirect
 
-### CONFIGURE DEFAULT BRANCH UPDATE SETTINGS:
+For Id and Secret send request to repository owner. 
 
-    IN WEBSTORM GO TO SETTING:
-        GIT/PUSH:
-            PROTECTED BRANCH: 'main"
-        /UPDATE:
-            UPDATE METHOD: 'rebase'
-            CLEAN WORKING TREE USING: 'stash' 
+After check local.env, if credentials is matching this on your machine.
 
-### AFTER THIS STEPS:
-
-    START APP WITH: 'npm run dev'
-
-###### ENJOY YOUR TASKS
+You must have installed locally postgresql.
