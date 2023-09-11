@@ -1,8 +1,14 @@
-import { StyledAuthWrapper } from './auth-wrapper.tsx';
+import { StyledAuthWrapper } from '../../components/auth/auth-wrapper.tsx';
 import { StyledTitle } from '../../components/shared/title-header.ts';
 import { StyledThemeSwitch } from '../../components/shared/theme-switch.tsx';
 import { GoogleLogin } from '@react-oauth/google';
 import { useLocalStorage, useTernaryDarkMode } from 'usehooks-ts';
+import {
+    StyledGoogleButton,
+    StyledGoogleText,
+    StyledGoogleIconWrapper
+} from '../../components/auth/google.ts';
+import googleLogo from '../../assets/google-icon.svg';
 
 const AuthPage = () => {
     const { isDarkMode } = useTernaryDarkMode();
@@ -32,20 +38,16 @@ const AuthPage = () => {
 
             <StyledTitle>Witaj w YT Plugin</StyledTitle>
 
-            {/*<GoogleLogin*/}
-            {/*    onSuccess={async credentialResponse => {*/}
-            {/*        // await verifyToken(credentialResponse.credential!);*/}
-            {/*        console.log(credentialResponse);*/}
-            {/*    }}*/}
-            {/*    onError={() => {*/}
-            {/*        console.log('Login Failed');*/}
-            {/*    }}*/}
-            {/*    theme={isDarkMode ? 'filled_black' : 'filled_blue'}*/}
-            {/*    ux_mode={'popup'}*/}
-            {/*    shape={'circle'}*/}
-            {/*    itp_support={true}*/}
-            {/*    auto_select={true}*/}
-            {/*/>*/}
+            <StyledGoogleButton>
+                <StyledGoogleIconWrapper>
+                    <img
+                        src={googleLogo}
+                        alt={'Google Logo'}
+                    />
+                </StyledGoogleIconWrapper>
+
+                <StyledGoogleText>Zaloguj się przez Google</StyledGoogleText>
+            </StyledGoogleButton>
         </StyledAuthWrapper>
     );
 };

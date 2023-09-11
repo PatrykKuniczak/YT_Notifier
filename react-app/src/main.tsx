@@ -5,11 +5,11 @@ import {
     Navigate,
     RouterProvider
 } from 'react-router-dom';
+import AuthPage from './pages/auth/auth.page.tsx';
+import ProtectedPage from './pages/protected.page.tsx';
+import HomePage from './pages/home/home.page.tsx';
 import { VideosRoute } from './routes/videos.route.tsx';
 import { StoreRoute } from './routes/store.route.tsx';
-import AuthPage from './pages/auth/auth.page.tsx';
-import HomePage from './pages/home/home.page.tsx';
-import ProtectedPage from './pages/protected.page.tsx';
 
 const routerBrowser = createBrowserRouter([
     {
