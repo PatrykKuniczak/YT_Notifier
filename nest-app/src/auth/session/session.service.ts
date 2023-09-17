@@ -9,8 +9,8 @@ export class SessionService {
     }
 
 
-    async validate(reqId: string): Promise<boolean> {
-        const result = await this.sessionRepository.findOneBy({id: reqId});
+    async validate(id: string): Promise<boolean> {
+        const result = await this.sessionRepository.findOneBy({id});
 
         if (!result) {
             return false;

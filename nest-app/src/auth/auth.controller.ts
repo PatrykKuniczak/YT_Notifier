@@ -1,9 +1,9 @@
-import {Controller, Get, HttpCode, Post, Res, Session, UseGuards} from '@nestjs/common';
-import {Response} from 'express';
-import {GoogleAuthGuard} from './googleAuth/google.guard';
+import {Controller, Get, HttpCode, Post, Req, Res, UseGuards} from '@nestjs/common';
+import {Request, Response} from 'express';
 import {ConfigService} from "@nestjs/config";
 import {SessionGuard} from "./session/session.guard";
 import {destroySession} from "../utlis";
+import {GoogleAuthGuard} from "./googleAuth/google.guard";
 
 @Controller('auth')
 export class AuthController {
@@ -12,12 +12,13 @@ export class AuthController {
 
     @Get('login')
     @UseGuards(GoogleAuthGuard)
-    async login() {
+    async login(@Req() req: Request) {
     }
 
     @Get('redirect')
     @UseGuards(GoogleAuthGuard)
     async handleRedirect(@Res({passthrough: true}) res: Response) {
+        console.log(res)
         res.redirect(this.configService.get('FE_URL'));
     }
 
@@ -29,7 +30,7 @@ export class AuthController {
 
     @Post('logout')
     @UseGuards(SessionGuard)
-    logout(@Res() res: Response, @Session() session: Record<string, any>) {
-        destroySession(res, session, 200)
+    logout(@Req() req: Request, @Res() res: Response) {
+        destroySession(req, res, this.configService, 200)
     }
 }

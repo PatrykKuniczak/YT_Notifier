@@ -5,6 +5,7 @@ import typeOrmConfig from './database/config/typeorm.config';
 import {UserModule} from './user/user.module';
 import {AuthModule} from './auth/auth.module';
 
+// TODO: OGARNIJ TE ENV
 @Module({
     imports: [
         ConfigModule.forRoot({

@@ -1,10 +1,11 @@
 import {CanActivate, ExecutionContext, Injectable} from '@nestjs/common';
 import {SessionService} from './session.service';
 import {destroySession} from "../../utlis";
+import {ConfigService} from "@nestjs/config";
 
 @Injectable()
 export class SessionGuard implements CanActivate {
-    constructor(private readonly sessionService: SessionService) {
+    constructor(private readonly sessionService: SessionService, private readonly configService: ConfigService) {
     }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -15,7 +16,7 @@ export class SessionGuard implements CanActivate {
         const result = await this.sessionService.validate(sessionId);
 
         if (!result) {
-            destroySession(response, request.session)
+            destroySession(request, response, this.configService)
         }
 
         return result;

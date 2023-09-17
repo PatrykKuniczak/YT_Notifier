@@ -1,13 +1,17 @@
 import {HttpException} from "@nestjs/common";
-import {Response} from 'express';
+import {Request, Response} from 'express';
 import {SESSION_COOKIE_NAME} from "./constants";
+import {ConfigService} from "@nestjs/config";
 
-export const destroySession = (res: Response, session: Record<string, any>, status?: number) => {
-    session.destroy((err: HttpException) => {
+export const destroySession = (req: Request, res: Response, configService: ConfigService, status?: number) =>
+    req.session.destroy((err: HttpException) => {
         if (err) {
             return res.status(500).send('Error on destroying session: ' + err.message)
         }
 
-        return res.clearCookie(SESSION_COOKIE_NAME).sendStatus(status);
+        req.logout((err: HttpException) => {
+            return res.status(500).send('Error on destroying passport session: ' + err.message)
+        })
+
+        return res.clearCookie(SESSION_COOKIE_NAME).sendStatus(status).redirect(configService.get('FE_URL'));
     })
-}

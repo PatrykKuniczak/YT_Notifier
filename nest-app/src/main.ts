@@ -9,7 +9,6 @@ import {DataSource} from "typeorm";
 import {SessionEntity} from "./auth/session/session.entity";
 import {TypeormStore} from "connect-typeorm";
 
-
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
@@ -18,7 +17,7 @@ async function bootstrap() {
 
     app.enableCors({
         origin: configService.get('FE_URL'),
-        credentials: true
+        credentials: true,
     });
 
     app.setGlobalPrefix('api');
@@ -32,13 +31,13 @@ async function bootstrap() {
             cookie: {
                 maxAge: COOKIE_MAX_AGE,
                 sameSite: 'lax',
-                httpOnly: true,
-                signed: true,
+                httpOnly: false,
+                signed: false,
                 secure: configService.get('COOKIE_SECURE') === 'true'
             },
             store: new TypeormStore({
                 cleanupLimit: configService.get('SESSION_CLEANUP_LIMIT'),
-                ttl: SESSION_TTL
+                ttl: SESSION_TTL,
             }).connect(sessionRepository)
         })
     );

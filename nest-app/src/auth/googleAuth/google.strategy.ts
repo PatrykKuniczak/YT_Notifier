@@ -9,24 +9,25 @@ import {IProfile} from '../../user/user.types';
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     constructor(
         private readonly configService: ConfigService,
-        private readonly userService: UsersService
+        private readonly userService: UsersService,
     ) {
         super({
             clientID: configService.get('GOOGLE_CLIENT_ID'),
             clientSecret: configService.get('GOOGLE_CLIENT_SECRET'),
-            callbackURL: configService.get('GOOGLE_CALLBACK_URL'),
+            callbackURL: '/api/auth/redirect',
             scope: ['email', 'profile'],
         });
 
     }
 
+    // TODO: PRZETESTUJ CO JAK KTOS MA 2 EMAIL PRZYPISANE DO KONTA
     async validate(
         accessToken: string,
-        refreshToken: string,
+        refreshToken: string | undefined,
         profile: IProfile,
         done: VerifyCallback
     ) {
-        const email = profile.emails.find((x) => x.verified);
+        const email = profile.emails.find((email) => email.verified);
 
         if (!email) {
             done(new UnauthorizedException('No verified email returned from Google Authorization!'), null);
