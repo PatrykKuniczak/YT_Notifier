@@ -31,8 +31,8 @@ async function bootstrap() {
             cookie: {
                 maxAge: COOKIE_MAX_AGE,
                 sameSite: 'lax',
-                httpOnly: false,
-                signed: false,
+                httpOnly: true,
+                signed: true,
                 secure: configService.get('COOKIE_SECURE') === 'true'
             },
             store: new TypeormStore({

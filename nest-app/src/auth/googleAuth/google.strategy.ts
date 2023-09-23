@@ -20,7 +20,6 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
 
     }
 
-    // TODO: PRZETESTUJ CO JAK KTOS MA 2 EMAIL PRZYPISANE DO KONTA
     async validate(
         accessToken: string,
         refreshToken: string | undefined,
