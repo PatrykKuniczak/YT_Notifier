@@ -1,4 +1,4 @@
-import {CanActivate, ExecutionContext, Injectable} from '@nestjs/common';
+import {CanActivate, ExecutionContext, Injectable, UnauthorizedException} from '@nestjs/common';
 import {SessionService} from './session.service';
 
 @Injectable()
@@ -10,6 +10,12 @@ export class SessionGuard implements CanActivate {
         const request = context.switchToHttp().getRequest();
         const sessionId = request.session.id;
 
-        return this.sessionService.validate(sessionId);
+        const result = await this.sessionService.validate(sessionId);
+
+        if (!result) {
+            throw new UnauthorizedException()
+        }
+
+        return result
     }
 }
