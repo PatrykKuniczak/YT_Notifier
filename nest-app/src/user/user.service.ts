@@ -15,7 +15,8 @@ export class UsersService {
         refreshToken: string | undefined,
         profile: IProfile,
     ): Promise<UsersEntity | null> {
-        const user = await this.userRepository.findOneBy({email: profile.emails[0].value})
+        const email = profile.emails[0].value;
+        const user = await this.userRepository.findOneBy({email})
 
         if (!user) {
             const result = await this.userRepository.insert({
@@ -27,12 +28,13 @@ export class UsersService {
 
             return this.findOneById(result.identifiers[0].id)
         } else if (user && refreshToken) {
-            const result = await this.userRepository.update({id: user.id}, {refreshToken})
+            const result = await this.updateRefreshToken(user.id, refreshToken);
 
-            if (result.affected === 1) {
-                return this.userRepository.findOneBy({email: profile.emails[0].value})
+            if (!result) {
+                throw new InternalServerErrorException('Exception on updating user')
             }
-            throw new InternalServerErrorException('Exception on trying update profile')
+
+            return this.userRepository.findOneBy({email})
         }
 
         return user
@@ -40,5 +42,15 @@ export class UsersService {
 
     async findOneById(id: number) {
         return this.userRepository.findOneBy({id});
+    }
+
+    async getRefreshTokenById(id: number) {
+        return this.userRepository.findOne({where: {id}, select: {refreshToken: true}})
+    }
+
+    async updateRefreshToken(id: number, refreshToken: string) {
+        const {affected} = await this.userRepository.update({id}, {refreshToken})
+
+        return affected === 1;
     }
 }

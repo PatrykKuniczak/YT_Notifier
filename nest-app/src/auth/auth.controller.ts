@@ -1,12 +1,14 @@
-import {Controller, Get, HttpCode, HttpException, Post, Req, Res, UseGuards} from '@nestjs/common';
+import {Controller, Get, HttpCode, HttpException, Inject, Post, Req, Res, UseGuards} from '@nestjs/common';
 import {Request, Response} from 'express';
 import {GoogleAuthGuard} from './googleAuth/google.guard';
 import {SessionGuard} from "./session/session.guard";
 import {SESSION_COOKIE_NAME} from "../constants";
+import {UsersService} from "../user/user.service";
+import {OAuth2Client} from "google-auth-library";
 
 @Controller('auth')
 export class AuthController {
-    constructor() {
+    constructor(private readonly userService: UsersService, @Inject('OAUTH2GOOGLE') private readonly oAuth2GoogleProvider: OAuth2Client) {
     }
 
     @Get('login')
@@ -26,7 +28,8 @@ export class AuthController {
     @Post('me')
     @HttpCode(200)
     @UseGuards(SessionGuard)
-    async authCheck() {
+    async getCurrentUser(@Req() req: Request) {
+        return this.userService.findOneById(req.session.passport.user.id);
     }
 
     @Post('logout')

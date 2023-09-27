@@ -17,7 +17,6 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
             callbackURL: '/api/auth/redirect',
             scope: ['email', 'profile'],
         });
-
     }
 
     async validate(
@@ -35,7 +34,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
         const {id} = await this.userService.validateUser(
             refreshToken,
             profile
-        )
+        );
 
         done(null, {id, accessToken});
     }

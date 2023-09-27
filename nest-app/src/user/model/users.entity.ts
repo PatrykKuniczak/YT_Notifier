@@ -14,6 +14,6 @@ export class UsersEntity {
     @Column({unique: true})
     avatar: string;
 
-    @Column()
+    @Column({select: false})
     refreshToken: string;
 }
