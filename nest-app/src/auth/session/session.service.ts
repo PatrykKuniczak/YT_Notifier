@@ -21,7 +21,7 @@ export class SessionService {
         }
 
         const expirationDateFromSessionCookie = new Date(JSON.parse(session.json).cookie.expires);
-        const dateWith10SecDelay = new Date(new Date().getTime() - 10000);
+        const dateWith10SecDelay = new Date(new Date().getTime() + 10000);
 
         if (expirationDateFromSessionCookie < dateWith10SecDelay) {
             const userId = req.session.passport.user.id;
