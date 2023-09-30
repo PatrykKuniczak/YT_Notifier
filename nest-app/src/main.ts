@@ -36,7 +36,6 @@ async function bootstrap() {
                 secure: configService.get('COOKIE_SECURE') === 'true'
             },
             store: new TypeormStore({
-                cleanupLimit: configService.get('SESSION_CLEANUP_LIMIT'),
                 ttl: SESSION_TTL,
             }).connect(sessionRepository)
         })

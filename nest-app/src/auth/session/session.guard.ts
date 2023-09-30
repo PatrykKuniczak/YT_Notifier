@@ -6,17 +6,15 @@ export class SessionGuard implements CanActivate {
     constructor(private readonly sessionService: SessionService) {
     }
 
-    async canActivate(context: ExecutionContext): Promise<boolean> {
+    async canActivate(context: ExecutionContext) {
         const request = context.switchToHttp().getRequest();
 
-        const result = await this.sessionService.validate(request).catch((err) => {
-            throw err
-        });
+        const result = !!await this.sessionService.findById(request.session.id);
 
         if (!result) {
-            throw new UnauthorizedException()
+            throw new UnauthorizedException();
         }
 
-        return result
+        return result;
     }
 }

@@ -11,7 +11,7 @@ export class UsersService {
     ) {
     }
 
-    async validateUser(
+    async findOrCreate(
         refreshToken: string | undefined,
         profile: IProfile,
     ): Promise<UsersEntity | null> {
@@ -51,6 +51,7 @@ export class UsersService {
     async updateRefreshToken(id: number, refreshToken: string) {
         const {affected} = await this.userRepository.update({id}, {refreshToken})
 
-        return affected === 1;
+        return !!affected;
+    }
     }
 }
