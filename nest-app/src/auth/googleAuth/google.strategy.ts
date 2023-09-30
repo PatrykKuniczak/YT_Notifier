@@ -4,6 +4,7 @@ import {PassportStrategy} from '@nestjs/passport';
 import {Strategy, VerifyCallback} from 'passport-google-oauth20';
 import {UsersService} from '../../user/user.service';
 import {IProfile} from '../../user/user.types';
+import {GOOGLE_REDIRECT_URL} from "../../constants";
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
@@ -14,7 +15,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
         super({
             clientID: configService.get('GOOGLE_CLIENT_ID'),
             clientSecret: configService.get('GOOGLE_CLIENT_SECRET'),
-            callbackURL: '/api/auth/redirect',
+            callbackURL: GOOGLE_REDIRECT_URL,
             scope: ['email', 'profile'],
         });
     }

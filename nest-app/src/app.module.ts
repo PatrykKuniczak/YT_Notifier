@@ -4,6 +4,7 @@ import {TypeOrmModule} from '@nestjs/typeorm';
 import typeOrmConfig from './database/config/typeorm.config';
 import {UserModule} from './user/user.module';
 import {AuthModule} from './auth/auth.module';
+import {OAuth2Module} from "./auth/oauth2.module";
 
 // TODO: OGARNIJ TE ENV
 @Module({
@@ -15,7 +16,8 @@ import {AuthModule} from './auth/auth.module';
         }),
         TypeOrmModule.forRootAsync(typeOrmConfig),
         UserModule,
-        AuthModule
+        AuthModule,
+        OAuth2Module
     ]
 })
 export class AppModule {

@@ -53,5 +53,8 @@ export class UsersService {
 
         return !!affected;
     }
+
+    async delete(id: number) {
+        return this.userRepository.delete({id});
     }
 }

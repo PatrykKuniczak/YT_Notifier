@@ -1,14 +1,27 @@
-import {Controller, Get, HttpCode, HttpException, Inject, Post, Req, Res, UseGuards} from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    HttpCode,
+    HttpException,
+    Inject,
+    InternalServerErrorException,
+    NotFoundException,
+    Post,
+    Req,
+    Res,
+    UseGuards
+} from '@nestjs/common';
 import {Request, Response} from 'express';
 import {GoogleAuthGuard} from './googleAuth/google.guard';
 import {SessionGuard} from "./session/session.guard";
 import {SESSION_COOKIE_NAME} from "../constants";
 import {UsersService} from "../user/user.service";
 import {OAuth2Client} from "google-auth-library";
+import {OAuth2GoogleClientCredentials, TOAuth2GoogleClientCredentials} from "./oauth2.module";
 
 @Controller('auth')
 export class AuthController {
-    constructor(private readonly userService: UsersService, @Inject('OAUTH2GOOGLE') private readonly oAuth2GoogleProvider: OAuth2Client) {
+    constructor(private readonly userService: UsersService, @Inject(OAuth2GoogleClientCredentials) private readonly oAuth2GoogleClientCredentials: TOAuth2GoogleClientCredentials) {
     }
 
     @Get('login')
@@ -30,6 +43,28 @@ export class AuthController {
     @UseGuards(SessionGuard)
     async getCurrentUser(@Req() req: Request) {
         return this.userService.findOneById(req.session.passport.user.id);
+    }
+
+    @Post('remove-account')
+    @UseGuards(SessionGuard)
+    async removeAccount(@Req() req: Request, @Res() res: Response) {
+        const userId = req.session.passport.user.id;
+        const {refreshToken} = await this.userService.getRefreshTokenById(userId)
+
+        const oAuth2Client = new OAuth2Client({...this.oAuth2GoogleClientCredentials});
+        const revokeResult = await oAuth2Client.revokeToken(refreshToken);
+
+        if (revokeResult.status === 200) {
+            const deleteResult = await this.userService.delete(userId);
+
+            if (!deleteResult.affected) {
+                throw new NotFoundException();
+            }
+        } else {
+            throw new InternalServerErrorException('Exception on deleting user profile');
+        }
+
+        return res.clearCookie(SESSION_COOKIE_NAME).sendStatus(200);
     }
 
     @Post('logout')
