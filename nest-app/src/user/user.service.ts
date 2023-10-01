@@ -31,7 +31,7 @@ export class UsersService {
             const result = await this.updateRefreshToken(user.id, refreshToken);
 
             if (!result) {
-                throw new InternalServerErrorException('Exception on updating user')
+                throw new InternalServerErrorException('Error on updating user')
             }
 
             return this.userRepository.findOneBy({email})
