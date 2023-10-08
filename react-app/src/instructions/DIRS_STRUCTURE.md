@@ -23,6 +23,8 @@
 `routes-`
     `*.route.[jsx/tsx]`
 
+`consts-` - `Save in constant.[js/ts]`
+
 `hooks`
 
 `interfaces-`
@@ -32,8 +34,3 @@
 
     common.types.[js/ts] - For common/ungrouped types, 
     *.type.[js/ts],
-
-`services-`
-    `Save here all queries`
-
-`consts`

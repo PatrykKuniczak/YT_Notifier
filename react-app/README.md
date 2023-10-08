@@ -34,4 +34,6 @@
 
 #### Remember in firefox you add plugin in temporary mode, that's mean is disappear after close browser, you must do it again, on next launch.
 
-#### When you end a part of work then before commit check folder in `src/instructions` and check if your code follow standards.
+#### When you're end part of work then before commit check folder in `src/instructions` and check if your code follow standards.
+
+#### If you want to create something in utils, follow the folder structure described in `utils/instructions`.
