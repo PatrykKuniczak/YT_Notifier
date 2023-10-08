@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom';
-import { Ref } from 'react';
+import { Navigate, Outlet } from "react-router-dom";
+import React, { Ref, useContext } from "react";
 import { useHome } from "@pages/popup/pages/home/use-home";
 import { StyledPageWrapper } from "@pages/popup/pages/home/home-wrapper";
 import { StyledHeaderContainer } from "@pages/popup/layouts/header-container";
@@ -7,28 +7,34 @@ import { StyledMainContent } from "@pages/popup/layouts/main-content";
 import { StyledTitle } from "@pages/popup/components/shared/title-header";
 import { StyledSearchBar } from "@pages/popup/components/shared/searchBar/search-bar";
 import { StyledNavbar } from "@pages/popup/layouts/navbar";
+import { AuthContext } from "@root/utils/core/authentication/authentication";
 
 const HomePage = () => {
-    const { title, ref, focus } = useHome();
+  const { user } = useContext(AuthContext);
+  const { title, ref, focus } = useHome();
 
-    return (
-        <StyledPageWrapper>
-            <StyledHeaderContainer />
+  if (!user) {
+    return <Navigate to={"/auth/login"} />;
+  }
 
-            <StyledMainContent>
-                <StyledTitle>{title}</StyledTitle>
+  return (
+    <StyledPageWrapper>
+      <StyledHeaderContainer />
 
-                <StyledSearchBar
-                    ref={ref as Ref<HTMLInputElement>}
-                    focus={focus}
-                />
+      <StyledMainContent>
+        <StyledTitle>{title}</StyledTitle>
 
-                <Outlet />
-            </StyledMainContent>
+        <StyledSearchBar
+          ref={ref as Ref<HTMLInputElement>}
+          focus={focus}
+        />
 
-            <StyledNavbar focus={focus} />
-        </StyledPageWrapper>
-    );
+        <Outlet />
+      </StyledMainContent>
+
+      <StyledNavbar focus={focus} />
+    </StyledPageWrapper>
+  );
 };
 
 export default HomePage;
