@@ -2,7 +2,7 @@ import {
   LOCAL_RELOAD_SOCKET_URL,
   UPDATE_COMPLETE_MESSAGE,
   UPDATE_PENDING_MESSAGE,
-  UPDATE_REQUEST_MESSAGE,
+  UPDATE_REQUEST_MESSAGE
 } from "./constant";
 import MessageInterpreter from "./interpreter";
 

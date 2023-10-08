@@ -1,5 +1,5 @@
 import React from "react";
-import withSuspense from "@pages/popup/hooks/with-suspense";
+import withSuspense from "@root/utils/hooks/with-suspense";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import ProtectedPage from "@pages/popup/pages/protected.page";
 import AuthPage from "@pages/popup/pages/auth/auth.page";

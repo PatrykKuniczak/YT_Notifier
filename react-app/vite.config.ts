@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path, { resolve } from "path";
-import makeManifest from "./utils/plugins/make-manifest";
-import customDynamicImport from "./utils/plugins/custom-dynamic-import";
-import addHmr from "./utils/plugins/add-hmr";
-import watchRebuild from "./utils/plugins/watch-rebuild";
+import makeManifest from "./utils/core/hmr-core/plugins/make-manifest";
+import customDynamicImport from "./utils/core/hmr-core/plugins/custom-dynamic-import";
+import addHmr from "./utils/core/hmr-core/plugins/add-hmr";
+import watchRebuild from "./utils/core/hmr-core/plugins/watch-rebuild";
 import manifest from "./manifest";
 
 const rootDir = resolve(__dirname);
@@ -27,15 +27,15 @@ export default defineConfig({
       "@root": rootDir,
       "@src": srcDir,
       "@assets": assetsDir,
-      "@pages": pagesDir,
-    },
+      "@pages": pagesDir
+    }
   },
   plugins: [
     react(),
-    makeManifest(manifest, {isDev}),
+    makeManifest(manifest, { isDev }),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
-    watchRebuild(),
+    watchRebuild()
   ],
   publicDir,
   build: {
@@ -46,7 +46,7 @@ export default defineConfig({
       input: {
         background: resolve(pagesDir, "background", "index.ts"),
         popup: resolve(pagesDir, "popup", "index.html"),
-        options: resolve(pagesDir, "options", "index.html"),
+        options: resolve(pagesDir, "options", "index.html")
       },
       output: {
         entryFileNames: "src/pages/[name]/index.js",
@@ -58,10 +58,10 @@ export default defineConfig({
           const assetFolder = dir.split("/").at(-1);
           const name = assetFolder + firstUpperCase(_name);
           return `assets/[ext]/${name}.chunk.[ext]`;
-        },
-      },
-    },
-  },
+        }
+      }
+    }
+  }
 });
 
 function firstUpperCase(str: string) {

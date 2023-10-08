@@ -6,8 +6,8 @@ import type { PluginOption } from "vite";
 
 const { resolve } = path;
 
-const distDir = resolve(__dirname, "..", "..", "dist");
-const publicDir = resolve(__dirname, "..", "..", "public");
+const distDir = resolve(__dirname, "..", "..", "..", "..", "dist");
+const publicDir = resolve(__dirname, "..", "..", "..", "..", "public");
 
 export default function makeManifest(
   manifest: chrome.runtime.ManifestV3,
