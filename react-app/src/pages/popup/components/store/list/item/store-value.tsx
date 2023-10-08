@@ -1,6 +1,6 @@
-import { Stack, styled } from '@mui/system';
-import { TComponentTag, TVoid } from '@pages/popup/types/common.types';
-import { useState } from 'react';
+import { Stack, styled } from "@mui/system";
+import { TComponentTag, TVoid } from "@root/utils/types/types";
+import { useState } from "react";
 import { StyledEditButton } from "@pages/popup/components/store/list/item/editButton/edit-button";
 import { StyledKeyword } from "@pages/popup/components/store/list/item/keyword";
 import { StyledDeleteButton } from "@pages/popup/components/store/list/item/deleteButton/delete-button";

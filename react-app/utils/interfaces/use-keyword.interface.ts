@@ -1,4 +1,4 @@
-import { TVoid } from "@pages/popup/types/common.types";
+import { TVoid } from "@root/utils/types/types";
 
 export interface IStyledKeyword {
     value: string;

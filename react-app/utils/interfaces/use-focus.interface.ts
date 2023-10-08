@@ -1,5 +1,5 @@
-import { Ref } from 'react';
-import { TVoid } from "@pages/popup/types/common.types";
+import { Ref } from "react";
+import { TVoid } from "@root/utils/types/types";
 
 interface IUseFocus<T extends HTMLElement> {
     ref: Ref<T>;

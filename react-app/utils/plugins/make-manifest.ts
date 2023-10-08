@@ -13,6 +13,7 @@ export default function makeManifest(
   manifest: chrome.runtime.ManifestV3,
   config: { isDev: boolean;}
 ): PluginOption {
+
   function makeManifest(to: string) {
     if (!fs.existsSync(to)) {
       fs.mkdirSync(to);

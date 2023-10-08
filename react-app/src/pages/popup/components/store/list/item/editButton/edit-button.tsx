@@ -1,9 +1,9 @@
-import { styled } from '@mui/system';
-import clsx from 'clsx';
+import { styled } from "@mui/system";
+import clsx from "clsx";
 import { StyledButton } from "@pages/popup/components/shared/button";
-import { TVoid } from "@pages/popup/types/common.types";
+import { TVoid } from "@root/utils/types/types";
 import { StyledIcon } from "@pages/popup/components/shared/icon";
-import editIcon from '@assets/img/edit-icon.svg';
+import editIcon from "@assets/img/edit-icon.svg";
 
 const EditButtonStyles = styled(StyledButton)(({ theme }) =>
     theme.unstable_sx({

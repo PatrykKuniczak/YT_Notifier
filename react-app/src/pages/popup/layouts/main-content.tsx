@@ -1,5 +1,5 @@
-import { Stack, styled } from '@mui/system';
-import { TChildren, TComponentTag } from "@pages/popup/types/common.types";
+import { Stack, styled } from "@mui/system";
+import { TChildren, TComponentTag } from "@root/utils/types/types";
 
 const MainContentStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({

@@ -1,6 +1,5 @@
-import { ValueOf } from "@pages/popup/types/common.types";
-
 type ColorType = "success" | "info" | "error" | "warning" | keyof typeof COLORS;
+export type ValueOf<T> = T[keyof T];
 
 export default function colorLog(message: string, type?: ColorType) {
   let color: ValueOf<typeof COLORS>;
