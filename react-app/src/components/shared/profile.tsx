@@ -69,6 +69,7 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
 
 const Profile = () => {
     const [collapsed, setCollapsed] = useState(false);
+
     const theme = useTheme();
 
     const handleOpenChange = (_: unknown, open: boolean) => {
