@@ -48,7 +48,7 @@ export class AuthController {
     @UseGuards(GoogleAuthGuard)
     async handleRedirect(@Res({passthrough: true}) res: Response) {
         const htmlContent =
-            '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Redirect</title></head><body></body></html>';
+            '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Redirect</title></head><body><script>window.close();</script></body></html>';
 
         res.status(200).send(htmlContent);
     }
