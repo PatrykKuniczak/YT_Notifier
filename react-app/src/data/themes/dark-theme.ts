@@ -9,7 +9,6 @@ const THEME = createTheme({
             grey: '#5b5b5e',
             searchBar: '#26203B',
             searchBarFocusOutline: '#5215e3',
-            searchIconFilter: 'none',
             snackbarBackground: '#ffbbbb',
             focusOutline: '#fff'
         },

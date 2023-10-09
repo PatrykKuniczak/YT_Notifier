@@ -19,7 +19,6 @@ const StyledForm = styled('form')(({ theme }) =>
 const StyledSubmitButton = styled(StyledButton)(({ theme }) =>
     theme.unstable_sx({
         display: 'grid',
-
         placeItems: 'center',
 
         height: 'auto',

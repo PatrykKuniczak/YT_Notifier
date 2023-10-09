@@ -33,7 +33,7 @@ const StyledKeywordInput = styled(Input)(({ theme }) =>
 
         borderRadius: 1,
 
-        bgcolor: 'background.secondary',
+        backgroundColor: 'background.secondary',
 
         textAlign: 'start'
     })
