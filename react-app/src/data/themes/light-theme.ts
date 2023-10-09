@@ -5,6 +5,7 @@ const THEME = createTheme({
         background: {
             primary: '#fff',
             secondary: '#eeecec',
+            danger: '#fa2525',
             purple: '#7846F0',
             grey: '#5b5b5e',
             searchBar: '#eeebeb',
@@ -17,7 +18,8 @@ const THEME = createTheme({
         color: {
             primary: '#16121E',
             placeholder: '#050110',
-            snackbarContent: '#1f1f1f'
+            snackbarContent: '#1f1f1f',
+            danger: '#e53232'
         }
     },
     typography: {

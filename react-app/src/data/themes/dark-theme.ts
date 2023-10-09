@@ -9,14 +9,14 @@ const THEME = createTheme({
             grey: '#5b5b5e',
             searchBar: '#26203B',
             searchBarFocusOutline: '#5215e3',
-            searchIconFilter: 'none',
             snackbarBackground: '#ffbbbb',
             focusOutline: '#fff'
         },
         color: {
             primary: '#E6E6E6',
             placeholder: '#D3D3D3',
-            snackbarContent: '#1f1f1f'
+            snackbarContent: '#1f1f1f',
+            danger: '#fa2525'
         }
     },
     typography: {

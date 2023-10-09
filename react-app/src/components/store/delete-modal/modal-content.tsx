@@ -33,7 +33,7 @@ export const StyledModalContent = ({
         </StyledModalButton>
 
         <StyledModalButton
-            sx={{ bgcolor: 'background.grey' }}
+            sx={{ backgroundColor: 'background.grey' }}
             onClick={changeModalVisibility}>
             Anuluj
         </StyledModalButton>
