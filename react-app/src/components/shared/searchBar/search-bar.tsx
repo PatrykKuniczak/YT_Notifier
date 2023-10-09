@@ -1,18 +1,19 @@
-import { StyledIcon } from '../icon.ts';
-import { StyledSearchBarWrapper } from './search-bar-wrapper.ts';
-import searchIcon from '../../../assets/search-icon.svg';
-import { StyledSearchBarInput } from './search-bar-input.tsx';
-import { forwardRef, Ref } from 'react';
-import { useBasicLogic } from '../../../hooks/use-basic-logic.ts';
-import { useTheme } from '@mui/system';
-import { TVoid } from '../../../types/common.types.ts';
-import { useSearch } from '../../../hooks/use-search.ts';
+import { StyledIcon } from "../icon.ts";
+import { StyledSearchBarWrapper } from "./search-bar-wrapper.ts";
+import searchIcon from "../../../assets/search-icon.svg";
+import { StyledSearchBarInput } from "./search-bar-input.tsx";
+import { forwardRef, Ref } from "react";
+import { useHandleKeyEvents } from "../../../hooks/use-handle-key-events.ts";
+import { useTheme } from "@mui/system";
+import { TVoid } from "../../../types/common.types.ts";
+import { useSearch } from "../../../hooks/use-search.ts";
 
+// eslint-disable-next-line react/display-name
 export const StyledSearchBar = forwardRef(
     ({ focus }: { focus: TVoid }, ref) => {
         const theme = useTheme();
 
-        const { handleKeyEvent } = useBasicLogic();
+        const { handleKeyEvent } = useHandleKeyEvents();
         const {
             clearSearchParamValue,
             searchParamValue,

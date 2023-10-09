@@ -1,6 +1,6 @@
 import { styled } from '@mui/system';
 import { textMixin } from '../../../../data/mixins/text-mixin.ts';
-import { useBasicLogic } from '../../../../hooks/use-basic-logic.ts';
+import { useHandleKeyEvents } from '../../../../hooks/use-handle-key-events.ts';
 import { IStyledKeyword } from '../../../../interfaces/use-keyword.interface.ts';
 import { useEditKeyword } from '../../../../hooks/use-edit-keyword.ts';
 import { FormControl } from '@mui/base';
@@ -44,7 +44,7 @@ export const StyledKeyword = ({
     openedInput,
     changeInputVisibility
 }: IStyledKeyword) => {
-    const { handleKeyEvent } = useBasicLogic();
+    const { handleKeyEvent } = useHandleKeyEvents();
     const {
         focus,
         value: inputValue,

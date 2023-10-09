@@ -1,7 +1,7 @@
 import { KeyboardEvent } from 'react';
 import { TVoid } from '../types/common.types.ts';
 
-export const useBasicLogic = () => {
+export const useHandleKeyEvents = () => {
     const handleKeyEvent = (
         event: KeyboardEvent,
         escapeAction?: TVoid,
