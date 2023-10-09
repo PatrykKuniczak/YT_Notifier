@@ -4,7 +4,7 @@ import { useFormControlContext } from '@mui/base';
 const Input = (props: InputHTMLAttributes<HTMLInputElement>) => {
     const formControlContext = useFormControlContext();
 
-    if (formControlContext === undefined) {
+    if (!formControlContext) {
         return null;
     }
 

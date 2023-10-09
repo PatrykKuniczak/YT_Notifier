@@ -12,7 +12,7 @@ export const ErrorMessage = styled(props => {
         }
     }, [formControlContext]);
 
-    if (formControlContext === undefined) {
+    if (!formControlContext) {
         return null;
     }
 
@@ -23,7 +23,7 @@ export const ErrorMessage = styled(props => {
 })(({ theme }) =>
     theme.unstable_sx({
         mb: 0.5,
-
-        color: 'color.danger'
+        color: 'color.danger',
+        position: 'absolute'
     })
 );

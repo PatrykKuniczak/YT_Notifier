@@ -1,4 +1,4 @@
-import { styled, useTheme } from '@mui/system';
+import { styled } from '@mui/system';
 import { FormControl } from '@mui/base';
 import { StyledButton } from '../../../../shared/button.ts';
 import { StyledIcon } from '../../../../shared/icon.ts';
@@ -19,6 +19,7 @@ const StyledForm = styled('form')(({ theme }) =>
 const StyledSubmitButton = styled(StyledButton)(({ theme }) =>
     theme.unstable_sx({
         display: 'grid',
+
         placeItems: 'center',
 
         height: 'auto',
@@ -56,8 +57,6 @@ const StyledKeywordInput = styled(Input)(({ theme }) =>
 );
 
 const AddInput = () => {
-    const theme = useTheme();
-
     return (
         <StyledForm>
             <FormControl
@@ -73,9 +72,6 @@ const AddInput = () => {
                     alt={'Add keyword'}
                     width={20}
                     height={20}
-                    sx={{
-                        filter: `${theme.palette.background.searchIconFilter}`
-                    }}
                 />
             </StyledSubmitButton>
         </StyledForm>
