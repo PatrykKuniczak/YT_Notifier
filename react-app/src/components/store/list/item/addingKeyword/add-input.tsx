@@ -62,7 +62,7 @@ const AddInput = () => {
             <FormControl
                 defaultValue=""
                 required
-                style={{ width: '100%' }}>
+                style={{ width: '100%', position: 'relative' }}>
                 <ErrorMessage />
                 <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
             </FormControl>

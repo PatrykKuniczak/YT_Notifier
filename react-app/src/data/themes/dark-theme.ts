@@ -17,7 +17,7 @@ const THEME = createTheme({
             primary: '#E6E6E6',
             placeholder: '#D3D3D3',
             snackbarContent: '#1f1f1f',
-            danger: '#e53232'
+            danger: '#fa2525'
         }
     },
     typography: {

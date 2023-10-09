@@ -5,7 +5,7 @@ const THEME = createTheme({
         background: {
             primary: '#fff',
             secondary: '#eeecec',
-            danger: '#e53232',
+            danger: '#fa2525',
             purple: '#7846F0',
             grey: '#5b5b5e',
             searchBar: '#eeebeb',
