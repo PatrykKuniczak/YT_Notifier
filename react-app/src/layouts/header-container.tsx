@@ -1,7 +1,6 @@
 import { Stack, styled } from '@mui/system';
 import { StyledThemeSwitch } from '../components/shared/theme-switch.tsx';
-import { StyledAvatar } from '../components/shared/avatar.ts';
-import avatar from '../assets/thumbnail.png';
+import Profile from '../components/shared/profile.tsx';
 
 const HeaderContainerStyles = styled(Stack)(({ theme }) =>
     theme.unstable_sx({
@@ -16,12 +15,8 @@ export const StyledHeaderContainer = () => {
     return (
         <HeaderContainerStyles direction={'row'}>
             <StyledThemeSwitch />
-            <StyledAvatar
-                src={avatar}
-                alt={'Avatar'}
-                width={40}
-                height={40}
-            />
+
+            <Profile />
         </HeaderContainerStyles>
     );
 };
