@@ -18,7 +18,6 @@
     "@nestjs/common": "9.0.5",
     "@nestjs/config": "3.0.0",
     "@nestjs/core": "9.0.5",
-    "@nestjs/mapped-types": "2.0.2",
     "@nestjs/passport": "10.0.0",
     "@nestjs/platform-express": "9.0.0",
     "@nestjs/typeorm": "10.0.0",
@@ -34,6 +33,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "9.0.0",
+    "@nestjs/mapped-types": "2.0.2",
     "@nestjs/schematics": "9.0.0",
     "@nestjs/swagger": "7.1.12",
     "@types/cookie-parser": "1.4.3",
