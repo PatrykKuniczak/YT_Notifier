@@ -9,7 +9,7 @@ import {DataSource} from "typeorm";
 import {SessionEntity} from "./auth/session/session.entity";
 import {TypeormStore} from "connect-typeorm";
 import {SwaggerModule} from "@nestjs/swagger";
-import swaggerConfig from "./database/config/swagger.config";
+import swaggerConfig from "./swagger/swagger.config";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
