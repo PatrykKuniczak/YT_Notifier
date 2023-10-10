@@ -55,7 +55,7 @@ export class AuthController {
 
     @ApiOAuth2([])
     @ApiUnauthorizedResponse()
-    @ApiInternalServerErrorResponse({description: 'Error on destroying session or ... passport session: {Error message}'})
+    @ApiInternalServerErrorResponse({description: 'Error on destroying session/passport session: {Error message}'})
     @ApiOkResponse()
     @Post('logout')
     @UseGuards(SessionGuard)
