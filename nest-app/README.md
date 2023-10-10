@@ -22,7 +22,7 @@
     - Authorize source JS is 'http://localhost:3001' (or other, if you change SERVER_PORT in env)
     - Redirect url is 'http://localhost:3001/api/auth/redirect' (port like above)
 
-    - Go to /envs folder and copy 'example.env' then paste it as 'local.env', then past your google credentials,
+    - Go to /envs folder and copy 'example.env' then paste it as 'local.env', then paste your google credentials,
     clientId and secret from secret.json from dev console to related env keys (You can copy it directly from browser).
 
 ## Installation
