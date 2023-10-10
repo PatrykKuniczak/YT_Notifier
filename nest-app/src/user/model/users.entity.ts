@@ -11,7 +11,7 @@ export class UsersEntity {
     @Column({unique: true})
     email: string;
 
-    @Column({unique: true})
+    @Column()
     avatar: string;
 
     @Column({select: false})
