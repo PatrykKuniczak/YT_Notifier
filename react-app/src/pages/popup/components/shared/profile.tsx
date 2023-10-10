@@ -1,11 +1,11 @@
-import { StyledAvatar } from './avatar.ts';
-import avatar from '../../assets/thumbnail.png';
-import { StyledIcon } from './icon.ts';
-import chevronUpIcon from '../../assets/chevron-up-icon.svg';
-import chevronDownIcon from '../../assets/chevron-down-icon.svg';
-import { Dropdown, Menu, MenuButton, MenuItem } from '@mui/base';
-import { useState } from 'react';
-import { styled, useTheme } from '@mui/system';
+import avatar from "@assets/img/thumbnail.png";
+import chevronUpIcon from "@assets/img/chevron-up-icon.svg";
+import chevronDownIcon from "@assets/img/chevron-down-icon.svg";
+import { Dropdown, Menu, MenuButton, MenuItem } from "@mui/base";
+import { useState } from "react";
+import { styled, useTheme } from "@mui/system";
+import { StyledAvatar } from "@pages/popup/components/shared/avatar";
+import { StyledIcon } from "@pages/popup/components/shared/icon";
 
 const StyledListbox = styled('ul')(({ theme }) =>
     theme.unstable_sx({
@@ -67,7 +67,7 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
     })
 );
 
-const Profile = () => {
+const StyledProfile = () => {
     const [collapsed, setCollapsed] = useState(false);
 
     const theme = useTheme();
@@ -102,4 +102,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default StyledProfile;

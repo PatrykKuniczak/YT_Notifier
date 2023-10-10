@@ -1,12 +1,12 @@
-import { StyledIcon } from "../icon.ts";
-import { StyledSearchBarWrapper } from "./search-bar-wrapper.ts";
-import searchIcon from "../../../assets/search-icon.svg";
-import { StyledSearchBarInput } from "./search-bar-input.tsx";
+import searchIcon from "@assets/img/search-icon.svg";
 import { forwardRef, Ref } from "react";
-import { useHandleKeyEvents } from "../../../hooks/use-handle-key-events.ts";
+import { TVoid } from "@root/utils/types/types";
 import { useTheme } from "@mui/system";
-import { TVoid } from "../../../types/common.types.ts";
-import { useSearch } from "../../../hooks/use-search.ts";
+import { useHandleKeyEvents } from "@root/utils/hooks/use-handle-key-events";
+import { useSearch } from "@root/utils/hooks/use-search";
+import { StyledSearchBarWrapper } from "@pages/popup/components/shared/searchBar/search-bar-wrapper";
+import { StyledIcon } from "@pages/popup/components/shared/icon";
+import { StyledSearchBarInput } from "@pages/popup/components/shared/searchBar/search-bar-input";
 
 // eslint-disable-next-line react/display-name
 export const StyledSearchBar = forwardRef(

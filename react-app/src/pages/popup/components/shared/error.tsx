@@ -1,8 +1,8 @@
-import { styled } from '@mui/system';
-import { useFormControlContext } from '@mui/base';
-import { useEffect, useState } from 'react';
+import { styled } from "@mui/system";
+import { useFormControlContext } from "@mui/base";
+import { useEffect, useState } from "react";
 
-export const ErrorMessage = styled(props => {
+export const StyledErrorMessage = styled(props => {
     const formControlContext = useFormControlContext();
     const [dirty, setDirty] = useState(false);
 

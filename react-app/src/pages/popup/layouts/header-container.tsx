@@ -1,6 +1,6 @@
-import { Stack, styled } from '@mui/system';
-import { StyledThemeSwitch } from '../components/shared/theme-switch.tsx';
-import Profile from '../components/shared/profile.tsx';
+import { Stack, styled } from "@mui/system";
+import { StyledThemeSwitch } from "@pages/popup/components/shared/theme-switch";
+import StyledProfile from "@pages/popup/components/shared/profile";
 
 const HeaderContainerStyles = styled(Stack)(({ theme }) =>
     theme.unstable_sx({
@@ -16,7 +16,7 @@ export const StyledHeaderContainer = () => {
         <HeaderContainerStyles direction={'row'}>
             <StyledThemeSwitch />
 
-            <Profile />
+            <StyledProfile />
         </HeaderContainerStyles>
     );
 };

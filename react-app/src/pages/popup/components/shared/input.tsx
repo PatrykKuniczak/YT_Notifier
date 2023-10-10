@@ -1,7 +1,7 @@
-import { InputHTMLAttributes } from 'react';
-import { useFormControlContext } from '@mui/base';
+import { InputHTMLAttributes } from "react";
+import { useFormControlContext } from "@mui/base";
 
-const Input = (props: InputHTMLAttributes<HTMLInputElement>) => {
+const StyledInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
     const formControlContext = useFormControlContext();
 
     if (!formControlContext) {
@@ -24,4 +24,4 @@ const Input = (props: InputHTMLAttributes<HTMLInputElement>) => {
     );
 };
 
-export default Input;
+export default StyledInput;

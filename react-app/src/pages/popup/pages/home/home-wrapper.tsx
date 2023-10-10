@@ -1,7 +1,7 @@
-import { Stack, styled } from '@mui/system';
+import { Stack, styled } from "@mui/system";
 import { pageMixin } from "@pages/popup/data/mixins/page-mixin";
 
-export const StyledPageWrapper = styled(Stack)(({ theme }) =>
+export const StyledHomePageWrapper = styled(Stack)(({ theme }) =>
     theme.unstable_sx({
         ...pageMixin,
 

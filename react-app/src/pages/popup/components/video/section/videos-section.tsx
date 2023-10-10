@@ -1,10 +1,10 @@
 import { TChildren } from "@root/utils/types/types";
-import { StyledItem } from "@pages/popup/components/shared/item";
+import { StyledItemsContainer } from "@pages/popup/components/shared/items-container";
 
 export const StyledVideosSection = ({ children }: TChildren) => (
-    <StyledItem
+    <StyledItemsContainer
         component={'section'}
         alignItems={'center'}>
         {children}
-    </StyledItem>
+    </StyledItemsContainer>
 );

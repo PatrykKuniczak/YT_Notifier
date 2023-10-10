@@ -5,7 +5,7 @@ import { StyledEditButton } from "@pages/popup/components/store/list/item/editBu
 import { StyledKeyword } from "@pages/popup/components/store/list/item/keyword";
 import { StyledDeleteButton } from "@pages/popup/components/store/list/item/deleteButton/delete-button";
 
-const StyledStoreListItem = styled(Stack)<TComponentTag>(({ theme }) =>
+const StyledStoreItemWrapper = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
         gap: 1,
 
@@ -38,7 +38,7 @@ export const StyledStoreItem = ({
     const changeInputVisibility = () => setOpenedInput(prevState => !prevState);
 
     return (
-        <StyledStoreListItem
+        <StyledStoreItemWrapper
             component={'li'}
             direction={'row'}
             alignItems={'center'}
@@ -63,6 +63,6 @@ export const StyledStoreItem = ({
                     changeModalVisibility={changeModalVisibility}
                 />
             </Stack>
-        </StyledStoreListItem>
+        </StyledStoreItemWrapper>
     );
 };

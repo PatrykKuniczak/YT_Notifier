@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import React, { Ref, useContext } from "react";
 import { useHome } from "@pages/popup/pages/home/use-home";
-import { StyledPageWrapper } from "@pages/popup/pages/home/home-wrapper";
+import { StyledHomePageWrapper } from "@pages/popup/pages/home/home-wrapper";
 import { StyledHeaderContainer } from "@pages/popup/layouts/header-container";
 import { StyledMainContent } from "@pages/popup/layouts/main-content";
 import { StyledTitle } from "@pages/popup/components/shared/title-header";
@@ -18,7 +18,7 @@ const HomePage = () => {
   }
 
   return (
-    <StyledPageWrapper>
+    <StyledHomePageWrapper>
       <StyledHeaderContainer />
 
       <StyledMainContent>
@@ -33,7 +33,7 @@ const HomePage = () => {
       </StyledMainContent>
 
       <StyledNavbar focus={focus} />
-    </StyledPageWrapper>
+    </StyledHomePageWrapper>
   );
 };
 

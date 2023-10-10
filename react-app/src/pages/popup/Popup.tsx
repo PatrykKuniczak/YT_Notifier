@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import withErrorBoundary from "@root/utils/hooks/with-error-boundary";
 import withSuspense from "@root/utils/hooks/with-suspense";
 import httpClient from "@root/utils/core/http-client/httpClient";
-import ProvidersWrapper from "@src/providers-wrapper";
+import ProvidersWrapper from "@pages/popup/providers-wrapper";
 
 const hashRouting = createHashRouter([
     {

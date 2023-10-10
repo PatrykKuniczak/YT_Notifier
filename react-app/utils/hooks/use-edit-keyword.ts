@@ -1,5 +1,5 @@
-import useFocus from './use-focus.ts';
-import { useState } from 'react';
+import { useState } from "react";
+import useFocus from "@root/utils/hooks/use-focus";
 
 export const useEditKeyword = (defaultValue = '') => {
     const [previousValue, setPreviousValue] = useState(defaultValue);

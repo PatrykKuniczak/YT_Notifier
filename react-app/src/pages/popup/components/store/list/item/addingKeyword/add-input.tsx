@@ -1,10 +1,10 @@
-import { styled } from '@mui/system';
-import { FormControl } from '@mui/base';
-import { StyledButton } from '../../../../shared/button.ts';
-import { StyledIcon } from '../../../../shared/icon.ts';
-import plusIcon from '../../../../../assets/plus-icon.svg';
-import Input from '../../../../shared/input.tsx';
-import { ErrorMessage } from '../../../../shared/error.tsx';
+import { styled } from "@mui/system";
+import { FormControl } from "@mui/base";
+import plusIcon from "@assets/img/plus-icon.svg";
+import { StyledButton } from "@pages/popup/components/shared/button";
+import StyledInput from "@pages/popup/components/shared/input";
+import { StyledErrorMessage } from "@pages/popup/components/shared/error";
+import { StyledIcon } from "@pages/popup/components/shared/icon";
 
 const StyledForm = styled('form')(({ theme }) =>
     theme.unstable_sx({
@@ -31,7 +31,7 @@ const StyledSubmitButton = styled(StyledButton)(({ theme }) =>
     })
 );
 
-const StyledKeywordInput = styled(Input)(({ theme }) =>
+const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
     theme.unstable_sx({
         display: 'flex',
         alignItems: 'center',
@@ -55,14 +55,14 @@ const StyledKeywordInput = styled(Input)(({ theme }) =>
     })
 );
 
-const AddInput = () => {
+const StyledAddInput = () => {
     return (
         <StyledForm>
             <FormControl
                 defaultValue=""
                 required
                 style={{ width: '100%', position: 'relative' }}>
-                <ErrorMessage />
+                <StyledErrorMessage />
                 <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
             </FormControl>
             <StyledSubmitButton type={'submit'}>
@@ -77,4 +77,4 @@ const AddInput = () => {
     );
 };
 
-export default AddInput;
+export default StyledAddInput;
