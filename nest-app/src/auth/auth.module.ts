@@ -8,6 +8,7 @@ import { SessionService } from './session/session.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SessionEntity } from './session/session.entity';
 import { GoogleAuthGuard } from './googleAuth/google.guard';
+import { SessionGuard } from './session/session.guard';
 
 @Module({
 	imports: [
@@ -18,9 +19,10 @@ import { GoogleAuthGuard } from './googleAuth/google.guard';
 	],
 	providers: [
 		GoogleStrategy,
+		GoogleAuthGuard,
 		SessionSerializer,
 		SessionService,
-		GoogleAuthGuard
+		SessionGuard
 	],
 	controllers: [AuthController]
 })
