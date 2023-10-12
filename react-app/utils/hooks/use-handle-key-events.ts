@@ -1,5 +1,5 @@
 import { KeyboardEvent } from 'react';
-import { TVoid } from '../types/common.types.ts';
+import { TVoid } from "@root/utils/types/types";
 
 export const useHandleKeyEvents = () => {
     const handleKeyEvent = (
