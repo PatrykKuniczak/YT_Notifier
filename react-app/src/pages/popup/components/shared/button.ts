@@ -18,10 +18,12 @@ export const StyledButton = styled(Button)(({ theme }) =>
         },
 
         '&.active': {
-            transition: 'linear 0.15s',
-            borderRadius: '60px',
-            boxShadow:
-                'inset 0px 0px 4px 10px #6238c7, 0px 0px 4px 10px #6238c7;'
+          borderRadius: '60px',
+
+          boxShadow:
+                'inset 0px 0px 4px 10px #6238c7, 0px 0px 4px 10px #6238c7;',
+
+          transition: 'linear 0.15s'
         }
     })
 );
