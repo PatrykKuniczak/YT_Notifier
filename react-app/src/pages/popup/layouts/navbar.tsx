@@ -1,7 +1,7 @@
 import { Stack, styled } from "@mui/system";
 import savedTagsIcon from "@assets/img/saved-tags-icon.svg";
 import watchLaterIcon from "@assets/img/watch-later-icon.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TComponentTag, TVoid } from "@root/utils/types/types";
 import { StyledButton } from "@pages/popup/components/shared/button";
 import { StyledIcon } from "@pages/popup/components/shared/icon";
@@ -32,11 +32,14 @@ const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
 export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
     const navigate = useNavigate();
 
+    const { pathname } = useLocation();
+
     return (
         <NavbarStyles
             component="nav"
             direction={'row'}>
             <StyledButton
+                className={pathname === '/' ? 'active' : ''}
                 onClick={() => {
                     navigate('');
                     focus();
@@ -50,6 +53,7 @@ export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
             </StyledButton>
 
             <StyledButton
+                className={pathname === '/store' ? 'active' : ''}
                 onClick={() => {
                     navigate('/store');
                     focus();
