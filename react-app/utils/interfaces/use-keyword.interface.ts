@@ -1,7 +1,7 @@
-import { TVoid } from "@root/utils/types/types";
+import { TVoid } from '@root/utils/types/types';
 
 export interface IStyledKeyword {
-    value: string;
-    openedInput: boolean;
-    changeInputVisibility: TVoid;
+	value: string;
+	openedInput: boolean;
+	changeInputVisibility: TVoid;
 }

@@ -1,3 +1,3 @@
-import reloadOnUpdate from "virtual:reload-on-update-in-background-script";
+import reloadOnUpdate from 'virtual:reload-on-update-in-background-script';
 
-reloadOnUpdate("pages/background");
+reloadOnUpdate('pages/background');

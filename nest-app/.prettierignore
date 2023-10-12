@@ -1,0 +1,9 @@
+dist
+node_modules
+.gitignore
+.eslintignore
+.nvmrc
+.prettierignore
+*.md
+package-lock.json
+nest-cli.json
