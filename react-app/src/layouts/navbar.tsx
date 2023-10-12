@@ -5,7 +5,7 @@ import searchIcon from '../assets/search-icon.svg';
 import savedTagsIcon from '../assets/saved-tags-icon.svg';
 import watchLaterIcon from '../assets/watch-later-icon.svg';
 import { StyledButton } from '../components/shared/button.ts';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
     theme.unstable_sx({
@@ -32,11 +32,14 @@ const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
 export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
     const navigate = useNavigate();
 
+    const { pathname } = useLocation();
+
     return (
         <NavbarStyles
             component="nav"
             direction={'row'}>
             <StyledButton
+                className={pathname === '/videos' ? 'active' : ''}
                 onClick={() => {
                     navigate('/videos');
                     focus();
@@ -50,6 +53,7 @@ export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
             </StyledButton>
 
             <StyledButton
+                className={pathname === '/store' ? 'active' : ''}
                 onClick={() => {
                     navigate('/store');
                     focus();
