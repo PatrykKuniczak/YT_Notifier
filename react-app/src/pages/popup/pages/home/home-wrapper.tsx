@@ -1,12 +1,12 @@
-import { Stack, styled } from "@mui/system";
-import { pageMixin } from "@pages/popup/data/mixins/page-mixin";
+import { Stack, styled } from '@mui/system';
+import { pageMixin } from '@pages/popup/data/mixins/page-mixin';
 
 export const StyledHomePageWrapper = styled(Stack)(({ theme }) =>
-    theme.unstable_sx({
-        ...pageMixin,
+	theme.unstable_sx({
+		...pageMixin,
 
-        position: 'relative',
+		position: 'relative',
 
-        transitionDuration: '0.5s'
-    })
+		transitionDuration: '0.5s',
+	}),
 );

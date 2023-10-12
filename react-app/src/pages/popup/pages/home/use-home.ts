@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import useFocus from "@root/utils/hooks/use-focus";
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import useFocus from '@root/utils/hooks/use-focus';
 
 export const useHome = () => {
-    const [title, setTitle] = useState('');
+	const [title, setTitle] = useState('');
 
-    const { pathname } = useLocation();
+	const { pathname } = useLocation();
 
-    const { ref, focus } = useFocus();
+	const { ref, focus } = useFocus();
 
-    useEffect(() => {
-        setTitle(
-            pathname === '/videos' ? 'Znalezione Wideo' : 'Zapisane Frazy'
-        );
-    }, [pathname]);
+	useEffect(() => {
+		setTitle(pathname === '/videos' ? 'Znalezione Wideo' : 'Zapisane Frazy');
+	}, [pathname]);
 
-    return { title, location, ref, focus };
+	return { title, location, ref, focus };
 };
