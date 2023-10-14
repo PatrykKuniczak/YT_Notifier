@@ -6,6 +6,10 @@ import { styled, useTheme } from '@mui/system';
 import { StyledAvatar } from '@pages/popup/components/shared/avatar';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { AuthContext } from '@root/utils/core/authentication/authentication';
+import { useMutation } from '@tanstack/react-query';
+import httpClient from '@root/utils/core/http-client/httpClient';
+import urls from '@root/utils/endpoints/urls';
+import queryClient from '@root/utils/core/query-client/query-client';
 
 const StyledListbox = styled('ul')(({ theme }) =>
 	theme.unstable_sx({
@@ -78,6 +82,11 @@ const StyledProfile = () => {
 		setCollapsed(open);
 	};
 
+	const { mutate: signOut } = useMutation({
+		mutationFn: () => httpClient.post(urls.auth.logout),
+		onSuccess: async () => queryClient.resetQueries({ queryKey: [urls.auth.me] }),
+	});
+
 	return (
 		<Dropdown onOpenChange={handleOpenChange}>
 			<StyledMenuButton>
@@ -93,7 +102,7 @@ const StyledProfile = () => {
 				/>
 			</StyledMenuButton>
 			<Menu slots={{ listbox: StyledListbox }}>
-				<StyledMenuItem>Sign Out</StyledMenuItem>
+				<StyledMenuItem onClick={() => signOut()}>Wyloguj się</StyledMenuItem>
 			</Menu>
 		</Dropdown>
 	);
