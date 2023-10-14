@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { createHashRouter } from 'react-router-dom';
 import AuthPage from '@pages/popup/pages/auth/auth.page';
 import HomePage from '@pages/popup/pages/home/home.page';
@@ -43,14 +43,7 @@ const Popup = () => {
 		queryFn: () => httpClient.post(urls.auth.me).then(user => user.data),
 	});
 
-	const providerValues = useMemo(
-		() => ({
-			user,
-		}),
-		[user],
-	);
-
-	return <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={providerValues} hashRouting={hashRouting} />;
+	return <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user }} hashRouting={hashRouting} />;
 };
 
 export default withErrorBoundary(withSuspense(Popup, <div> Loading </div>), <div> Error </div>);
