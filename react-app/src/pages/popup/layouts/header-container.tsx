@@ -7,7 +7,8 @@ const HeaderContainerStyles = styled(Stack)(({ theme }) =>
 		justifyContent: 'space-between',
 		alignItems: 'center',
 
-		p: 1,
+		px: 1,
+		pt: 1,
 	}),
 );
 
