@@ -1,11 +1,11 @@
-import avatar from '@assets/img/thumbnail.png';
 import chevronUpIcon from '@assets/img/chevron-up-icon.svg';
 import chevronDownIcon from '@assets/img/chevron-down-icon.svg';
 import { Dropdown, Menu, MenuButton, MenuItem } from '@mui/base';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { styled, useTheme } from '@mui/system';
 import { StyledAvatar } from '@pages/popup/components/shared/avatar';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
+import { AuthContext } from '@root/utils/core/authentication/authentication';
 
 const StyledListbox = styled('ul')(({ theme }) =>
 	theme.unstable_sx({
@@ -58,7 +58,6 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
 
 		minHeight: 'calc(1.5em + 22px)',
 
-		padding: '8px 14px',
 		borderRadius: '12px',
 
 		backgroundColor: 'transparent',
@@ -69,6 +68,9 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
 
 const StyledProfile = () => {
 	const [collapsed, setCollapsed] = useState(false);
+	const {
+		user: { avatar },
+	} = useContext(AuthContext);
 
 	const theme = useTheme();
 
