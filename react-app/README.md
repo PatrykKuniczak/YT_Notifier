@@ -1,5 +1,6 @@
 <div align="center">
 <h1> YT Plugin<br/>React + Vite + TypeScript</h1>
+<h2> Chrome Extension </h2>
 </div>
 
 ## Installation <a name="installation"></a>
@@ -37,3 +38,41 @@
 #### When you're end part of work then before commit check folder in `src/instructions` and check if your code follow standards.
 
 #### If you want to create something in utils, follow the folder structure described in `utils/instructions`.
+
+### CONFIGURE PRETTIER IN YOUR IDE:
+
+    PRETTIER IS IN .\node_modules\prettier
+
+##### E.G. FOR WEBSTORM:
+
+[Prettier config](https://blog.jetbrains.com/webstorm/2020/07/webstorm-2020-2/)
+
+### CONFIGURE RELATIVE IMPORT PATHS IN YOUR IDE:
+
+    IN WEBSTORM GO TO SETTING:
+        EDITOR/CODE STYLE/TYPESCRIPT
+            [X] USE PATHS RELATIVE TO TSCONFIG.JSON
+         
+        AND ALSO:
+            [X] SORT IMPORTED BY MEMBERS
+            [X] SORT IMPORTS BY MODULES 
+
+### CONFIGURE RUNNING ESLINT AND PRETTIER TO RUN ON SAVE(MAKE SURE, YOU ALREADY HAVE AUTO-SAVE ENABLED):
+
+    IN WEBSTORM GO TO SETTINGS:
+       LANGUAGES & FRAMEWORKS/JAVASCRIPT/CODE QUALITY TOOLS/ESLINT:
+         [X] RUN ESLINT --FIX ON SAVE 
+
+      LANGUAGES & FRAMEWORKS/JAVASCRIPT/PRETTIER:
+         [X] RUN ON SAVE
+
+### CONFIGURE DEFAULT BRANCH UPDATE SETTINGS:
+
+    IN WEBSTORM GO TO SETTING:
+        GIT/PUSH:
+            PROTECTED BRANCH: 'master;main"
+        /UPDATE:
+            UPDATE METHOD: 'rebase'
+            CLEAN WORKING TREE USING: 'shelve'
+
+###### ENJOY YOUR TASKS
