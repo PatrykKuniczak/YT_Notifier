@@ -37,6 +37,8 @@ export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
 	return (
 		<NavbarStyles component="nav" direction={'row'}>
 			<StyledButton
+				title="Znalezione Wideo"
+				aria-label="Znalezione Wideo"
 				className={pathname === '/' ? 'active' : ''}
 				onClick={() => {
 					navigate('');
@@ -46,6 +48,8 @@ export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
 			</StyledButton>
 
 			<StyledButton
+				title="Zapisane słowa kluczowe"
+				aria-label="Zapisane słowa kluczowe"
 				className={pathname === '/store' ? 'active' : ''}
 				onClick={() => {
 					navigate('/store');
@@ -54,7 +58,7 @@ export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
 				<StyledIcon src={savedTagsIcon} alt={'Saved tags navigation button'} width={20} height={20} />
 			</StyledButton>
 
-			<StyledButton>
+			<StyledButton title="Obejrzyj później" aria-label="Obejrzyj później">
 				<StyledIcon src={watchLaterIcon} alt={'YT Watch Later navigation button'} width={20} height={20} />
 			</StyledButton>
 		</NavbarStyles>
