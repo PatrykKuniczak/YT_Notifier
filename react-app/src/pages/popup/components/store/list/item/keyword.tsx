@@ -1,11 +1,11 @@
-import { styled } from '@mui/system';
+import useEditKeyword from '@hooks/use-edit-keyword';
+import useHandleKeyEvents from '@hooks/use-handle-key-events';
+import { IStyledKeyword } from '@interfaces';
 import { FormControl } from '@mui/base';
-import { textMixin } from '@pages/popup/data/mixins/text-mixin';
-import StyledInput from '@pages/popup/components/shared/input';
-import { IStyledKeyword } from '@root/utils/interfaces/use-keyword.interface';
-import { useHandleKeyEvents } from '@root/utils/hooks/use-handle-key-events';
-import { useEditKeyword } from '@root/utils/hooks/use-edit-keyword';
+import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
+import StyledInput from '@pages/popup/components/shared/input';
+import { textMixin } from '@pages/popup/data/mixins/text-mixin';
 
 const keywordStyles = {
 	...textMixin,

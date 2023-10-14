@@ -1,17 +1,17 @@
-import React from 'react';
-import { createHashRouter } from 'react-router-dom';
+import useTernaryDarkMode from '@hooks/use-ternary-darkmode';
+import withErrorBoundary from '@hooks/with-error-boundary';
+import withSuspense from '@hooks/with-suspense';
+import httpClient from '@http-client';
+import { IUser } from '@interfaces';
 import AuthPage from '@pages/popup/pages/auth/auth.page';
 import HomePage from '@pages/popup/pages/home/home.page';
-import { VideosRoute } from '@pages/popup/routes/videos.route';
-import { StoreRoute } from '@pages/popup/routes/store.route';
-import { useTernaryDarkMode } from 'usehooks-ts';
-import { IUser } from '@root/utils/interfaces/user.interface';
-import urls from '@root/utils/endpoints/urls';
-import { useQuery } from '@tanstack/react-query';
-import withErrorBoundary from '@root/utils/hooks/with-error-boundary';
-import withSuspense from '@root/utils/hooks/with-suspense';
-import httpClient from '@root/utils/core/http-client/httpClient';
 import ProvidersWrapper from '@pages/popup/providers-wrapper';
+import { StoreRoute } from '@pages/popup/routes/store.route';
+import { VideosRoute } from '@pages/popup/routes/videos.route';
+import { useQuery } from '@query-client';
+import urls from '@utils/endpoints/urls';
+import React, { useMemo } from 'react';
+import { createHashRouter } from 'react-router-dom';
 
 const hashRouting = createHashRouter([
 	{

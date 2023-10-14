@@ -1,6 +1,6 @@
+import thumbnail from '@assets/img/thumbnail.png';
 import { Stack } from '@mui/system';
 import { StyledAvatar } from '@pages/popup/components/shared/avatar';
-import thumbnail from '@assets/img/thumbnail.png';
 import { StyledAuthorName } from '@pages/popup/components/video/section/article/authorInfo/autor-name';
 
 export const StyledAuthorInfo = () => (

@@ -1,9 +1,9 @@
 import { Modal } from '@mui/base';
 import { Box, styled } from '@mui/system';
-import { forwardRef } from 'react';
-import clsx from 'clsx';
 import { StyledModalContent } from '@pages/popup/components/store/delete-modal/modal-content';
-import { TVoid } from '@root/utils/types/types';
+import { TVoid } from '@types';
+import clsx from 'clsx';
+import { forwardRef } from 'react';
 
 const StyledMUIBackdrop = forwardRef<HTMLDivElement, { open: boolean; className: string }>((props, ref) => {
 	const { open, className, ...other } = props;

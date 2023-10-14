@@ -1,9 +1,9 @@
 import { Stack, styled } from '@mui/system';
-import { TComponentTag, TVoid } from '@root/utils/types/types';
-import { useState } from 'react';
+import { StyledDeleteButton } from '@pages/popup/components/store/list/item/deleteButton/delete-button';
 import { StyledEditButton } from '@pages/popup/components/store/list/item/editButton/edit-button';
 import { StyledKeyword } from '@pages/popup/components/store/list/item/keyword';
-import { StyledDeleteButton } from '@pages/popup/components/store/list/item/deleteButton/delete-button';
+import { TComponentTag, TVoid } from '@types';
+import { useState } from 'react';
 
 const StyledStoreItemWrapper = styled(Stack)<TComponentTag>(({ theme }) =>
 	theme.unstable_sx({

@@ -1,5 +1,5 @@
+import { IUser } from '@interfaces';
 import { createContext } from 'react';
-import { IUser } from '@root/utils/interfaces/user.interface';
 
 interface IAuthContextValues {
 	user: IUser;

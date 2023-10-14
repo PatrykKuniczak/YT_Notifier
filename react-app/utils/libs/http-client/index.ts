@@ -1,7 +1,7 @@
-import axios from 'axios';
-import urls from '@root/utils/endpoints/urls';
 import { SESSION_COOKIE_NAME } from '@pages/popup/constant';
-import queryClient from '@root/utils/core/query-client/query-client';
+import queryClient from '@query-client';
+import urls from '@utils/endpoints/urls';
+import axios from 'axios';
 
 const createHttpInstance = () => {
 	const axiosInstance = axios.create({

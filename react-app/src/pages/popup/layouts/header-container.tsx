@@ -1,6 +1,6 @@
 import { Stack, styled } from '@mui/system';
-import { StyledThemeSwitch } from '@pages/popup/components/shared/theme-switch';
 import StyledProfile from '@pages/popup/components/shared/profile';
+import { StyledThemeSwitch } from '@pages/popup/components/shared/theme-switch';
 
 const HeaderContainerStyles = styled(Stack)(({ theme }) =>
 	theme.unstable_sx({

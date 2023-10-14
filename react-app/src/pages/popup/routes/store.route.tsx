@@ -1,10 +1,10 @@
-import { useDeferredValue, useMemo } from 'react';
-import { useSearch } from '@root/utils/hooks/use-search';
-import { useDeleteModal } from '@pages/popup/components/store/delete-modal/use-delete-modal';
-import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-value';
-import { StyledDeleteModal } from '@pages/popup/components/store/delete-modal/delete-modal';
-import StyledAddInput from '@pages/popup/components/store/list/item/addingKeyword/add-input';
+import useSearch from '@hooks/use-search';
 import { StyledItemsContainer } from '@pages/popup/components/shared/items-container';
+import { StyledDeleteModal } from '@pages/popup/components/store/delete-modal/delete-modal';
+import { useDeleteModal } from '@pages/popup/components/store/delete-modal/use-delete-modal';
+import StyledAddInput from '@pages/popup/components/store/list/item/addingKeyword/add-input';
+import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-value';
+import { useDeferredValue, useMemo } from 'react';
 
 const dummyKeywords = ['test', 'adam', 'john', 'smith'] as const;
 

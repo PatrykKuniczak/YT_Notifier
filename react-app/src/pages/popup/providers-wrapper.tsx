@@ -1,12 +1,12 @@
-import React from 'react';
+import { AuthContext } from '@authentication';
+import { IUser } from '@interfaces';
 import { ThemeProvider } from '@mui/system';
+import GlobalStyles from '@pages/popup/data/global-styles';
 import darkTheme from '@pages/popup/data/themes/dark-theme';
 import lightTheme from '@pages/popup/data/themes/light-theme';
-import GlobalStyles from '@pages/popup/data/global-styles';
-import { AuthContext } from '@root/utils/core/authentication/authentication';
-import { RouterProvider } from 'react-router-dom';
-import { IUser } from '@root/utils/interfaces/user.interface';
 import { Router as RemixRouter } from '@remix-run/router/dist/router';
+import React from 'react';
+import { RouterProvider } from 'react-router-dom';
 
 const ProvidersWrapper = ({
 	isDarkMode,

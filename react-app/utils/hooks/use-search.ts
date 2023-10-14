@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 
 const SEARCH_VALUE = 'searchValue';
 
-export const useSearch = () => {
+const useSearch = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const searchParamValue = searchParams.get(SEARCH_VALUE) || '';
 
@@ -19,3 +19,5 @@ export const useSearch = () => {
 		handleSearchParamsChange,
 	};
 };
+
+export default useSearch;

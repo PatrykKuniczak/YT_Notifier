@@ -21,6 +21,13 @@
 			"@src/*": ["src/*"],
 			"@assets/*": ["src/assets/*"],
 			"@pages/*": ["src/pages/*"],
+			"@utils/*": ["utils/*"],
+			"@hooks/*": ["utils/hooks/*"],
+			"@types": ["utils/types/index.ts"],
+			"@interfaces": ["utils/interfaces/index.ts"],
+			"@authentication": ["utils/libs/authentication/index.ts"],
+			"@http-client": ["utils/libs/http-client/index.ts"],
+			"@query-client": ["utils/libs/query-client/index.ts"],
 			"virtual:reload-on-update-in-background-script": ["./src/global.d.ts"],
 			"virtual:reload-on-update-in-view": ["./src/global.d.ts"]
 		}

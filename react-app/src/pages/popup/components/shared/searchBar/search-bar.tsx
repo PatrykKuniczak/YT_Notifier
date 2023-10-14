@@ -1,12 +1,12 @@
 import searchIcon from '@assets/img/search-icon.svg';
-import { forwardRef, Ref } from 'react';
-import { TVoid } from '@root/utils/types/types';
+import useHandleKeyEvents from '@hooks/use-handle-key-events';
+import useSearch from '@hooks/use-search';
 import { useTheme } from '@mui/system';
-import { useHandleKeyEvents } from '@root/utils/hooks/use-handle-key-events';
-import { useSearch } from '@root/utils/hooks/use-search';
-import { StyledSearchBarWrapper } from '@pages/popup/components/shared/searchBar/search-bar-wrapper';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledSearchBarInput } from '@pages/popup/components/shared/searchBar/search-bar-input';
+import { StyledSearchBarWrapper } from '@pages/popup/components/shared/searchBar/search-bar-wrapper';
+import { TVoid } from '@types';
+import { forwardRef, Ref } from 'react';
 
 // eslint-disable-next-line react/display-name
 export const StyledSearchBar = forwardRef(({ focus }: { focus: TVoid }, ref) => {

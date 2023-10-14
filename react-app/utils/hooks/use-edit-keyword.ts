@@ -1,7 +1,7 @@
+import useFocus from '@hooks/use-focus';
 import { useState } from 'react';
-import useFocus from '@root/utils/hooks/use-focus';
 
-export const useEditKeyword = (defaultValue = '') => {
+const useEditKeyword = (defaultValue = '') => {
 	const [previousValue, setPreviousValue] = useState(defaultValue);
 	const [value, setValue] = useState(defaultValue);
 
@@ -24,3 +24,5 @@ export const useEditKeyword = (defaultValue = '') => {
 		handlePreviousValueChange,
 	};
 };
+
+export default useEditKeyword;

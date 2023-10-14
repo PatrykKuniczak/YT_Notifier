@@ -10,7 +10,7 @@ interface IUseTernaryDarkModeOutput {
 	changeTheme: () => void;
 }
 
-export function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
+function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
 	const [ternaryDarkMode, setTernaryDarkMode] = useLocalStorage<TTernaryDarkMode>(
 		'usehooks-ts-ternary-dark-mode',
 		'system',
@@ -38,3 +38,5 @@ export function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
 		changeTheme,
 	};
 }
+
+export default useTernaryDarkMode;

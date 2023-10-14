@@ -1,6 +1,6 @@
 import { ComponentType, ReactElement, Suspense } from 'react';
 
-export default function withSuspense<T extends Record<string, unknown>>(
+function withSuspense<T extends Record<string, unknown>>(
 	Component: ComponentType<T>,
 	SuspenseComponent: ReactElement = null,
 ) {
@@ -12,3 +12,5 @@ export default function withSuspense<T extends Record<string, unknown>>(
 		);
 	};
 }
+
+export default withSuspense;

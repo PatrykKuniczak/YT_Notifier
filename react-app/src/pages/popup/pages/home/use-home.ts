@@ -1,6 +1,6 @@
+import useFocus from '@hooks/use-focus';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import useFocus from '@root/utils/hooks/use-focus';
 
 export const useHome = () => {
 	const [title, setTitle] = useState('');

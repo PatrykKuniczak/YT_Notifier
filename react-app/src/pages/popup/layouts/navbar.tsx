@@ -1,11 +1,11 @@
-import { Stack, styled } from '@mui/system';
 import savedTagsIcon from '@assets/img/saved-tags-icon.svg';
+import searchIcon from '@assets/img/search-icon.svg';
 import watchLaterIcon from '@assets/img/watch-later-icon.svg';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { TComponentTag, TVoid } from '@root/utils/types/types';
+import { Stack, styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
-import searchIcon from '@assets/img/search-icon.svg';
+import { TComponentTag, TVoid } from '@types';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
 	theme.unstable_sx({

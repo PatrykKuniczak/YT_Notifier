@@ -1,5 +1,5 @@
-import { InputHTMLAttributes } from 'react';
 import { useFormControlContext } from '@mui/base';
+import { InputHTMLAttributes } from 'react';
 
 const StyledInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
 	const formControlContext = useFormControlContext();

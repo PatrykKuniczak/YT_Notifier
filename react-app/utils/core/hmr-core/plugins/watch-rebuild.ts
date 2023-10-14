@@ -1,5 +1,5 @@
-import type { PluginOption } from 'vite';
 import { resolve } from 'path';
+import type { PluginOption } from 'vite';
 
 const rootDir = resolve(__dirname, '..', '..', '..', '..');
 const manifestFile = resolve(rootDir, 'manifest.ts');

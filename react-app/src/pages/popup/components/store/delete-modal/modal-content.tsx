@@ -1,7 +1,7 @@
 import { Stack, styled } from '@mui/system';
-import { TVoid } from '@root/utils/types/types';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { StyledModalButton } from '@pages/popup/components/store/delete-modal/delete-modal-button';
+import { TVoid } from '@types';
 
 const ModalContentStyles = styled(Stack)(({ theme }) =>
 	theme.unstable_sx({

@@ -3,7 +3,6 @@ import packageJson from './package.json';
 /**
  * After changing, please reload the extension at `chrome://extensions`
  */
-console.info("'xd");
 const manifest: chrome.runtime.ManifestV3 = {
 	manifest_version: 3,
 	name: packageJson.name,
