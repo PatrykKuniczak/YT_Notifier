@@ -1,6 +1,6 @@
 export const pageMixin = {
-	width: 300,
-	height: 600,
+  width: 300,
+  height: 600,
 
-	backgroundColor: 'background.primary',
+  backgroundColor: 'background.primary',
 };

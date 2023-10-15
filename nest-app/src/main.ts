@@ -12,50 +12,45 @@ import { SwaggerModule } from '@nestjs/swagger';
 import swaggerConfig from './swagger/swagger.config';
 
 async function bootstrap() {
-	const app = await NestFactory.create(AppModule);
-	const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
+  const app = await NestFactory.create(AppModule);
+  const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
 
-	const configService = app.get(ConfigService);
-	const sessionRepository = app.get(DataSource).getRepository(SessionEntity);
+  const configService = app.get(ConfigService);
+  const sessionRepository = app.get(DataSource).getRepository(SessionEntity);
 
-	app.enableCors({
-		origin: configService.get('FE_URL'),
-		credentials: true
-	});
+  app.enableCors({
+    origin: configService.get('FE_URL'),
+    credentials: true,
+  });
 
-	app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api');
 
-	app.use(
-		session({
-			name: SESSION_COOKIE_NAME,
-			secret: configService.get('SESSION_SECRET'),
-			resave: false,
-			saveUninitialized: false,
-			cookie: {
-				maxAge: COOKIE_MAX_AGE,
-				sameSite: 'lax',
-				httpOnly: true,
-				signed: true,
-				secure: configService.get('COOKIE_SECURE') === 'true'
-			},
-			store: new TypeormStore({
-				ttl: SESSION_TTL
-			}).connect(sessionRepository)
-		})
-	);
+  app.use(
+    session({
+      name: SESSION_COOKIE_NAME,
+      secret: configService.get('SESSION_SECRET'),
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        maxAge: COOKIE_MAX_AGE,
+        sameSite: 'lax',
+        httpOnly: true,
+        signed: true,
+        secure: configService.get('COOKIE_SECURE') === 'true',
+      },
+      store: new TypeormStore({
+        ttl: SESSION_TTL,
+      }).connect(sessionRepository),
+    }),
+  );
 
-	app.use(cookieParser());
-	app.use(passport.initialize());
-	app.use(passport.session());
+  app.use(cookieParser());
+  app.use(passport.initialize());
+  app.use(passport.session());
 
-	IS_DEVELOPMENT &&
-		SwaggerModule.setup(
-			'api/docs',
-			app,
-			SwaggerModule.createDocument(app, swaggerConfig)
-		);
+  IS_DEVELOPMENT && SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app, swaggerConfig));
 
-	await app.listen(configService.get('SERVER_PORT'));
+  await app.listen(configService.get('SERVER_PORT'));
 }
 
 bootstrap();

@@ -10,28 +10,28 @@ import React, { Ref, useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const HomePage = () => {
-	const { user } = useContext(AuthContext);
-	const { title, ref, focus } = useHome();
+  const { user } = useContext(AuthContext);
+  const { title, ref, focus } = useHome();
 
-	if (!user) {
-		return <Navigate to={'/auth/login'} />;
-	}
+  if (!user) {
+    return <Navigate to={'/auth/login'} />;
+  }
 
-	return (
-		<StyledHomePageWrapper>
-			<StyledHeaderContainer />
+  return (
+    <StyledHomePageWrapper>
+      <StyledHeaderContainer />
 
-			<StyledMainContent>
-				<StyledTitle>{title}</StyledTitle>
+      <StyledMainContent>
+        <StyledTitle>{title}</StyledTitle>
 
-				<StyledSearchBar ref={ref as Ref<HTMLInputElement>} focus={focus} />
+        <StyledSearchBar ref={ref as Ref<HTMLInputElement>} focus={focus} />
 
-				<Outlet />
-			</StyledMainContent>
+        <Outlet />
+      </StyledMainContent>
 
-			<StyledNavbar focus={focus} />
-		</StyledHomePageWrapper>
-	);
+      <StyledNavbar focus={focus} />
+    </StyledHomePageWrapper>
+  );
 };
 
 export default HomePage;

@@ -9,25 +9,25 @@ import React from 'react';
 import { RouterProvider } from 'react-router-dom';
 
 const ProvidersWrapper = ({
-	isDarkMode,
-	authProviderValues,
-	hashRouting,
+  isDarkMode,
+  authProviderValues,
+  hashRouting,
 }: {
-	isDarkMode: boolean;
-	authProviderValues: { user: IUser };
-	hashRouting: RemixRouter;
+  isDarkMode: boolean;
+  authProviderValues: { user: IUser };
+  hashRouting: RemixRouter;
 }) => {
-	return (
-		<React.StrictMode>
-			<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-				<GlobalStyles />
+  return (
+    <React.StrictMode>
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <GlobalStyles />
 
-				<AuthContext.Provider value={authProviderValues}>
-					<RouterProvider router={hashRouting} />
-				</AuthContext.Provider>
-			</ThemeProvider>
-		</React.StrictMode>
-	);
+        <AuthContext.Provider value={authProviderValues}>
+          <RouterProvider router={hashRouting} />
+        </AuthContext.Provider>
+      </ThemeProvider>
+    </React.StrictMode>
+  );
 };
 
 export default ProvidersWrapper;

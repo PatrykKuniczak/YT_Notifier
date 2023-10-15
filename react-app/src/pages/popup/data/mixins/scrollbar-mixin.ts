@@ -1,35 +1,35 @@
 export const scrollbarMixin = {
-	pb: 12,
+  pb: 12,
 
-	overflow: 'scroll',
+  overflow: 'scroll',
 
-	'&:hover': {
-		'&::-webkit-scrollbar-thumb': {
-			backgroundColor: '#7846F0',
-		},
+  '&:hover': {
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: '#7846F0',
+    },
 
-		'&::-webkit-scrollbar-thumb:active': {
-			backgroundColor: '#581fe1',
-		},
-	},
+    '&::-webkit-scrollbar-thumb:active': {
+      backgroundColor: '#581fe1',
+    },
+  },
 
-	'&::-webkit-scrollbar': {
-		width: 12,
-	},
+  '&::-webkit-scrollbar': {
+    width: 12,
+  },
 
-	'&::-webkit-scrollbar-track': {
-		mb: 12,
-	},
+  '&::-webkit-scrollbar-track': {
+    mb: 12,
+  },
 
-	'&::-webkit-scrollbar-thumb': {
-		border: '2px solid transparent',
-		borderRadius: 10,
+  '&::-webkit-scrollbar-thumb': {
+    border: '2px solid transparent',
+    borderRadius: 10,
 
-		backgroundColor: 'transparent',
-		backgroundClip: 'padding-box',
-	},
+    backgroundColor: 'transparent',
+    backgroundClip: 'padding-box',
+  },
 
-	'&::-webkit-scrollbar-corner': {
-		background: 'none',
-	},
+  '&::-webkit-scrollbar-corner': {
+    background: 'none',
+  },
 };

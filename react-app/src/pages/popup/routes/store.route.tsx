@@ -9,31 +9,31 @@ import { useDeferredValue, useMemo } from 'react';
 const dummyKeywords = ['test', 'adam', 'john', 'smith'] as const;
 
 export const StoreRoute = () => {
-	const { searchParamValue } = useSearch();
+  const { searchParamValue } = useSearch();
 
-	const deferredSearchParam = useDeferredValue(searchParamValue);
+  const deferredSearchParam = useDeferredValue(searchParamValue);
 
-	const filteredKeywords = useMemo(
-		() => dummyKeywords.filter(keyword => keyword.includes(deferredSearchParam)),
-		[deferredSearchParam],
-	);
+  const filteredKeywords = useMemo(
+    () => dummyKeywords.filter(keyword => keyword.includes(deferredSearchParam)),
+    [deferredSearchParam],
+  );
 
-	const { open, changeModalVisibility } = useDeleteModal();
+  const { open, changeModalVisibility } = useDeleteModal();
 
-	return (
-		<>
-			<StyledAddInput />
-			<StyledItemsContainer component={'ul'}>
-				{filteredKeywords.map(filteredKeyword => (
-					<StyledStoreItem
-						key={filteredKeyword}
-						changeModalVisibility={changeModalVisibility}
-						keyword={filteredKeyword}
-					/>
-				))}
-			</StyledItemsContainer>
+  return (
+    <>
+      <StyledAddInput />
+      <StyledItemsContainer component={'ul'}>
+        {filteredKeywords.map(filteredKeyword => (
+          <StyledStoreItem
+            key={filteredKeyword}
+            changeModalVisibility={changeModalVisibility}
+            keyword={filteredKeyword}
+          />
+        ))}
+      </StyledItemsContainer>
 
-			<StyledDeleteModal open={open} changeModalVisibility={changeModalVisibility} />
-		</>
-	);
+      <StyledDeleteModal open={open} changeModalVisibility={changeModalVisibility} />
+    </>
+  );
 };

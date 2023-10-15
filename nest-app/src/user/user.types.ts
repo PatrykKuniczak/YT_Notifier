@@ -1,16 +1,16 @@
 export interface IUser {
-	id: number;
+  id: number;
 
-	displayName: string;
+  displayName: string;
 
-	email: string;
+  email: string;
 
-	avatar: string;
+  avatar: string;
 
-	refreshToken: string;
+  refreshToken: string;
 }
 
 export interface IProfile extends Pick<IUser, 'displayName'> {
-	emails: { value: string; verified: boolean }[];
-	photos: { value: string }[];
+  emails: { value: string; verified: boolean }[];
+  photos: { value: string }[];
 }

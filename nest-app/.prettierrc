@@ -1,13 +1,11 @@
 {
-	"semi": true,
-	"trailingComma": "none",
-	"quoteProps": "as-needed",
-	"bracketSameLine": true,
-	"bracketSpacing": true,
-	"arrowParens": "avoid",
-	"singleAttributePerLine": true,
-	"tabWidth": 2,
-	"useTabs": true,
-	"endOfLine": "crlf",
-	"singleQuote": true
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "bracketSameLine": true,
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "trailingComma": "all",
+  "printWidth": 120,
+  "htmlWhitespaceSensitivity": "strict"
 }

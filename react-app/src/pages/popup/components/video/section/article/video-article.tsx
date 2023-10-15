@@ -6,24 +6,24 @@ import { StyledVideoInfos } from '@pages/popup/components/video/section/article/
 import { TComponentTag } from '@types';
 
 const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
-	theme.unstable_sx({
-		justifyContent: 'center',
-		gap: 1,
+  theme.unstable_sx({
+    justifyContent: 'center',
+    gap: 1,
 
-		p: 1,
+    p: 1,
 
-		borderRadius: 1,
+    borderRadius: 1,
 
-		backgroundColor: 'background.secondary',
+    backgroundColor: 'background.secondary',
 
-		cursor: 'pointer',
-	}),
+    cursor: 'pointer',
+  }),
 );
 
 export const StyledVideoArticle = () => (
-	<VideoArticleStyles component={'article'}>
-		<StyledThumbnail src={thumbnail} alt={'YT Thumbnail'} />
-		<StyledAuthorInfo />
-		<StyledVideoInfos />
-	</VideoArticleStyles>
+  <VideoArticleStyles component={'article'}>
+    <StyledThumbnail src={thumbnail} alt={'YT Thumbnail'} />
+    <StyledAuthorInfo />
+    <StyledVideoInfos />
+  </VideoArticleStyles>
 );

@@ -11,19 +11,8 @@ import { GoogleAuthGuard } from './googleAuth/google.guard';
 import { SessionGuard } from './session/session.guard';
 
 @Module({
-	imports: [
-		PassportModule,
-		UserModule,
-		TypeOrmModule.forFeature([SessionEntity]),
-		UserModule
-	],
-	providers: [
-		GoogleStrategy,
-		GoogleAuthGuard,
-		SessionSerializer,
-		SessionService,
-		SessionGuard
-	],
-	controllers: [AuthController]
+  imports: [PassportModule, UserModule, TypeOrmModule.forFeature([SessionEntity]), UserModule],
+  providers: [GoogleStrategy, GoogleAuthGuard, SessionSerializer, SessionService, SessionGuard],
+  controllers: [AuthController],
 })
 export class AuthModule {}

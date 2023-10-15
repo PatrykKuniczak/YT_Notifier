@@ -2,7 +2,7 @@ import { StyledItemsContainer } from '@pages/popup/components/shared/items-conta
 import { TChildren } from '@types';
 
 export const StyledVideosSection = ({ children }: TChildren) => (
-	<StyledItemsContainer component={'section'} alignItems={'center'}>
-		{children}
-	</StyledItemsContainer>
+  <StyledItemsContainer component={'section'} alignItems={'center'}>
+    {children}
+  </StyledItemsContainer>
 );

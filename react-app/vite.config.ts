@@ -32,55 +32,55 @@ const isProduction = !isDev;
 const enableHmrInBackgroundScript = true;
 
 export default defineConfig({
-	envDir: './envs',
-	resolve: {
-		alias: {
-			'@root': rootDir,
-			'@src': srcDir,
-			'@utils': utilsDir,
-			'@assets': assetsDir,
-			'@pages': pagesDir,
-			'@hooks': hooksDir,
-			'@types': typesDir,
-			'@interfaces': interfacesDir,
-			'@authentication': authDir,
-			'@http-client': httpClientDir,
-			'@query-client': queryClientDir,
-		},
-	},
-	plugins: [
-		react(),
-		makeManifest(manifest, { isDev }),
-		customDynamicImport(),
-		addHmr({ background: enableHmrInBackgroundScript, view: true }),
-		watchRebuild(),
-	],
-	publicDir,
-	build: {
-		outDir,
-		minify: isProduction,
-		reportCompressedSize: isProduction,
-		rollupOptions: {
-			input: {
-				background: resolve(pagesDir, 'background', 'index.ts'),
-				popup: resolve(pagesDir, 'popup', 'index.html'),
-				options: resolve(pagesDir, 'options', 'index.html'),
-			},
-			output: {
-				entryFileNames: 'src/pages/[name]/index.js',
-				chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
-				assetFileNames: assetInfo => {
-					const { dir, name: _name } = path.parse(assetInfo.name);
-					const assetFolder = dir.split('/').at(-1);
-					const name = assetFolder + firstUpperCase(_name);
-					return `assets/[ext]/${name}.chunk.[ext]`;
-				},
-			},
-		},
-	},
+  envDir: './envs',
+  resolve: {
+    alias: {
+      '@root': rootDir,
+      '@src': srcDir,
+      '@utils': utilsDir,
+      '@assets': assetsDir,
+      '@pages': pagesDir,
+      '@hooks': hooksDir,
+      '@types': typesDir,
+      '@interfaces': interfacesDir,
+      '@authentication': authDir,
+      '@http-client': httpClientDir,
+      '@query-client': queryClientDir,
+    },
+  },
+  plugins: [
+    react(),
+    makeManifest(manifest, { isDev }),
+    customDynamicImport(),
+    addHmr({ background: enableHmrInBackgroundScript, view: true }),
+    watchRebuild(),
+  ],
+  publicDir,
+  build: {
+    outDir,
+    minify: isProduction,
+    reportCompressedSize: isProduction,
+    rollupOptions: {
+      input: {
+        background: resolve(pagesDir, 'background', 'index.ts'),
+        popup: resolve(pagesDir, 'popup', 'index.html'),
+        options: resolve(pagesDir, 'options', 'index.html'),
+      },
+      output: {
+        entryFileNames: 'src/pages/[name]/index.js',
+        chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
+        assetFileNames: assetInfo => {
+          const { dir, name: _name } = path.parse(assetInfo.name);
+          const assetFolder = dir.split('/').at(-1);
+          const name = assetFolder + firstUpperCase(_name);
+          return `assets/[ext]/${name}.chunk.[ext]`;
+        },
+      },
+    },
+  },
 });
 
 function firstUpperCase(str: string) {
-	const firstAlphabet = new RegExp(/( |^)[a-z]/, 'g');
-	return str.toLowerCase().replace(firstAlphabet, L => L.toUpperCase());
+  const firstAlphabet = new RegExp(/( |^)[a-z]/, 'g');
+  return str.toLowerCase().replace(firstAlphabet, L => L.toUpperCase());
 }
