@@ -3,7 +3,8 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"commitlint": "commitlint --edit"
+		"commitlint": "commitlint --edit",
+		"prepare": "husky install"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "17.7.2",

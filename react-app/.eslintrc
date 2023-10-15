@@ -1,42 +1,72 @@
 {
-	"env": {
-		"browser": true,
-		"es6": true,
-		"node": true
-	},
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:react-hooks/recommended",
-		"plugin:import/recommended",
-		"plugin:jsx-a11y/recommended",
-		"plugin:prettier/recommended",
-		"plugin:@tanstack/eslint-plugin-query/recommended"
-	],
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": "latest",
-		"sourceType": "module"
-	},
-	"plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier", "@tanstack/query"],
-	"settings": {
-		"react": {
-			"version": "detect"
-		}
-	},
-	"rules": {
-		"react/react-in-jsx-scope": "off",
-		"import/no-unresolved": "off",
-		"react/display-name": "off",
-		"jsx-a11y/no-autofocus": "off",
-		"import/named": "off"
-	},
-	"globals": {
-		"chrome": "readonly"
-	},
-	"ignorePatterns": ["watch.js", "dist/**"]
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  // PRETTIER MUST BE LAST
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  // PRETTIER MUST BE LAST
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "@tanstack/query", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "axios",
+            "message": "Please import from '@http-client' instead"
+          },
+          {
+            "name": "@tanstack/react-query",
+            "message": "Please import from '@query-client' instead"
+          },
+          {
+            "name": "usehooks-ts",
+            "importNames": ["useTernaryDarkMode"],
+            "message": "Please import from '@hooks/use-ternary-darkmode.ts' instead"
+          }
+        ]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": "off",
+    "react/display-name": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "import/named": "off"
+  },
+  "overrides": [
+    {
+      "files": "utils/libs/*/**",
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "globals": {
+    "chrome": "readonly"
+  },
+  "ignorePatterns": ["watch.js", "dist/**"]
 }

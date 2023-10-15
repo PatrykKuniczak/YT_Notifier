@@ -1,111 +1,110 @@
-import chevronUpIcon from '@assets/img/chevron-up-icon.svg';
 import chevronDownIcon from '@assets/img/chevron-down-icon.svg';
+import chevronUpIcon from '@assets/img/chevron-up-icon.svg';
+import { AuthContext } from '@authentication';
+import httpClient from '@http-client';
 import { Dropdown, Menu, MenuButton, MenuItem } from '@mui/base';
-import { useContext, useState } from 'react';
 import { styled, useTheme } from '@mui/system';
 import { StyledAvatar } from '@pages/popup/components/shared/avatar';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
-import { AuthContext } from '@root/utils/core/authentication/authentication';
-import { useMutation } from '@tanstack/react-query';
-import httpClient from '@root/utils/core/http-client/httpClient';
-import urls from '@root/utils/endpoints/urls';
-import queryClient from '@root/utils/core/query-client/query-client';
+import queryClient, { useMutation } from '@query-client';
+import urls from '@utils/endpoints/urls';
+import { useContext, useState } from 'react';
 
 const StyledListbox = styled('ul')(({ theme }) =>
-	theme.unstable_sx({
-		position: 'absolute',
+  theme.unstable_sx({
+    position: 'absolute',
 
-		right: '-30px',
+    right: '-30px',
 
-		minWidth: '200px',
+    minWidth: '200px',
 
-		margin: '12px 0',
-		padding: '6px',
-		border: `1px solid ${theme.palette.background.secondary}`,
-		borderRadius: '12px',
-		outline: 'transparent',
+    margin: '12px 0',
+    padding: '6px',
+    border: `1px solid ${theme.palette.background.secondary}`,
+    borderRadius: '12px',
+    outline: 'transparent',
 
-		background: theme.palette.background.primary,
-		color: theme.palette.color.primary,
+    background: theme.palette.background.primary,
+    color: theme.palette.color.primary,
 
-		fontSize: 'fontSize.sm',
+    fontSize: 'fontSize.sm',
 
-		boxShadow: `0px 4px 30px ${theme.palette.background.secondary}`,
-	}),
+    boxShadow: `0px 4px 30px ${theme.palette.background.secondary}`,
+  }),
 );
 
 const StyledMenuItem = styled(MenuItem)(({ theme }) =>
-	theme.unstable_sx({
-		padding: '8px',
-		borderRadius: '8px',
+  theme.unstable_sx({
+    padding: '8px',
+    borderRadius: '8px',
 
-		userSelect: 'none',
-		cursor: 'pointer',
-		listStyle: 'none',
+    userSelect: 'none',
+    cursor: 'pointer',
+    listStyle: 'none',
 
-		'&:hover:not(.Mui-disabled)': {
-			backgroundColor: theme.palette.background.secondary,
-		},
+    '&:hover:not(.Mui-disabled)': {
+      backgroundColor: theme.palette.background.secondary,
+    },
 
-		'&.Mui-focusVisible': {
-			outline: `1px solid #fff`,
-			backgroundColor: theme.palette.background.secondary,
-		},
-	}),
+    '&.Mui-focusVisible': {
+      outline: `1px solid #fff`,
+      backgroundColor: theme.palette.background.secondary,
+    },
+  }),
 );
 
 const StyledMenuButton = styled(MenuButton)(({ theme }) =>
-	theme.unstable_sx({
-		display: 'flex',
-		alignItems: 'center',
-		gap: '.5rem',
+  theme.unstable_sx({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '.5rem',
 
-		minHeight: 'calc(1.5em + 22px)',
+    minHeight: 'calc(1.5em + 22px)',
 
-		borderRadius: '12px',
+    borderRadius: '12px',
 
-		backgroundColor: 'transparent',
+    backgroundColor: 'transparent',
 
-		cursor: 'pointer',
-	}),
+    cursor: 'pointer',
+  }),
 );
 
 const StyledProfile = () => {
-	const [collapsed, setCollapsed] = useState(false);
-	const {
-		user: { avatar },
-	} = useContext(AuthContext);
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    user: { avatar },
+  } = useContext(AuthContext);
 
-	const theme = useTheme();
+  const theme = useTheme();
 
-	const handleOpenChange = (_: unknown, open: boolean) => {
-		setCollapsed(open);
-	};
+  const handleOpenChange = (_: unknown, open: boolean) => {
+    setCollapsed(open);
+  };
 
-	const { mutate: signOut } = useMutation({
-		mutationFn: () => httpClient.post(urls.auth.logout),
-		onSuccess: async () => queryClient.resetQueries({ queryKey: [urls.auth.me] }),
-	});
+  const { mutate: signOut } = useMutation({
+    mutationFn: () => httpClient.post(urls.auth.logout),
+    onSuccess: async () => queryClient.resetQueries({ queryKey: [urls.auth.me] }),
+  });
 
-	return (
-		<Dropdown onOpenChange={handleOpenChange}>
-			<StyledMenuButton>
-				<StyledAvatar src={avatar} alt={'Avatar'} width={40} height={40} />
-				<StyledIcon
-					src={collapsed ? chevronUpIcon : chevronDownIcon}
-					alt={'Chevron'}
-					width={16}
-					height={16}
-					sx={{
-						filter: `${theme.palette.background.searchIconFilter}`,
-					}}
-				/>
-			</StyledMenuButton>
-			<Menu slots={{ listbox: StyledListbox }}>
-				<StyledMenuItem onClick={() => signOut()}>Wyloguj się</StyledMenuItem>
-			</Menu>
-		</Dropdown>
-	);
+  return (
+    <Dropdown onOpenChange={handleOpenChange}>
+      <StyledMenuButton>
+        <StyledAvatar src={avatar} alt={'Avatar'} width={40} height={40} />
+        <StyledIcon
+          src={collapsed ? chevronUpIcon : chevronDownIcon}
+          alt={'Chevron'}
+          width={16}
+          height={16}
+          sx={{
+            filter: `${theme.palette.background.searchIconFilter}`,
+          }}
+        />
+      </StyledMenuButton>
+      <Menu slots={{ listbox: StyledListbox }}>
+        <StyledMenuItem onClick={() => signOut()}>Wyloguj się</StyledMenuItem>
+      </Menu>
+    </Dropdown>
+  );
 };
 
 export default StyledProfile;

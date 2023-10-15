@@ -2,33 +2,33 @@ import { styled } from '@mui/system';
 import { textMixin } from '@pages/popup/data/mixins/text-mixin';
 
 export const StyledVideoInfo = styled('span')(({ theme }) =>
-	theme.unstable_sx({
-		...textMixin,
+  theme.unstable_sx({
+    ...textMixin,
 
-		maxWidth: 93,
+    maxWidth: 93,
 
-		fontWeight: 'fontWeight.normal',
-		fontSize: 'fontSize.sm',
+    fontWeight: 'fontWeight.normal',
+    fontSize: 'fontSize.sm',
 
-		'&:nth-child(2)': {
-			position: 'relative',
-		},
+    '&:nth-child(2)': {
+      position: 'relative',
+    },
 
-		'&:nth-child(2)::before': {
-			content: '""',
-			position: 'absolute',
+    '&:nth-child(2)::before': {
+      content: '""',
+      position: 'absolute',
 
-			display: 'inline-block',
+      display: 'inline-block',
 
-			bottom: 'calc(50% - 2px)',
-			left: -10,
+      bottom: 'calc(50% - 2px)',
+      left: -10,
 
-			width: 4,
-			height: 4,
+      width: 4,
+      height: 4,
 
-			borderRadius: '50%',
+      borderRadius: '50%',
 
-			background: '#bdbdbd',
-		},
-	}),
+      background: '#bdbdbd',
+    },
+  }),
 );

@@ -5,12 +5,12 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class SessionService {
-	constructor(
-		@InjectRepository(SessionEntity)
-		private readonly sessionRepository: Repository<SessionEntity>
-	) {}
+  constructor(
+    @InjectRepository(SessionEntity)
+    private readonly sessionRepository: Repository<SessionEntity>,
+  ) {}
 
-	async findById(id: string) {
-		return this.sessionRepository.findOneBy({ id });
-	}
+  async findById(id: string) {
+    return this.sessionRepository.findOneBy({ id });
+  }
 }

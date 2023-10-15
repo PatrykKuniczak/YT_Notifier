@@ -5,36 +5,38 @@ const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)';
 type TTernaryDarkMode = 'system' | 'dark' | 'light';
 
 interface IUseTernaryDarkModeOutput {
-	ternaryDarkMode: TTernaryDarkMode;
-	isDarkMode: boolean;
-	changeTheme: () => void;
+  ternaryDarkMode: TTernaryDarkMode;
+  isDarkMode: boolean;
+  changeTheme: () => void;
 }
 
-export function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
-	const [ternaryDarkMode, setTernaryDarkMode] = useLocalStorage<TTernaryDarkMode>(
-		'usehooks-ts-ternary-dark-mode',
-		'system',
-	);
+function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
+  const [ternaryDarkMode, setTernaryDarkMode] = useLocalStorage<TTernaryDarkMode>(
+    'usehooks-ts-ternary-dark-mode',
+    'system',
+  );
 
-	const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
+  const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
 
-	const isDarkMode = ternaryDarkMode === 'dark' || (ternaryDarkMode === 'system' && isDarkOS);
+  const isDarkMode = ternaryDarkMode === 'dark' || (ternaryDarkMode === 'system' && isDarkOS);
 
-	const changeTheme = () =>
-		setTernaryDarkMode(prevState => {
-			switch (prevState) {
-				case 'light':
-					return 'dark';
-				case 'system':
-					return isDarkOS ? 'light' : 'dark';
-				case 'dark':
-					return 'light';
-			}
-		});
+  const changeTheme = () =>
+    setTernaryDarkMode(prevState => {
+      switch (prevState) {
+        case 'light':
+          return 'dark';
+        case 'system':
+          return isDarkOS ? 'light' : 'dark';
+        case 'dark':
+          return 'light';
+      }
+    });
 
-	return {
-		ternaryDarkMode,
-		isDarkMode,
-		changeTheme,
-	};
+  return {
+    ternaryDarkMode,
+    isDarkMode,
+    changeTheme,
+  };
 }
+
+export default useTernaryDarkMode;
