@@ -59,6 +59,7 @@ export default defineConfig({
   build: {
     outDir,
     minify: isProduction,
+    modulePreload: false,
     reportCompressedSize: isProduction,
     rollupOptions: {
       input: {
