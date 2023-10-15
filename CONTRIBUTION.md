@@ -1,1 +1,1 @@
-    ON THE ROOT (OVER NEST AND REACT) RUN 'npm i'
+    ON THE ROOT (OVER NEST AND REACT) RUN 'npm i' AND THEN 'npm run prepare'
