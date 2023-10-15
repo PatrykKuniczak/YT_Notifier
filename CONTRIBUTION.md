@@ -33,9 +33,9 @@
 
 #### If you want to build for production, Just run `npm run build:firefox`.
 
-#### Remember in firefox you add plugin in temporary mode, that's mean is disappear after close browser, you must do it again, on next launch.
+#### Remember in firefox you add plugin in temporary mode, that means it disappear after closing browser, on next launch you must do it again.
 
-#### When you're end part of work then before commit check folder in `src/instructions` and check if your code follow standards.
+#### When you end part of work before committing check folder in `src/instructions` and check if your code follow standards.
 
 #### If you want to create something in utils, follow the folder structure described in `utils/instructions`.
 
@@ -51,7 +51,7 @@
 
 [node](https://nodejs.org/en/download)
 
-    - If you don't have google account (You're strange :)), anyway go and create one, then:
+    - If you don't have google account (You're strange :)) go and create one, then:
 
 [set up google dev project](https://console.cloud.google.com/apis/credentials?hl=pl)
 
@@ -65,8 +65,9 @@
     - Authorize source JS is 'http://localhost:3001' (or other, if you change SERVER_PORT in env)
     - Redirect url is 'http://localhost:3001/api/auth/redirect' (port like above)
 
-    - Go to /envs folder and copy 'example.env' then paste it as 'local.env', then paste your google credentials,
-    clientId and secret from secret.json from dev console to related env keys (You can copy it directly from browser).
+    - Go to /envs folder and copy 'example.env' then paste it as 'local.env',
+      then paste your google credentials(clientId and secret) from google cloud console 
+      or from secret.json(if you download file) to related env keys.
 
 ## Installation
 
@@ -89,9 +90,9 @@ $ npm run start:prod
 
 ## Getting started
 
-For run docs go to https://localhost:3001/api/docs (or other, if you change SERVER_PORT in env)
-And there you can find next steps to authorize yourself, to have permission to use endpoints,
-follow the instructions from swagger description (On the top of the page)
+To run docs open in browser: https://localhost:3001/api/docs (or other port, if you change SERVER_PORT in env)
+And there you can find next steps to authorize yourself, to have permission to use endpoints.
+Follow the instructions from swagger description (On the top of the page)
 
 ## ON IDE FOR BOTH APPS(CONFIG ONLY FOR WEBSTORM)
 
