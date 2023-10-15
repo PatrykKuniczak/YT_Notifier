@@ -70,8 +70,7 @@
 
 ### CONFIGURE IF YOU'RE USING WINDOWS:
       OPEN 'GIT BASH' ON YOUR MACHINE AS ADMINISTRATOR, AND PASTE IT:
-         git config --system core.autocrlf false  - IF YOU WANT TO DISABLE IT FOR SYSTEM, AND DON'T NEED TO RECONFIGURE IT ANYMORE.
-         git config --global core.autocrlf false  - IF YOU WANT TO DISABLE IT FOR USER.
+         git config --global core.autocrlf false  - IF YOU WANT TO DISABLE IT FOR USER. (RECOMMENDED)
          git config --local core.autocrlf false  - IF YOU WANT TO DISABLE IT FOR THIS PROJECT ONLY.
 
 ### CONFIGURE DEFAULT BRANCH UPDATE SETTINGS:
