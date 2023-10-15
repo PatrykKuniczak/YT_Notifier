@@ -10,40 +10,40 @@ import { StoreRoute } from '@pages/popup/routes/store.route';
 import { VideosRoute } from '@pages/popup/routes/videos.route';
 import { useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { createHashRouter } from 'react-router-dom';
 
 const hashRouting = createHashRouter([
-	{
-		path: '/',
-		element: <HomePage />,
-		children: [
-			{
-				index: true,
-				element: <VideosRoute />,
-			},
+  {
+    path: '/',
+    element: <HomePage />,
+    children: [
+      {
+        index: true,
+        element: <VideosRoute />,
+      },
 
-			{
-				path: 'store',
-				element: <StoreRoute />,
-			},
-		],
-	},
+      {
+        path: 'store',
+        element: <StoreRoute />,
+      },
+    ],
+  },
 
-	{
-		path: '/auth/login',
-		element: <AuthPage />,
-	},
+  {
+    path: '/auth/login',
+    element: <AuthPage />,
+  },
 ]);
 const Popup = () => {
-	const { isDarkMode } = useTernaryDarkMode();
+  const { isDarkMode } = useTernaryDarkMode();
 
-	const { data: user } = useQuery<IUser>({
-		queryKey: [urls.auth.me],
-		queryFn: () => httpClient.post(urls.auth.me).then(user => user.data),
-	});
+  const { data: user } = useQuery<IUser>({
+    queryKey: [urls.auth.me],
+    queryFn: () => httpClient.post(urls.auth.me).then(user => user.data),
+  });
 
-	return <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user }} hashRouting={hashRouting} />;
+  return <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user }} hashRouting={hashRouting} />;
 };
 
 export default withErrorBoundary(withSuspense(Popup, <div> Loading </div>), <div> Error </div>);
