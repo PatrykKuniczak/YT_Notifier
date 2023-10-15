@@ -1,14 +1,14 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
-import * as session from 'express-session';
-import * as passport from 'passport';
-import * as cookieParser from 'cookie-parser';
-import { COOKIE_MAX_AGE, SESSION_COOKIE_NAME, SESSION_TTL } from './constants';
-import { DataSource } from 'typeorm';
-import { SessionEntity } from './auth/session/session.entity';
-import { TypeormStore } from 'connect-typeorm';
+import { NestFactory } from '@nestjs/core';
 import { SwaggerModule } from '@nestjs/swagger';
+import { TypeormStore } from 'connect-typeorm';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import passport from 'passport';
+import { DataSource } from 'typeorm';
+import { AppModule } from './app.module';
+import { SessionEntity } from './auth/session/session.entity';
+import { COOKIE_MAX_AGE, SESSION_COOKIE_NAME, SESSION_TTL } from './constants';
 import swaggerConfig from './swagger/swagger.config';
 
 async function bootstrap() {

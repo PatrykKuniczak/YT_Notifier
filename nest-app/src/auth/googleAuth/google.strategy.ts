@@ -2,13 +2,16 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, VerifyCallback } from 'passport-google-oauth20';
+import { GOOGLE_REDIRECT_URL } from '../../constants';
 import { UsersService } from '../../user/user.service';
 import { IProfile } from '../../user/user.types';
-import { GOOGLE_REDIRECT_URL } from '../../constants';
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
-  constructor(private readonly configService: ConfigService, private readonly userService: UsersService) {
+  constructor(
+    private readonly configService: ConfigService,
+    private readonly userService: UsersService,
+  ) {
     super({
       clientID: configService.get('GOOGLE_CLIENT_ID'),
       clientSecret: configService.get('GOOGLE_CLIENT_SECRET'),
