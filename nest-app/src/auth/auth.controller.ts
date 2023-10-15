@@ -42,7 +42,7 @@ export class AuthController {
 
 	@ApiOperation({
 		summary:
-			"Work's only when it's opened as window/chrome tab, don't work with postman/axios or etc."
+			"Works only when it's opened as window/chrome tab, don't work with postman/axios or etc."
 	})
 	@ApiOkResponse()
 	@ApiUnauthorizedResponse({
