@@ -11,16 +11,6 @@ import {
 	Res,
 	UseGuards
 } from '@nestjs/common';
-import { Request, Response } from 'express';
-import { GoogleAuthGuard } from './googleAuth/google.guard';
-import { SessionGuard } from './session/session.guard';
-import { SESSION_COOKIE_NAME } from '../constants';
-import { UsersService } from '../user/user.service';
-import { OAuth2Client } from 'google-auth-library';
-import {
-	OAuth2GoogleClientCredentials,
-	TOAuth2GoogleClientCredentials
-} from './oauth2.module';
 import {
 	ApiExcludeEndpoint,
 	ApiInternalServerErrorResponse,
@@ -30,6 +20,16 @@ import {
 	ApiTags,
 	ApiUnauthorizedResponse
 } from '@nestjs/swagger';
+import { Request, Response } from 'express';
+import { OAuth2Client } from 'google-auth-library';
+import { SESSION_COOKIE_NAME } from '../constants';
+import { UsersService } from '../user/user.service';
+import { GoogleAuthGuard } from './googleAuth/google.guard';
+import {
+	OAuth2GoogleClientCredentials,
+	TOAuth2GoogleClientCredentials
+} from './oauth2.module';
+import { SessionGuard } from './session/session.guard';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -42,7 +42,7 @@ export class AuthController {
 
 	@ApiOperation({
 		summary:
-			"Work's only when it's opened as window/chrome tab, don't work with postman/axios or etc."
+			"Works only when it's opened as window/chrome tab, don't work with postman/axios or etc."
 	})
 	@ApiOkResponse()
 	@ApiUnauthorizedResponse({
@@ -71,22 +71,13 @@ export class AuthController {
 	@ApiOAuth2([])
 	@ApiUnauthorizedResponse()
 	@ApiInternalServerErrorResponse({
-		description: 'Error on destroying session/passport session: {Error message}'
+		description: 'Error on destroying session: {Error message}'
 	})
 	@ApiOkResponse()
 	@Post('logout')
 	@UseGuards(SessionGuard)
-	logout(@Req() req: Request, @Res() res: Response) {
+	async logout(@Req() req: Request, @Res() res: Response) {
 		req.logout(
-			(err: HttpException) =>
-				err &&
-				res
-					.clearCookie(SESSION_COOKIE_NAME)
-					.status(500)
-					.send('Error on destroying passport session: ' + err.message)
-		);
-
-		req.session.destroy(
 			(err: HttpException) =>
 				err &&
 				res
@@ -111,7 +102,8 @@ export class AuthController {
 	@ApiOAuth2([])
 	@ApiUnauthorizedResponse()
 	@ApiInternalServerErrorResponse({
-		description: 'Error on deleting user profile'
+		description:
+			'Error on deleting user profile {error message}, but the message is optional'
 	})
 	@ApiOkResponse()
 	@Delete('remove-account')
@@ -137,6 +129,6 @@ export class AuthController {
 			throw new InternalServerErrorException('Error on deleting user profile');
 		}
 
-		return res.clearCookie(SESSION_COOKIE_NAME).sendStatus(200);
+		return this.logout(req, res);
 	}
 }
