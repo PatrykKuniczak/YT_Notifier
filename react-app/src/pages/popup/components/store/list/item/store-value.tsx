@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 const StyledStoreItemWrapper = styled(Stack)<TComponentTag>(({ theme }) =>
   theme.unstable_sx({
+    alignItems: 'baseline',
     gap: 1,
 
     width: '100%',
