@@ -23,6 +23,12 @@ const manifest: chrome.runtime.ManifestV3 = {
   icons: {
     '128': 'icon-128.png',
   },
+  content_scripts: [
+    {
+      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      js: ['src/pages/content/index.js'],
+    },
+  ],
   web_accessible_resources: [
     {
       resources: ['assets/js/*.js', 'assets/svg/*.svg', 'icon-128.png', 'icon-34.png'],
