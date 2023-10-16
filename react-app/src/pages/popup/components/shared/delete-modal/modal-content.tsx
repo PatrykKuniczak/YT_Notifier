@@ -1,6 +1,6 @@
 import { Stack, styled } from '@mui/system';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
-import { StyledModalButton } from '@pages/popup/components/store/delete-modal/delete-modal-button';
+import { StyledModalButton } from '@pages/popup/components/shared/delete-modal/delete-modal-button';
 import { TVoid } from '@types';
 
 const ModalContentStyles = styled(Stack)(({ theme }) =>
@@ -14,13 +14,25 @@ const ModalContentStyles = styled(Stack)(({ theme }) =>
   }),
 );
 
-export const StyledModalContent = ({ changeModalVisibility }: { changeModalVisibility: TVoid }) => (
+export const StyledModalContent = ({
+  content,
+  onConfirm,
+  changeModalVisibility,
+}: {
+  content: string;
+  onConfirm: () => void;
+  changeModalVisibility: TVoid;
+}) => (
   <ModalContentStyles justifyContent={'center'} alignItems={'center'} useFlexGap={true} spacing={2}>
-    <StyledTitle sx={{ fontSize: 'fontSize.l', color: 'color.secondary' }}>
-      Czy jesteś pewien, że chcesz to usunąć?
-    </StyledTitle>
+    <StyledTitle sx={{ fontSize: 'fontSize.l', color: 'color.secondary' }}>{content}</StyledTitle>
 
-    <StyledModalButton onClick={changeModalVisibility}>Tak, usuń</StyledModalButton>
+    <StyledModalButton
+      onClick={() => {
+        onConfirm();
+        changeModalVisibility();
+      }}>
+      Tak, usuń
+    </StyledModalButton>
 
     <StyledModalButton sx={{ backgroundColor: 'background.grey' }} onClick={changeModalVisibility}>
       Anuluj

@@ -9,6 +9,8 @@ import { StyledIcon } from '@pages/popup/components/shared/icon';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useContext, useState } from 'react';
+import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
+import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 
 const StyledListbox = styled('ul')(({ theme }) =>
   theme.unstable_sx({
@@ -81,8 +83,15 @@ const StyledProfile = () => {
     setCollapsed(open);
   };
 
+  const { open, changeModalVisibility } = useDeleteModal();
+
   const { mutate: signOut } = useMutation({
     mutationFn: () => httpClient.post(urls.auth.logout),
+    onSuccess: async () => queryClient.resetQueries({ queryKey: [urls.auth.me] }),
+  });
+
+  const { mutate: removeAccount } = useMutation({
+    mutationFn: () => httpClient.delete(urls.auth.removeAccount),
     onSuccess: async () => queryClient.resetQueries({ queryKey: [urls.auth.me] }),
   });
 
@@ -101,8 +110,15 @@ const StyledProfile = () => {
         />
       </StyledMenuButton>
       <Menu slots={{ listbox: StyledListbox }}>
+        <StyledMenuItem onClick={changeModalVisibility}>Usun konto</StyledMenuItem>
         <StyledMenuItem onClick={() => signOut()}>Wyloguj się</StyledMenuItem>
       </Menu>
+      <StyledDeleteModal
+        open={open}
+        content="Czy jestes pewien, ze chesz usunac konto? Twoje dane zostana trwale usuniete"
+        onConfirm={() => removeAccount()}
+        changeModalVisibility={changeModalVisibility}
+      />
     </Dropdown>
   );
 };
