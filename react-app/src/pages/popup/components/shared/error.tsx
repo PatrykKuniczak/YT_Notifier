@@ -22,15 +22,10 @@ export const StyledErrorMessage = styled(props => {
   return showRequiredError ? <p {...props}>To pole jest wymagane!</p> : null;
 })(({ theme }) =>
   theme.unstable_sx({
-    position: 'absolute',
-    bottom: '35px',
-    left: '12px',
-
     p: 1,
-    mb: 0.5,
-    borderRadius: 1,
 
     color: 'color.danger',
-    backgroundColor: 'background.purple',
+
+    fontWeight: 'bold',
   }),
 );

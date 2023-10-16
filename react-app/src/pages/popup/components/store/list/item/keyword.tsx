@@ -63,12 +63,12 @@ export const StyledKeyword = ({ value, openedInput, changeInputVisibility }: ISt
       onChange={event => handleStateChange(event.target.value)}
       value={inputValue}
       style={{ width: '100%', position: 'relative' }}>
-      <StyledErrorMessage />
       <StyledKeywordInput
         placeholder="Podaj słowo kluczowe"
         onMouseOver={focus}
         onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
       />
+      <StyledErrorMessage />
     </FormControl>
   ) : (
     <StyledKeywordSpan>{previousValue}</StyledKeywordSpan>
