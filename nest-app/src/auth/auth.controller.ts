@@ -71,14 +71,7 @@ export class AuthController {
   @Post('logout')
   @UseGuards(SessionGuard)
   async logout(@Req() req: Request, @Res() res: Response) {
-    req.logout(
-      (err: HttpException) =>
-        err &&
-        res
-          .clearCookie(SESSION_COOKIE_NAME)
-          .status(500)
-          .send('Error on destroying session: ' + err.message),
-    );
+    req.logout((err: HttpException) => err && res.status(500).send('Error on destroying session: ' + err.message));
 
     return res.clearCookie(SESSION_COOKIE_NAME).sendStatus(200);
   }
