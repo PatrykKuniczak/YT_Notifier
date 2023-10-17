@@ -4,7 +4,7 @@ import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import StyledInput from '@pages/popup/components/shared/input';
-import { useState } from 'react';
+import useValidate from '@hooks/use-validate';
 
 const StyledForm = styled('form')(({ theme }) =>
   theme.unstable_sx({
@@ -63,17 +63,7 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
 );
 
 const StyledAddInput = () => {
-  const [disable, setDisable] = useState(true);
-
-  const handleValidation = (props: React.ChangeEvent<HTMLInputElement>) => {
-    const validationNumber = props.target.value.length;
-
-    if (validationNumber < 3 || validationNumber > 255) {
-      setDisable(true);
-    } else {
-      setDisable(false);
-    }
-  };
+  const { disable, handleValidation } = useValidate();
 
   return (
     <StyledForm noValidate>
