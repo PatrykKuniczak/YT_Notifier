@@ -10,7 +10,7 @@ const THEME = createTheme({
       grey: '#5b5b5e',
     },
     color: {
-      primary: '#16121E',
+      primary: '#E6E6E6',
     },
   },
   typography: {
