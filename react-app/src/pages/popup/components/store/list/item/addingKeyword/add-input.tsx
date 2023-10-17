@@ -4,6 +4,7 @@ import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import StyledInput from '@pages/popup/components/shared/input';
+import { useState } from 'react';
 
 const StyledForm = styled('form')(({ theme }) =>
   theme.unstable_sx({
@@ -27,6 +28,13 @@ const StyledSubmitButton = styled(StyledButton)(({ theme }) =>
     backgroundColor: 'background.purple',
 
     borderRadius: 1,
+
+    transition: '0.3s',
+
+    '&:disabled': {
+      filter: 'brightness(50%)',
+      pointerEvents: 'none',
+    },
   }),
 );
 
@@ -55,12 +63,24 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
 );
 
 const StyledAddInput = () => {
+  const [disable, setDisable] = useState(true);
+
+  const handleValidation = (props: React.ChangeEvent<HTMLInputElement>) => {
+    const validationNumber = props.target.value.length;
+
+    if (validationNumber < 3 || validationNumber > 255) {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  };
+
   return (
-    <StyledForm>
-      <FormControl defaultValue="" required style={{ width: '100%', position: 'relative' }}>
+    <StyledForm noValidate>
+      <FormControl onChange={handleValidation} defaultValue="" required style={{ width: '100%', position: 'relative' }}>
         <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
       </FormControl>
-      <StyledSubmitButton type={'submit'}>
+      <StyledSubmitButton disabled={disable} type={'submit'}>
         <StyledIcon src={plusIcon} alt={'Add keyword'} width={20} height={20} />
       </StyledSubmitButton>
     </StyledForm>
