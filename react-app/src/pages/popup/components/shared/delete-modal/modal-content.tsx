@@ -2,6 +2,7 @@ import { Stack, styled } from '@mui/system';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { StyledModalButton } from '@pages/popup/components/shared/delete-modal/delete-modal-button';
 import { TVoid } from '@types';
+import { ReactNode } from 'react';
 
 const ModalContentStyles = styled(Stack)(({ theme }) =>
   theme.unstable_sx({
@@ -19,8 +20,8 @@ export const StyledModalContent = ({
   onConfirm,
   changeModalVisibility,
 }: {
-  content: string;
-  onConfirm: () => void;
+  content: ReactNode;
+  onConfirm: TVoid;
   changeModalVisibility: TVoid;
 }) => (
   <ModalContentStyles justifyContent={'center'} alignItems={'center'} useFlexGap={true} spacing={2}>

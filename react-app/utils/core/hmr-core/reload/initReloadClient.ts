@@ -1,3 +1,4 @@
+import { TVoid } from '@types';
 import {
   LOCAL_RELOAD_SOCKET_URL,
   UPDATE_COMPLETE_MESSAGE,
@@ -8,13 +9,7 @@ import MessageInterpreter from './interpreter';
 
 let needToUpdate = false;
 
-export default function initReloadClient({
-  watchPath,
-  onUpdate,
-}: {
-  watchPath: string;
-  onUpdate: () => void;
-}): WebSocket {
+export default function initReloadClient({ watchPath, onUpdate }: { watchPath: string; onUpdate: TVoid }): WebSocket {
   const socket = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
 
   function sendUpdateCompleteMessage() {

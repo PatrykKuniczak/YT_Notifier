@@ -115,7 +115,13 @@ const StyledProfile = () => {
       </Menu>
       <StyledDeleteModal
         open={open}
-        content="Czy jestes pewien, ze chesz usunac konto? Twoje dane zostana trwale usuniete"
+        content={
+          <>
+            Czy jesteś pewien, że chcesz usunąć konto?
+            <br />
+            Twoje dane zostaną trwale usunięte
+          </>
+        }
         onConfirm={() => removeAccount()}
         changeModalVisibility={changeModalVisibility}
       />

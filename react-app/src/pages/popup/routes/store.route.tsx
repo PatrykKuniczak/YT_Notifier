@@ -35,7 +35,7 @@ export const StoreRoute = () => {
 
       <StyledDeleteModal
         open={open}
-        content="Czy jesteś pewien, że chcesz to usunąć?"
+        content={<>Czy jesteś pewien, że chcesz to usunąć?</>}
         onConfirm={() => null}
         changeModalVisibility={changeModalVisibility}
       />
