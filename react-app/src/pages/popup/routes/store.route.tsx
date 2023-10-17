@@ -1,7 +1,7 @@
 import useSearch from '@hooks/use-search';
 import { StyledItemsContainer } from '@pages/popup/components/shared/items-container';
-import { StyledDeleteModal } from '@pages/popup/components/store/delete-modal/delete-modal';
-import { useDeleteModal } from '@pages/popup/components/store/delete-modal/use-delete-modal';
+import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
+import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import StyledAddInput from '@pages/popup/components/store/list/item/addingKeyword/add-input';
 import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-value';
 import { useDeferredValue, useMemo } from 'react';
@@ -33,7 +33,12 @@ export const StoreRoute = () => {
         ))}
       </StyledItemsContainer>
 
-      <StyledDeleteModal open={open} changeModalVisibility={changeModalVisibility} />
+      <StyledDeleteModal
+        open={open}
+        content={<>Czy jesteś pewien, że chcesz to usunąć?</>}
+        onConfirm={() => null}
+        changeModalVisibility={changeModalVisibility}
+      />
     </>
   );
 };

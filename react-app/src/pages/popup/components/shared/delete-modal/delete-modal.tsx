@@ -1,9 +1,9 @@
 import { Modal } from '@mui/base';
 import { Box, styled } from '@mui/system';
-import { StyledModalContent } from '@pages/popup/components/store/delete-modal/modal-content';
+import { StyledModalContent } from '@pages/popup/components/shared/delete-modal/modal-content';
 import { TVoid } from '@types';
 import clsx from 'clsx';
-import { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 const StyledMUIBackdrop = forwardRef<HTMLDivElement, { open: boolean; className: string }>((props, ref) => {
   const { open, className, ...other } = props;
@@ -35,10 +35,20 @@ const StyledModal = styled(Modal)(({ theme }) =>
   }),
 );
 
-export const StyledDeleteModal = ({ open, changeModalVisibility }: { open: boolean; changeModalVisibility: TVoid }) => (
+export const StyledDeleteModal = ({
+  open,
+  content,
+  onConfirm,
+  changeModalVisibility,
+}: {
+  open: boolean;
+  content: ReactNode;
+  onConfirm: TVoid;
+  changeModalVisibility: TVoid;
+}) => (
   <StyledModal open={open} slots={{ backdrop: StyledBackdrop }} onClose={changeModalVisibility}>
     <Box>
-      <StyledModalContent changeModalVisibility={changeModalVisibility} />
+      <StyledModalContent content={content} onConfirm={onConfirm} changeModalVisibility={changeModalVisibility} />
     </Box>
   </StyledModal>
 );

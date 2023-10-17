@@ -1,3 +1,4 @@
+import { TVoid } from '@types';
 import { useLocalStorage, useMediaQuery } from 'usehooks-ts';
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)';
@@ -7,7 +8,7 @@ type TTernaryDarkMode = 'system' | 'dark' | 'light';
 interface IUseTernaryDarkModeOutput {
   ternaryDarkMode: TTernaryDarkMode;
   isDarkMode: boolean;
-  changeTheme: () => void;
+  changeTheme: TVoid;
 }
 
 function useTernaryDarkMode(): IUseTernaryDarkModeOutput {
