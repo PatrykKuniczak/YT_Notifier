@@ -35,8 +35,8 @@ const Notification = ({ open, toggleOpen, content }: { open: boolean; toggleOpen
       {open && (
         <Portal>
           <StyledNotification>
-            <StyledNotificationButton onClick={toggleOpen}>
-              <StyledIcon src={xIcon} alt={'X'} width={20} height={20} />
+            <StyledNotificationButton onClick={toggleOpen} aria-label="closing notification">
+              <StyledIcon src={xIcon} alt={'close'} width={20} height={20} />
             </StyledNotificationButton>
             <StyledNotificationContent>{content}</StyledNotificationContent>
           </StyledNotification>

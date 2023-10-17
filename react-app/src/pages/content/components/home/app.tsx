@@ -5,17 +5,17 @@ import theme from '@pages/content/data/theme';
 import GlobalStyles from '@pages/content/data/global-styles';
 
 export default function App() {
-  const [open, setOpen] = useState(false);
+  const [opened, setOpened] = useState(false);
   const [loadedVideosAmount, setLoadedVideosAmount] = useState(0);
 
   const toggleOpen = () => {
-    setOpen(prevState => !prevState);
+    setOpened(prevState => !prevState);
   };
 
   chrome.runtime.onMessage.addListener(({ loadedVideos }) => {
     if (loadedVideos) {
       setLoadedVideosAmount(loadedVideos);
-      setOpen(true);
+      setOpened(true);
     }
   });
 
@@ -24,7 +24,7 @@ export default function App() {
       <GlobalStyles />
 
       <Notification
-        open={open}
+        open={opened}
         toggleOpen={toggleOpen}
         content={`Spod podanych slów kluczowych, pobrano ${loadedVideosAmount} wideo, sprawdz we wtyczce.`}
       />
