@@ -1,8 +1,8 @@
 import Notification from '@pages/content/components/notification/notification';
 import React, { useState } from 'react';
 import { ThemeProvider } from '@mui/system';
-import theme from '@pages/content/data/theme';
-import GlobalStyles from '@pages/content/data/global-styles';
+import theme from '@utils/data/themes/dark-theme';
+import GlobalStyles from '@utils/data/global-styles';
 
 export default function App() {
   const [opened, setOpened] = useState(false);

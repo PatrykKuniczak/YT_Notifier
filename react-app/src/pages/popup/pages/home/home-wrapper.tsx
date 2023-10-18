@@ -1,5 +1,5 @@
 import { Stack, styled } from '@mui/system';
-import { pageMixin } from '@pages/popup/data/mixins/page-mixin';
+import { pageMixin } from '@utils/data/mixins/page-mixin';
 
 export const StyledHomePageWrapper = styled(Stack)(({ theme }) =>
   theme.unstable_sx({
