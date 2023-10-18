@@ -25,7 +25,7 @@ const StyledNotification = styled('div')(({ theme }) =>
     p: 2,
     borderRadius: 2,
 
-    backgroundColor: theme.palette.background.purple,
+    backgroundColor: 'background.purple',
   }),
 );
 
