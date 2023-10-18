@@ -8,7 +8,7 @@ import { StyledSearchBarWrapper } from '@pages/popup/components/shared/searchBar
 import { forwardRef, Ref } from 'react';
 
 // eslint-disable-next-line react/display-name
-export const StyledSearchBar = forwardRef(ref => {
+export const StyledSearchBar = forwardRef((_, ref) => {
   const theme = useTheme();
 
   const { handleKeyEvent } = useHandleKeyEvents();
