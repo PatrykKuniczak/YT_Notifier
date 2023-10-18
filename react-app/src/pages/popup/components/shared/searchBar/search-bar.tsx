@@ -5,18 +5,17 @@ import { useTheme } from '@mui/system';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledSearchBarInput } from '@pages/popup/components/shared/searchBar/search-bar-input';
 import { StyledSearchBarWrapper } from '@pages/popup/components/shared/searchBar/search-bar-wrapper';
-import { TVoid } from '@types';
 import { forwardRef, Ref } from 'react';
 
 // eslint-disable-next-line react/display-name
-export const StyledSearchBar = forwardRef(({ focus }: { focus: TVoid }, ref) => {
+export const StyledSearchBar = forwardRef((_, ref) => {
   const theme = useTheme();
 
   const { handleKeyEvent } = useHandleKeyEvents();
   const { clearSearchParamValue, searchParamValue, handleSearchParamsChange } = useSearch();
 
   return (
-    <StyledSearchBarWrapper onMouseOver={focus}>
+    <StyledSearchBarWrapper>
       <StyledIcon
         src={searchIcon}
         alt={'Search magnifier'}

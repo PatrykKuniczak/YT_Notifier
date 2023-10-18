@@ -41,13 +41,7 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
 
 export const StyledKeyword = ({ value, openedInput, changeInputVisibility }: IStyledKeyword) => {
   const { handleKeyEvent } = useHandleKeyEvents();
-  const {
-    focus,
-    value: inputValue,
-    handleStateChange,
-    previousValue,
-    handlePreviousValueChange,
-  } = useEditKeyword(value);
+  const { value: inputValue, handleStateChange, previousValue, handlePreviousValueChange } = useEditKeyword(value);
 
   const handleApplyingChanges = () => {
     if (inputValue.length > 1) {
@@ -65,7 +59,6 @@ export const StyledKeyword = ({ value, openedInput, changeInputVisibility }: ISt
       style={{ width: '100%', position: 'relative' }}>
       <StyledKeywordInput
         placeholder="Podaj słowo kluczowe"
-        onMouseOver={focus}
         onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
       />
       <StyledErrorMessage />
