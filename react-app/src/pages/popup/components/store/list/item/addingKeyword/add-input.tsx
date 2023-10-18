@@ -63,14 +63,14 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
 );
 
 const StyledAddInput = () => {
-  const { disable, handleValidation } = useValidate();
+  const { disabled, handleValidation } = useValidate();
 
   return (
-    <StyledForm noValidate>
-      <FormControl onChange={handleValidation} defaultValue="" required style={{ width: '100%', position: 'relative' }}>
+    <StyledForm>
+      <FormControl onChange={handleValidation} defaultValue="" style={{ width: '100%', position: 'relative' }}>
         <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
       </FormControl>
-      <StyledSubmitButton disabled={disable} type={'submit'}>
+      <StyledSubmitButton disabled={disabled} type={'submit'}>
         <StyledIcon src={plusIcon} alt={'Add keyword'} width={20} height={20} />
       </StyledSubmitButton>
     </StyledForm>
