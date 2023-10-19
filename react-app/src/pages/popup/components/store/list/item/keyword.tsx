@@ -58,6 +58,7 @@ export const StyledKeyword = ({ value, openedInput, changeInputVisibility }: ISt
       value={inputValue}
       style={{ width: '100%', position: 'relative' }}>
       <StyledKeywordInput
+        autoFocus
         placeholder="Podaj słowo kluczowe"
         onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
       />
