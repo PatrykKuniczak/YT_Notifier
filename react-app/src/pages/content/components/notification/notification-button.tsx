@@ -3,13 +3,16 @@ import { styled } from '@mui/system';
 export const StyledNotificationButton = styled('button')(({ theme }) =>
   theme.unstable_sx({
     p: 1,
+    borderRadius: '50%',
 
     background: 'transparent',
 
-    '&:hover': {
-      backgroundColor: 'background.grey',
+    cursor: 'pointer',
 
-      borderRadius: 2,
+    '&:hover': {
+      backgroundColor: 'background.closeButtonHover',
     },
+
+    transition: 'background-color 0.5s',
   }),
 );
