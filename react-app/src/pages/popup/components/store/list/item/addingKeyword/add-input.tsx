@@ -4,6 +4,7 @@ import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import StyledInput from '@pages/popup/components/shared/input';
+import useValidate from '@hooks/use-validate';
 
 const StyledForm = styled('form')(({ theme }) =>
   theme.unstable_sx({
@@ -27,6 +28,13 @@ const StyledSubmitButton = styled(StyledButton)(({ theme }) =>
     backgroundColor: 'background.purple',
 
     borderRadius: 1,
+
+    transition: '0.3s',
+
+    '&:disabled': {
+      filter: 'brightness(50%)',
+      pointerEvents: 'none',
+    },
   }),
 );
 
@@ -55,12 +63,14 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
 );
 
 const StyledAddInput = () => {
+  const { disabled, handleValidation } = useValidate();
+
   return (
     <StyledForm>
-      <FormControl defaultValue="" required style={{ width: '100%', position: 'relative' }}>
+      <FormControl onChange={handleValidation} defaultValue="" style={{ width: '100%', position: 'relative' }}>
         <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
       </FormControl>
-      <StyledSubmitButton type={'submit'}>
+      <StyledSubmitButton disabled={disabled} type={'submit'}>
         <StyledIcon src={plusIcon} alt={'Add keyword'} width={20} height={20} />
       </StyledSubmitButton>
     </StyledForm>
