@@ -36,7 +36,7 @@ const Notification = ({ open, toggleOpen, content }: { open: boolean; toggleOpen
         <Portal>
           <StyledNotification>
             <StyledNotificationButton onClick={toggleOpen} aria-label="closing notification">
-              <StyledIcon src={chrome.runtime.getURL(xIcon)} alt={'close'} width={20} height={20} />
+              <StyledIcon src={chrome.runtime.getURL(xIcon)} alt={'close'} width={24} height={24} />
             </StyledNotificationButton>
             <StyledNotificationContent>{content}</StyledNotificationContent>
           </StyledNotification>
