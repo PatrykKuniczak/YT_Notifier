@@ -2,6 +2,7 @@ import { SESSION_COOKIE_NAME } from '@pages/popup/constant';
 import queryClient from '@query-client';
 import urls from '@utils/endpoints/urls';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const createHttpInstance = () => {
   const axiosInstance = axios.create({
@@ -18,6 +19,10 @@ const createHttpInstance = () => {
       if (error.response.status === 401 && error.config.url !== urls.auth.me) {
         await chrome.cookies.remove({ name: SESSION_COOKIE_NAME, url: import.meta.env.VITE_API_URL });
         await queryClient.resetQueries({ queryKey: [urls.auth.me] });
+        toast.error('Zostałeś wylogowany, twoja sesja wygasła, zaloguj się ponownie', {
+          position: 'bottom-center',
+          autoClose: false,
+        });
       }
 
       return Promise.reject(error);
