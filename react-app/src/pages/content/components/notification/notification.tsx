@@ -29,10 +29,10 @@ const StyledNotification = styled('div')(({ theme }) =>
   }),
 );
 
-const Notification = ({ open, toggleOpen, content }: { open: boolean; toggleOpen: TVoid; content: string }) => {
+const Notification = ({ opened, toggleOpen, content }: { opened: boolean; toggleOpen: TVoid; content: string }) => {
   return (
     <>
-      {open && (
+      {opened && (
         <Portal>
           <StyledNotification>
             <StyledNotificationButton onClick={toggleOpen} aria-label="closing notification">

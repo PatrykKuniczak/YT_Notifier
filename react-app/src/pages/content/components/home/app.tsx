@@ -24,7 +24,7 @@ export default function App() {
       <GlobalStyles />
 
       <Notification
-        open={opened}
+        opened={opened}
         toggleOpen={toggleOpen}
         content={`Spod podanych slów kluczowych, pobrano ${loadedVideosAmount} wideo, sprawdź we wtyczce.`}
       />
