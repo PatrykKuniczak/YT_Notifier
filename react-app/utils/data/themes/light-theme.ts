@@ -14,6 +14,7 @@ const THEME = createTheme({
       snackbarBackground: '#ffbbbb',
       focusOutline: '#16121E',
       closeButtonHover: '#876aea',
+      closeButtonActive: '#7c62d7',
     },
     color: {
       primary: '#16121E',

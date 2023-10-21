@@ -13,6 +13,10 @@ export const StyledNotificationButton = styled('button')(({ theme }) =>
       backgroundColor: 'background.closeButtonHover',
     },
 
-    transition: 'background-color 0.5s',
+    '&:active': {
+      backgroundColor: 'background.closeButtonActive',
+    },
+
+    transition: 'background-color 0.15s',
   }),
 );
