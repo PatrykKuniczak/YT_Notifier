@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import typeOrmConfig from './database/config/typeorm.config';
-import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { OAuth2Module } from './auth/oauth2.module';
+import typeOrmConfig from './database/config/typeorm.config';
+import { KeyWordsModule } from './key-words/key-words.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { OAuth2Module } from './auth/oauth2.module';
     UserModule,
     AuthModule,
     OAuth2Module,
+    KeyWordsModule,
   ],
 })
 export class AppModule {}

@@ -1,9 +1,10 @@
 import { ConfigService } from '@nestjs/config';
-import { UsersEntity } from '../../user/model/users.entity';
 import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm/dist/interfaces/typeorm-options.interface';
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { DataSource } from 'typeorm';
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { SessionEntity } from '../../auth/session/session.entity';
+import { KeyWordEntity } from '../../key-words/entities/key-word.entity';
+import { UsersEntity } from '../../user/model/users.entity';
 
 const typeOrmConfig: TypeOrmModuleAsyncOptions = {
   inject: [ConfigService],
@@ -15,7 +16,7 @@ const typeOrmConfig: TypeOrmModuleAsyncOptions = {
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_DATABASE'),
     extra: { charset: 'utf8mb4_unicode_ci' },
-    entities: [UsersEntity, SessionEntity],
+    entities: [UsersEntity, SessionEntity, KeyWordEntity],
     synchronize: true,
   }),
   dataSourceFactory: async options => new DataSource(options).initialize(),
