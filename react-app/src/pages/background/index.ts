@@ -1,9 +1,10 @@
 import urls from '@utils/endpoints/urls';
 import reloadOnUpdate from 'virtual:reload-on-update-in-background-script';
+import CreateProperties = chrome.contextMenus.CreateProperties;
 
 reloadOnUpdate('pages/background');
 
-const createProperties = {
+const createProperties: CreateProperties = {
   id: 'acae3286',
   title: `Subscribe '%s' keyword`,
   contexts: ['selection'],
