@@ -1,44 +1,34 @@
 import useSearch from '@hooks/use-search';
+import httpClient from '@http-client';
+import { IKeyword } from '@interfaces';
 import { StyledItemsContainer } from '@pages/popup/components/shared/items-container';
-import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
-import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import StyledAddInput from '@pages/popup/components/store/list/item/addingKeyword/add-input';
 import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-value';
+import urls from '@utils/endpoints/urls';
 import { useDeferredValue, useMemo } from 'react';
-
-const dummyKeywords = ['test', 'adam', 'john', 'smith'] as const;
+import { useQuery } from '@query-client';
 
 export const StoreRoute = () => {
   const { searchParamValue } = useSearch();
 
+  const { data: keywords } = useQuery<IKeyword[]>({
+    queryKey: [urls.keywords],
+    queryFn: () => httpClient.get(urls.keywords).then(({ data }) => data),
+  });
+
   const deferredSearchParam = useDeferredValue(searchParamValue);
 
   const filteredKeywords = useMemo(
-    () => dummyKeywords.filter(keyword => keyword.includes(deferredSearchParam)),
-    [deferredSearchParam],
+    () => keywords?.filter(({ content }) => content.includes(deferredSearchParam)),
+    [deferredSearchParam, keywords],
   );
-
-  const { open, changeModalVisibility } = useDeleteModal();
 
   return (
     <>
       <StyledAddInput />
       <StyledItemsContainer component={'ul'}>
-        {filteredKeywords.map(filteredKeyword => (
-          <StyledStoreItem
-            key={filteredKeyword}
-            changeModalVisibility={changeModalVisibility}
-            keyword={filteredKeyword}
-          />
-        ))}
+        {filteredKeywords?.map(({ id, content }) => <StyledStoreItem key={id} id={id} content={content} />)}
       </StyledItemsContainer>
-
-      <StyledDeleteModal
-        open={open}
-        content={<>Czy jesteś pewien, że chcesz to usunąć?</>}
-        onConfirm={() => null}
-        changeModalVisibility={changeModalVisibility}
-      />
     </>
   );
 };

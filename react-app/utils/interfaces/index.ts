@@ -6,7 +6,13 @@ interface IUseFocus<T extends HTMLElement> {
   focus: TVoid;
 }
 
+interface IKeyword {
+  id: number;
+  content: string;
+}
+
 interface IStyledKeyword {
+  id: number;
   value: string;
   openedInput: boolean;
   changeInputVisibility: TVoid;
@@ -19,4 +25,4 @@ interface IUser {
   avatar: string;
 }
 
-export { IUseFocus, IStyledKeyword, IUser };
+export { IUseFocus, IKeyword, IStyledKeyword, IUser };

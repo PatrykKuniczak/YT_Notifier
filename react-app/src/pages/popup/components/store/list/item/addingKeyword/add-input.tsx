@@ -1,10 +1,14 @@
 import plusIcon from '@assets/img/plus-icon.svg';
+import httpClient from '@http-client';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import StyledInput from '@pages/popup/components/shared/input';
 import useValidate from '@hooks/use-validate';
+import { useMutation } from '@query-client';
+import urls from '@utils/endpoints/urls';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 const StyledForm = styled('form')(({ theme }) =>
   theme.unstable_sx({
@@ -63,11 +67,29 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
 );
 
 const StyledAddInput = () => {
+  const [keyword, setKeyword] = useState('');
+
   const { disabled, handleValidation } = useValidate();
 
+  const { mutate: addKeyword } = useMutation({
+    mutationFn: (content: { content: string }) => httpClient.post(urls.keywords, content),
+    onSuccess: () => setKeyword(''),
+  });
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    addKeyword({ content: keyword });
+  };
+
   return (
-    <StyledForm>
-      <FormControl onChange={handleValidation} defaultValue="" style={{ width: '100%', position: 'relative' }}>
+    <StyledForm onSubmit={handleSubmit}>
+      <FormControl
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          handleValidation(event);
+          setKeyword(event.target.value);
+        }}
+        value={keyword}
+        style={{ width: '100%', position: 'relative' }}>
         <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
       </FormControl>
       <StyledSubmitButton disabled={disabled} type={'submit'}>

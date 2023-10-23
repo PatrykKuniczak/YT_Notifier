@@ -1,11 +1,14 @@
 import useEditKeyword from '@hooks/use-edit-keyword';
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
+import httpClient from '@http-client';
 import { IStyledKeyword } from '@interfaces';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
 import StyledInput from '@pages/popup/components/shared/input';
 import { textMixin } from '@utils/data/mixins/text-mixin';
+import { useMutation } from '@root/utils/libs/query-client';
+import urls from '@utils/endpoints/urls';
 
 const keywordStyles = {
   ...textMixin,
@@ -39,13 +42,18 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
   }),
 );
 
-export const StyledKeyword = ({ value, openedInput, changeInputVisibility }: IStyledKeyword) => {
+export const StyledKeyword = ({ id, value, openedInput, changeInputVisibility }: IStyledKeyword) => {
   const { handleKeyEvent } = useHandleKeyEvents();
   const { value: inputValue, handleStateChange, previousValue, handlePreviousValueChange } = useEditKeyword(value);
+
+  const { mutate: editKeyword } = useMutation({
+    mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
+  });
 
   const handleApplyingChanges = () => {
     if (inputValue.length > 1) {
       handlePreviousValueChange(inputValue);
+      editKeyword({ content: inputValue });
     }
     changeInputVisibility();
   };
