@@ -1,5 +1,5 @@
 import { styled } from '@mui/system';
-import { textMixin } from '@pages/popup/data/mixins/text-mixin';
+import { textMixin } from '@utils/data/mixins/text-mixin';
 
 export const StyledTitle = styled('h1')(({ theme }) =>
   theme.unstable_sx({

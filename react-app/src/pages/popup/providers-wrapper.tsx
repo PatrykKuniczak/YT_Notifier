@@ -1,9 +1,9 @@
 import { AuthContext } from '@authentication';
 import { IUser } from '@interfaces';
 import { ThemeProvider } from '@mui/system';
-import GlobalStyles from '@pages/popup/data/global-styles';
-import darkTheme from '@pages/popup/data/themes/dark-theme';
-import lightTheme from '@pages/popup/data/themes/light-theme';
+import GlobalStyles from '@utils/data/global-styles';
+import darkTheme from '@utils/data/themes/dark-theme';
+import lightTheme from '@utils/data/themes/light-theme';
 import { Router as RemixRouter } from '@remix-run/router/dist/router';
 import React from 'react';
 import { RouterProvider } from 'react-router-dom';

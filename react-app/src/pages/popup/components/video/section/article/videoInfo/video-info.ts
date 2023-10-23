@@ -1,5 +1,5 @@
 import { styled } from '@mui/system';
-import { textMixin } from '@pages/popup/data/mixins/text-mixin';
+import { textMixin } from '@utils/data/mixins/text-mixin';
 
 export const StyledVideoInfo = styled('span')(({ theme }) =>
   theme.unstable_sx({

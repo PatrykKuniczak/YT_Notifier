@@ -5,7 +5,7 @@ import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
 import StyledInput from '@pages/popup/components/shared/input';
-import { textMixin } from '@pages/popup/data/mixins/text-mixin';
+import { textMixin } from '@utils/data/mixins/text-mixin';
 
 const keywordStyles = {
   ...textMixin,

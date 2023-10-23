@@ -13,6 +13,8 @@ const THEME = createTheme({
       searchIconFilter: 'invert(94%) sepia(0%) saturate(32%) hue-rotate(142deg) brightness(97%) contrast(93%)',
       snackbarBackground: '#ffbbbb',
       focusOutline: '#16121E',
+      closeButtonHover: '#876aea',
+      closeButtonActive: '#7c62d7',
     },
     color: {
       primary: '#16121E',
