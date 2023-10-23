@@ -5,6 +5,7 @@ const urls = {
     removeAccount: 'auth/remove-account',
     me: 'auth/me',
   },
+  keywords: 'key-words',
 };
 
 export default urls;

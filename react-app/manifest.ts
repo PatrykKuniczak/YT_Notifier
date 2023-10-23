@@ -8,7 +8,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,
-  permissions: ['cookies'],
+  permissions: ['cookies', 'contextMenus'],
   host_permissions: ['http://localhost:3001/api/*'],
   options_page: 'src/pages/options/index.html',
   background: {
