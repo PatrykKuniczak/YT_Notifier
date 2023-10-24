@@ -2,7 +2,7 @@ import { Stack, styled } from '@mui/system';
 import { StyledDeleteButton } from '@pages/popup/components/store/list/item/deleteButton/delete-button';
 import { StyledEditButton } from '@pages/popup/components/store/list/item/editButton/edit-button';
 import { StyledKeyword } from '@pages/popup/components/store/list/item/keyword';
-import { TComponentTag, TVoid } from '@types';
+import { TComponentTag } from '@types';
 import { useState } from 'react';
 
 const StyledStoreItemWrapper = styled(Stack)<TComponentTag>(({ theme }) =>

@@ -69,7 +69,7 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
 const StyledAddInput = () => {
   const [keyword, setKeyword] = useState('');
 
-  const { disabled, handleValidation } = useValidate();
+  const { isValid, handleValidation } = useValidate();
 
   const { mutate: addKeyword } = useMutation({
     mutationFn: (content: { content: string }) => httpClient.post(urls.keyWords, content),
@@ -82,7 +82,7 @@ const StyledAddInput = () => {
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    handleValidation(event);
+    handleValidation(event.target.value.length);
     setKeyword(event.target.value);
   };
 
@@ -91,7 +91,7 @@ const StyledAddInput = () => {
       <FormControl onChange={handleChange} value={keyword} style={{ width: '100%', position: 'relative' }}>
         <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
       </FormControl>
-      <StyledSubmitButton disabled={disabled} type={'submit'}>
+      <StyledSubmitButton disabled={!isValid} type={'submit'}>
         <StyledIcon src={plusIcon} alt={'Add keyword'} width={20} height={20} />
       </StyledSubmitButton>
     </StyledForm>

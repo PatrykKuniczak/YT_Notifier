@@ -1,5 +1,6 @@
 import useEditKeyword from '@hooks/use-edit-keyword';
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
+import useValidate from '@hooks/use-validate';
 import httpClient from '@http-client';
 import { IStyledKeyword } from '@interfaces';
 import { FormControl } from '@mui/base';
@@ -50,8 +51,10 @@ export const StyledKeyword = ({ id, value, openedInput, changeInputVisibility }:
     mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
   });
 
+  const { isValid, handleValidation } = useValidate();
+
   const handleApplyingChanges = () => {
-    if (inputValue.length > 1) {
+    if (isValid) {
       handlePreviousValueChange(inputValue);
       editKeyword({ content: inputValue });
     }
@@ -62,7 +65,10 @@ export const StyledKeyword = ({ id, value, openedInput, changeInputVisibility }:
     <FormControl
       defaultValue=""
       required
-      onChange={event => handleStateChange(event.target.value)}
+      onChange={event => {
+        handleStateChange(event.target.value);
+        handleValidation(event.target.value.length);
+      }}
       value={inputValue}
       style={{ width: '100%', position: 'relative' }}>
       <StyledKeywordInput

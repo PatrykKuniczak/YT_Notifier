@@ -1,25 +1,26 @@
+import useValidate from '@hooks/use-validate';
 import { useFormControlContext } from '@mui/base';
 import { styled } from '@mui/system';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export const StyledErrorMessage = styled(props => {
   const formControlContext = useFormControlContext();
-  const [dirty, setDirty] = useState(false);
-
-  useEffect(() => {
-    if (formControlContext?.filled) {
-      setDirty(true);
-    }
-  }, [formControlContext]);
+  const { isValid, handleValidation } = useValidate();
 
   if (!formControlContext) {
     return null;
   }
 
-  const { required, filled } = formControlContext;
-  const showRequiredError = dirty && required && !filled;
+  const { value } = formControlContext;
 
-  return showRequiredError ? <p {...props}>To pole jest wymagane!</p> : null;
+  useEffect(() => {
+    if (typeof value !== 'string') {
+      throw new Error('Value is not a string');
+    }
+    handleValidation(value.length);
+  }, [formControlContext]);
+
+  return !isValid ? <p {...props}>Podaj od 3 do 255 znaków!</p> : null;
 })(({ theme }) =>
   theme.unstable_sx({
     p: 1,
