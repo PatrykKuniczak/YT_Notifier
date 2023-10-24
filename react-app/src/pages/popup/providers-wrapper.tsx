@@ -27,7 +27,12 @@ const ProvidersWrapper = ({
         <AuthContext.Provider value={authProviderValues}>
           <RouterProvider router={hashRouting} />
         </AuthContext.Provider>
-        <ToastContainer theme={isDarkMode ? 'dark' : 'light'} />
+        <ToastContainer
+          theme={isDarkMode ? 'dark' : 'light'}
+          position="bottom-center"
+          autoClose={5000}
+          draggablePercent={50}
+        />
       </ThemeProvider>
     </React.StrictMode>
   );
