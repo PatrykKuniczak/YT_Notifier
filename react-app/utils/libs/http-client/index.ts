@@ -17,9 +17,9 @@ const createHttpInstance = () => {
     response => response,
     async error => {
       if (error.response.status === 401 && error.config.url !== urls.auth.me) {
+        toast.error('Zostałeś wylogowany, twoja sesja wygasła, zaloguj się ponownie');
         await chrome.cookies.remove({ name: SESSION_COOKIE_NAME, url: import.meta.env.VITE_API_URL });
         await queryClient.resetQueries({ queryKey: [urls.auth.me] });
-        toast.error('Zostałeś wylogowany, twoja sesja wygasła, zaloguj się ponownie');
       }
 
       return Promise.reject(error);
