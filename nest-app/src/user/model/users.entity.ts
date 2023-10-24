@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
-import { KeyWordEntity } from '../../key-words/entities/key-word.entity';
+import { KeyWordEntity } from '../../key-words/model/key-word.entity';
 
 @Entity('users')
 export class UsersEntity {
@@ -19,5 +19,5 @@ export class UsersEntity {
   refreshToken: string;
 
   @ManyToOne(() => KeyWordEntity, keyword => keyword.user)
-  keywords: Relation<KeyWordEntity[]>;
+  readonly keywords: Relation<KeyWordEntity[]>;
 }

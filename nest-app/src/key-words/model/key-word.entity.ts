@@ -4,13 +4,13 @@ import { UsersEntity } from '../../user/model/users.entity';
 @Entity('key-word')
 export class KeyWordEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  readonly id: number;
 
   @Column({ length: 255 })
-  content: string;
+  readonly content: string;
 
   @Column()
-  userId: number;
+  readonly userId: number;
 
   @OneToMany(() => UsersEntity, user => user.keywords)
   readonly user: Relation<UsersEntity>;
