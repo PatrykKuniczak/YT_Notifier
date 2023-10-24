@@ -1,23 +1,23 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
-import { KeyWordEntity } from '../../key-words/entities/key-word.entity';
+import { KeyWordEntity } from '../../key-words/model/key-word.entity';
 
 @Entity('users')
 export class UsersEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  readonly id: number;
 
   @Column()
-  displayName: string;
+  readonly displayName: string;
 
   @Column({ unique: true })
-  email: string;
+  readonly email: string;
 
   @Column()
-  avatar: string;
+  readonly avatar: string;
 
   @Column({ select: false })
-  refreshToken: string;
+  readonly refreshToken: string;
 
   @ManyToOne(() => KeyWordEntity, keyword => keyword.user)
-  keywords: Relation<KeyWordEntity[]>;
+  readonly keywords: Relation<KeyWordEntity[]>;
 }

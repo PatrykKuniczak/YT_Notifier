@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { IUser } from '../user/user.types';
 import { CreateKeyWordDto } from './dto/create-key-word.dto';
 import { UpdateKeyWordDto } from './dto/update-key-word.dto';
-import { KeyWordEntity } from './entities/key-word.entity';
+import { KeyWordEntity } from './model/key-word.entity';
 
 @Injectable()
 export class KeyWordsService {

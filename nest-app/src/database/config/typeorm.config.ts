@@ -3,7 +3,7 @@ import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm/dist/interfaces/typeo
 import { DataSource } from 'typeorm';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { SessionEntity } from '../../auth/session/session.entity';
-import { KeyWordEntity } from '../../key-words/entities/key-word.entity';
+import { KeyWordEntity } from '../../key-words/model/key-word.entity';
 import { UsersEntity } from '../../user/model/users.entity';
 
 const typeOrmConfig: TypeOrmModuleAsyncOptions = {
