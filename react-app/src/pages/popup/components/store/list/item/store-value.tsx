@@ -31,12 +31,10 @@ export const StyledStoreItem = ({
   id,
   content,
   setKeywordToRemove,
-  changeModalVisibility,
 }: {
   id: number;
   content: string;
   setKeywordToRemove: (id: number) => void;
-  changeModalVisibility: TVoid;
 }) => {
   const [openedInput, setOpenedInput] = useState(false);
 
@@ -48,10 +46,7 @@ export const StyledStoreItem = ({
 
       <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} useFlexGap={true} spacing={1.5}>
         <StyledEditButton openedInput={openedInput} changeInputVisibility={changeInputVisibility} />
-        <StyledDeleteButton
-          setKeywordToRemove={() => setKeywordToRemove(id)}
-          changeModalVisibility={changeModalVisibility}
-        />
+        <StyledDeleteButton setKeywordToRemove={() => setKeywordToRemove(id)} />
       </Stack>
     </StyledStoreItemWrapper>
   );
