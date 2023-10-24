@@ -1,13 +1,8 @@
-import httpClient from '@http-client';
 import { Stack, styled } from '@mui/system';
-import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
-import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import { StyledDeleteButton } from '@pages/popup/components/store/list/item/deleteButton/delete-button';
 import { StyledEditButton } from '@pages/popup/components/store/list/item/editButton/edit-button';
 import { StyledKeyword } from '@pages/popup/components/store/list/item/keyword';
-import queryClient, { useMutation } from '@query-client';
-import { TComponentTag } from '@types';
-import urls from '@utils/endpoints/urls';
+import { TComponentTag, TVoid } from '@types';
 import { useState } from 'react';
 
 const StyledStoreItemWrapper = styled(Stack)<TComponentTag>(({ theme }) =>
@@ -32,39 +27,32 @@ const StyledStoreItemWrapper = styled(Stack)<TComponentTag>(({ theme }) =>
   }),
 );
 
-export const StyledStoreItem = ({ id, content }: { id: number; content: string }) => {
+export const StyledStoreItem = ({
+  id,
+  content,
+  setKeywordToRemove,
+  changeModalVisibility,
+}: {
+  id: number;
+  content: string;
+  setKeywordToRemove: (id: number) => void;
+  changeModalVisibility: TVoid;
+}) => {
   const [openedInput, setOpenedInput] = useState(false);
 
   const changeInputVisibility = () => setOpenedInput(prevState => !prevState);
-  const { open, changeModalVisibility } = useDeleteModal();
-
-  const { mutate: removeKeyword } = useMutation({
-    mutationFn: ({ id }: { id: number }) => httpClient.delete(`${urls.keywords}/${id}`),
-    onSuccess: () => queryClient.invalidateQueries([urls.keywords]),
-  });
 
   return (
-    <>
-      <StyledStoreItemWrapper component={'li'} direction={'row'} alignItems={'center'} justifyContent={'space-between'}>
-        <StyledKeyword
-          id={id}
-          value={content}
-          openedInput={openedInput}
-          changeInputVisibility={changeInputVisibility}
+    <StyledStoreItemWrapper component={'li'} direction={'row'} alignItems={'center'} justifyContent={'space-between'}>
+      <StyledKeyword id={id} value={content} openedInput={openedInput} changeInputVisibility={changeInputVisibility} />
+
+      <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} useFlexGap={true} spacing={1.5}>
+        <StyledEditButton openedInput={openedInput} changeInputVisibility={changeInputVisibility} />
+        <StyledDeleteButton
+          setKeywordToRemove={() => setKeywordToRemove(id)}
+          changeModalVisibility={changeModalVisibility}
         />
-
-        <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} useFlexGap={true} spacing={1.5}>
-          <StyledEditButton openedInput={openedInput} changeInputVisibility={changeInputVisibility} />
-          <StyledDeleteButton changeModalVisibility={changeModalVisibility} />
-        </Stack>
-      </StyledStoreItemWrapper>
-
-      <StyledDeleteModal
-        open={open}
-        content={<>Czy jesteś pewien, że chcesz to usunąć?</>}
-        onConfirm={() => removeKeyword({ id })}
-        changeModalVisibility={changeModalVisibility}
-      />
-    </>
+      </Stack>
+    </StyledStoreItemWrapper>
   );
 };
