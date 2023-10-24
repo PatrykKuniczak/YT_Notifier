@@ -85,7 +85,7 @@ const StyledAddInput = () => {
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    handleValidation(event.target.value.length);
+    handleValidation(event.target.value);
     setKeyword(event.target.value);
   };
 

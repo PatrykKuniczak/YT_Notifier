@@ -67,7 +67,7 @@ export const StyledKeyword = ({ id, value, openedInput, changeInputVisibility }:
       required
       onChange={event => {
         handleStateChange(event.target.value);
-        handleValidation(event.target.value.length);
+        handleValidation(event.target.value);
       }}
       value={inputValue}
       style={{ width: '100%', position: 'relative' }}>
