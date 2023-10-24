@@ -6,7 +6,7 @@ import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import StyledInput from '@pages/popup/components/shared/input';
 import useValidate from '@hooks/use-validate';
-import { useMutation } from '@query-client';
+import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { ChangeEvent, FormEvent, useState } from 'react';
 
@@ -73,7 +73,10 @@ const StyledAddInput = () => {
 
   const { mutate: addKeyword } = useMutation({
     mutationFn: (content: { content: string }) => httpClient.post(urls.keyWords, content),
-    onSuccess: () => setKeyword(''),
+    onSuccess: () => {
+      setKeyword('');
+      queryClient.invalidateQueries([urls.keyWords]);
+    },
   });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

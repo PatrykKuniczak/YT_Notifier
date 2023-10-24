@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const useValidate = () => {
-  const [isValid, setIsValid] = useState(true);
+  const [isValid, setIsValid] = useState(false);
 
   const handleValidation = (inputContentLength: number) => {
     console.log(inputContentLength);
