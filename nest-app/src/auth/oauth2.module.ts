@@ -1,25 +1,25 @@
 import { Global, Module } from '@nestjs/common';
 import { FactoryProvider } from '@nestjs/common/interfaces/modules/provider.interface';
-import { OAuth2ClientOptions } from 'google-auth-library/build/src/auth/oauth2client';
 import { ConfigService } from '@nestjs/config';
+import { OAuth2Client } from 'google-auth-library';
 import { GOOGLE_REDIRECT_URL } from '../constants';
 
-export type TOAuth2GoogleClientCredentials = OAuth2ClientOptions;
-export const OAuth2GoogleClientCredentials = 'OAUTH2_GOOGLE_CREDENTIALS';
+export const OAUTH2_GOOGLE_CLIENT = 'OAUTH2_GOOGLE_CLIENT';
 
-const oAuth2GoogleClientCredentialsProvider: FactoryProvider<TOAuth2GoogleClientCredentials> = {
-  provide: OAuth2GoogleClientCredentials,
+const oAuth2GoogleClientProvider: FactoryProvider<OAuth2Client> = {
+  provide: OAUTH2_GOOGLE_CLIENT,
   inject: [ConfigService],
-  useFactory: async (configService: ConfigService) => ({
-    clientId: configService.get('GOOGLE_CLIENT_ID'),
-    clientSecret: configService.get('GOOGLE_CLIENT_SECRET'),
-    redirectUri: GOOGLE_REDIRECT_URL,
-  }),
+  useFactory: async (configService: ConfigService) =>
+    new OAuth2Client({
+      clientId: configService.get('GOOGLE_CLIENT_ID'),
+      clientSecret: configService.get('GOOGLE_CLIENT_SECRET'),
+      redirectUri: GOOGLE_REDIRECT_URL,
+    }),
 };
 
 @Global()
 @Module({
-  providers: [oAuth2GoogleClientCredentialsProvider],
-  exports: [oAuth2GoogleClientCredentialsProvider],
+  providers: [oAuth2GoogleClientProvider],
+  exports: [oAuth2GoogleClientProvider],
 })
 export class OAuth2Module {}
