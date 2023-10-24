@@ -7,7 +7,7 @@ import { StyledItemsContainer } from '@pages/popup/components/shared/items-conta
 import StyledAddInput from '@pages/popup/components/store/list/item/addingKeyword/add-input';
 import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-value';
 import urls from '@utils/endpoints/urls';
-import { useDeferredValue, useEffect, useMemo, useState } from 'react';
+import { useDeferredValue, useMemo, useState } from 'react';
 import queryClient, { useMutation, useQuery } from '@query-client';
 
 export const StoreRoute = () => {
@@ -34,18 +34,18 @@ export const StoreRoute = () => {
     [deferredSearchParam, keywords],
   );
 
-  useEffect(() => {
-    if (keywordToRemove) {
-      changeModalVisibility();
-    }
-  }, [keywordToRemove]);
-
   return (
     <>
       <StyledAddInput />
       <StyledItemsContainer component={'ul'}>
         {filteredKeywords?.map(({ id, content }) => (
-          <StyledStoreItem key={id} id={id} content={content} setKeywordToRemove={setKeywordToRemove} />
+          <StyledStoreItem
+            key={id}
+            id={id}
+            content={content}
+            setKeywordToRemove={setKeywordToRemove}
+            changeModalVisibility={changeModalVisibility}
+          />
         ))}
       </StyledItemsContainer>
 

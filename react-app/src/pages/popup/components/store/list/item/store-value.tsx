@@ -2,7 +2,7 @@ import { Stack, styled } from '@mui/system';
 import { StyledDeleteButton } from '@pages/popup/components/store/list/item/deleteButton/delete-button';
 import { StyledEditButton } from '@pages/popup/components/store/list/item/editButton/edit-button';
 import { StyledKeyword } from '@pages/popup/components/store/list/item/keyword';
-import { TComponentTag } from '@types';
+import { TComponentTag, TVoid } from '@types';
 import { useState } from 'react';
 
 const StyledStoreItemWrapper = styled(Stack)<TComponentTag>(({ theme }) =>
@@ -31,10 +31,12 @@ export const StyledStoreItem = ({
   id,
   content,
   setKeywordToRemove,
+  changeModalVisibility,
 }: {
   id: number;
   content: string;
   setKeywordToRemove: (id: number) => void;
+  changeModalVisibility: TVoid;
 }) => {
   const [openedInput, setOpenedInput] = useState(false);
 
@@ -46,7 +48,10 @@ export const StyledStoreItem = ({
 
       <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} useFlexGap={true} spacing={1.5}>
         <StyledEditButton openedInput={openedInput} changeInputVisibility={changeInputVisibility} />
-        <StyledDeleteButton setKeywordToRemove={() => setKeywordToRemove(id)} />
+        <StyledDeleteButton
+          setKeywordToRemove={() => setKeywordToRemove(id)}
+          changeModalVisibility={changeModalVisibility}
+        />
       </Stack>
     </StyledStoreItemWrapper>
   );

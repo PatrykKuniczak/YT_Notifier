@@ -3,9 +3,20 @@ import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { TVoid } from '@types';
 
-export const StyledDeleteButton = ({ setKeywordToRemove }: { setKeywordToRemove: TVoid }) => {
+export const StyledDeleteButton = ({
+  setKeywordToRemove,
+  changeModalVisibility,
+}: {
+  setKeywordToRemove: TVoid;
+  changeModalVisibility: TVoid;
+}) => {
+  const handleClick = () => {
+    setKeywordToRemove();
+    changeModalVisibility();
+  };
+
   return (
-    <StyledButton sx={{ height: 16 }} onClick={setKeywordToRemove}>
+    <StyledButton sx={{ height: 16 }} onClick={handleClick}>
       <StyledIcon src={trashIcon} alt={'Delete Button'} />
     </StyledButton>
   );
