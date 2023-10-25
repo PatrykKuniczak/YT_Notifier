@@ -1,4 +1,4 @@
-import { youtube } from '@googleapis/youtube';
+import { youtube, youtube_v3 } from '@googleapis/youtube';
 import { ForbiddenException, Inject, Injectable } from '@nestjs/common';
 import { OAuth2Client } from 'google-auth-library';
 import { OAUTH2_GOOGLE_CLIENT } from '../auth/oauth2.module';
@@ -7,16 +7,18 @@ import { UsersService } from '../user/user.service';
 
 @Injectable()
 export class YtService {
+  youtubeClient: youtube_v3.Youtube;
+
   constructor(
     @Inject(OAUTH2_GOOGLE_CLIENT) private readonly oAuth2GoogleClient: OAuth2Client,
     private readonly usersService: UsersService,
     private readonly keyWordsService: KeyWordsService,
-  ) {}
+  ) {
+    this.youtubeClient = youtube({ version: 'v3', auth: this.oAuth2GoogleClient });
+  }
 
   async findAll(userId: number) {
-    const youtubeClient = youtube({ version: 'v3', auth: this.oAuth2GoogleClient });
-
-    const { lastFetch } = await this.usersService.findOneById(userId);
+    const { lastFetch } = await this.usersService.getLastFetchById(userId);
 
     const keywordsResult = await this.keyWordsService.findAll(userId);
 
@@ -24,7 +26,7 @@ export class YtService {
       try {
         const keywords = await Promise.all(
           keywordsResult.map(({ content }) =>
-            youtubeClient.search.list({
+            this.youtubeClient.search.list({
               part: ['snippet'],
               maxResults: 10,
               order: 'date',
@@ -39,7 +41,7 @@ export class YtService {
           keywords.map(async (keyword, index) => {
             if (keyword.data.items.length) {
               const channelId = keyword.data.items[index].snippet.channelId;
-              const channelResult = await youtubeClient.channels.list({ id: [channelId], part: ['snippet'] });
+              const channelResult = await this.youtubeClient.channels.list({ id: [channelId], part: ['snippet'] });
 
               return {
                 video: {

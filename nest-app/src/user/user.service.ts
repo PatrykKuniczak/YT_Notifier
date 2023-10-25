@@ -48,6 +48,13 @@ export class UsersService {
     });
   }
 
+  async getLastFetchById(id: number) {
+    return this.userRepository.findOne({
+      where: { id },
+      select: { lastFetch: true },
+    });
+  }
+
   async updateRefreshToken(id: number, refreshToken: string) {
     const { affected } = await this.userRepository.update({ id }, { refreshToken });
 

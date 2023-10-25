@@ -19,7 +19,7 @@ export class UsersEntity {
   @Column({ select: false })
   readonly refreshToken: string;
 
-  @Column('timestamptz', { nullable: true, default: DEFAULT_FETCH_DATE })
+  @Column('timestamptz', { nullable: true, default: DEFAULT_FETCH_DATE, select: false })
   readonly lastFetch: Date;
 
   @ManyToOne(() => KeyWordEntity, keyword => keyword.user)
