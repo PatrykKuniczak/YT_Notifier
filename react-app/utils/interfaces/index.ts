@@ -11,11 +11,16 @@ interface IKeyword {
   content: string;
 }
 
-interface IStyledKeyword {
-  id: number;
-  value: string;
-  openedInput: boolean;
-  changeInputVisibility: TVoid;
+interface IStyledKeyword extends IKeyword {
+  openedInputId: number;
+  changeOpenedInputId: (id: number) => void;
+}
+
+interface IStyledEditButton extends Omit<IStyledKeyword, 'content'> {}
+
+interface IStyledStoreItem extends IStyledKeyword {
+  setKeywordToRemove: (id: number) => void;
+  changeModalVisibility: TVoid;
 }
 
 interface IUser {
@@ -25,4 +30,4 @@ interface IUser {
   avatar: string;
 }
 
-export { IUseFocus, IKeyword, IStyledKeyword, IUser };
+export { IUseFocus, IKeyword, IStyledKeyword, IStyledEditButton, IStyledStoreItem, IUser };

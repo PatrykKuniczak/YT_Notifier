@@ -7,8 +7,8 @@ import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
 import StyledInput from '@pages/popup/components/shared/input';
-import { textMixin } from '@utils/data/mixins/text-mixin';
 import { useMutation } from '@root/utils/libs/query-client';
+import { textMixin } from '@utils/data/mixins/text-mixin';
 import urls from '@utils/endpoints/urls';
 
 const keywordStyles = {
@@ -43,9 +43,9 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
   }),
 );
 
-export const StyledKeyword = ({ id, value, openedInput, changeInputVisibility }: IStyledKeyword) => {
+export const StyledKeyword = ({ id, openedInputId, content, changeOpenedInputId }: IStyledKeyword) => {
   const { handleKeyEvent } = useHandleKeyEvents();
-  const { value: inputValue, handleStateChange, previousValue, handlePreviousValueChange } = useEditKeyword(value);
+  const { value: inputValue, handleStateChange, previousValue, handlePreviousValueChange } = useEditKeyword(content);
 
   const { mutate: editKeyword } = useMutation({
     mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
@@ -58,10 +58,11 @@ export const StyledKeyword = ({ id, value, openedInput, changeInputVisibility }:
       handlePreviousValueChange(inputValue);
       editKeyword({ content: inputValue });
     }
-    changeInputVisibility();
+
+    changeOpenedInputId(0);
   };
 
-  return openedInput ? (
+  return id === openedInputId ? (
     <FormControl
       defaultValue=""
       required

@@ -6,12 +6,14 @@ import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-
 import { StyledItemsContainer } from '@pages/popup/components/shared/items-container';
 import StyledAddInput from '@pages/popup/components/store/list/item/addingKeyword/add-input';
 import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-value';
+import queryClient, { useMutation, useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useDeferredValue, useMemo, useState } from 'react';
-import queryClient, { useMutation, useQuery } from '@query-client';
 
 export const StoreRoute = () => {
   const [keywordToRemove, setKeywordToRemove] = useState(0);
+
+  const [openedInputId, setOpenedInputId] = useState(0);
 
   const { searchParamValue } = useSearch();
 
@@ -34,6 +36,10 @@ export const StoreRoute = () => {
     [deferredSearchParam, keywords],
   );
 
+  const handleOpenedInputIdChange = (id: number) => {
+    setOpenedInputId(id);
+  };
+
   return (
     <>
       <StyledAddInput />
@@ -42,9 +48,11 @@ export const StoreRoute = () => {
           <StyledStoreItem
             key={id}
             id={id}
+            openedInputId={openedInputId}
             content={content}
             setKeywordToRemove={setKeywordToRemove}
             changeModalVisibility={changeModalVisibility}
+            changeOpenedInputId={handleOpenedInputIdChange}
           />
         ))}
       </StyledItemsContainer>
