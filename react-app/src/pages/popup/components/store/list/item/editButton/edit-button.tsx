@@ -30,6 +30,7 @@ const EditButtonStyles = styled(StyledButton)(({ theme }) =>
 
     '&.openedInput': {
       display: 'block',
+      
       '&::before': {
         width: 14,
       },
