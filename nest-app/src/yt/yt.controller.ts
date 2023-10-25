@@ -7,7 +7,6 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { SessionGuard } from '../auth/session/session.guard';
-import { ReqUserAccessToken } from '../user/decorators/access_token.decorator';
 import { ReqUserId } from '../user/decorators/user.decorator';
 import { YtService } from './yt.service';
 
@@ -22,7 +21,7 @@ export class YtController {
   @ApiInternalServerErrorResponse({ description: 'Error on updating fetch date of user: {error message}' })
   @Get()
   @UseGuards(SessionGuard)
-  async findAll(@ReqUserId() userId: number, @ReqUserAccessToken() accessToken: string) {
-    return this.ytService.findAll(userId, accessToken);
+  async findAll(@ReqUserId() userId: number) {
+    return this.ytService.findAll(userId);
   }
 }

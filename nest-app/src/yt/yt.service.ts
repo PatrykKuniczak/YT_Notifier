@@ -13,10 +13,7 @@ export class YtService {
     private readonly keyWordsService: KeyWordsService,
   ) {}
 
-  async findAll(userId: number, accessToken: string) {
-    const { refreshToken } = await this.usersService.getRefreshTokenById(userId);
-    this.oAuth2GoogleClient.setCredentials({ refresh_token: refreshToken, access_token: accessToken });
-
+  async findAll(userId: number) {
     const youtubeClient = youtube({ version: 'v3', auth: this.oAuth2GoogleClient });
 
     const { lastFetch } = await this.usersService.findOneById(userId);
@@ -69,6 +66,8 @@ export class YtService {
         if ((err.status === 403 && err.errors[0].domain === 'youtube.quota') || err.status === 429) {
           throw new ForbiddenException('You reach the requests limit for youtube');
         }
+
+        throw err;
       }
     }
   }
