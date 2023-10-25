@@ -6,6 +6,7 @@ import { OAuth2Module } from './auth/oauth2.module';
 import typeOrmConfig from './database/config/typeorm.config';
 import { KeyWordsModule } from './key-words/key-words.module';
 import { UserModule } from './user/user.module';
+import { YtModule } from './yt/yt.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { UserModule } from './user/user.module';
     AuthModule,
     OAuth2Module,
     KeyWordsModule,
+    YtModule,
   ],
 })
 export class AppModule {}

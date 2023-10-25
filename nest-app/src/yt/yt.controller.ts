@@ -1,0 +1,28 @@
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import {
+  ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiOAuth2,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { SessionGuard } from '../auth/session/session.guard';
+import { ReqUserAccessToken } from '../user/decorators/access_token.decorator';
+import { ReqUserId } from '../user/decorators/user.decorator';
+import { YtService } from './yt.service';
+
+@ApiOAuth2([])
+@ApiTags('yt')
+@Controller('yt')
+export class YtController {
+  constructor(private readonly ytService: YtService) {}
+
+  @ApiOkResponse()
+  @ApiForbiddenResponse({ description: 'You reach the requests limit for youtube' })
+  @ApiInternalServerErrorResponse({ description: 'Error on updating fetch date of user: {error message}' })
+  @Get()
+  @UseGuards(SessionGuard)
+  async findAll(@ReqUserId() userId: number, @ReqUserAccessToken() accessToken: string) {
+    return this.ytService.findAll(userId, accessToken);
+  }
+}

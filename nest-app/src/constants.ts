@@ -3,4 +3,6 @@ export const SESSION_COOKIE_NAME = 'NESTJS_SESSION_COOKIE';
 export const SESSION_TTL = 604800;
 export const COOKIE_MAX_AGE = 3600000;
 
+export const DEFAULT_FETCH_DATE = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000); // 7 DAYS FROM FIRST LOG IN
+
 export const GOOGLE_REDIRECT_URL = '/api/auth/redirect';

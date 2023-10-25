@@ -10,5 +10,6 @@ import { KeyWordEntity } from './model/key-word.entity';
   imports: [TypeOrmModule.forFeature([KeyWordEntity]), AuthModule, UserModule],
   controllers: [KeyWordsController],
   providers: [KeyWordsService],
+  exports: [KeyWordsService],
 })
 export class KeyWordsModule {}

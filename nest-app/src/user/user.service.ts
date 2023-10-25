@@ -54,6 +54,14 @@ export class UsersService {
     return !!affected;
   }
 
+  async updateLastFetchDate(userId: number) {
+    const { affected } = await this.userRepository.update({ id: userId }, { lastFetch: new Date() }).catch(err => {
+      throw new InternalServerErrorException('Error on updating fetch date of user: ' + err.message);
+    });
+
+    return !!affected;
+  }
+
   async delete(id: number) {
     return this.userRepository.delete({ id });
   }
