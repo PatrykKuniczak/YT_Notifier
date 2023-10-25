@@ -1,8 +1,8 @@
 import editIcon from '@assets/img/edit-icon.svg';
+import { IStyledEditButton } from '@interfaces';
 import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
-import { TVoid } from '@types';
 import clsx from 'clsx';
 
 const EditButtonStyles = styled(StyledButton)(({ theme }) =>
@@ -29,20 +29,23 @@ const EditButtonStyles = styled(StyledButton)(({ theme }) =>
     },
 
     '&.openedInput': {
+      display: 'block',
+      
       '&::before': {
         width: 14,
       },
     },
   }),
 );
-export const StyledEditButton = ({
-  changeInputVisibility,
-  openedInput,
-}: {
-  changeInputVisibility: TVoid;
-  openedInput: boolean;
-}) => (
-  <EditButtonStyles className={clsx({ openedInput })} onClick={changeInputVisibility}>
-    <StyledIcon src={editIcon} alt={'Edit Button'} />
+
+const EditStyledIcon = styled(StyledIcon)(({ theme }) =>
+  theme.unstable_sx({
+    display: 'inline',
+  }),
+);
+
+export const StyledEditButton = ({ id, changeOpenedInputId, openedInputId }: IStyledEditButton) => (
+  <EditButtonStyles className={clsx({ openedInput: id === openedInputId })} onClick={() => changeOpenedInputId(id)}>
+    <EditStyledIcon src={editIcon} alt={'Edit Button'} />
   </EditButtonStyles>
 );

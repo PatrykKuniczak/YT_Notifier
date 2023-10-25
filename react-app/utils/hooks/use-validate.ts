@@ -1,20 +1,19 @@
 import { useState } from 'react';
-import { type ChangeEvent } from 'react';
 
 const useValidate = () => {
-  const [disabled, setDisabled] = useState(true);
+  const [isValid, setIsValid] = useState(false);
 
-  const handleValidation = (props: ChangeEvent<HTMLInputElement>) => {
-    const validationNumber = props.target.value.length;
+  const handleValidation = (inputContent: string) => {
+    const inputContentLength = inputContent.length;
 
-    if (validationNumber < 3 || validationNumber > 255) {
-      setDisabled(true);
+    if (inputContentLength < 3 || inputContentLength > 255) {
+      setIsValid(false);
     } else {
-      setDisabled(false);
+      setIsValid(true);
     }
   };
 
-  return { disabled, handleValidation };
+  return { isValid, handleValidation };
 };
 
 export default useValidate;

@@ -6,10 +6,21 @@ interface IUseFocus<T extends HTMLElement> {
   focus: TVoid;
 }
 
-interface IStyledKeyword {
-  value: string;
-  openedInput: boolean;
-  changeInputVisibility: TVoid;
+interface IKeyword {
+  id: number;
+  content: string;
+}
+
+interface IStyledKeyword extends IKeyword {
+  openedInputId: number;
+  changeOpenedInputId: (id: number) => void;
+}
+
+interface IStyledEditButton extends Omit<IStyledKeyword, 'content'> {}
+
+interface IStyledStoreItem extends IStyledKeyword {
+  setKeywordToRemove: (id: number) => void;
+  changeModalVisibility: TVoid;
 }
 
 interface IUser {
@@ -19,4 +30,4 @@ interface IUser {
   avatar: string;
 }
 
-export { IUseFocus, IStyledKeyword, IUser };
+export { IUseFocus, IKeyword, IStyledKeyword, IStyledEditButton, IStyledStoreItem, IUser };
