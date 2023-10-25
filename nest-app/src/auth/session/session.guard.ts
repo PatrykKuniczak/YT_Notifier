@@ -20,8 +20,15 @@ export class SessionGuard implements CanActivate {
     await this.oAuth2GoogleClient.getTokenInfo(request.session.passport.user.accessToken).catch(async err => {
       if (err.response.data.error === 'invalid_token') {
         this.oAuth2GoogleClient.setCredentials({ refresh_token: refreshToken });
-        const { credentials } = await this.oAuth2GoogleClient.refreshAccessToken();
-        request.session.passport.user.accessToken = credentials.access_token;
+
+        try {
+          const { credentials } = await this.oAuth2GoogleClient.refreshAccessToken();
+          request.session.passport.user.accessToken = credentials.access_token;
+        } catch (err) {
+          if (err.response.data.error === 'invalid_grant') {
+            throw new UnauthorizedException();
+          }
+        }
       }
     });
 

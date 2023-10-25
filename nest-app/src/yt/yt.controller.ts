@@ -5,6 +5,7 @@ import {
   ApiOAuth2,
   ApiOkResponse,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { SessionGuard } from '../auth/session/session.guard';
 import { ReqUserId } from '../user/decorators/user.decorator';
@@ -19,6 +20,7 @@ export class YtController {
   @ApiOkResponse()
   @ApiForbiddenResponse({ description: 'You reach the requests limit for youtube' })
   @ApiInternalServerErrorResponse({ description: 'Error on updating fetch date of user: {error message}' })
+  @ApiUnauthorizedResponse()
   @Get()
   @UseGuards(SessionGuard)
   async findAll(@ReqUserId() userId: number) {
