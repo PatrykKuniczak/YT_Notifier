@@ -1,11 +1,15 @@
 import useEditKeyword from '@hooks/use-edit-keyword';
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
+import useValidate from '@hooks/use-validate';
+import httpClient from '@http-client';
 import { IStyledKeyword } from '@interfaces';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
 import StyledInput from '@pages/popup/components/shared/input';
+import { useMutation } from '@root/utils/libs/query-client';
 import { textMixin } from '@utils/data/mixins/text-mixin';
+import urls from '@utils/endpoints/urls';
 
 const keywordStyles = {
   ...textMixin,
@@ -39,22 +43,33 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
   }),
 );
 
-export const StyledKeyword = ({ value, openedInput, changeInputVisibility }: IStyledKeyword) => {
+export const StyledKeyword = ({ id, openedInputId, content, changeOpenedInputId }: IStyledKeyword) => {
   const { handleKeyEvent } = useHandleKeyEvents();
-  const { value: inputValue, handleStateChange, previousValue, handlePreviousValueChange } = useEditKeyword(value);
+  const { value: inputValue, handleStateChange, previousValue, handlePreviousValueChange } = useEditKeyword(content);
+
+  const { mutate: editKeyword } = useMutation({
+    mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
+  });
+
+  const { isValid, handleValidation } = useValidate();
 
   const handleApplyingChanges = () => {
-    if (inputValue.length > 1) {
+    if (isValid) {
       handlePreviousValueChange(inputValue);
+      editKeyword({ content: inputValue });
     }
-    changeInputVisibility();
+
+    changeOpenedInputId(0);
   };
 
-  return openedInput ? (
+  return id === openedInputId ? (
     <FormControl
       defaultValue=""
       required
-      onChange={event => handleStateChange(event.target.value)}
+      onChange={event => {
+        handleStateChange(event.target.value);
+        handleValidation(event.target.value);
+      }}
       value={inputValue}
       style={{ width: '100%', position: 'relative' }}>
       <StyledKeywordInput
