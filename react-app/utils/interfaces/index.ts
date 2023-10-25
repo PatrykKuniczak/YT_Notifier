@@ -30,4 +30,8 @@ interface IUser {
   avatar: string;
 }
 
-export { IUseFocus, IKeyword, IStyledKeyword, IStyledEditButton, IStyledStoreItem, IUser };
+interface IEditKeywordRef {
+  handleApplyingChanges: TVoid;
+}
+
+export { IUseFocus, IKeyword, IStyledKeyword, IStyledEditButton, IStyledStoreItem, IEditKeywordRef, IUser };

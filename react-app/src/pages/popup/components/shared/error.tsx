@@ -18,7 +18,7 @@ export const StyledErrorMessage = styled(props => {
       throw new Error('Value is not a string');
     }
     handleValidation(value);
-  }, [formControlContext]);
+  }, [formControlContext, handleValidation, value]);
 
   return !isValid ? <p {...props}>Podaj od 3 do 255 znaków!</p> : null;
 })(({ theme }) =>
