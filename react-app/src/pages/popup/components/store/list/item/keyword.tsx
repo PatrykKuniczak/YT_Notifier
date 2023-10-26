@@ -11,6 +11,7 @@ import { useMutation } from '@root/utils/libs/query-client';
 import { textMixin } from '@utils/data/mixins/text-mixin';
 import urls from '@utils/endpoints/urls';
 import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const keywordStyles = {
   ...textMixin,
@@ -58,6 +59,7 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
     const { mutate: editKeyword } = useMutation({
       mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
       onSuccess: () => queryClient.invalidateQueries([urls.keyWords]),
+      onError: () => toast.error('Nie udalo się zedytowac frazy'),
     });
 
     const { isValid, handleValidation } = useValidate();

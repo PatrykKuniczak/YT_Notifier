@@ -11,6 +11,7 @@ import urls from '@utils/endpoints/urls';
 import { useContext, useState } from 'react';
 import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
+import { toast } from 'react-toastify';
 
 const StyledListbox = styled('ul')(({ theme }) =>
   theme.unstable_sx({
@@ -87,12 +88,18 @@ const StyledProfile = () => {
 
   const { mutate: signOut } = useMutation({
     mutationFn: () => httpClient.post(urls.auth.logout),
-    onSuccess: async () => queryClient.resetQueries({ queryKey: [urls.auth.me] }),
+    onSuccess: async () => {
+      queryClient.resetQueries({ queryKey: [urls.auth.me] });
+      toast.success('Pomyślnie wylogowano');
+    },
   });
 
   const { mutate: removeAccount } = useMutation({
     mutationFn: () => httpClient.delete(urls.auth.removeAccount),
-    onSuccess: async () => queryClient.resetQueries({ queryKey: [urls.auth.me] }),
+    onSuccess: async () => {
+      queryClient.resetQueries({ queryKey: [urls.auth.me] });
+      toast.success('Pomyślnie usunięto konto');
+    },
   });
 
   return (

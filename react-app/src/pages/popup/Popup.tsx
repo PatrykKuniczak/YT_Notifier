@@ -12,6 +12,7 @@ import { useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import React from 'react';
 import { createHashRouter } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const hashRouting = createHashRouter([
   {
@@ -38,10 +39,22 @@ const hashRouting = createHashRouter([
 const Popup = () => {
   const { isDarkMode } = useTernaryDarkMode();
 
-  const { data: user } = useQuery<IUser>({
+  const {
+    data: user,
+    isSuccess,
+    isError,
+  } = useQuery<IUser>({
     queryKey: [urls.auth.me],
     queryFn: () => httpClient.get(urls.auth.me).then(user => user.data),
   });
+
+  React.useEffect(() => {
+    if (isSuccess) {
+      toast.success('Pomyślnie zalogowano');
+    } else if (isError) {
+      toast.error('Nieudana próba logowania');
+    }
+  }, [user]);
 
   return <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user }} hashRouting={hashRouting} />;
 };

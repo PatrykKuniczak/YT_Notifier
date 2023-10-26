@@ -9,6 +9,7 @@ import useValidate from '@hooks/use-validate';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const StyledForm = styled('form')(({ theme }) =>
   theme.unstable_sx({
@@ -77,6 +78,7 @@ const StyledAddInput = () => {
       setKeyword('');
       queryClient.invalidateQueries([urls.keyWords]);
     },
+    onError: () => toast.error('Nie udalo się dodac nowej frazy'),
   });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

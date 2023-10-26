@@ -9,6 +9,7 @@ import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-v
 import queryClient, { useMutation, useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useDeferredValue, useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const StoreRoute = () => {
   const [keywordToRemove, setKeywordToRemove] = useState(0);
@@ -27,6 +28,7 @@ export const StoreRoute = () => {
   const { mutate: removeKeyword } = useMutation({
     mutationFn: ({ id }: { id: number }) => httpClient.delete(`${urls.keyWords}/${id}`),
     onSuccess: () => queryClient.invalidateQueries([urls.keyWords]),
+    onError: () => toast.error('Nie udalo sie usunac zapisanej frazy!'),
   });
 
   const deferredSearchParam = useDeferredValue(searchParamValue);
