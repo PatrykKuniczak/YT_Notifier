@@ -58,7 +58,12 @@ export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
         <StyledIcon src={savedTagsIcon} alt={'Saved tags navigation button'} width={20} height={20} />
       </StyledButton>
 
-      <StyledButton title="Obejrzyj później" aria-label="Obejrzyj później">
+      <StyledButton
+        title="Obejrzyj później"
+        aria-label="Obejrzyj później"
+        onClick={() => {
+          chrome.tabs.create({ url: 'https://www.youtube.com/playlist?list=WL' });
+        }}>
         <StyledIcon src={watchLaterIcon} alt={'YT Watch Later navigation button'} width={20} height={20} />
       </StyledButton>
     </NavbarStyles>
