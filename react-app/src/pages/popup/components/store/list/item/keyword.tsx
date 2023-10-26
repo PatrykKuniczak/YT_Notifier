@@ -59,7 +59,7 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
     const { mutate: editKeyword } = useMutation({
       mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
       onSuccess: () => queryClient.invalidateQueries([urls.keyWords]),
-      onError: () => toast.error('Nie udalo się zedytowac frazy'),
+      onError: () => toast.error('Nie udało się edytować frazy'),
     });
 
     const { isValid, handleValidation } = useValidate();

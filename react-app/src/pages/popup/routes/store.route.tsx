@@ -27,8 +27,8 @@ export const StoreRoute = () => {
 
   const { mutate: removeKeyword } = useMutation({
     mutationFn: ({ id }: { id: number }) => httpClient.delete(`${urls.keyWords}/${id}`),
-    onSuccess: () => queryClient.invalidateQueries([urls.keyWords]),
-    onError: () => toast.error('Nie udalo sie usunac zapisanej frazy!'),
+    onSuccess: async () => queryClient.invalidateQueries([urls.keyWords]),
+    onError: () => toast.error('Nie udało się usunąć zapisanej frazy!'),
   });
 
   const deferredSearchParam = useDeferredValue(searchParamValue);

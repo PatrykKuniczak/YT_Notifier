@@ -48,13 +48,15 @@ const Popup = () => {
     queryFn: () => httpClient.get(urls.auth.me).then(user => user.data),
   });
 
-  React.useEffect(() => {
-    if (isSuccess) {
-      toast.success('Pomyślnie zalogowano');
-    } else if (isError) {
-      toast.error('Nieudana próba logowania');
-    }
-  }, [user]);
+  if (isSuccess) {
+    toast.success('Pomyślnie zalogowano', {
+      toastId: 'successToast',
+    });
+  } else if (isError) {
+    toast.error('Logowanie nie powiodło się', {
+      toastId: 'errorToast',
+    });
+  }
 
   return <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user }} hashRouting={hashRouting} />;
 };

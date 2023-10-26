@@ -74,11 +74,11 @@ const StyledAddInput = () => {
 
   const { mutate: addKeyword } = useMutation({
     mutationFn: (content: { content: string }) => httpClient.post(urls.keyWords, content),
-    onSuccess: () => {
+    onSuccess: async () => {
       setKeyword('');
       queryClient.invalidateQueries([urls.keyWords]);
     },
-    onError: () => toast.error('Nie udalo się dodac nowej frazy'),
+    onError: () => toast.error('Nie udalo się dodać nowej frazy'),
   });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
