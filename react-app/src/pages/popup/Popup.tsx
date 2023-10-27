@@ -12,6 +12,7 @@ import { useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import React from 'react';
 import { createHashRouter } from 'react-router-dom';
+import '../internationalization';
 import { toast } from 'react-toastify';
 
 const hashRouting = createHashRouter([

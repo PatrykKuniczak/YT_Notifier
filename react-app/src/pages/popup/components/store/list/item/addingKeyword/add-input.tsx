@@ -9,6 +9,7 @@ import useValidate from '@hooks/use-validate';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 const StyledForm = styled('form')(({ theme }) =>
@@ -72,6 +73,8 @@ const StyledAddInput = () => {
 
   const { isValid, handleValidation } = useValidate();
 
+  const { t } = useTranslation();
+
   const { mutate: addKeyword } = useMutation({
     mutationFn: (content: { content: string }) => httpClient.post(urls.keyWords, content),
     onSuccess: async () => {
@@ -95,7 +98,7 @@ const StyledAddInput = () => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <FormControl onChange={handleChange} value={keyword} style={{ width: '100%', position: 'relative' }}>
-        <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
+        <StyledKeywordInput placeholder={t('addKeyword')} />
       </FormControl>
       <StyledSubmitButton disabled={!isValid} type={'submit'}>
         <StyledIcon src={plusIcon} alt={'Add keyword'} width={20} height={20} />

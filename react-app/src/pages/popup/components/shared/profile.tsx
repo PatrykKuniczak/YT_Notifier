@@ -11,6 +11,7 @@ import urls from '@utils/endpoints/urls';
 import { useContext, useState } from 'react';
 import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
@@ -104,6 +105,8 @@ const StyledProfile = () => {
     },
   });
 
+  const { t } = useTranslation();
+
   return (
     <Dropdown onOpenChange={handleOpenChange}>
       <StyledMenuButton>
@@ -123,8 +126,8 @@ const StyledProfile = () => {
         />
       </StyledMenuButton>
       <Menu slots={{ listbox: StyledListbox }}>
-        <StyledMenuItem onClick={changeModalVisibility}>Usun konto</StyledMenuItem>
-        <StyledMenuItem onClick={() => signOut()}>Wyloguj się</StyledMenuItem>
+        <StyledMenuItem onClick={changeModalVisibility}>{t('deleteAccount')}</StyledMenuItem>
+        <StyledMenuItem onClick={() => signOut()}>{t('logout')}</StyledMenuItem>
       </Menu>
       <StyledDeleteModal
         open={open}

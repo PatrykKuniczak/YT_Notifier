@@ -5,6 +5,7 @@ import GlobalStyles from '@utils/data/global-styles';
 import darkTheme from '@utils/data/themes/dark-theme';
 import lightTheme from '@utils/data/themes/light-theme';
 import { Router as RemixRouter } from '@remix-run/router/dist/router';
+import i18n from 'i18next';
 import React from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -23,7 +24,7 @@ const ProvidersWrapper = ({
     <React.StrictMode>
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <GlobalStyles />
-
+        <button onClick={() => i18n.changeLanguage('pl')}>Click me</button>
         <AuthContext.Provider value={authProviderValues}>
           <RouterProvider router={hashRouting} />
         </AuthContext.Provider>
