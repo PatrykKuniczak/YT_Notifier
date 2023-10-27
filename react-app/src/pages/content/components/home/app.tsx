@@ -3,6 +3,8 @@ import Notification from '@pages/content/components/notification/notification';
 import GlobalStyles from '@utils/data/global-styles';
 import theme from '@utils/data/themes/dark-theme';
 import React, { useState } from 'react';
+import { injectStyle } from 'react-toastify/dist/inject-style';
+import { toast } from 'react-toastify';
 
 export default function App() {
   const [opened, setOpened] = useState(false);
@@ -16,6 +18,12 @@ export default function App() {
     if (loadedVideos) {
       setLoadedVideosAmount(loadedVideos);
       setOpened(true);
+      injectStyle();
+      toast.info(`Spod podanych slów kluczowych, pobrano ${loadedVideosAmount} wideo, sprawdź we wtyczce.`, {
+        toastId: 'notification',
+        position: 'bottom-right',
+        theme: 'dark',
+      });
     }
   });
 
@@ -23,11 +31,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
 
-      <Notification
-        opened={opened}
-        toggleOpen={toggleOpen}
-        content={`Spod podanych slów kluczowych, pobrano ${loadedVideosAmount} wideo, sprawdź we wtyczce.`}
-      />
+      <Notification opened={opened} toggleOpen={toggleOpen} />
     </ThemeProvider>
   );
 }
