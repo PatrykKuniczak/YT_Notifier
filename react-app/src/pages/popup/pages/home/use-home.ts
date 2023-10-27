@@ -7,7 +7,7 @@ export const useHome = () => {
 
   const { pathname } = useLocation();
 
-  const { ref, focus } = useFocus();
+  const { ref, focus } = useFocus<HTMLInputElement>();
 
   useEffect(() => {
     setTitle(pathname === '/videos' ? 'Znalezione Wideo' : 'Zapisane Frazy');
