@@ -6,7 +6,7 @@ import { StyledMainContent } from '@pages/popup/layouts/main-content';
 import { StyledNavbar } from '@pages/popup/layouts/navbar';
 import { StyledHomePageWrapper } from '@pages/popup/pages/home/home-wrapper';
 import { useHome } from '@pages/popup/pages/home/use-home';
-import React, { Ref, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const HomePage = () => {
@@ -24,7 +24,7 @@ const HomePage = () => {
       <StyledMainContent>
         <StyledTitle>{title}</StyledTitle>
 
-        <StyledSearchBar ref={ref as Ref<HTMLInputElement>} focus={focus} />
+        <StyledSearchBar ref={ref} focus={focus} />
 
         <Outlet />
       </StyledMainContent>

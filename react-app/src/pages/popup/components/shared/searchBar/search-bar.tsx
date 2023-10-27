@@ -5,10 +5,10 @@ import { useTheme } from '@mui/system';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledSearchBarInput } from '@pages/popup/components/shared/searchBar/search-bar-input';
 import { StyledSearchBarWrapper } from '@pages/popup/components/shared/searchBar/search-bar-wrapper';
-import { forwardRef, Ref } from 'react';
+import { TVoid } from '@types';
+import { forwardRef } from 'react';
 
-// eslint-disable-next-line react/display-name
-export const StyledSearchBar = forwardRef((_, ref) => {
+export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_, ref) => {
   const theme = useTheme();
 
   const { handleKeyEvent } = useHandleKeyEvents();
@@ -27,7 +27,7 @@ export const StyledSearchBar = forwardRef((_, ref) => {
       />
 
       <StyledSearchBarInput
-        ref={ref as Ref<HTMLInputElement>}
+        ref={ref}
         autoFocus={true}
         aria-label="Search Bar"
         placeholder={'Wyszukaj'}
