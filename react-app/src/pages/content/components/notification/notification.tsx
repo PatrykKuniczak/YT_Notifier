@@ -10,7 +10,7 @@ const Notification = ({ opened, toggleOpen }: { opened: boolean; toggleOpen: TVo
       {opened && (
         <Portal>
           <StyledNotificationButton onClick={toggleOpen} aria-label="closing notification">
-            <ToastContainer />
+            <ToastContainer position="bottom-right" theme="dark" />
           </StyledNotificationButton>
         </Portal>
       )}

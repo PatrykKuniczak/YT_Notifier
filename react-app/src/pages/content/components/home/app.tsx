@@ -21,8 +21,6 @@ export default function App() {
       injectStyle();
       toast.info(`Spod podanych slów kluczowych, pobrano ${loadedVideosAmount} wideo, sprawdź we wtyczce.`, {
         toastId: 'notification',
-        position: 'bottom-right',
-        theme: 'dark',
       });
     }
   });
