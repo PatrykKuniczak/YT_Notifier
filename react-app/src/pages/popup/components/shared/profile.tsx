@@ -89,16 +89,16 @@ const StyledProfile = () => {
   const { mutate: signOut } = useMutation({
     mutationFn: () => httpClient.post(urls.auth.logout),
     onSuccess: async () => {
-      queryClient.resetQueries({ queryKey: [urls.auth.me] });
-      toast.success('Pomyślnie wylogowano');
+      await queryClient.resetQueries({ queryKey: [urls.auth.me] });
+      await toast.success('Pomyślnie wylogowano');
     },
   });
 
   const { mutate: removeAccount } = useMutation({
     mutationFn: () => httpClient.delete(urls.auth.removeAccount),
     onSuccess: async () => {
-      queryClient.resetQueries({ queryKey: [urls.auth.me] });
-      toast.success('Pomyślnie usunięto konto');
+      await queryClient.resetQueries({ queryKey: [urls.auth.me] });
+      await toast.success('Pomyślnie usunięto konto');
     },
   });
 

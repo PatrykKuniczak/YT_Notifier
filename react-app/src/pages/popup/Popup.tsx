@@ -50,11 +50,11 @@ const Popup = () => {
 
   if (isSuccess) {
     toast.success('Pomyślnie zalogowano', {
-      toastId: 'successToast',
+      toastId: urls.auth.me + 'success',
     });
   } else if (isError) {
     toast.error('Logowanie nie powiodło się', {
-      toastId: 'errorToast',
+      toastId: urls.auth.me + 'error',
     });
   }
 
