@@ -82,6 +82,7 @@ const StyledAddInput = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     addKeyword({ content: keyword });
+    handleValidation('');
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

@@ -18,7 +18,7 @@ chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
     return;
   }
 
-  fetch(`${import.meta.env.VITE_API_URL}${urls.keywords}`, {
+  fetch(`${import.meta.env.VITE_API_URL}${urls.keyWords}`, {
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify({ content: selectionText }),

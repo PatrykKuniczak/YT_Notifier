@@ -30,7 +30,7 @@ const EditButtonStyles = styled(StyledButton)(({ theme }) =>
 
     '&.openedInput': {
       display: 'block',
-      
+
       '&::before': {
         width: 14,
       },
@@ -45,7 +45,7 @@ const EditStyledIcon = styled(StyledIcon)(({ theme }) =>
 );
 
 export const StyledEditButton = ({ id, changeOpenedInputId, openedInputId }: IStyledEditButton) => (
-  <EditButtonStyles className={clsx({ openedInput: id === openedInputId })} onClick={() => changeOpenedInputId(id)}>
+  <EditButtonStyles className={clsx({ openedInput: id === openedInputId })} onClick={changeOpenedInputId}>
     <EditStyledIcon src={editIcon} alt={'Edit Button'} />
   </EditButtonStyles>
 );

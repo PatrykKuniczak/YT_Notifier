@@ -1,15 +1,16 @@
-import useEditKeyword from '@hooks/use-edit-keyword';
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
 import useValidate from '@hooks/use-validate';
 import httpClient from '@http-client';
-import { IStyledKeyword } from '@interfaces';
+import { IEditKeywordRef, IStyledKeyword } from '@interfaces';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
 import StyledInput from '@pages/popup/components/shared/input';
+import queryClient from '@query-client';
 import { useMutation } from '@root/utils/libs/query-client';
 import { textMixin } from '@utils/data/mixins/text-mixin';
 import urls from '@utils/endpoints/urls';
+import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
 
 const keywordStyles = {
   ...textMixin,
@@ -43,43 +44,59 @@ const StyledKeywordInput = styled(StyledInput)(({ theme }) =>
   }),
 );
 
-export const StyledKeyword = ({ id, openedInputId, content, changeOpenedInputId }: IStyledKeyword) => {
-  const { handleKeyEvent } = useHandleKeyEvents();
-  const { value: inputValue, handleStateChange, previousValue, handlePreviousValueChange } = useEditKeyword(content);
+export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
+  ({ id, openedInputId, content, changeOpenedInputId }, inputRef) => {
+    const { handleKeyEvent } = useHandleKeyEvents();
+    const [inputValue, setInputValue] = useState(content);
 
-  const { mutate: editKeyword } = useMutation({
-    mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
-  });
+    const isDirty = inputValue !== content;
 
-  const { isValid, handleValidation } = useValidate();
+    const handleStateChange = useCallback((content: string) => {
+      setInputValue(content);
+    }, []);
 
-  const handleApplyingChanges = () => {
-    if (isValid) {
-      handlePreviousValueChange(inputValue);
-      editKeyword({ content: inputValue });
-    }
+    const { mutate: editKeyword } = useMutation({
+      mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
+      onSuccess: () => queryClient.invalidateQueries([urls.keyWords]),
+    });
 
-    changeOpenedInputId(0);
-  };
+    const { isValid, handleValidation } = useValidate();
 
-  return id === openedInputId ? (
-    <FormControl
-      defaultValue=""
-      required
-      onChange={event => {
-        handleStateChange(event.target.value);
-        handleValidation(event.target.value);
-      }}
-      value={inputValue}
-      style={{ width: '100%', position: 'relative' }}>
-      <StyledKeywordInput
-        autoFocus
-        placeholder="Podaj słowo kluczowe"
-        onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
-      />
-      <StyledErrorMessage />
-    </FormControl>
-  ) : (
-    <StyledKeywordSpan>{previousValue}</StyledKeywordSpan>
-  );
-};
+    const handleApplyingChanges = useCallback(() => {
+      if (isValid && isDirty) {
+        editKeyword({ content: inputValue });
+      }
+
+      if (id === openedInputId) {
+        changeOpenedInputId(0);
+        return;
+      }
+      changeOpenedInputId(id);
+    }, [isValid, isDirty, openedInputId, changeOpenedInputId, editKeyword, inputValue, id]);
+
+    useImperativeHandle(inputRef, () => {
+      return { handleApplyingChanges };
+    });
+
+    return id === openedInputId ? (
+      <FormControl
+        defaultValue=""
+        required
+        onChange={event => {
+          handleStateChange(event.target.value);
+          handleValidation(event.target.value);
+        }}
+        value={inputValue}
+        style={{ width: '100%', position: 'relative' }}>
+        <StyledKeywordInput
+          autoFocus
+          placeholder="Podaj słowo kluczowe"
+          onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
+        />
+        <StyledErrorMessage />
+      </FormControl>
+    ) : (
+      <StyledKeywordSpan>{inputValue}</StyledKeywordSpan>
+    );
+  },
+);
