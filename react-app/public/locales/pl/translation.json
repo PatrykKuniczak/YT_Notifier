@@ -1,0 +1,11 @@
+{
+  "savedKeywords": "Zapisane Frazy",
+  "foundVideos": "Znalezione Wideo",
+  "search": "Szukaj",
+  "addKeyword": "Dodaj słowo kluczowe",
+  "views": "wyświetleń",
+  "deleteAccount": "Usuń konto",
+  "logout": "Wyloguj się",
+  "languages": { "pl": "Polski", "en": "Angielski" },
+  "timeAgo": "{{ date, ago }}"
+}

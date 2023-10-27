@@ -15,8 +15,8 @@ const StyledListbox = styled('ul')(({ theme }) =>
     borderRadius: '12px',
     outline: 'transparent',
 
-    background: theme.palette.background.primary,
-    color: theme.palette.color.primary,
+    backgroundColor: 'background.primary',
+    color: 'color.primary',
 
     fontSize: 'fontSize.sm',
 
@@ -34,12 +34,12 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) =>
     listStyle: 'none',
 
     '&:hover:not(.Mui-disabled)': {
-      backgroundColor: theme.palette.background.secondary,
+      backgroundColor: 'background.secondary',
     },
 
     '&.Mui-focusVisible': {
       outline: `1px solid #fff`,
-      backgroundColor: theme.palette.background.secondary,
+      backgroundColor: 'background.secondary',
     },
   }),
 );

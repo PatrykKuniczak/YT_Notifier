@@ -1,0 +1,14 @@
+{
+  "savedKeywords": "Saved Keywords",
+  "foundVideos": "Found Videos",
+  "search": "Search",
+  "addKeyword": "Add keyword",
+  "views": "views",
+  "deleteAccount": "Delete account",
+  "logout": "Logout",
+  "languages": {
+    "pl": "Polish",
+    "en": "English"
+  },
+  "timeAgo": "{{ date, ago }}"
+}
