@@ -15,6 +15,12 @@ export class SessionGuard implements CanActivate {
   async canActivate(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest();
 
+    const sessionExists = !!(await this.sessionService.findById(request.session.id));
+
+    if (!sessionExists) {
+      throw new UnauthorizedException();
+    }
+
     const { refreshToken } = await this.usersService.getRefreshTokenById(request.session.passport.user.id);
 
     await this.oAuth2GoogleClient.getTokenInfo(request.session.passport.user.accessToken).catch(async err => {
@@ -37,12 +43,6 @@ export class SessionGuard implements CanActivate {
       access_token: request.session.passport.user.accessToken,
     });
 
-    const result = !!(await this.sessionService.findById(request.session.id));
-
-    if (!result) {
-      throw new UnauthorizedException();
-    }
-
-    return result;
+    return sessionExists;
   }
 }
