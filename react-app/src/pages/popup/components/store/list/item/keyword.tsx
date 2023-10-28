@@ -11,6 +11,7 @@ import { useMutation } from '@root/utils/libs/query-client';
 import { textMixin } from '@utils/data/mixins/text-mixin';
 import urls from '@utils/endpoints/urls';
 import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 const keywordStyles = {
@@ -64,6 +65,8 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
 
     const { isValid, handleValidation } = useValidate();
 
+    const { t } = useTranslation();
+
     const handleApplyingChanges = useCallback(() => {
       if (isValid && isDirty) {
         editKeyword({ content: inputValue });
@@ -92,7 +95,7 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
         style={{ width: '100%', position: 'relative' }}>
         <StyledKeywordInput
           autoFocus
-          placeholder="Podaj słowo kluczowe"
+          placeholder={t('provideKeyword')}
           onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
         />
         <StyledErrorMessage />

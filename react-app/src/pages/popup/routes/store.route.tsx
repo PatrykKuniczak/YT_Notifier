@@ -9,6 +9,7 @@ import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-v
 import queryClient, { useMutation, useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useDeferredValue, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
@@ -20,6 +21,8 @@ export const StoreRoute = () => {
   const { searchParamValue } = useSearch();
 
   const { open, changeModalVisibility } = useDeleteModal();
+
+  const { t } = useTranslation();
 
   const { data: keywords, isLoading: keywordsIsLoading } = useQuery<IKeyword[]>({
     queryKey: [urls.keyWords],
@@ -66,7 +69,7 @@ export const StoreRoute = () => {
 
       <StyledDeleteModal
         open={open}
-        content={<>Czy jesteś pewien, że chcesz to usunąć?</>}
+        content={<>{t('deleteModalContent')}</>}
         onConfirm={() => removeKeyword({ id: keywordToRemove })}
         changeModalVisibility={changeModalVisibility}
       />

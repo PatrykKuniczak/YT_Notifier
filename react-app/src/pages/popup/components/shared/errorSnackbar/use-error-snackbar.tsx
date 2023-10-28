@@ -3,6 +3,7 @@ import { useSnackbar } from '@mui/base/useSnackbar';
 import { StyledSnackbar } from '@pages/popup/components/shared/errorSnackbar/error-snackbar';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useUpdateEffect } from 'usehooks-ts';
 
 const useErrorSnackbar = () => {
@@ -20,6 +21,8 @@ const useErrorSnackbar = () => {
     autoHideDuration: 4000,
   });
 
+  const { t } = useTranslation();
+
   const handleErrorMessage = (message: string) => {
     setErrorMessage(message);
   };
@@ -33,7 +36,7 @@ const useErrorSnackbar = () => {
       <>
         {open && (
           <StyledSnackbar {...getRootProps()}>
-            <StyledIcon src={exclamationOctagonIcon} alt={'Exclamation octagon'} width={20} height={20} />
+            <StyledIcon src={exclamationOctagonIcon} alt={t('alts.exclamationOctagon')} width={20} height={20} />
             {errorMessage}
           </StyledSnackbar>
         )}

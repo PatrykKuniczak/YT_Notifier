@@ -109,15 +109,16 @@ const StyledProfile = () => {
 
   return (
     <Dropdown onOpenChange={handleOpenChange}>
-      <StyledMenuButton>
+      <StyledMenuButton aria-label={t('aria-labels.openProfileMenuButton')}>
         {userIsLoading ? (
           <StyledSkeleton circle={true} width={40} height={40} />
         ) : (
-          <StyledAvatar src={avatar} alt={'Avatar'} width={40} height={40} />
+          <StyledAvatar src={avatar} aria-hidden={true} alt={''} width={40} height={40} />
         )}
         <StyledIcon
           src={collapsed ? chevronUpIcon : chevronDownIcon}
-          alt={'Chevron'}
+          aria-hidden={true}
+          alt={''}
           width={16}
           height={16}
           sx={{
@@ -133,9 +134,9 @@ const StyledProfile = () => {
         open={open}
         content={
           <>
-            Czy jesteś pewien, że chcesz usunąć konto?
+            {t('deleteAccountModal.content1')}
             <br />
-            Twoje dane zostaną trwale usunięte
+            {t('deleteAccountModal.content2')}
           </>
         }
         onConfirm={() => removeAccount()}

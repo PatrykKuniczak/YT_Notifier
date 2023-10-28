@@ -21,7 +21,7 @@ export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_
     <StyledSearchBarWrapper>
       <StyledIcon
         src={searchIcon}
-        alt={'Search magnifier'}
+        alt={''}
         width={20}
         height={20}
         sx={{
@@ -32,7 +32,7 @@ export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_
       <StyledSearchBarInput
         ref={ref}
         autoFocus={true}
-        aria-label="Search Bar"
+        aria-label={t('search')}
         placeholder={t('search')}
         value={searchParamValue}
         onChange={event => handleSearchParamsChange(event.target.value)}

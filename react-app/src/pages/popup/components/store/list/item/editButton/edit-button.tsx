@@ -4,6 +4,7 @@ import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 const EditButtonStyles = styled(StyledButton)(({ theme }) =>
   theme.unstable_sx({
@@ -44,8 +45,15 @@ const EditStyledIcon = styled(StyledIcon)(({ theme }) =>
   }),
 );
 
-export const StyledEditButton = ({ id, changeOpenedInputId, openedInputId }: IStyledEditButton) => (
-  <EditButtonStyles className={clsx({ openedInput: id === openedInputId })} onClick={changeOpenedInputId}>
-    <EditStyledIcon src={editIcon} alt={'Edit Button'} />
-  </EditButtonStyles>
-);
+export const StyledEditButton = ({ id, changeOpenedInputId, openedInputId }: IStyledEditButton) => {
+  const { t } = useTranslation();
+
+  return (
+    <EditButtonStyles
+      className={clsx({ openedInput: id === openedInputId })}
+      onClick={changeOpenedInputId}
+      aria-label={t('aria-labels.editButton')}>
+      <EditStyledIcon src={editIcon} alt={''} />
+    </EditButtonStyles>
+  );
+};

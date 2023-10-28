@@ -13,8 +13,8 @@ import { useTranslation } from 'react-i18next';
 import { useLocalStorage } from 'usehooks-ts';
 
 const languages = {
-  en: { icon: { img: englishFlag, alt: 'English flag' }, nativeName: 'English' },
-  pl: { icon: { img: polishFlag, alt: 'Polish flag' }, nativeName: 'Polish' },
+  en: { icon: englishFlag, nativeName: 'English' },
+  pl: { icon: polishFlag, nativeName: 'Polish' },
 };
 
 const LanguageSelector = () => {
@@ -43,15 +43,11 @@ const LanguageSelector = () => {
 
   return (
     <Dropdown onOpenChange={handleOpenChange}>
-      <StyledMenuButton>
-        <StyledIcon
-          src={languages[i18n.resolvedLanguage].icon.img}
-          alt={languages[i18n.resolvedLanguage].icon.alt}
-          height={16}
-        />
+      <StyledMenuButton aria-label={t('aria-labels.openLanguageMenuButton')}>
+        <StyledIcon src={languages[i18n.resolvedLanguage].icon} alt={''} height={16} />
         <StyledIcon
           src={collapsed ? chevronUpIcon : chevronDownIcon}
-          alt={'Chevron'}
+          alt={''}
           width={16}
           height={16}
           sx={{
@@ -65,8 +61,9 @@ const LanguageSelector = () => {
             <StyledButton
               sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
               type="submit"
-              onClick={() => handleClick(language)}>
-              <StyledIcon src={languages[language].icon.img} alt={languages[language].icon.alt} height={16} />
+              onClick={() => handleClick(language)}
+              aria-label={languages[language].nativeName}>
+              <StyledIcon src={languages[language].icon} alt={''} height={16} />
               {t(`languages.${language}`)}
             </StyledButton>
           </StyledMenuItem>

@@ -4,6 +4,7 @@ import useTernaryDarkMode from '@hooks/use-ternary-darkmode';
 import { useSwitch, UseSwitchParameters } from '@mui/base/useSwitch';
 import { styled, SxProps } from '@mui/system';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 export const StyledThemeSwitch = (props: UseSwitchParameters & { sx?: SxProps }) => {
   const { changeTheme, isDarkMode } = useTernaryDarkMode();
@@ -11,6 +12,7 @@ export const StyledThemeSwitch = (props: UseSwitchParameters & { sx?: SxProps })
     ...props,
     checked: isDarkMode,
   });
+  const { t } = useTranslation();
 
   const stateClasses = {
     checked,
@@ -23,7 +25,7 @@ export const StyledThemeSwitch = (props: UseSwitchParameters & { sx?: SxProps })
       <StyledSwitchTrack>
         <StyledSwitchThumb className={clsx(stateClasses)} />
       </StyledSwitchTrack>
-      <StyledSwitchInput {...getInputProps()} aria-label="Theme switcher" onClick={changeTheme} />
+      <StyledSwitchInput {...getInputProps()} aria-label={t('aria-labels.themeSwitch')} onClick={changeTheme} />
     </StyledSwitchRoot>
   );
 };

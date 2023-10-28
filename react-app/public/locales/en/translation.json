@@ -1,4 +1,6 @@
 {
+  "welcome": "Welcome to YT Plugin",
+  "loginByGoogle": "Login by Google",
   "savedKeywords": "Saved Keywords",
   "foundVideos": "Found Videos",
   "search": "Search",
@@ -10,5 +12,30 @@
     "pl": "Polish",
     "en": "English"
   },
-  "timeAgo": "{{ date, ago }}"
+  "timeAgo": "{{ date, ago }}",
+  "validation": "Provide from 3 to 255 characters!",
+  "provideKeyword": "Provide keyword",
+  "deleteModalConfirm": "Yes,delete",
+  "deleteModalCancel": "Cancel",
+  "deleteAccountModal": {
+    "content1": "Are you sure, you want to delete your account?",
+    "content2": "Your data will be lost. This action is irreversible."
+  },
+  "deleteModalContent": "Are you sure, you want to delete this?",
+  "nav": {
+    "foundVideo": "Found video",
+    "savedKeywords": "Saved keywords",
+    "watchLater": "Watch later"
+  },
+  "aria-labels": {
+    "deleteButton": "Delete",
+    "editButton": "Edit",
+    "addKeywordButton": "Add keyword",
+    "openProfileMenuButton": "Open profile menu",
+    "openLanguageMenuButton": "Open language menu",
+    "themeSwitch": "Change theme"
+  },
+  "alts": {
+    "exclamationOctagon": "Exclamation octagon"
+  }
 }

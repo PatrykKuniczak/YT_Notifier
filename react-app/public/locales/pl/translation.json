@@ -1,4 +1,6 @@
 {
+  "welcome": "Witaj w YT Plugin",
+  "loginByGoogle": "Zaloguj się przez Google",
   "savedKeywords": "Zapisane Frazy",
   "foundVideos": "Znalezione Wideo",
   "search": "Szukaj",
@@ -7,5 +9,30 @@
   "deleteAccount": "Usuń konto",
   "logout": "Wyloguj się",
   "languages": { "pl": "Polski", "en": "Angielski" },
-  "timeAgo": "{{ date, ago }}"
+  "timeAgo": "{{ date, ago }}",
+  "validation": "Podaj od 3 do 255 znaków!",
+  "provideKeyword": "Podaj słowo kluczowe!",
+  "deleteModalConfirm": "Tak, usuń",
+  "deleteModalCancel": "Anuluj",
+  "deleteAccountModal": {
+    "content1": "Czy jesteś pewien, że chcesz usunąć konto?",
+    "content2": "Twoje dane zostaną trwale usunięte"
+  },
+  "deleteModalContent": "Czy jesteś pewien, że chcesz to usunąć?",
+  "nav": {
+    "foundVideo": "Znalezione Wideo",
+    "savedKeywords": "Zapisane słowa kluczowe",
+    "watchLater": "Obejrzyj później"
+  },
+  "aria-labels": {
+    "deleteButton": "Usuń",
+    "editButton": "Edytuj",
+    "addKeywordButton": "Dodaj słowo kluczowe",
+    "openProfileMenuButton": "Otwórz menu profilu",
+    "openLanguageMenuButton": "Otwórz menu języka",
+    "themeSwitch": "Przełącz motyw"
+  },
+  "alts": {
+    "exclamationOctagon": "Ikona ostrzeżenia"
+  }
 }
