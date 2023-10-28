@@ -16,7 +16,7 @@
   "deleteModalCancel": "Anuluj",
   "deleteAccountModal": {
     "content1": "Czy jesteś pewien, że chcesz usunąć konto?",
-    "content2": "Twoje dane zostaną trwale usunięte"
+    "content2": "Twoje dane zostaną trwale usunięte."
   },
   "deleteModalContent": "Czy jesteś pewien, że chcesz to usunąć?",
   "nav": {

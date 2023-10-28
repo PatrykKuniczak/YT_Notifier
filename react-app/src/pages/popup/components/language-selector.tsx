@@ -2,6 +2,7 @@ import chevronDownIcon from '@assets/img/chevron-down-icon.svg';
 import chevronUpIcon from '@assets/img/chevron-up-icon.svg';
 import englishFlag from '@assets/img/english-flag.svg';
 import polishFlag from '@assets/img/polish-flag.svg';
+import useLanguageSwitch from '@hooks/use-language-switch';
 import { Dropdown, Menu } from '@mui/base';
 import { useTheme } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
@@ -28,13 +29,7 @@ const LanguageSelector = () => {
 
   const { t } = useTranslation();
 
-  const navigatorLanguage = new Intl.Locale(navigator.language).minimize().baseName;
-
-  const [language, setLanguage] = useLocalStorage('language', navigatorLanguage === 'pl' ? navigatorLanguage : 'en');
-
-  useEffect(() => {
-    changeLanguage(language);
-  }, [language]);
+  const setLanguage = useLanguageSwitch();
 
   const handleClick = (language: string) => {
     changeLanguage(language);
