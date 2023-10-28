@@ -90,7 +90,7 @@ const StyledProfile = () => {
     mutationFn: () => httpClient.post(urls.auth.logout),
     onSuccess: async () => {
       await queryClient.resetQueries({ queryKey: [urls.auth.me] });
-      await toast.success('Pomyślnie wylogowano');
+      toast.success('Pomyślnie wylogowano');
     },
   });
 
@@ -98,7 +98,7 @@ const StyledProfile = () => {
     mutationFn: () => httpClient.delete(urls.auth.removeAccount),
     onSuccess: async () => {
       await queryClient.resetQueries({ queryKey: [urls.auth.me] });
-      await toast.success('Pomyślnie usunięto konto');
+      toast.success('Pomyślnie usunięto konto');
     },
   });
 
