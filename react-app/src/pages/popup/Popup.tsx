@@ -39,20 +39,12 @@ const hashRouting = createHashRouter([
 const Popup = () => {
   const { isDarkMode } = useTernaryDarkMode();
 
-  const {
-    data: user,
-    isSuccess,
-    isError,
-  } = useQuery<IUser>({
+  const { data: user, error } = useQuery<IUser>({
     queryKey: [urls.auth.me],
     queryFn: () => httpClient.get(urls.auth.me).then(user => user.data),
   });
 
-  if (isSuccess) {
-    toast.success('Pomyślnie zalogowano', {
-      toastId: `${urls.auth.me}-success`,
-    });
-  } else if (isError) {
+  if (error !== null && error !== 401) {
     toast.error('Logowanie nie powiodło się', {
       toastId: `${urls.auth.me}-error`,
     });
