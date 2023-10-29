@@ -1,4 +1,5 @@
 import { CanActivate, ExecutionContext, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Request } from 'express';
 import { OAuth2Client } from 'google-auth-library';
 import { UsersService } from '../../users/users.service';
 import { OAUTH2_GOOGLE_CLIENT } from '../oauth2.module';
@@ -23,6 +24,12 @@ export class SessionsGuard implements CanActivate {
 
     const { refreshToken } = await this.usersService.getRefreshTokenById(request.session.passport.user.id);
 
+    await this.assignCurrentUserToOAuth2Client(request, refreshToken);
+
+    return sessionExists;
+  }
+
+  private async assignCurrentUserToOAuth2Client(request: Request, refreshToken: string) {
     await this.oAuth2GoogleClient.getTokenInfo(request.session.passport.user.accessToken).catch(async err => {
       if (err.response.data.error === 'invalid_token') {
         this.oAuth2GoogleClient.setCredentials({ refresh_token: refreshToken });
@@ -42,7 +49,5 @@ export class SessionsGuard implements CanActivate {
       refresh_token: refreshToken,
       access_token: request.session.passport.user.accessToken,
     });
-
-    return sessionExists;
   }
 }
