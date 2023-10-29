@@ -1,9 +1,17 @@
 import { youtube, youtube_v3 } from '@googleapis/youtube';
-import { ForbiddenException, Inject, Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  ConflictException,
+  ForbiddenException,
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { OAuth2Client } from 'google-auth-library';
 import { Repository } from 'typeorm';
 import { OAUTH2_GOOGLE_CLIENT } from '../auth/oauth2.module';
+import { UpdateUserYtVideosDto } from './dto/update-user-yt-videos.dto';
 import { UserYtVideosEntity } from './model/user-yt-videos.entity';
 
 @Injectable()
@@ -85,53 +93,53 @@ export class UserYtVideosService {
     });
   }
 
-  async updateLastFetchDate(userId: number) {
+  async updatePlaylist(userId: number, { videoId, title, description }: UpdateUserYtVideosDto) {
+    let playlistId: string;
+
+    const userPlaylistResult = await this.userYtVideosRepository.findOneBy({ user: { id: userId } });
+
+    if (!userPlaylistResult.playlistId) {
+      const result = await this.youtubeClient.playlists.insert({
+        part: ['snippet'],
+        requestBody: { snippet: { title, description } },
+      });
+
+      playlistId = result.data.id;
+      await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId });
+    } else {
+      playlistId = userPlaylistResult.playlistId;
+    }
+
+    const playlistItems = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
+
+    const videoExistsInPlaylist = playlistItems.data.items.some(
+      playlistItem => playlistItem.snippet.resourceId.videoId === videoId,
+    );
+
+    if (videoExistsInPlaylist) {
+      throw new ConflictException('Video already exists in playlist');
+    }
+
+    await this.youtubeClient.playlistItems
+      .insert({
+        part: ['snippet'],
+        requestBody: {
+          snippet: {
+            playlistId,
+            resourceId: { kind: 'youtube#video', videoId },
+          },
+        },
+      })
+      .catch(err => {
+        if (err.status === 404) {
+          throw new NotFoundException('Video not found');
+        }
+      });
+  }
+
+  private async updateLastFetchDate(userId: number) {
     return this.userYtVideosRepository.update({ user: { id: userId } }, { lastFetch: new Date() }).catch(err => {
       throw new InternalServerErrorException('Error on updating fetch date of user: ' + err.message);
     });
   }
-
-  // async updateWatchLater(userId: number, videoId: string) {
-  //   let playlistId: string;
-  //
-  //   const userPlaylistResult = await this.usersService.getPlaylistId(userId);
-  //
-  //   if (!userPlaylistResult) {
-  //     const result = await this.youtubeClient.playlists.insert({
-  //       part: ['snippet'],
-  //       requestBody: { snippet: { description: 'Example description', title: 'Example title' } },
-  //     });
-  //
-  //     playlistId = result.data.id;
-  //     await this.usersService.updatePlaylistId(userId, playlistId);
-  //   } else {
-  //     playlistId = userPlaylistResult.playlistId;
-  //   }
-  //
-  //   const playlistItems = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
-  //
-  //   const videoExistsInPlaylist = playlistItems.data.items.some(
-  //     playlistItem => playlistItem.snippet.resourceId.videoId === videoId,
-  //   );
-  //
-  //   if (videoExistsInPlaylist) {
-  //     throw new ConflictException('Video already exists in playlist');
-  //   }
-  //
-  //   await this.youtubeClient.playlistItems.insert({
-  //     part: ['snippet'],
-  //     requestBody: {
-  //       snippet: {
-  //         playlistId,
-  //         resourceId: { kind: 'youtube#video', videoId },
-  //       },
-  //     },
-  //   });
-  // }
-
-  // async updatePlaylistId(id: number, playlistId: string) {
-  //   const { affected } = await this.userRepository.update({ id }, { playlistId });
-  //
-  //   return !!affected;
-  // }
 }

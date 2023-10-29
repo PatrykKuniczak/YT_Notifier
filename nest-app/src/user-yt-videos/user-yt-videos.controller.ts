@@ -1,7 +1,10 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Patch, UseGuards } from '@nestjs/common';
 import {
+  ApiBadRequestResponse,
+  ApiConflictResponse,
   ApiForbiddenResponse,
   ApiInternalServerErrorResponse,
+  ApiNotFoundResponse,
   ApiOAuth2,
   ApiOkResponse,
   ApiTags,
@@ -9,6 +12,7 @@ import {
 } from '@nestjs/swagger';
 import { SessionsGuard } from '../auth/sessions/sessions.guard';
 import { ReqUserId } from '../users/decorators/user.decorator';
+import { UpdateUserYtVideosDto } from './dto/update-user-yt-videos.dto';
 import { UserYtVideosService } from './user-yt-videos.service';
 
 @ApiOAuth2([])
@@ -27,13 +31,15 @@ export class UserYtVideosController {
     return this.ytVideosService.findAll(userId);
   }
 
-  // @ApiOkResponse()
-  // @ApiForbiddenResponse({ description: 'You reach the requests limit for youtube' })
-  // @ApiConflictResponse({ description: 'Video already exists in playlist' })
-  // @ApiUnauthorizedResponse()
-  // @Patch('update-playlist')
-  // @UseGuards(SessionsGuard)
-  // async updateWatchLater(@ReqUserId() userId: number, @Body('videoId') videoId: string = 'qrOeGCJdZe4') {
-  // return this.ytVideosService.update(userId, videoId);
-  // }
+  @ApiOkResponse()
+  @ApiForbiddenResponse({ description: 'You reach the requests limit for youtube' })
+  @ApiConflictResponse({ description: 'Video already exists in playlist' })
+  @ApiNotFoundResponse({ description: 'Video not found' })
+  @ApiBadRequestResponse({ description: 'title/description must be a string' })
+  @ApiUnauthorizedResponse()
+  @Patch('update-playlist')
+  @UseGuards(SessionsGuard)
+  async updateWatchLater(@ReqUserId() userId: number, @Body() updateUserYtVideosDto: UpdateUserYtVideosDto) {
+    return this.ytVideosService.updatePlaylist(userId, updateUserYtVideosDto);
+  }
 }
