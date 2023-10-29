@@ -23,11 +23,11 @@ import {
 import { Request, Response } from 'express';
 import { OAuth2Client } from 'google-auth-library';
 import { SESSION_COOKIE_NAME } from '../constants';
-import { ReqUserId } from '../user/decorators/user.decorator';
-import { UsersService } from '../user/user.service';
+import { ReqUserId } from '../users/decorators/user.decorator';
+import { UsersService } from '../users/users.service';
 import { GoogleAuthGuard } from './googleAuth/google.guard';
 import { OAUTH2_GOOGLE_CLIENT } from './oauth2.module';
-import { SessionGuard } from './session/session.guard';
+import { SessionsGuard } from './sessions/sessions.guard';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -70,7 +70,7 @@ export class AuthController {
   })
   @ApiOkResponse()
   @Post('logout')
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async logout(@Req() req: Request, @Res() res: Response) {
     req.logout((err: HttpException) => err && res.status(500).send('Error on destroying session: ' + err.message));
 
@@ -82,7 +82,7 @@ export class AuthController {
   @ApiOkResponse()
   @Get('me')
   @HttpCode(200)
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async getCurrentUser(@ReqUserId() userId: number) {
     return this.usersService.findOneById(userId);
   }
@@ -94,7 +94,7 @@ export class AuthController {
   })
   @ApiOkResponse()
   @Delete('remove-account')
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async removeAccount(@ReqUserId() userId: number, @Req() req: Request, @Res() res: Response) {
     const { refreshToken } = await this.usersService.getRefreshTokenById(userId);
 

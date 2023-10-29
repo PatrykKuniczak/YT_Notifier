@@ -10,9 +10,9 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { SessionGuard } from '../auth/session/session.guard';
-import { ReqUserId } from '../user/decorators/user.decorator';
-import { UsersService } from '../user/user.service';
+import { SessionsGuard } from '../auth/sessions/sessions.guard';
+import { ReqUserId } from '../users/decorators/user.decorator';
+import { UsersService } from '../users/users.service';
 import { CreateKeyWordDto } from './dto/create-key-word.dto';
 import { UpdateKeyWordDto } from './dto/update-key-word.dto';
 import { KeyWordsService } from './key-words.service';
@@ -29,7 +29,7 @@ export class KeyWordsController {
   @ApiOkResponse()
   @ApiUnauthorizedResponse()
   @Get()
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async findAll(@ReqUserId() userId: number) {
     return this.keyWordsService.findAll(userId);
   }
@@ -39,7 +39,7 @@ export class KeyWordsController {
   @ApiUnauthorizedResponse()
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
   @Get(':id')
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async findOne(@ReqUserId() userId: number, @Param('id', ParseIntPipe) id: number) {
     return this.keyWordsService.findOne(userId, id);
   }
@@ -50,7 +50,7 @@ export class KeyWordsController {
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
   @ApiUnauthorizedResponse()
   @Post()
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async create(@ReqUserId() userId: number, @Body() createKeyWordDto: CreateKeyWordDto) {
     const user = await this.userService.findOneById(userId);
 
@@ -64,7 +64,7 @@ export class KeyWordsController {
   @ApiInternalServerErrorResponse({ description: 'Error on updating user: ${error message}' })
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
   @Patch(':id')
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async update(
     @ReqUserId() userId: number,
     @Param('id', ParseIntPipe) id: number,
@@ -80,7 +80,7 @@ export class KeyWordsController {
   @ApiNotFoundResponse()
   @ApiUnauthorizedResponse()
   @Delete(':id')
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async delete(@ReqUserId() userId: number, @Param('id', ParseIntPipe) id: number) {
     await this.keyWordsService.findOne(userId, id);
 

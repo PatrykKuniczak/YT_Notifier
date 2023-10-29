@@ -1,13 +1,13 @@
 import { CanActivate, ExecutionContext, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { OAuth2Client } from 'google-auth-library';
-import { UsersService } from '../../user/user.service';
+import { UsersService } from '../../users/users.service';
 import { OAUTH2_GOOGLE_CLIENT } from '../oauth2.module';
-import { SessionService } from './session.service';
+import { SessionsService } from './sessions.service';
 
 @Injectable()
-export class SessionGuard implements CanActivate {
+export class SessionsGuard implements CanActivate {
   constructor(
-    private readonly sessionService: SessionService,
+    private readonly sessionService: SessionsService,
     @Inject(OAUTH2_GOOGLE_CLIENT) private readonly oAuth2GoogleClient: OAuth2Client,
     private readonly usersService: UsersService,
   ) {}

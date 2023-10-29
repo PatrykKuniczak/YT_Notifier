@@ -1,7 +1,7 @@
 import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { IUser } from '../user/user.types';
+import { IUser } from '../users/users.types';
 import { CreateKeyWordDto } from './dto/create-key-word.dto';
 import { UpdateKeyWordDto } from './dto/update-key-word.dto';
 import { KeyWordEntity } from './model/key-word.entity';

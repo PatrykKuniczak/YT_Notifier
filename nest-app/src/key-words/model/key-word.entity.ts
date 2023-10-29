@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Relation } from 'typeorm';
-import { UsersEntity } from '../../user/model/users.entity';
+import { UserYtVideosEntity } from '../../user-yt-videos/model/user-yt-videos.entity';
 
 @Entity('key-word')
 export class KeyWordEntity {
@@ -12,6 +12,6 @@ export class KeyWordEntity {
   @Column()
   readonly userId: number;
 
-  @OneToMany(() => UsersEntity, user => user.keywords)
-  readonly user: Relation<UsersEntity>;
+  @OneToMany(() => UserYtVideosEntity, user => user.keywords)
+  readonly user: Relation<UserYtVideosEntity>;
 }

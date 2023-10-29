@@ -3,8 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, VerifyCallback } from 'passport-google-oauth20';
 import { GOOGLE_REDIRECT_URL } from '../../constants';
-import { UsersService } from '../../user/user.service';
-import { IProfile } from '../../user/user.types';
+import { UsersService } from '../../users/users.service';
+import { IProfile } from '../../users/users.types';
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {

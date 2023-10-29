@@ -1,14 +1,16 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { InjectDataSource, InjectRepository } from '@nestjs/typeorm';
+import { DataSource, Repository } from 'typeorm';
+import { UserYtVideosEntity } from '../user-yt-videos/model/user-yt-videos.entity';
 import { UsersEntity } from './model/users.entity';
-import { IProfile } from './user.types';
+import { IProfile } from './users.types';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(UsersEntity)
     private readonly userRepository: Repository<UsersEntity>,
+    @InjectDataSource() private readonly dataSource: DataSource,
   ) {}
 
   async findOrCreate(refreshToken: string | undefined, profile: IProfile): Promise<UsersEntity | null> {
@@ -16,14 +18,18 @@ export class UsersService {
     const user = await this.userRepository.findOneBy({ email });
 
     if (!user) {
-      const result = await this.userRepository.insert({
-        displayName: profile.displayName,
-        email: profile.emails[0].value,
-        avatar: profile.photos[0].value,
-        refreshToken,
-      });
+      return this.dataSource.transaction(async transactionalEntityManager => {
+        const userEntity = this.userRepository.create({
+          displayName: profile.displayName,
+          email: profile.emails[0].value,
+          avatar: profile.photos[0].value,
+          refreshToken,
+        });
 
-      return this.findOneById(result.identifiers[0].id);
+        const userYtVideos = transactionalEntityManager.create(UserYtVideosEntity, { user: userEntity });
+
+        return (await transactionalEntityManager.save(userYtVideos)).user;
+      });
     } else if (user && refreshToken) {
       const result = await this.updateRefreshToken(user.id, refreshToken);
 
@@ -48,23 +54,8 @@ export class UsersService {
     });
   }
 
-  async getLastFetchById(id: number) {
-    return this.userRepository.findOne({
-      where: { id },
-      select: { lastFetch: true },
-    });
-  }
-
   async updateRefreshToken(id: number, refreshToken: string) {
     const { affected } = await this.userRepository.update({ id }, { refreshToken });
-
-    return !!affected;
-  }
-
-  async updateLastFetchDate(userId: number) {
-    const { affected } = await this.userRepository.update({ id: userId }, { lastFetch: new Date() }).catch(err => {
-      throw new InternalServerErrorException('Error on updating fetch date of user: ' + err.message);
-    });
 
     return !!affected;
   }

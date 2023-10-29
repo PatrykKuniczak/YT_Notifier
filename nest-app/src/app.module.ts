@@ -5,8 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { OAuth2Module } from './auth/oauth2.module';
 import typeOrmConfig from './database/config/typeorm.config';
 import { KeyWordsModule } from './key-words/key-words.module';
-import { UserModule } from './user/user.module';
-import { YtModule } from './yt/yt.module';
+import { UserYtVideosModule } from './user-yt-videos/user-yt-videos.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -17,11 +17,11 @@ import { YtModule } from './yt/yt.module';
       ],
     }),
     TypeOrmModule.forRootAsync(typeOrmConfig),
-    UserModule,
+    UsersModule,
     AuthModule,
     OAuth2Module,
     KeyWordsModule,
-    YtModule,
+    UserYtVideosModule,
   ],
 })
 export class AppModule {}
