@@ -1,5 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Relation } from 'typeorm';
-import { UserYtVideosEntity } from '../../user-yt-videos/model/user-yt-videos.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
+import { UsersEntity } from '../../users/model/users.entity';
 
 @Entity('key-word')
 export class KeyWordEntity {
@@ -9,9 +9,9 @@ export class KeyWordEntity {
   @Column({ length: 255 })
   readonly content: string;
 
-  @Column()
-  readonly userId: number;
-
-  @OneToMany(() => UserYtVideosEntity, user => user.keywords)
-  readonly user: Relation<UserYtVideosEntity>;
+  @ManyToOne(() => UsersEntity, user => user.keywords, {
+    nullable: false,
+    onDelete: 'CASCADE',
+  })
+  readonly user: Relation<UsersEntity>;
 }

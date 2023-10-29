@@ -1,4 +1,5 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
+import { KeyWordEntity } from '../../key-words/model/key-word.entity';
 import { UserYtVideosEntity } from '../../user-yt-videos/model/user-yt-videos.entity';
 
 @Entity('users')
@@ -21,5 +22,10 @@ export class UsersEntity {
   @OneToOne(() => UserYtVideosEntity, userYtVideos => userYtVideos.user, {
     onDelete: 'CASCADE',
   })
-  userYtVideos: Relation<UserYtVideosEntity>;
+  readonly userYtVideos: Relation<UserYtVideosEntity>;
+
+  @OneToMany(() => KeyWordEntity, keyword => keyword.user, {
+    cascade: true,
+  })
+  readonly keywords: Relation<KeyWordEntity[]>;
 }
