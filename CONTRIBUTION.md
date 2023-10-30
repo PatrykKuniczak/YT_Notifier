@@ -59,7 +59,7 @@
 
     - Enable this api:
 
-[YT API](https://console.cloud.google.com/apis/api/youtube.googleapis.com/metrics?project=yt-search-plugin-386612)
+[YT API](https://console.cloud.google.com/apis/api/youtube.googleapis.com)
 
     - Next follow this steps:
 
