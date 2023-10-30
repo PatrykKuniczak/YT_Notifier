@@ -11,7 +11,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { SessionsGuard } from '../auth/sessions/sessions.guard';
-import { KeywordsResponse } from '../swagger/responseExamples/keywords.response';
+import { KeywordsResponse } from '../swagger/response-examples/keywords.response';
 import { ReqUserId } from '../users/decorators/user.decorator';
 import { UpdateUserYtVideosDto } from './dto/update-user-yt-videos.dto';
 import { UserYtVideosService } from './user-yt-videos.service';
