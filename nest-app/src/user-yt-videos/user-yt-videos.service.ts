@@ -51,7 +51,7 @@ export class UserYtVideosService {
 
         const rawObjectForResponse = await Promise.all(
           keywordsQueryResult.map(async (queryResultKeyword, index) => {
-            if (queryResultKeyword.data.items.length) {
+            if (queryResultKeyword.data.items.length && queryResultKeyword.data.items[index]) {
               const channelId = queryResultKeyword.data.items[index].snippet.channelId;
               const channelResult = await this.youtubeClient.channels.list({ id: [channelId], part: ['snippet'] });
 
