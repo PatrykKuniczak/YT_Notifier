@@ -40,7 +40,7 @@ export class UserYtVideosController {
   @ApiUnauthorizedResponse()
   @Patch('update-playlist')
   @UseGuards(SessionsGuard)
-  async updateWatchLater(@ReqUserId() userId: number, @Body() updateUserYtVideosDto: UpdateUserYtVideosDto) {
+  async updatePlaylist(@ReqUserId() userId: number, @Body() updateUserYtVideosDto: UpdateUserYtVideosDto) {
     return this.ytVideosService.updatePlaylist(userId, updateUserYtVideosDto);
   }
 }
