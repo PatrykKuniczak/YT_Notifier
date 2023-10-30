@@ -27,11 +27,11 @@ export class KeyWordsService {
     const keyWord = await this.keyWordRepository.findOneBy({ content, userId: id });
 
     if (!keyWord) {
-      const { identifiers } = await this.keyWordRepository.insert({ content, userId: id }).catch(err => {
+      const keyWordEntity = this.keyWordRepository.create({ content, userId: id });
+
+      return this.keyWordRepository.save(keyWordEntity).catch(err => {
         throw new InternalServerErrorException(`Error on creating user: ${err.message}`);
       });
-
-      return { id: identifiers[0].id };
     }
 
     throw new ConflictException('This keyword already exists');
