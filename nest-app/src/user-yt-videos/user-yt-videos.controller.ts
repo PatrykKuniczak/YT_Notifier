@@ -11,6 +11,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { SessionsGuard } from '../auth/sessions/sessions.guard';
+import { KeywordsResponse } from '../swagger/responseExamples/keywords.response';
 import { ReqUserId } from '../users/decorators/user.decorator';
 import { UpdateUserYtVideosDto } from './dto/update-user-yt-videos.dto';
 import { UserYtVideosService } from './user-yt-videos.service';
@@ -21,7 +22,7 @@ import { UserYtVideosService } from './user-yt-videos.service';
 export class UserYtVideosController {
   constructor(private readonly ytVideosService: UserYtVideosService) {}
 
-  @ApiOkResponse()
+  @ApiOkResponse({ type: KeywordsResponse, isArray: true })
   @ApiForbiddenResponse({ description: 'You reach the requests limit for youtube' })
   @ApiInternalServerErrorResponse({ description: 'Error on updating fetch date of user: {error message}' })
   @ApiUnauthorizedResponse()
