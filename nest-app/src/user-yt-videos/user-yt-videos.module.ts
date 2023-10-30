@@ -1,3 +1,4 @@
+import { CacheModule } from '@nestjs/cache-manager';
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OAuth2Module } from '../auth/oauth2.module';
@@ -7,7 +8,12 @@ import { UserYtVideosController } from './user-yt-videos.controller';
 import { UserYtVideosService } from './user-yt-videos.service';
 
 @Module({
-  imports: [OAuth2Module, forwardRef(() => UsersModule), TypeOrmModule.forFeature([UserYtVideosEntity])],
+  imports: [
+    OAuth2Module,
+    forwardRef(() => UsersModule),
+    CacheModule.register(),
+    TypeOrmModule.forFeature([UserYtVideosEntity]),
+  ],
   controllers: [UserYtVideosController],
   providers: [UserYtVideosService],
   exports: [UserYtVideosService],

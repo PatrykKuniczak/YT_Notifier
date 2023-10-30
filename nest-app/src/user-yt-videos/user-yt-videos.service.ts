@@ -1,4 +1,5 @@
 import { youtube, youtube_v3 } from '@googleapis/youtube';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import {
   ConflictException,
   ForbiddenException,
@@ -8,6 +9,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Cache } from 'cache-manager';
 import { OAuth2Client } from 'google-auth-library';
 import { Repository } from 'typeorm';
 import { OAUTH2_GOOGLE_CLIENT } from '../auth/oauth2.module';
@@ -22,11 +24,18 @@ export class UserYtVideosService {
     @Inject(OAUTH2_GOOGLE_CLIENT) private readonly oAuth2GoogleClient: OAuth2Client,
     @InjectRepository(UserYtVideosEntity)
     private readonly userYtVideosRepository: Repository<UserYtVideosEntity>,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {
     this.youtubeClient = youtube({ version: 'v3', auth: this.oAuth2GoogleClient });
   }
 
   async findAll(userId: number) {
+    const dataFromCache = await this.cacheManager.get(userId.toString());
+
+    if (dataFromCache) {
+      return dataFromCache;
+    }
+
     const {
       user: {
         keywords,
@@ -49,7 +58,7 @@ export class UserYtVideosService {
           ),
         );
 
-        const rawObjectForResponse = await Promise.all(
+        const rawResponseData = await Promise.all(
           keywordsQueryResult.map(async (queryResultKeyword, index) => {
             if (queryResultKeyword.data.items.length && queryResultKeyword.data.items[index]) {
               const channelId = queryResultKeyword.data.items[index].snippet.channelId;
@@ -75,7 +84,14 @@ export class UserYtVideosService {
 
         await this.updateLastFetchDate(userId);
 
-        return rawObjectForResponse.filter(keyword => keyword);
+        const filteredResponseData = rawResponseData.filter(keyword => keyword);
+
+        const midnightTimestamp = +new Date().setHours(24, 0, 0, 0);
+        const timeToMidnightInMilliseconds = midnightTimestamp - Date.now();
+
+        await this.cacheManager.set(userId.toString(), filteredResponseData, timeToMidnightInMilliseconds);
+
+        return filteredResponseData;
       } catch (err) {
         if ((err.status === 403 && err.errors[0].domain === 'youtube.quota') || err.status === 429) {
           throw new ForbiddenException('You reach the requests limit for youtube');
