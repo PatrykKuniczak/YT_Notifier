@@ -1,13 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 class VideoResponse {
-  @ApiProperty()
+  @ApiProperty({ example: 1 })
   id: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 'Pool party with Anne' })
   title: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 'description from video' })
   description: string;
 
   @ApiProperty({ example: '2023-10-30T19:21:20Z' })
@@ -21,7 +21,7 @@ class ChannelResponse {
   @ApiProperty({ example: 'UCVxkdxpvBaXPgBquxO_YRew' })
   id: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 'awkward title' })
   title: string;
 
   @ApiProperty({
