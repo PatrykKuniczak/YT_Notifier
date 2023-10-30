@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-class KeywordsVideoResponse {
+class VideoResponse {
   @ApiProperty()
   id: number;
 
@@ -17,7 +17,7 @@ class KeywordsVideoResponse {
   thumbnail: string;
 }
 
-class KeywordsChannelResponse {
+class ChannelResponse {
   @ApiProperty({ example: 'UCVxkdxpvBaXPgBquxO_YRew' })
   id: string;
 
@@ -31,10 +31,10 @@ class KeywordsChannelResponse {
   thumbnail: string;
 }
 
-export class KeywordsResponse {
+export class UserYtVideosResponse {
   @ApiProperty()
-  video: KeywordsVideoResponse;
+  video: VideoResponse;
 
   @ApiProperty()
-  channel: KeywordsChannelResponse;
+  channel: ChannelResponse;
 }
