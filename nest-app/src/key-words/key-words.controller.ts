@@ -11,6 +11,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { SessionsGuard } from '../auth/sessions/sessions.guard';
+import { KeyWordsResponse } from '../swagger/response-examples/key-words.response';
 import { ReqUserId } from '../users/decorators/user.decorator';
 import { UsersService } from '../users/users.service';
 import { CreateKeyWordDto } from './dto/create-key-word.dto';
@@ -26,7 +27,7 @@ export class KeyWordsController {
     private readonly userService: UsersService,
   ) {}
 
-  @ApiOkResponse()
+  @ApiOkResponse({ type: KeyWordsResponse, isArray: true })
   @ApiUnauthorizedResponse()
   @Get()
   @UseGuards(SessionsGuard)
@@ -34,7 +35,7 @@ export class KeyWordsController {
     return this.keyWordsService.findAll(userId);
   }
 
-  @ApiOkResponse()
+  @ApiOkResponse({ type: KeyWordsResponse })
   @ApiNotFoundResponse()
   @ApiUnauthorizedResponse()
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
@@ -44,7 +45,7 @@ export class KeyWordsController {
     return this.keyWordsService.findOne(userId, id);
   }
 
-  @ApiCreatedResponse({ description: 'Return {id: number}' })
+  @ApiCreatedResponse({ type: KeyWordsResponse })
   @ApiConflictResponse({ description: 'This keyword already exists' })
   @ApiInternalServerErrorResponse({ description: 'Error on creating user: ${error message}' })
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
