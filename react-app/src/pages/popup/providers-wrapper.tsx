@@ -7,6 +7,8 @@ import lightTheme from '@utils/data/themes/light-theme';
 import { Router as RemixRouter } from '@remix-run/router/dist/router';
 import React from 'react';
 import { RouterProvider } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProvidersWrapper = ({
   isDarkMode,
@@ -25,6 +27,12 @@ const ProvidersWrapper = ({
         <AuthContext.Provider value={authProviderValues}>
           <RouterProvider router={hashRouting} />
         </AuthContext.Provider>
+        <ToastContainer
+          theme={isDarkMode ? 'dark' : 'light'}
+          position="bottom-center"
+          autoClose={5000}
+          draggablePercent={50}
+        />
       </ThemeProvider>
     </React.StrictMode>
   );
