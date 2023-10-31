@@ -40,7 +40,7 @@ const Popup = () => {
 
   const { data: user } = useQuery<IUser>({
     queryKey: [urls.auth.me],
-    queryFn: () => httpClient.post(urls.auth.me).then(user => user.data),
+    queryFn: () => httpClient.get(urls.auth.me).then(user => user.data),
   });
 
   return <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user }} hashRouting={hashRouting} />;
