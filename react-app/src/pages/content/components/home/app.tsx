@@ -6,13 +6,14 @@ import { injectStyle } from 'react-toastify/dist/inject-style';
 import { ToastContainer, toast } from 'react-toastify';
 import { Portal } from '@mui/base';
 
+injectStyle();
+
 export default function App() {
   const [loadedVideosAmount, setLoadedVideosAmount] = useState(0);
 
   chrome.runtime.onMessage.addListener(({ loadedVideos }) => {
     if (loadedVideos) {
       setLoadedVideosAmount(loadedVideos);
-      injectStyle();
       toast.info(`Spod podanych slów kluczowych, pobrano ${loadedVideosAmount} wideo, sprawdź we wtyczce.`, {
         toastId: 'notification',
       });
