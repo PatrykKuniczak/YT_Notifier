@@ -79,7 +79,7 @@ export class AuthController {
   @ApiOAuth2([])
   @ApiUnauthorizedResponse()
   @ApiOkResponse()
-  @Post('me')
+  @Get('me')
   @HttpCode(200)
   @UseGuards(SessionGuard)
   async getCurrentUser(@Req() req: Request) {

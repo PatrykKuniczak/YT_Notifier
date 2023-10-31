@@ -19,6 +19,8 @@ const createHttpInstance = () => {
         await chrome.cookies.remove({ name: SESSION_COOKIE_NAME, url: import.meta.env.VITE_API_URL });
         await queryClient.resetQueries({ queryKey: [urls.auth.me] });
       }
+
+      return Promise.reject(error);
     },
   );
 
