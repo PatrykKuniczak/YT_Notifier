@@ -39,7 +39,11 @@ const hashRouting = createHashRouter([
 const Popup = () => {
   const { isDarkMode } = useTernaryDarkMode();
 
-  const { data: user, error } = useQuery<IUser>({
+  const {
+    data: user,
+    error,
+    isLoading: userIsLoading,
+  } = useQuery<IUser>({
     queryKey: [urls.auth.me],
     queryFn: () => httpClient.get(urls.auth.me).then(user => user.data),
   });
@@ -50,7 +54,9 @@ const Popup = () => {
     });
   }
 
-  return <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user }} hashRouting={hashRouting} />;
+  return (
+    <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user, userIsLoading }} hashRouting={hashRouting} />
+  );
 };
 
 export default withErrorBoundary(withSuspense(Popup, <div> Loading </div>), <div> Error </div>);

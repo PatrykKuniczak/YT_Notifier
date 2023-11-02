@@ -5,6 +5,8 @@ const THEME = createTheme({
     background: {
       primary: '#fff',
       secondary: '#eeecec',
+      loadingBase: '#dbd9d9',
+      loadingColor: '#c5c5c5',
       danger: '#fa2525',
       purple: '#7846F0',
       grey: '#5b5b5e',

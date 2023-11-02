@@ -16,7 +16,7 @@ const ProvidersWrapper = ({
   hashRouting,
 }: {
   isDarkMode: boolean;
-  authProviderValues: { user: IUser };
+  authProviderValues: { user: IUser; userIsLoading: boolean };
   hashRouting: RemixRouter;
 }) => {
   return (
