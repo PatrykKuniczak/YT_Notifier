@@ -21,7 +21,7 @@ export class UsersService {
       return this.dataSource.transaction(async transactionalEntityManager => {
         const userEntity = this.userRepository.create({
           displayName: profile.displayName,
-          email: profile.emails[0].value,
+          email,
           avatar: profile.photos[0].value,
           refreshToken,
         });

@@ -59,23 +59,26 @@ export class UserYtVideosService {
         );
 
         const rawResponseData = await Promise.all(
-          keywordsQueryResult.map(async (queryResultKeyword, index) => {
-            if (queryResultKeyword.data.items.length && queryResultKeyword.data.items[index]) {
-              const channelId = queryResultKeyword.data.items[index].snippet.channelId;
-              const channelResult = await this.youtubeClient.channels.list({ id: [channelId], part: ['snippet'] });
+          keywordsQueryResult.map(async ({ data: videoData }, index) => {
+            if (videoData.items.length && videoData.items[index]) {
+              const channelId = videoData.items[index].snippet.channelId;
+              const { data: channelData } = await this.youtubeClient.channels.list({
+                id: [channelId],
+                part: ['snippet'],
+              });
 
               return {
                 video: {
-                  id: queryResultKeyword.data.items[index].id.videoId,
-                  title: queryResultKeyword.data.items[index].snippet.title,
-                  description: queryResultKeyword.data.items[index].snippet.description,
-                  publishedAt: queryResultKeyword.data.items[index].snippet.publishedAt,
-                  thumbnail: queryResultKeyword.data.items[index].snippet.thumbnails.medium.url,
+                  id: videoData.items[index].id.videoId,
+                  title: videoData.items[index].snippet.title,
+                  description: videoData.items[index].snippet.description,
+                  publishedAt: videoData.items[index].snippet.publishedAt,
+                  thumbnail: videoData.items[index].snippet.thumbnails.medium.url,
                 },
                 channel: {
                   id: channelId,
-                  title: channelResult.data.items[0].snippet.title,
-                  thumbnail: channelResult.data.items[0].snippet.thumbnails.default.url,
+                  title: channelData.items[0].snippet.title,
+                  thumbnail: channelData.items[0].snippet.thumbnails.default.url,
                 },
               };
             }
@@ -84,7 +87,7 @@ export class UserYtVideosService {
 
         await this.updateLastFetchDate(userId);
 
-        const filteredResponseData = rawResponseData.filter(keyword => keyword);
+        const filteredResponseData = rawResponseData.filter(Boolean);
 
         const midnightTimestamp = +new Date().setHours(24, 0, 0, 0);
         const timeToMidnightInMilliseconds = midnightTimestamp - Date.now();
@@ -126,11 +129,9 @@ export class UserYtVideosService {
       playlistId = userPlaylistResult.playlistId;
     }
 
-    const playlistItems = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
+    const { data: playlistData } = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
 
-    const videoExistsInPlaylist = playlistItems.data.items.some(
-      playlistItem => playlistItem.snippet.resourceId.videoId === videoId,
-    );
+    const videoExistsInPlaylist = playlistData.items.some(({ snippet }) => snippet.resourceId.videoId === videoId);
 
     if (videoExistsInPlaylist) {
       throw new ConflictException('Video already exists in playlist');
