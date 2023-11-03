@@ -1,19 +1,20 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from '../user/user.module';
+import { UsersModule } from '../users/users.module';
 import { AuthController } from './auth.controller';
 import { GoogleAuthGuard } from './googleAuth/google.guard';
 import { GoogleStrategy } from './googleAuth/google.strategy';
-import { SessionEntity } from './session/session.entity';
-import { SessionGuard } from './session/session.guard';
-import { SessionSerializer } from './session/session.serializer';
-import { SessionService } from './session/session.service';
+import { SessionsEntity } from './sessions/sessions.entity';
+import { SessionsGuard } from './sessions/sessions.guard';
+import { SessionsSerializer } from './sessions/sessions.serializer';
+import { SessionsService } from './sessions/sessions.service';
 
+@Global()
 @Module({
-  imports: [PassportModule, UserModule, TypeOrmModule.forFeature([SessionEntity]), UserModule],
-  providers: [GoogleStrategy, GoogleAuthGuard, SessionSerializer, SessionService, SessionGuard],
+  imports: [PassportModule, UsersModule, TypeOrmModule.forFeature([SessionsEntity])],
+  providers: [GoogleStrategy, GoogleAuthGuard, SessionsSerializer, SessionsService, SessionsGuard],
   controllers: [AuthController],
-  exports: [SessionService],
+  exports: [SessionsService],
 })
 export class AuthModule {}

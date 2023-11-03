@@ -8,7 +8,7 @@ import session from 'express-session';
 import passport from 'passport';
 import { DataSource } from 'typeorm';
 import { AppModule } from './app.module';
-import { SessionEntity } from './auth/session/session.entity';
+import { SessionsEntity } from './auth/sessions/sessions.entity';
 import { COOKIE_MAX_AGE, SESSION_COOKIE_NAME, SESSION_TTL } from './constants';
 import swaggerConfig from './swagger/swagger.config';
 
@@ -17,7 +17,7 @@ async function bootstrap() {
   const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
 
   const configService = app.get(ConfigService);
-  const sessionRepository = app.get(DataSource).getRepository(SessionEntity);
+  const sessionRepository = app.get(DataSource).getRepository(SessionsEntity);
 
   app.enableCors({
     origin: configService.get('FE_URL'),

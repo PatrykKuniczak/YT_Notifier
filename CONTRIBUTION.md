@@ -57,6 +57,10 @@
 
     - Set up project, name could be 'YT Plugin DEV'
 
+    - Enable this api:
+
+[YT API](https://console.cloud.google.com/apis/api/youtube.googleapis.com)
+
     - Next follow this steps:
 
 [set up credentials](https://developers.google.com/identity/protocols/oauth2/web-server?hl=pl#creatingcred)

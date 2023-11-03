@@ -23,18 +23,19 @@ import {
 import { Request, Response } from 'express';
 import { OAuth2Client } from 'google-auth-library';
 import { SESSION_COOKIE_NAME } from '../constants';
-import { UsersService } from '../user/user.service';
+import { ReqUserId } from '../users/decorators/user.decorator';
+import { UsersService } from '../users/users.service';
 import { GoogleAuthGuard } from './googleAuth/google.guard';
-import { OAuth2GoogleClientCredentials, TOAuth2GoogleClientCredentials } from './oauth2.module';
-import { SessionGuard } from './session/session.guard';
+import { OAUTH2_GOOGLE_CLIENT } from './oauth2.module';
+import { SessionsGuard } from './sessions/sessions.guard';
 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(
-    private readonly userService: UsersService,
-    @Inject(OAuth2GoogleClientCredentials)
-    private readonly oAuth2GoogleClientCredentials: TOAuth2GoogleClientCredentials,
+    private readonly usersService: UsersService,
+    @Inject(OAUTH2_GOOGLE_CLIENT)
+    private readonly oAuth2GoogleClient: OAuth2Client,
   ) {}
 
   @ApiOperation({
@@ -69,7 +70,7 @@ export class AuthController {
   })
   @ApiOkResponse()
   @Post('logout')
-  @UseGuards(SessionGuard)
+  @UseGuards(SessionsGuard)
   async logout(@Req() req: Request, @Res() res: Response) {
     req.logout((err: HttpException) => err && res.status(500).send('Error on destroying session: ' + err.message));
 
@@ -81,9 +82,9 @@ export class AuthController {
   @ApiOkResponse()
   @Get('me')
   @HttpCode(200)
-  @UseGuards(SessionGuard)
-  async getCurrentUser(@Req() req: Request) {
-    return this.userService.findOneById(req.session.passport.user.id);
+  @UseGuards(SessionsGuard)
+  async getCurrentUser(@ReqUserId() userId: number) {
+    return this.usersService.findOneById(userId);
   }
 
   @ApiOAuth2([])
@@ -93,18 +94,14 @@ export class AuthController {
   })
   @ApiOkResponse()
   @Delete('remove-account')
-  @UseGuards(SessionGuard)
-  async removeAccount(@Req() req: Request, @Res() res: Response) {
-    const userId = req.session.passport.user.id;
-    const { refreshToken } = await this.userService.getRefreshTokenById(userId);
+  @UseGuards(SessionsGuard)
+  async removeAccount(@ReqUserId() userId: number, @Req() req: Request, @Res() res: Response) {
+    const { refreshToken } = await this.usersService.getRefreshTokenById(userId);
 
-    const oAuth2Client = new OAuth2Client({
-      ...this.oAuth2GoogleClientCredentials,
-    });
-    const revokeResult = await oAuth2Client.revokeToken(refreshToken);
+    const revokeResult = await this.oAuth2GoogleClient.revokeToken(refreshToken);
 
     if (revokeResult.status === 200) {
-      const deleteResult = await this.userService.delete(userId);
+      const deleteResult = await this.usersService.delete(userId);
 
       if (!deleteResult.affected) {
         throw new InternalServerErrorException('Error on deleting user profile');

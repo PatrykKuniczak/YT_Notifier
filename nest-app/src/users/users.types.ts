@@ -1,3 +1,5 @@
+import { UserYtVideosEntity } from '../user-yt-videos/model/user-yt-videos.entity';
+
 export interface IUser {
   id: number;
 
@@ -8,6 +10,8 @@ export interface IUser {
   avatar: string;
 
   refreshToken: string;
+
+  userYtVideos: UserYtVideosEntity;
 }
 
 export interface IProfile extends Pick<IUser, 'displayName'> {

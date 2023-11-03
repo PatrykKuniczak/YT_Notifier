@@ -2,7 +2,7 @@ import { ISession } from 'connect-typeorm';
 import { Column, DeleteDateColumn, Entity, Index, PrimaryColumn } from 'typeorm';
 
 @Entity('sessions')
-export class SessionEntity implements ISession {
+export class SessionsEntity implements ISession {
   @Index()
   @Column('bigint')
   public expiredAt = Date.now();
