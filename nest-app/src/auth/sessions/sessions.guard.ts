@@ -20,7 +20,7 @@ export class SessionsGuard implements CanActivate {
     const sessionExists = !!(await this.sessionService.findById(request.session.id));
 
     if (!sessionExists) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException({ reason: 'Unauthorized', cause: 'unauthorized' });
     }
 
     const { refreshToken } = await this.usersService.getRefreshTokenById(request.session.passport.user.id);
@@ -58,7 +58,7 @@ export class SessionsGuard implements CanActivate {
       request.session.passport.user.accessToken = credentials.access_token;
     } catch (err) {
       if (err.response.data.error === 'invalid_grant') {
-        throw new UnauthorizedException();
+        throw new UnauthorizedException({ reason: 'Unauthorized', cause: 'unauthorized' });
       }
     }
   }

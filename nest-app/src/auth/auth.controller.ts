@@ -22,8 +22,10 @@ import {
 import { Request, Response } from 'express';
 import { OAuth2Client } from 'google-auth-library';
 import { SESSION_COOKIE_NAME } from '../constants';
-import { ReqUserId } from '../users/decorators/user.decorator';
+import { AuthResponse } from '../swagger/response-examples/auth.response';
+import { ErrorResponse } from '../swagger/response-examples/error.response';
 import { UsersService } from '../users/users.service';
+import { ReqUserId } from '../users/decorators/user.decorator';
 import { GoogleAuthGuard } from './googleAuth/google.guard';
 import { OAUTH2_GOOGLE_CLIENT } from './oauth2.module';
 import { SessionsGuard } from './sessions/sessions.guard';
@@ -42,7 +44,9 @@ export class AuthController {
   })
   @ApiOkResponse()
   @ApiUnauthorizedResponse({
-    description: "Could have optional message: 'No verified email returned from Google Authorization!'",
+    type: ErrorResponse,
+    description:
+      "Could have message: 'No verified email returned from Google Authorization!', then cause: unconfirmed_email, normally cause: unauthorized",
   })
   @ApiInternalServerErrorResponse({
     description: "Error could occur when server can't update refresh token: 'Error on updating user'",
@@ -63,7 +67,10 @@ export class AuthController {
   }
 
   @ApiOAuth2([])
-  @ApiUnauthorizedResponse()
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
   @ApiInternalServerErrorResponse({
     description: 'Error on destroying session: {Error message}',
   })
@@ -77,8 +84,11 @@ export class AuthController {
   }
 
   @ApiOAuth2([])
-  @ApiUnauthorizedResponse()
-  @ApiOkResponse()
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
+  @ApiOkResponse({ type: AuthResponse })
   @Get('me')
   @UseGuards(SessionsGuard)
   async getCurrentUser(@ReqUserId() userId: number) {
@@ -86,7 +96,10 @@ export class AuthController {
   }
 
   @ApiOAuth2([])
-  @ApiUnauthorizedResponse()
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
   @ApiInternalServerErrorResponse({
     description: 'Error on deleting user profile {error message}, but the message is optional',
   })

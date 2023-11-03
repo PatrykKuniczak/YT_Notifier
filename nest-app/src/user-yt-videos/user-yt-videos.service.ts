@@ -96,11 +96,7 @@ export class UserYtVideosService {
 
         return filteredResponseData;
       } catch (err) {
-        if ((err.status === 403 && err.errors[0].domain === 'youtube.quota') || err.status === 429) {
-          throw new ForbiddenException('You reach the requests limit for youtube');
-        }
-
-        throw err;
+        this.handleQuotaLimitFromError(err);
       }
     }
   }
@@ -140,7 +136,10 @@ export class UserYtVideosService {
     const videoExistsInPlaylist = playlistData.items.some(({ snippet }) => snippet.resourceId.videoId === videoId);
 
     if (videoExistsInPlaylist) {
-      throw new ConflictException('Video already exists in playlist');
+      throw new ConflictException({
+        reason: 'Video already exists in playlist',
+        cause: 'duplicated_video_for_playlist',
+      });
     }
 
     await this.youtubeClient.playlistItems
@@ -155,7 +154,7 @@ export class UserYtVideosService {
       })
       .catch(err => {
         if (err.status === 404) {
-          throw new NotFoundException('Video not found');
+          throw new NotFoundException({ reason: 'Video not found', cause: 'video_for_playlist_not_found' });
         }
 
         this.handleQuotaLimitFromError(err);
@@ -170,7 +169,7 @@ export class UserYtVideosService {
 
   private handleQuotaLimitFromError(err: { [key: string]: unknown }) {
     if ((err.status === 403 && err.errors[0].domain === 'youtube.quota') || err.status === 429) {
-      throw new ForbiddenException('You reach the requests limit for youtube');
+      throw new ForbiddenException({ reason: 'You reach the requests limit for youtube', cause: 'quota_limit' });
     }
 
     throw err;

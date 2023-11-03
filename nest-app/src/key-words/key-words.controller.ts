@@ -10,6 +10,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { ErrorResponse } from '../swagger/response-examples/error.response';
 import { SessionsGuard } from '../auth/sessions/sessions.guard';
 import { KeyWordsResponse } from '../swagger/response-examples/key-words.response';
 import { ReqUserId } from '../users/decorators/user.decorator';
@@ -28,7 +29,10 @@ export class KeyWordsController {
   ) {}
 
   @ApiOkResponse({ type: KeyWordsResponse, isArray: true })
-  @ApiUnauthorizedResponse()
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
   @Get()
   @UseGuards(SessionsGuard)
   async findAll(@ReqUserId() userId: number) {
@@ -36,8 +40,13 @@ export class KeyWordsController {
   }
 
   @ApiOkResponse({ type: KeyWordsResponse })
-  @ApiNotFoundResponse()
-  @ApiUnauthorizedResponse()
+  @ApiNotFoundResponse({
+    description: 'Keywords not found, cause: keywords_not_found',
+  })
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
   @Get(':id')
   @UseGuards(SessionsGuard)
@@ -46,10 +55,13 @@ export class KeyWordsController {
   }
 
   @ApiCreatedResponse({ type: KeyWordsResponse })
-  @ApiConflictResponse({ description: 'This keyword already exists' })
+  @ApiConflictResponse({ description: 'This keyword already exists, cause: duplicated_keyword' })
   @ApiInternalServerErrorResponse({ description: 'Error on creating user: ${error message}' })
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
-  @ApiUnauthorizedResponse()
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
   @Post()
   @UseGuards(SessionsGuard)
   async create(@ReqUserId() userId: number, @Body() createKeyWordDto: CreateKeyWordDto) {
@@ -59,9 +71,14 @@ export class KeyWordsController {
   }
 
   @ApiOkResponse()
-  @ApiUnauthorizedResponse()
-  @ApiNotFoundResponse()
-  @ApiConflictResponse({ description: 'This keyword already exists' })
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
+  @ApiNotFoundResponse({
+    description: 'Keywords not found, cause: keywords_not_found',
+  })
+  @ApiConflictResponse({ description: 'This keyword already exists, cause: duplicated_keyword' })
   @ApiInternalServerErrorResponse({ description: 'Error on updating user: ${error message}' })
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
   @Patch(':id')
@@ -78,8 +95,13 @@ export class KeyWordsController {
 
   @ApiOkResponse()
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
-  @ApiNotFoundResponse()
-  @ApiUnauthorizedResponse()
+  @ApiNotFoundResponse({
+    description: 'Keywords not found, cause: keywords_not_found',
+  })
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
   @Delete(':id')
   @UseGuards(SessionsGuard)
   async delete(@ReqUserId() userId: number, @Param('id', ParseIntPipe) id: number) {
