@@ -117,7 +117,9 @@ export class UserYtVideosService {
 
     const userPlaylistResult = await this.userYtVideosRepository.findOneBy({ user: { id: userId } });
 
-    if (!userPlaylistResult.playlistId) {
+    if (userPlaylistResult.playlistId) {
+      playlistId = userPlaylistResult.playlistId;
+    } else {
       const result = await this.youtubeClient.playlists.insert({
         part: ['snippet'],
         requestBody: { snippet: { title, description } },
@@ -125,8 +127,6 @@ export class UserYtVideosService {
 
       playlistId = result.data.id;
       await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId });
-    } else {
-      playlistId = userPlaylistResult.playlistId;
     }
 
     const { data: playlistData } = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
