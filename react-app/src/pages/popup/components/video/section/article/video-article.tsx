@@ -4,7 +4,7 @@ import { StyledAuthorInfo } from '@pages/popup/components/video/section/article/
 import { StyledThumbnail } from '@pages/popup/components/video/section/article/thumbnail/thumbnail';
 import { StyledVideoInfos } from '@pages/popup/components/video/section/article/videoInfo/video-infos';
 import { TComponentTag } from '@types';
-import { CustomSkeleton } from '@pages/popup/components/shared/custom-skeleton';
+import { StyledSkeleton } from '@pages/popup/components/shared/custom-skeleton';
 
 const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
   theme.unstable_sx({
@@ -23,7 +23,7 @@ const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
 
 export const StyledVideoArticle = ({ isLoading }: { isLoading: boolean }) => (
   <VideoArticleStyles component={'article'}>
-    {isLoading ? <CustomSkeleton width={240} height={142} /> : <StyledThumbnail src={thumbnail} alt={'YT Thumbnail'} />}
+    {isLoading ? <StyledSkeleton width={240} height={142} /> : <StyledThumbnail src={thumbnail} alt={'YT Thumbnail'} />}
     <StyledAuthorInfo isLoading={isLoading} />
     <StyledVideoInfos isLoading={isLoading} />
   </VideoArticleStyles>

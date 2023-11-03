@@ -6,7 +6,7 @@ const THEME = createTheme({
       primary: '#16121E',
       secondary: '#FFFFFF0C',
       loadingBase: '#242626',
-      loadingColor: '#3a3a3a',
+      loadingHighlight: '#3a3a3a',
       purple: '#7846F0',
       grey: '#5b5b5e',
       searchBar: '#26203B',

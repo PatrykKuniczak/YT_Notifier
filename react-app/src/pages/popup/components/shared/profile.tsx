@@ -12,7 +12,7 @@ import { useContext, useState } from 'react';
 import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import { toast } from 'react-toastify';
-import { CustomSkeleton } from '@pages/popup/components/shared/custom-skeleton';
+import { StyledSkeleton } from '@pages/popup/components/shared/custom-skeleton';
 
 const StyledListbox = styled('ul')(({ theme }) =>
   theme.unstable_sx({
@@ -108,7 +108,7 @@ const StyledProfile = () => {
     <Dropdown onOpenChange={handleOpenChange}>
       <StyledMenuButton>
         {userIsLoading ? (
-          <CustomSkeleton circle={true} width={40} height={40} />
+          <StyledSkeleton circle={true} width={40} height={40} />
         ) : (
           <StyledAvatar src={avatar} alt={'Avatar'} width={40} height={40} />
         )}
