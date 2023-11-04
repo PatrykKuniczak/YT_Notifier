@@ -114,22 +114,28 @@ export class UserYtVideosService {
 
   async updatePlaylist(userId: number, { videoId, title, description }: UpdateUserYtVideosDto) {
     let playlistId: string;
+    let playlistData: youtube_v3.Schema$PlaylistItemListResponse;
 
     const userPlaylistResult = await this.userYtVideosRepository.findOneBy({ user: { id: userId } });
 
-    if (userPlaylistResult.playlistId) {
-      playlistId = userPlaylistResult.playlistId;
-    } else {
-      const result = await this.youtubeClient.playlists.insert({
-        part: ['snippet'],
-        requestBody: { snippet: { title, description } },
-      });
+    try {
+      if (userPlaylistResult.playlistId) {
+        playlistId = userPlaylistResult.playlistId;
+      } else {
+        const result = await this.youtubeClient.playlists.insert({
+          part: ['snippet'],
+          requestBody: { snippet: { title, description } },
+        });
 
-      playlistId = result.data.id;
-      await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId });
+        playlistId = result.data.id;
+        await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId });
+      }
+
+      const { data } = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
+      playlistData = data;
+    } catch (err) {
+      this.handleQuotaLimitFromError(err);
     }
-
-    const { data: playlistData } = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
 
     const videoExistsInPlaylist = playlistData.items.some(({ snippet }) => snippet.resourceId.videoId === videoId);
 
@@ -151,6 +157,8 @@ export class UserYtVideosService {
         if (err.status === 404) {
           throw new NotFoundException('Video not found');
         }
+
+        this.handleQuotaLimitFromError(err);
       });
   }
 
@@ -158,5 +166,14 @@ export class UserYtVideosService {
     return this.userYtVideosRepository.update({ user: { id: userId } }, { lastFetch: new Date() }).catch(err => {
       throw new InternalServerErrorException('Error on updating fetch date of user: ' + err.message);
     });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private handleQuotaLimitFromError(err: any) {
+    if ((err.status === 403 && err.errors[0].domain === 'youtube.quota') || err.status === 429) {
+      throw new ForbiddenException('You reach the requests limit for youtube');
+    }
+
+    throw err;
   }
 }
