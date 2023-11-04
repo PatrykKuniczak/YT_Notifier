@@ -168,8 +168,7 @@ export class UserYtVideosService {
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private handleQuotaLimitFromError(err: any) {
+  private handleQuotaLimitFromError(err: { [key: string]: unknown }) {
     if ((err.status === 403 && err.errors[0].domain === 'youtube.quota') || err.status === 429) {
       throw new ForbiddenException('You reach the requests limit for youtube');
     }
