@@ -2,7 +2,6 @@ import {
   Controller,
   Delete,
   Get,
-  HttpCode,
   HttpException,
   Inject,
   InternalServerErrorException,
@@ -81,7 +80,6 @@ export class AuthController {
   @ApiUnauthorizedResponse()
   @ApiOkResponse()
   @Get('me')
-  @HttpCode(200)
   @UseGuards(SessionsGuard)
   async getCurrentUser(@ReqUserId() userId: number) {
     return this.usersService.findOneById(userId);
