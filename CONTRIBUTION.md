@@ -2,7 +2,7 @@
     1. Clone this repository.
 
 ## FOR ROOT(OVER APPS):
-    RUN 'npm i' AND AFTER 'npm run prepare'
+    RUN 'npm i'
 
 ## FOR REACT-APP(FRONTED):
 
