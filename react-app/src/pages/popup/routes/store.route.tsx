@@ -47,10 +47,10 @@ export const StoreRoute = () => {
     <>
       <StyledAddInput />
       <StyledItemsContainer component={'ul'}>
-        {filteredKeywords?.map(({ id, content }) =>
-          keywordsIsLoading ? (
-            <StyledSkeleton key={id} height={33} />
-          ) : (
+        {keywordsIsLoading ? (
+          <StyledSkeleton height={33} count={4} style={{ marginBottom: 8 }} />
+        ) : (
+          filteredKeywords?.map(({ id, content }) => (
             <StyledStoreItem
               key={id}
               id={id}
@@ -60,7 +60,7 @@ export const StoreRoute = () => {
               changeModalVisibility={changeModalVisibility}
               changeOpenedInputId={handleOpenedInputIdChange}
             />
-          ),
+          ))
         )}
       </StyledItemsContainer>
 
