@@ -1,7 +1,7 @@
 import { Stack } from '@mui/system';
 import { StyledVideoInfo } from '@pages/popup/components/video/section/article/videoInfo/video-info';
 import { StyledVideoTitle } from '@pages/popup/components/video/section/article/videoInfo/video-title';
-import { StyledSkeleton } from '@pages/popup/components/shared/custom-skeleton';
+import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
 export const StyledVideoInfos = ({ isLoading }: { isLoading: boolean }) => (
   <Stack useFlexGap={true} spacing={1}>

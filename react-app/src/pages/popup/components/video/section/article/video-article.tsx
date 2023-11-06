@@ -4,7 +4,7 @@ import { StyledAuthorInfo } from '@pages/popup/components/video/section/article/
 import { StyledThumbnail } from '@pages/popup/components/video/section/article/thumbnail/thumbnail';
 import { StyledVideoInfos } from '@pages/popup/components/video/section/article/videoInfo/video-infos';
 import { TComponentTag } from '@types';
-import { StyledSkeleton } from '@pages/popup/components/shared/custom-skeleton';
+import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
 const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
   theme.unstable_sx({

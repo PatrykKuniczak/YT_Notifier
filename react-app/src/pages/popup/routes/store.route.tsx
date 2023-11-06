@@ -10,7 +10,7 @@ import queryClient, { useMutation, useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useDeferredValue, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
-import { StyledSkeleton } from '@pages/popup/components/shared/custom-skeleton';
+import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
 export const StoreRoute = () => {
   const [keywordToRemove, setKeywordToRemove] = useState(0);
@@ -21,7 +21,7 @@ export const StoreRoute = () => {
 
   const { open, changeModalVisibility } = useDeleteModal();
 
-  const { data: keywords, isLoading: keywordIsLoading } = useQuery<IKeyword[]>({
+  const { data: keywords, isLoading: keywordsIsLoading } = useQuery<IKeyword[]>({
     queryKey: [urls.keyWords],
     queryFn: () => httpClient.get(urls.keyWords).then(({ data }) => data),
   });
@@ -43,12 +43,14 @@ export const StoreRoute = () => {
     setOpenedInputId(id);
   };
 
+  console.log(keywordsIsLoading);
+
   return (
     <>
       <StyledAddInput />
       <StyledItemsContainer component={'ul'}>
         {filteredKeywords?.map(({ id, content }) =>
-          keywordIsLoading ? (
+          keywordsIsLoading ? (
             <StyledSkeleton key={id} height={33} />
           ) : (
             <StyledStoreItem
