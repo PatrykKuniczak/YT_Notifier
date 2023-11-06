@@ -43,8 +43,6 @@ export const StoreRoute = () => {
     setOpenedInputId(id);
   };
 
-  console.log(keywordsIsLoading);
-
   return (
     <>
       <StyledAddInput />
