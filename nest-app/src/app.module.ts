@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { OAuth2Module } from './auth/oauth2.module';
-import typeOrmConfig from './database/config/typeorm.config';
+import { typeOrmFactory } from './database/config/typeorm.config';
 import { KeyWordsModule } from './key-words/key-words.module';
 import { UserYtVideosModule } from './user-yt-videos/user-yt-videos.module';
 import { UsersModule } from './users/users.module';
@@ -16,7 +16,7 @@ import { UsersModule } from './users/users.module';
         `${process.cwd()}${process.env.NODE_ENV === 'production' ? '\\envs\\prod.env' : '\\envs\\local.env'}`,
       ],
     }),
-    TypeOrmModule.forRootAsync(typeOrmConfig),
+    TypeOrmModule.forRootAsync(typeOrmFactory),
     UsersModule,
     AuthModule,
     OAuth2Module,

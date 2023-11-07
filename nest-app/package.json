@@ -10,10 +10,14 @@
     "start:dev": "cross-env NODE_ENV=development nest start --watch",
     "start:debug": "cross-env NODE_ENV=development nest start --debug --watch",
     "start:prod": "cross-env NODE_ENV=production node dist/main",
-    "build": "nest build",
+    "build": "cross-env NODE_ENV=production nest build",
     "lint": "eslint src --ext .ts",
     "lint:fix": "npm run lint -- --fix",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . --write",
+    "typeorm": "npm run build && npx typeorm -d dist/database/config/data-source.js",
+    "migration:generate": "npm run typeorm migration:generate",
+    "migration:run": "npm run typeorm migration:run",
+    "migration:revert": "npm run typeorm migration:revert"
   },
   "dependencies": {
     "@googleapis/youtube": "13.0.0",
