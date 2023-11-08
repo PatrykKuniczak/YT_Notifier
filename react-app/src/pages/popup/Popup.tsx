@@ -15,7 +15,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { createHashRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import '../internationalization';
+import { ErrorPage } from '@pages/popup/pages/error/ErrorPage';
 
 const hashRouting = createHashRouter([
   {
@@ -68,4 +68,4 @@ const Popup = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Popup, <div> Loading </div>), <div> Error </div>);
+export default withErrorBoundary(withSuspense(Popup, <div> Loading </div>), <ErrorPage />);
