@@ -19,7 +19,7 @@ export class KeyWordsService {
 
   async findOne(userId: number, id: number) {
     return this.keyWordRepository.findOneByOrFail({ user: { id: userId }, id }).catch(() => {
-      throw new NotFoundException();
+      throw new NotFoundException({ reason: 'Keywords not found', cause: 'keywords_not_found' });
     });
   }
 
@@ -34,14 +34,14 @@ export class KeyWordsService {
       });
     }
 
-    throw new ConflictException('This keyword already exists');
+    throw new ConflictException({ reason: 'This keyword already exists', cause: 'duplicated_keyword' });
   }
 
   async update(id: number, { content }: UpdateKeyWordDto) {
     const keyWord = await this.keyWordRepository.findOneBy({ content });
 
     if (keyWord && keyWord.id !== id) {
-      throw new ConflictException('This keyword already exists');
+      throw new ConflictException({ reason: 'This keyword already exists', cause: 'duplicated_keyword' });
     }
 
     this.keyWordRepository.update(id, { content }).catch(err => {

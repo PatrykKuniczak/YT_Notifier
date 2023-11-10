@@ -24,7 +24,13 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     const email = profile.emails.find(email => email.verified);
 
     if (!email) {
-      done(new UnauthorizedException('No verified email returned from Google Authorization!'), null);
+      done(
+        new UnauthorizedException({
+          reason: 'No verified email returned from Google Authorization!',
+          cause: 'unconfirmed_email',
+        }),
+        null,
+      );
     }
 
     const { id } = await this.userService.findOrCreate(refreshToken, profile);
