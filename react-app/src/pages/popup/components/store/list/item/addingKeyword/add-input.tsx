@@ -1,5 +1,6 @@
 import plusIcon from '@assets/img/plus-icon.svg';
 import httpClient from '@http-client';
+import { ErrorWithCause } from '@interfaces';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
@@ -81,7 +82,7 @@ const StyledAddInput = () => {
       setKeyword('');
       queryClient.invalidateQueries([urls.keyWords]);
     },
-    onError: () => toast.error('Nie udalo się dodać nowej frazy'),
+    onError: (error: ErrorWithCause) => toast.error(t([`keywordErrors.${error.response.data.cause}`, 'fallbackError'])),
   });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

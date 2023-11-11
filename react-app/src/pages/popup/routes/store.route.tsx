@@ -1,6 +1,6 @@
 import useSearch from '@hooks/use-search';
 import httpClient from '@http-client';
-import { IKeyword } from '@interfaces';
+import { ErrorWithCause, IKeyword } from '@interfaces';
 import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import { StyledItemsContainer } from '@pages/popup/components/shared/items-container';
@@ -32,7 +32,7 @@ export const StoreRoute = () => {
   const { mutate: removeKeyword } = useMutation({
     mutationFn: ({ id }: { id: number }) => httpClient.delete(`${urls.keyWords}/${id}`),
     onSuccess: async () => queryClient.invalidateQueries([urls.keyWords]),
-    onError: () => toast.error('Nie udało się usunąć zapisanej frazy!'),
+    onError: (error: ErrorWithCause) => toast.error(t([`keywordErrors.${error.response.data.cause}`, 'fallbackError'])),
   });
 
   const deferredSearchParam = useDeferredValue(searchParamValue);

@@ -34,4 +34,21 @@ interface IEditKeywordRef {
   handleApplyingChanges: TVoid;
 }
 
-export { IUseFocus, IKeyword, IStyledKeyword, IStyledEditButton, IStyledStoreItem, IEditKeywordRef, IUser };
+interface ErrorWithCause {
+  response: {
+    data: {
+      cause?: string;
+    };
+  };
+}
+
+export {
+  IUseFocus,
+  IKeyword,
+  IStyledKeyword,
+  IStyledEditButton,
+  IStyledStoreItem,
+  IEditKeywordRef,
+  IUser,
+  ErrorWithCause,
+};

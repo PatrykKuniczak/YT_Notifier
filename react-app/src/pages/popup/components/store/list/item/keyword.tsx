@@ -1,7 +1,7 @@
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
 import useValidate from '@hooks/use-validate';
 import httpClient from '@http-client';
-import { IEditKeywordRef, IStyledKeyword } from '@interfaces';
+import { ErrorWithCause, IEditKeywordRef, IStyledKeyword } from '@interfaces';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
@@ -57,15 +57,16 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
       setInputValue(content);
     }, []);
 
+    const { t } = useTranslation();
+
     const { mutate: editKeyword } = useMutation({
       mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
       onSuccess: () => queryClient.invalidateQueries([urls.keyWords]),
-      onError: () => toast.error('Nie udało się edytować frazy'),
+      onError: (error: ErrorWithCause) =>
+        toast.error(t([`keywordErrors.${error.response.data.cause}`, 'fallbackError'])),
     });
 
     const { isValid, handleValidation } = useValidate();
-
-    const { t } = useTranslation();
 
     const handleApplyingChanges = useCallback(() => {
       if (isValid && isDirty) {

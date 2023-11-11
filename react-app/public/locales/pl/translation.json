@@ -5,9 +5,16 @@
   "foundVideos": "Znalezione Wideo",
   "search": "Szukaj",
   "addKeyword": "Dodaj słowo kluczowe",
+  "keywordErrors": {
+    "unauthorized": "Twoja sesja wygasła, zaloguj się ponownie",
+    "duplicated_keyword": "To słowo kluczowe już istnieje",
+    "keywords_not_found": "Nie znaleziono tego słówa kluczowego"
+  },
   "views": "wyświetleń",
   "deleteAccount": "Usuń konto",
   "logout": "Wyloguj się",
+  "sessionExpired": "Zostałeś wylogowany, Twoja sesja wygasła, zaloguj się ponownie",
+  "loggingInFailed": "Logowanie nie powiodło się",
   "languages": { "pl": "Polski", "en": "Angielski" },
   "timeAgo": "{{ date, ago }}",
   "validation": "Podaj od 3 do 255 znaków!",
@@ -34,5 +41,9 @@
   },
   "alts": {
     "exclamationOctagon": "Ikona ostrzeżenia"
-  }
+  },
+  "successfulLogout": "Pomyślnie wylogowano",
+  "successfulDeleteAccount": "Pomyślnie usunięto konto",
+  "videosLoaded": "Spod podanych slów kluczowych, pobrano {{loadedVideosAmount}} wideo, sprawdź we wtyczce",
+  "fallbackError": "Wystąpił niespodziewany błąd, skontaktuj sie z developerem"
 }

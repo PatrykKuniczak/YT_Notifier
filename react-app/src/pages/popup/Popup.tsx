@@ -11,7 +11,10 @@ import { StoreRoute } from '@pages/popup/routes/store.route';
 import { VideosRoute } from '@pages/popup/routes/videos.route';
 import { useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
+// eslint-disable-next-line no-restricted-imports
+import { AxiosError } from 'axios';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { createHashRouter } from 'react-router-dom';
 import '../internationalization';
 import { toast } from 'react-toastify';
@@ -47,13 +50,16 @@ const Popup = () => {
     data: user,
     error,
     isLoading: userIsLoading,
-  } = useQuery<IUser>({
+  } = useQuery<IUser, AxiosError>({
     queryKey: [urls.auth.me],
     queryFn: () => httpClient.get(urls.auth.me).then(user => user.data),
+    retry: false,
   });
 
-  if (error !== null && error !== 401) {
-    toast.error('Logowanie nie powiodło się', {
+  const { t } = useTranslation();
+
+  if (error && error.response.status !== 401) {
+    toast.error(t('loggingInFailed'), {
       toastId: `${urls.auth.me}-error`,
     });
   }

@@ -5,9 +5,16 @@
   "foundVideos": "Found Videos",
   "search": "Search",
   "addKeyword": "Add keyword",
+  "keywordErrors": {
+    "unauthorized": "Your session has expired, please login again",
+    "duplicated_keyword": "This keyword already exists",
+    "keywords_not_found": "Keyword not found"
+  },
   "views": "views",
   "deleteAccount": "Delete account",
   "logout": "Logout",
+  "sessionExpired": "You were logged out, your session has expired, please login again",
+  "loggingInFailed": "Logging in failed",
   "languages": {
     "pl": "Polish",
     "en": "English"
@@ -37,5 +44,9 @@
   },
   "alts": {
     "exclamationOctagon": "Exclamation octagon"
-  }
+  },
+  "successfulLogout": "Successfully logged out",
+  "successfulDeleteAccount": "Successfully deleted account",
+  "videosLoaded": "From under provided keywords, downloaded {{loadedVideosAmount}} videos, check them out in extension",
+  "fallbackError": "Unexpected error occurred, please contact with developer"
 }

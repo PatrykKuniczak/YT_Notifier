@@ -89,11 +89,13 @@ const StyledProfile = () => {
 
   const { open, changeModalVisibility } = useDeleteModal();
 
+  const { t } = useTranslation();
+
   const { mutate: signOut } = useMutation({
     mutationFn: () => httpClient.post(urls.auth.logout),
     onSuccess: async () => {
       await queryClient.resetQueries({ queryKey: [urls.auth.me] });
-      toast.success('Pomyślnie wylogowano');
+      toast.success(t('successfulLogout'));
     },
   });
 
@@ -101,11 +103,9 @@ const StyledProfile = () => {
     mutationFn: () => httpClient.delete(urls.auth.removeAccount),
     onSuccess: async () => {
       await queryClient.resetQueries({ queryKey: [urls.auth.me] });
-      toast.success('Pomyślnie usunięto konto');
+      toast.success(t('successfulDeleteAccount'));
     },
   });
-
-  const { t } = useTranslation();
 
   return (
     <Dropdown onOpenChange={handleOpenChange}>
