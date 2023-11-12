@@ -13,7 +13,13 @@ import { UsersModule } from './users/users.module';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: [
-        `${process.cwd()}${process.env.NODE_ENV === 'production' ? '\\envs\\prod.env' : '\\envs\\local.env'}`,
+        `${process.cwd()}${
+          process.env.NODE_ENV === 'production'
+            ? '\\envs\\prod.env'
+            : process.env.NODE_ENV === 'development'
+            ? '\\envs\\local.env'
+            : '\\envs\\dev-remote.env'
+        }`,
       ],
     }),
     TypeOrmModule.forRootAsync(typeOrmFactory),
