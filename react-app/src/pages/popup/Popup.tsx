@@ -1,5 +1,4 @@
 import useLanguageSwitch from '@hooks/use-language-switch';
-import useTernaryDarkMode from '@hooks/use-ternary-darkmode';
 import withErrorBoundary from '@hooks/with-error-boundary';
 import withSuspense from '@hooks/with-suspense';
 import httpClient, { AxiosError } from '@http-client';
@@ -41,7 +40,6 @@ const hashRouting = createHashRouter([
 ]);
 
 const Popup = () => {
-  const { isDarkMode } = useTernaryDarkMode();
 
   useLanguageSwitch();
 
@@ -64,7 +62,7 @@ const Popup = () => {
   }
 
   return (
-    <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user, userIsLoading }} hashRouting={hashRouting} />
+    <ProvidersWrapper authProviderValues={{ user, userIsLoading }} hashRouting={hashRouting} />
   );
 };
 
