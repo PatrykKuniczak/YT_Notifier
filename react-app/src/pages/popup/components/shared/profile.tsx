@@ -12,6 +12,7 @@ import { useContext, useState } from 'react';
 import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import { toast } from 'react-toastify';
+import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
 const StyledListbox = styled('ul')(({ theme }) =>
   theme.unstable_sx({
@@ -76,6 +77,7 @@ const StyledProfile = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     user: { avatar },
+    userIsLoading,
   } = useContext(AuthContext);
 
   const theme = useTheme();
@@ -105,7 +107,11 @@ const StyledProfile = () => {
   return (
     <Dropdown onOpenChange={handleOpenChange}>
       <StyledMenuButton>
-        <StyledAvatar src={avatar} alt={'Avatar'} width={40} height={40} />
+        {userIsLoading ? (
+          <StyledSkeleton circle={true} width={40} height={40} />
+        ) : (
+          <StyledAvatar src={avatar} alt={'Avatar'} width={40} height={40} />
+        )}
         <StyledIcon
           src={collapsed ? chevronUpIcon : chevronDownIcon}
           alt={'Chevron'}

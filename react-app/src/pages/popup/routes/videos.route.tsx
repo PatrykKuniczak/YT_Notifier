@@ -3,6 +3,7 @@ import { StyledVideosSection } from '@pages/popup/components/video/section/video
 import { useEffect } from 'react';
 
 export const VideosRoute = () => {
+  const isLoading = false;
   useEffect(() => {
     chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
       const activeTab = tabs[0];
@@ -12,12 +13,12 @@ export const VideosRoute = () => {
 
   return (
     <StyledVideosSection>
-      <StyledVideoArticle />
-      <StyledVideoArticle />
-      <StyledVideoArticle />
-      <StyledVideoArticle />
-      <StyledVideoArticle />
-      <StyledVideoArticle />
+      <StyledVideoArticle isLoading={isLoading} />
+      <StyledVideoArticle isLoading={isLoading} />
+      <StyledVideoArticle isLoading={isLoading} />
+      <StyledVideoArticle isLoading={isLoading} />
+      <StyledVideoArticle isLoading={isLoading} />
+      <StyledVideoArticle isLoading={isLoading} />
     </StyledVideosSection>
   );
 };
