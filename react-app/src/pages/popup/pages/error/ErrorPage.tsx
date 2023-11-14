@@ -27,13 +27,6 @@ const StyledErrorContainer = styled(Stack)(({ theme }) =>
   }),
 );
 
-const StyledErrorText = styled('div')(({ theme }) => theme.unstable_sx({}));
-
-const StyledErrorParagraph = styled('p')(({ theme }) =>
-  theme.unstable_sx({
-    fontSize: 'fontSize.sm',
-  }),
-);
 export const ErrorPage = () => {
   return (
     <>
@@ -41,12 +34,12 @@ export const ErrorPage = () => {
       <StyledHomePageWrapper>
         <StyledErrorContainer>
           <StyledIcon src={octagonError} alt={'Boundary error icon'} width={60} height={60} />
-          <StyledErrorText>
+          <div>
             BŁĄD !
-            <StyledErrorParagraph>
+            <p style={{ fontSize: '16px' }}>
               Wystąpił błąd krytyczny, odśwież stronę, gdy to nie pomoże, skontaktuj się z developerem
-            </StyledErrorParagraph>
-          </StyledErrorText>
+            </p>
+          </div>
         </StyledErrorContainer>
       </StyledHomePageWrapper>
     </>

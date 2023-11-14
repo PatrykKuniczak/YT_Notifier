@@ -11,8 +11,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
 refreshOnUpdate('pages/popup');
+
 const App = () => {
   const { isDarkMode } = useTernaryDarkMode();
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>

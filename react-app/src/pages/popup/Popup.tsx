@@ -1,6 +1,5 @@
 import useLanguageSwitch from '@hooks/use-language-switch';
 import withErrorBoundary from '@hooks/with-error-boundary';
-import withSuspense from '@hooks/with-suspense';
 import httpClient, { AxiosError } from '@http-client';
 import { IUser } from '@interfaces';
 import AuthPage from '@pages/popup/pages/auth/auth.page';
@@ -66,4 +65,4 @@ const Popup = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Popup, <div> Loading </div>), <ErrorPage />);
+export default withErrorBoundary(Popup, <ErrorPage />);
