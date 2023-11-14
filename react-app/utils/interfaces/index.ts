@@ -34,10 +34,11 @@ interface IEditKeywordRef {
   handleApplyingChanges: TVoid;
 }
 
-interface ErrorWithCause {
+interface IErrorWithCause {
   response: {
     data: {
       cause?: string;
+      reason?: string;
     };
   };
 }
@@ -50,5 +51,5 @@ export {
   IStyledStoreItem,
   IEditKeywordRef,
   IUser,
-  ErrorWithCause,
+  IErrorWithCause,
 };

@@ -30,4 +30,6 @@ const createHttpInstance = () => {
   return axiosInstance;
 };
 
+export { AxiosError } from 'axios';
+
 export default createHttpInstance();

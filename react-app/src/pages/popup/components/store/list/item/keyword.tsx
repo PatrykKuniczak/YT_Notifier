@@ -1,7 +1,7 @@
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
 import useValidate from '@hooks/use-validate';
 import httpClient from '@http-client';
-import { ErrorWithCause, IEditKeywordRef, IStyledKeyword } from '@interfaces';
+import { IErrorWithCause, IEditKeywordRef, IStyledKeyword } from '@interfaces';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
@@ -62,7 +62,7 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
     const { mutate: editKeyword } = useMutation({
       mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
       onSuccess: () => queryClient.invalidateQueries([urls.keyWords]),
-      onError: (error: ErrorWithCause) =>
+      onError: (error: IErrorWithCause) =>
         toast.error(t([`keywordErrors.${error.response.data.cause}`, 'fallbackError'])),
     });
 

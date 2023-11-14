@@ -2,7 +2,7 @@ import useLanguageSwitch from '@hooks/use-language-switch';
 import useTernaryDarkMode from '@hooks/use-ternary-darkmode';
 import withErrorBoundary from '@hooks/with-error-boundary';
 import withSuspense from '@hooks/with-suspense';
-import httpClient from '@http-client';
+import httpClient, { AxiosError } from '@http-client';
 import { IUser } from '@interfaces';
 import AuthPage from '@pages/popup/pages/auth/auth.page';
 import HomePage from '@pages/popup/pages/home/home.page';
@@ -11,8 +11,6 @@ import { StoreRoute } from '@pages/popup/routes/store.route';
 import { VideosRoute } from '@pages/popup/routes/videos.route';
 import { useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
-// eslint-disable-next-line no-restricted-imports
-import { AxiosError } from 'axios';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { createHashRouter } from 'react-router-dom';
