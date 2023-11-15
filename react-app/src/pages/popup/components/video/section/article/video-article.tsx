@@ -1,4 +1,3 @@
-import thumbnail from '@assets/img/thumbnail.png';
 import { Stack, styled } from '@mui/system';
 import { StyledAuthorInfo } from '@pages/popup/components/video/section/article/authorInfo/author-info';
 import { StyledThumbnail } from '@pages/popup/components/video/section/article/thumbnail/thumbnail';
@@ -21,10 +20,24 @@ const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
   }),
 );
 
-export const StyledVideoArticle = ({ isLoading }: { isLoading: boolean }) => (
+export const StyledVideoArticle = ({
+  thumbnail,
+  authorName,
+  whenPublished,
+  views,
+  title,
+  isLoading,
+}: {
+  thumbnail: string;
+  authorName: string;
+  whenPublished: string;
+  views: string;
+  title: string;
+  isLoading: boolean;
+}) => (
   <VideoArticleStyles component={'article'}>
     {isLoading ? <StyledSkeleton width={240} height={142} /> : <StyledThumbnail src={thumbnail} aria-hidden={true} />}
-    <StyledAuthorInfo isLoading={isLoading} />
-    <StyledVideoInfos isLoading={isLoading} />
+    <StyledAuthorInfo thumbnail={thumbnail} authorName={authorName} isLoading={isLoading} />
+    <StyledVideoInfos whenPublished={whenPublished} views={views} title={title} isLoading={isLoading} />
   </VideoArticleStyles>
 );
