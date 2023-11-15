@@ -4,7 +4,7 @@ import { styled } from '@mui/system';
 export const StyledButton = styled(Button)(({ theme }) =>
   theme.unstable_sx({
     height: 20,
-    color: '#fff',
+    color: 'color.primary',
     background: 'none',
 
     '&:hover': {

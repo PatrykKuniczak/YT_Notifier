@@ -1,4 +1,5 @@
 import { Stack, styled } from '@mui/system';
+import LanguageSelector from '@pages/popup/components/language-selector';
 import StyledProfile from '@pages/popup/components/shared/profile';
 import { StyledThemeSwitch } from '@pages/popup/components/shared/theme-switch';
 
@@ -14,8 +15,11 @@ const HeaderContainerStyles = styled(Stack)(({ theme }) =>
 
 export const StyledHeaderContainer = () => {
   return (
-    <HeaderContainerStyles direction={'row'}>
-      <StyledThemeSwitch />
+    <HeaderContainerStyles direction={'row'} alignItems={'center'}>
+      <Stack direction={'row'} gap={2} alignItems={'center'}>
+        <StyledThemeSwitch />
+        <LanguageSelector />
+      </Stack>
 
       <StyledProfile />
     </HeaderContainerStyles>

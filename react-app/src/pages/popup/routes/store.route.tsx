@@ -1,6 +1,6 @@
 import useSearch from '@hooks/use-search';
 import httpClient from '@http-client';
-import { IKeyword } from '@interfaces';
+import { IErrorWithCause, IKeyword } from '@interfaces';
 import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import { StyledItemsContainer } from '@pages/popup/components/shared/items-container';
@@ -9,6 +9,7 @@ import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-v
 import queryClient, { useMutation, useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useDeferredValue, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
@@ -21,6 +22,8 @@ export const StoreRoute = () => {
 
   const { open, changeModalVisibility } = useDeleteModal();
 
+  const { t } = useTranslation();
+
   const { data: keywords, isLoading: keywordsIsLoading } = useQuery<IKeyword[]>({
     queryKey: [urls.keyWords],
     queryFn: () => httpClient.get(urls.keyWords).then(({ data }) => data),
@@ -29,7 +32,8 @@ export const StoreRoute = () => {
   const { mutate: removeKeyword } = useMutation({
     mutationFn: ({ id }: { id: number }) => httpClient.delete(`${urls.keyWords}/${id}`),
     onSuccess: async () => queryClient.invalidateQueries([urls.keyWords]),
-    onError: () => toast.error('Nie udało się usunąć zapisanej frazy!'),
+    onError: (error: IErrorWithCause) =>
+      toast.error(t([`keywordErrors.${error.response.data.cause}`, 'fallbackError'])),
   });
 
   const deferredSearchParam = useDeferredValue(searchParamValue);
@@ -66,7 +70,7 @@ export const StoreRoute = () => {
 
       <StyledDeleteModal
         open={open}
-        content={<>Czy jesteś pewien, że chcesz to usunąć?</>}
+        content={<>{t('deleteModalContent')}</>}
         onConfirm={() => removeKeyword({ id: keywordToRemove })}
         changeModalVisibility={changeModalVisibility}
       />

@@ -6,6 +6,7 @@ import { StyledThemeSwitch } from '@pages/popup/components/shared/theme-switch';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { POPUP_HEIGHT, POPUP_POSITION_LEFT, POPUP_POSITION_TOP, POPUP_WIDTH } from '@pages/popup/constant';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Navigate } from 'react-router-dom';
 
 const googleLogin = () =>
@@ -22,6 +23,8 @@ const googleLogin = () =>
 const AuthPage = () => {
   const { user } = useContext(AuthContext);
 
+  const { t } = useTranslation();
+
   if (user) {
     return <Navigate to={'/'} />;
   }
@@ -30,14 +33,14 @@ const AuthPage = () => {
     <StyledAuthWrapper direction={'column'} alignItems={'center'} useFlexGap={true} spacing={6}>
       <StyledThemeSwitch sx={{ alignSelf: 'start' }} />
 
-      <StyledTitle>Witaj w YT Plugin</StyledTitle>
+      <StyledTitle>{t('welcome')}</StyledTitle>
 
       <StyledGoogleButton onClick={googleLogin}>
         <StyledGoogleIconWrapper>
-          <img src={googleLogo} alt={'Google Logo'} />
+          <img src={googleLogo} alt={''} />
         </StyledGoogleIconWrapper>
 
-        <StyledGoogleText>Zaloguj się przez Google</StyledGoogleText>
+        <StyledGoogleText>{t('loginByGoogle')}</StyledGoogleText>
       </StyledGoogleButton>
     </StyledAuthWrapper>
   );

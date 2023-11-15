@@ -1,0 +1,50 @@
+{
+  "welcome": "Witaj w YT Plugin",
+  "loginByGoogle": "Zaloguj się przez Google",
+  "savedKeywords": "Zapisane Frazy",
+  "foundVideos": "Znalezione Wideo",
+  "search": "Szukaj",
+  "addKeyword": "Dodaj słowo kluczowe",
+  "keywordErrors": {
+    "duplicated_keyword": "To słowo kluczowe już istnieje",
+    "keyword_not_found": "Nie znaleziono tego słowa kluczowego"
+  },
+  "views": "wyświetleń",
+  "deleteAccount": "Usuń konto",
+  "logout": "Wyloguj się",
+  "unauthorized": "Zostałeś wylogowany, Twoja sesja wygasła, zaloguj się ponownie",
+  "loggingInFailed": "Logowanie nie powiodło się",
+  "languages": { "pl": "Polski", "en": "Angielski" },
+  "timeAgo": "{{ date, ago }}",
+  "validation": "Podaj od 3 do 255 znaków!",
+  "provideKeyword": "Podaj słowo kluczowe!",
+  "deleteModal": {
+    "confirm": "Tak, usuń",
+    "cancel": "Anuluj"
+  },
+  "deleteAccountModal": {
+    "content1": "Czy jesteś pewien, że chcesz usunąć konto?",
+    "content2": "Twoje dane zostaną trwale usunięte."
+  },
+  "deleteModalContent": "Czy jesteś pewien, że chcesz to usunąć?",
+  "nav": {
+    "foundVideo": "Znalezione Wideo",
+    "savedKeywords": "Zapisane słowa kluczowe",
+    "watchLater": "Obejrzyj później"
+  },
+  "aria-labels": {
+    "deleteButton": "Usuń",
+    "editButton": "Edytuj",
+    "addKeywordButton": "Dodaj słowo kluczowe",
+    "openProfileMenuButton": "Otwórz menu profilu",
+    "openLanguageMenuButton": "Otwórz menu języka",
+    "themeSwitch": "Przełącz motyw"
+  },
+  "alts": {
+    "exclamationOctagon": "Ikona ostrzeżenia"
+  },
+  "successfulLogout": "Pomyślnie wylogowano",
+  "successfulDeleteAccount": "Pomyślnie usunięto konto",
+  "videosLoaded": "Znaleziono {{loadedVideosAmount}} wideo podczas przeszukiwania podanych słów kluczowych. Proszę sprawdzić we wtyczce.",
+  "fallbackError": "Wystąpił niespodziewany błąd, skontaktuj sie z developerem"
+}

@@ -1,7 +1,8 @@
+import useLanguageSwitch from '@hooks/use-language-switch';
 import useTernaryDarkMode from '@hooks/use-ternary-darkmode';
 import withErrorBoundary from '@hooks/with-error-boundary';
 import withSuspense from '@hooks/with-suspense';
-import httpClient from '@http-client';
+import httpClient, { AxiosError } from '@http-client';
 import { IUser } from '@interfaces';
 import AuthPage from '@pages/popup/pages/auth/auth.page';
 import HomePage from '@pages/popup/pages/home/home.page';
@@ -11,7 +12,9 @@ import { VideosRoute } from '@pages/popup/routes/videos.route';
 import { useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { createHashRouter } from 'react-router-dom';
+import '../internationalization';
 import { toast } from 'react-toastify';
 
 const hashRouting = createHashRouter([
@@ -39,17 +42,22 @@ const hashRouting = createHashRouter([
 const Popup = () => {
   const { isDarkMode } = useTernaryDarkMode();
 
+  useLanguageSwitch();
+
   const {
     data: user,
     error,
     isLoading: userIsLoading,
-  } = useQuery<IUser>({
+  } = useQuery<IUser, AxiosError>({
     queryKey: [urls.auth.me],
     queryFn: () => httpClient.get(urls.auth.me).then(user => user.data),
+    retry: false,
   });
 
-  if (error !== null && error !== 401) {
-    toast.error('Logowanie nie powiodło się', {
+  const { t } = useTranslation();
+
+  if (error && error.response.status !== 401) {
+    toast.error(t('loggingInFailed'), {
       toastId: `${urls.auth.me}-error`,
     });
   }

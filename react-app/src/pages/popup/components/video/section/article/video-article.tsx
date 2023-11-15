@@ -23,7 +23,7 @@ const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
 
 export const StyledVideoArticle = ({ isLoading }: { isLoading: boolean }) => (
   <VideoArticleStyles component={'article'}>
-    {isLoading ? <StyledSkeleton width={240} height={142} /> : <StyledThumbnail src={thumbnail} alt={'YT Thumbnail'} />}
+    {isLoading ? <StyledSkeleton width={240} height={142} /> : <StyledThumbnail src={thumbnail} aria-hidden={true} />}
     <StyledAuthorInfo isLoading={isLoading} />
     <StyledVideoInfos isLoading={isLoading} />
   </VideoArticleStyles>

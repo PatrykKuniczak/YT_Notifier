@@ -5,6 +5,7 @@ import { Stack, styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { TComponentTag, TVoid } from '@types';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
@@ -34,37 +35,39 @@ export const StyledNavbar = ({ focus }: { focus: TVoid }) => {
 
   const { pathname } = useLocation();
 
+  const { t } = useTranslation();
+
   return (
     <NavbarStyles component="nav" direction={'row'}>
       <StyledButton
-        title="Znalezione Wideo"
-        aria-label="Znalezione Wideo"
+        title={t('nav.foundVideo')}
+        aria-label={t('nav.foundVideo')}
         className={pathname === '/' ? 'active' : ''}
         onClick={() => {
           navigate('');
           focus();
         }}>
-        <StyledIcon src={searchIcon} alt={'Search magnifier'} width={20} height={20} />
+        <StyledIcon src={searchIcon} alt={''} width={20} height={20} />
       </StyledButton>
 
       <StyledButton
-        title="Zapisane słowa kluczowe"
-        aria-label="Zapisane słowa kluczowe"
+        title={t('nav.savedKeywords')}
+        aria-label={t('nav.savedKeywords')}
         className={pathname === '/store' ? 'active' : ''}
         onClick={() => {
           navigate('/store');
           focus();
         }}>
-        <StyledIcon src={savedTagsIcon} alt={'Saved tags navigation button'} width={20} height={20} />
+        <StyledIcon src={savedTagsIcon} alt={''} width={20} height={20} />
       </StyledButton>
 
       <StyledButton
-        title="Obejrzyj później"
-        aria-label="Obejrzyj później"
+        title={t('nav.watchLater')}
+        aria-label={t('nav.watchLater')}
         onClick={() => {
           chrome.tabs.create({ url: 'https://www.youtube.com/playlist?list=WL' });
         }}>
-        <StyledIcon src={watchLaterIcon} alt={'YT Watch Later navigation button'} width={20} height={20} />
+        <StyledIcon src={watchLaterIcon} alt={''} width={20} height={20} />
       </StyledButton>
     </NavbarStyles>
   );

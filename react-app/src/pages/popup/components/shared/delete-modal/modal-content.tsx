@@ -3,6 +3,7 @@ import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { StyledModalButton } from '@pages/popup/components/shared/delete-modal/delete-modal-button';
 import { TVoid } from '@types';
 import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ModalContentStyles = styled(Stack)(({ theme }) =>
   theme.unstable_sx({
@@ -23,20 +24,24 @@ export const StyledModalContent = ({
   content: ReactNode;
   onConfirm: TVoid;
   changeModalVisibility: TVoid;
-}) => (
-  <ModalContentStyles justifyContent={'center'} alignItems={'center'} useFlexGap={true} spacing={2}>
-    <StyledTitle sx={{ fontSize: 'fontSize.l', color: 'color.secondary' }}>{content}</StyledTitle>
+}) => {
+  const { t } = useTranslation();
 
-    <StyledModalButton
-      onClick={() => {
-        onConfirm();
-        changeModalVisibility();
-      }}>
-      Tak, usuń
-    </StyledModalButton>
+  return (
+    <ModalContentStyles justifyContent={'center'} alignItems={'center'} useFlexGap={true} spacing={2}>
+      <StyledTitle sx={{ fontSize: 'fontSize.l', color: 'color.secondary' }}>{content}</StyledTitle>
 
-    <StyledModalButton sx={{ backgroundColor: 'background.grey' }} onClick={changeModalVisibility}>
-      Anuluj
-    </StyledModalButton>
-  </ModalContentStyles>
-);
+      <StyledModalButton
+        onClick={() => {
+          onConfirm();
+          changeModalVisibility();
+        }}>
+        {t('deleteModal.confirm')}
+      </StyledModalButton>
+
+      <StyledModalButton sx={{ backgroundColor: 'background.grey' }} onClick={changeModalVisibility}>
+        {t('deleteModal.cancel')}
+      </StyledModalButton>
+    </ModalContentStyles>
+  );
+};

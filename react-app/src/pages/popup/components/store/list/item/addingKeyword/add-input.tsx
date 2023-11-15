@@ -1,5 +1,6 @@
 import plusIcon from '@assets/img/plus-icon.svg';
 import httpClient from '@http-client';
+import { IErrorWithCause } from '@interfaces';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
@@ -9,6 +10,7 @@ import useValidate from '@hooks/use-validate';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 const StyledForm = styled('form')(({ theme }) =>
@@ -72,13 +74,16 @@ const StyledAddInput = () => {
 
   const { isValid, handleValidation } = useValidate();
 
+  const { t } = useTranslation();
+
   const { mutate: addKeyword } = useMutation({
     mutationFn: (content: { content: string }) => httpClient.post(urls.keyWords, content),
     onSuccess: async () => {
       setKeyword('');
       queryClient.invalidateQueries([urls.keyWords]);
     },
-    onError: () => toast.error('Nie udalo się dodać nowej frazy'),
+    onError: (error: IErrorWithCause) =>
+      toast.error(t([`keywordErrors.${error.response.data.cause}`, 'fallbackError'])),
   });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -95,10 +100,10 @@ const StyledAddInput = () => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <FormControl onChange={handleChange} value={keyword} style={{ width: '100%', position: 'relative' }}>
-        <StyledKeywordInput placeholder="Dodaj słowo kluczowe" />
+        <StyledKeywordInput placeholder={t('addKeyword')} />
       </FormControl>
-      <StyledSubmitButton disabled={!isValid} type={'submit'}>
-        <StyledIcon src={plusIcon} alt={'Add keyword'} width={20} height={20} />
+      <StyledSubmitButton disabled={!isValid} type={'submit'} aria-label={t('aria-labels.addKeywordButton')}>
+        <StyledIcon src={plusIcon} alt={''} width={20} height={20} />
       </StyledSubmitButton>
     </StyledForm>
   );

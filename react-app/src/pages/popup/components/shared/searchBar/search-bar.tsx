@@ -7,6 +7,7 @@ import { StyledSearchBarInput } from '@pages/popup/components/shared/searchBar/s
 import { StyledSearchBarWrapper } from '@pages/popup/components/shared/searchBar/search-bar-wrapper';
 import { TVoid } from '@types';
 import { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_, ref) => {
   const theme = useTheme();
@@ -14,11 +15,13 @@ export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_
   const { handleKeyEvent } = useHandleKeyEvents();
   const { clearSearchParamValue, searchParamValue, handleSearchParamsChange } = useSearch();
 
+  const { t } = useTranslation();
+
   return (
     <StyledSearchBarWrapper>
       <StyledIcon
         src={searchIcon}
-        alt={'Search magnifier'}
+        alt={''}
         width={20}
         height={20}
         sx={{
@@ -29,8 +32,8 @@ export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_
       <StyledSearchBarInput
         ref={ref}
         autoFocus={true}
-        aria-label="Search Bar"
-        placeholder={'Wyszukaj'}
+        aria-label={t('search')}
+        placeholder={t('search')}
         value={searchParamValue}
         onChange={event => handleSearchParamsChange(event.target.value)}
         onKeyDown={event => handleKeyEvent(event, clearSearchParamValue)}

@@ -1,7 +1,7 @@
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
 import useValidate from '@hooks/use-validate';
 import httpClient from '@http-client';
-import { IEditKeywordRef, IStyledKeyword } from '@interfaces';
+import { IErrorWithCause, IEditKeywordRef, IStyledKeyword } from '@interfaces';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
@@ -11,6 +11,7 @@ import { useMutation } from '@root/utils/libs/query-client';
 import { textMixin } from '@utils/data/mixins/text-mixin';
 import urls from '@utils/endpoints/urls';
 import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 const keywordStyles = {
@@ -56,10 +57,13 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
       setInputValue(content);
     }, []);
 
+    const { t } = useTranslation();
+
     const { mutate: editKeyword } = useMutation({
       mutationFn: (content: { content: string }) => httpClient.patch(`${urls.keyWords}/${id}`, content),
       onSuccess: () => queryClient.invalidateQueries([urls.keyWords]),
-      onError: () => toast.error('Nie udało się edytować frazy'),
+      onError: (error: IErrorWithCause) =>
+        toast.error(t([`keywordErrors.${error.response.data.cause}`, 'fallbackError'])),
     });
 
     const { isValid, handleValidation } = useValidate();
@@ -92,7 +96,7 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
         style={{ width: '100%', position: 'relative' }}>
         <StyledKeywordInput
           autoFocus
-          placeholder="Podaj słowo kluczowe"
+          placeholder={t('provideKeyword')}
           onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
         />
         <StyledErrorMessage />

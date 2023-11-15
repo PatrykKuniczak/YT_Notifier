@@ -11,6 +11,7 @@ import urls from '@utils/endpoints/urls';
 import { useContext, useState } from 'react';
 import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
@@ -88,11 +89,13 @@ const StyledProfile = () => {
 
   const { open, changeModalVisibility } = useDeleteModal();
 
+  const { t } = useTranslation();
+
   const { mutate: signOut } = useMutation({
     mutationFn: () => httpClient.post(urls.auth.logout),
     onSuccess: async () => {
       await queryClient.resetQueries({ queryKey: [urls.auth.me] });
-      toast.success('Pomyślnie wylogowano');
+      toast.success(t('successfulLogout'));
     },
   });
 
@@ -100,21 +103,22 @@ const StyledProfile = () => {
     mutationFn: () => httpClient.delete(urls.auth.removeAccount),
     onSuccess: async () => {
       await queryClient.resetQueries({ queryKey: [urls.auth.me] });
-      toast.success('Pomyślnie usunięto konto');
+      toast.success(t('successfulDeleteAccount'));
     },
   });
 
   return (
     <Dropdown onOpenChange={handleOpenChange}>
-      <StyledMenuButton>
+      <StyledMenuButton aria-label={t('aria-labels.openProfileMenuButton')}>
         {userIsLoading ? (
           <StyledSkeleton circle={true} width={40} height={40} />
         ) : (
-          <StyledAvatar src={avatar} alt={'Avatar'} width={40} height={40} />
+          <StyledAvatar src={avatar} aria-hidden={true} alt={''} width={40} height={40} />
         )}
         <StyledIcon
           src={collapsed ? chevronUpIcon : chevronDownIcon}
-          alt={'Chevron'}
+          aria-hidden={true}
+          alt={''}
           width={16}
           height={16}
           sx={{
@@ -123,16 +127,16 @@ const StyledProfile = () => {
         />
       </StyledMenuButton>
       <Menu slots={{ listbox: StyledListbox }}>
-        <StyledMenuItem onClick={changeModalVisibility}>Usun konto</StyledMenuItem>
-        <StyledMenuItem onClick={() => signOut()}>Wyloguj się</StyledMenuItem>
+        <StyledMenuItem onClick={changeModalVisibility}>{t('deleteAccount')}</StyledMenuItem>
+        <StyledMenuItem onClick={() => signOut()}>{t('logout')}</StyledMenuItem>
       </Menu>
       <StyledDeleteModal
         open={open}
         content={
           <>
-            Czy jesteś pewien, że chcesz usunąć konto?
+            {t('deleteAccountModal.content1')}
             <br />
-            Twoje dane zostaną trwale usunięte
+            {t('deleteAccountModal.content2')}
           </>
         }
         onConfirm={() => removeAccount()}
