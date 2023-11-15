@@ -44,7 +44,7 @@ export class UsersService {
   }
 
   async findOneById(id: number) {
-    return this.userRepository.findOneBy({ id });
+    return this.userRepository.findOne({ where: { id }, relations: { userYtVideos: true } });
   }
 
   async getRefreshTokenById(id: number) {
