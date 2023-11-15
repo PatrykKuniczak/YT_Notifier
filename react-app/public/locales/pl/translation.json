@@ -7,7 +7,7 @@
   "addKeyword": "Dodaj słowo kluczowe",
   "keywordErrors": {
     "duplicated_keyword": "To słowo kluczowe już istnieje",
-    "keywords_not_found": "Nie znaleziono tego słowa kluczowego"
+    "keyword_not_found": "Nie znaleziono tego słowa kluczowego"
   },
   "views": "wyświetleń",
   "deleteAccount": "Usuń konto",
