@@ -6,14 +6,13 @@
   "search": "Search",
   "addKeyword": "Add keyword",
   "keywordErrors": {
-    "unauthorized": "Your session has expired, please login again",
     "duplicated_keyword": "This keyword already exists",
     "keywords_not_found": "Keyword not found"
   },
   "views": "views",
   "deleteAccount": "Delete account",
   "logout": "Logout",
-  "sessionExpired": "You were logged out, your session has expired, please login again",
+  "unauthorized": "You were logged out, your session has expired, please login again",
   "loggingInFailed": "Logging in failed",
   "languages": {
     "pl": "Polish",
@@ -22,8 +21,10 @@
   "timeAgo": "{{ date, ago }}",
   "validation": "Provide from 3 to 255 characters!",
   "provideKeyword": "Provide keyword",
-  "deleteModalConfirm": "Yes,delete",
-  "deleteModalCancel": "Cancel",
+  "deleteModal": {
+    "confirm": "Yes, delete",
+    "cancel": "Cancel"
+  },
   "deleteAccountModal": {
     "content1": "Are you sure, you want to delete your account?",
     "content2": "Your data will be lost. This action is irreversible."

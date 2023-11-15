@@ -36,11 +36,11 @@ export const StyledModalContent = ({
           onConfirm();
           changeModalVisibility();
         }}>
-        {t('deleteModalConfirm')}
+        {t('deleteModal.confirm')}
       </StyledModalButton>
 
       <StyledModalButton sx={{ backgroundColor: 'background.grey' }} onClick={changeModalVisibility}>
-        {t('deleteModalCancel')}
+        {t('deleteModal.cancel')}
       </StyledModalButton>
     </ModalContentStyles>
   );
