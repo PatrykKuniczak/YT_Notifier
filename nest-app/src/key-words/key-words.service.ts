@@ -19,7 +19,7 @@ export class KeyWordsService {
 
   async findOne(userId: number, id: number) {
     return this.keyWordRepository.findOneByOrFail({ user: { id: userId }, id }).catch(() => {
-      throw new NotFoundException({ reason: 'Keywords not found', cause: 'keywords_not_found' });
+      throw new NotFoundException({ reason: 'Keyword not found', cause: 'keyword_not_found' });
     });
   }
 

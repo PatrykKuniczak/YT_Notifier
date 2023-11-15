@@ -10,8 +10,8 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { ErrorResponse } from '../swagger/response-examples/error.response';
 import { SessionsGuard } from '../auth/sessions/sessions.guard';
+import { ErrorResponse } from '../swagger/response-examples/error.response';
 import { KeyWordsResponse } from '../swagger/response-examples/key-words.response';
 import { ReqUserId } from '../users/decorators/user.decorator';
 import { UsersService } from '../users/users.service';
@@ -41,7 +41,7 @@ export class KeyWordsController {
 
   @ApiOkResponse({ type: KeyWordsResponse })
   @ApiNotFoundResponse({
-    description: 'Keywords not found, cause: keywords_not_found',
+    description: 'Keywords not found, cause: keyword_not_found',
   })
   @ApiUnauthorizedResponse({
     type: ErrorResponse,
@@ -76,7 +76,7 @@ export class KeyWordsController {
     description: 'cause: unauthorized',
   })
   @ApiNotFoundResponse({
-    description: 'Keywords not found, cause: keywords_not_found',
+    description: 'Keywords not found, cause: keyword_not_found',
   })
   @ApiConflictResponse({ description: 'This keyword already exists, cause: duplicated_keyword' })
   @ApiInternalServerErrorResponse({ description: 'Error on updating user: ${error message}' })
@@ -96,7 +96,7 @@ export class KeyWordsController {
   @ApiOkResponse()
   @ApiBadRequestResponse({ description: 'Validation failed (numeric string is expected)' })
   @ApiNotFoundResponse({
-    description: 'Keywords not found, cause: keywords_not_found',
+    description: 'Keywords not found, cause: keyword_not_found',
   })
   @ApiUnauthorizedResponse({
     type: ErrorResponse,
