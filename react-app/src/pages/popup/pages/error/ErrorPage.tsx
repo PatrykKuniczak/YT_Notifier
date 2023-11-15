@@ -40,9 +40,9 @@ export const ErrorPage = () => {
             height={60}
           />
           BŁĄD !
-          <span style={{ fontSize: '16px' }}>
-            Wystąpił błąd krytyczny, odśwież stronę, gdy to nie pomoże, skontaktuj się z developerem
-          </span>
+          <p style={{ fontSize: '16px' }}>
+            Wystąpił błąd krytyczny, uruchom ponownie wtyczkę, gdy to nie pomoże, skontaktuj się z developerem
+          </p>
         </StyledErrorContainer>
       </StyledHomePageWrapper>
     </>
