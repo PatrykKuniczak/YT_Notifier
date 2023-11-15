@@ -22,6 +22,7 @@ const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
 
 export const StyledVideoArticle = ({
   thumbnail,
+  avatar,
   authorName,
   whenPublished,
   views,
@@ -30,6 +31,7 @@ export const StyledVideoArticle = ({
 }: {
   thumbnail: string;
   authorName: string;
+  avatar: string;
   whenPublished: string;
   views: string;
   title: string;
@@ -37,7 +39,7 @@ export const StyledVideoArticle = ({
 }) => (
   <VideoArticleStyles component={'article'}>
     {isLoading ? <StyledSkeleton width={240} height={142} /> : <StyledThumbnail src={thumbnail} aria-hidden={true} />}
-    <StyledAuthorInfo thumbnail={thumbnail} authorName={authorName} isLoading={isLoading} />
+    <StyledAuthorInfo avatar={avatar} authorName={authorName} isLoading={isLoading} />
     <StyledVideoInfos whenPublished={whenPublished} views={views} title={title} isLoading={isLoading} />
   </VideoArticleStyles>
 );

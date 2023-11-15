@@ -9,6 +9,7 @@ export const VideosRoute = () => {
     {
       id: '1',
       thumbnail: thumbnail,
+      avatar: thumbnail,
       authorName: 'XYZ Franko',
       whenPublished: '11 miesięcy temu',
       views: '1 mld wyświetleń',
@@ -17,6 +18,7 @@ export const VideosRoute = () => {
     {
       id: '2',
       thumbnail: thumbnail,
+      avatar: thumbnail,
       authorName: 'Test Testowski',
       whenPublished: '2 lata temu',
       views: '10 mln wyświetleń',
@@ -44,10 +46,11 @@ export const VideosRoute = () => {
 
   return (
     <StyledVideosSection>
-      {filteredVideos?.map(({ id, thumbnail, authorName, whenPublished, views, title }) => (
+      {filteredVideos?.map(({ id, thumbnail, avatar, authorName, whenPublished, views, title }) => (
         <StyledVideoArticle
           key={id}
           thumbnail={thumbnail}
+          avatar={avatar}
           authorName={authorName}
           whenPublished={whenPublished}
           views={views}
