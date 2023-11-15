@@ -12,6 +12,7 @@ const StyledErrorContainer = styled(Stack)(({ theme }) =>
 
     alignSelf: 'center',
     alignItems: 'center',
+    gap: 2,
 
     margin: `auto`,
 
@@ -33,13 +34,13 @@ export const ErrorPage = () => {
       <StyledHomePageWrapper>
         <StyledErrorContainer>
           <StyledIcon
-            style={{ marginBottom: '30px' }}
+            style={{ marginBottom: '15px' }}
             src={octagonError}
             alt={'Boundary error icon'}
             width={60}
             height={60}
           />
-          BŁĄD !
+          <h1>BŁĄD !</h1>
           <p style={{ fontSize: '16px' }}>
             Wystąpił błąd krytyczny, uruchom ponownie wtyczkę, gdy to nie pomoże, skontaktuj się z developerem
           </p>
