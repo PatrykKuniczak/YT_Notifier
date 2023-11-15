@@ -45,6 +45,6 @@
   },
   "successfulLogout": "Pomyślnie wylogowano",
   "successfulDeleteAccount": "Pomyślnie usunięto konto",
-  "videosLoaded": "Spod podanych slów kluczowych, pobrano {{loadedVideosAmount}} wideo, sprawdź we wtyczce",
+  "videosLoaded": "Znaleziono {{loadedVideosAmount}} wideo podczas przeszukiwania podanych słów kluczowych. Proszę sprawdzić we wtyczce.",
   "fallbackError": "Wystąpił niespodziewany błąd, skontaktuj sie z developerem"
 }
