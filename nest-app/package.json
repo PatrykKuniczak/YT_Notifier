@@ -1,12 +1,11 @@
 {
   "name": "yt-plugin-backend",
-  "version": "0.0.1",
-  "license": "MIT",
+  "main": "dist/main",
   "scripts": {
-    "start": "cross-env NODE_ENV=production nest start",
     "start:dev": "cross-env NODE_ENV=development nest start --watch",
     "start:debug": "cross-env NODE_ENV=development nest start --debug --watch",
-    "start:prod": "cross-env NODE_ENV=production node dist/main",
+    "start:dev:remote": "cross-env NODE_ENV=remote-development nest start",
+    "start:prod": "cross-env NODE_ENV=production nest start",
     "build": "nest build",
     "lint": "eslint src --ext .ts",
     "lint:fix": "npm run lint -- --fix",

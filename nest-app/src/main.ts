@@ -20,7 +20,7 @@ async function bootstrap() {
   const sessionRepository = app.get(DataSource).getRepository(SessionsEntity);
 
   app.enableCors({
-    origin: configService.get('FE_URL'),
+    origin: '*',
     credentials: true,
   });
 
@@ -60,7 +60,7 @@ async function bootstrap() {
 
   IS_DEVELOPMENT && SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app, swaggerConfig));
 
-  await app.listen(configService.get('SERVER_PORT'));
+  await app.listen(configService.get('SERVER_PORT'), '0.0.0.0');
 }
 
 bootstrap();

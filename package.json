@@ -1,5 +1,6 @@
 {
 	"name": "yt-plugin",
+	"description": "YT Plugin for subscribe keywords",
 	"version": "0.0.1",
 	"type": "module",
 	"license": "MIT",

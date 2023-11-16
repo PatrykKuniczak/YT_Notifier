@@ -15,7 +15,7 @@ export const typeOrmFactory: TypeOrmModuleAsyncOptions = {
     extra: { charset: 'utf8mb4_unicode_ci' },
     entities: ['dist/**/*.entity.js'],
     migrations: ['dist/database/migrations/*.js'],
-    migrationsRun: process.env.NODE_ENV === 'production',
+    migrationsRun: process.env.NODE_ENV !== 'development',
     synchronize: process.env.NODE_ENV === 'development',
   }),
   dataSourceFactory: async options => new DataSource(options).initialize(),
