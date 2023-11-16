@@ -11,8 +11,8 @@ export const VideosRoute = () => {
       thumbnail: thumbnail,
       avatar: thumbnail,
       authorName: 'XYZ Franko',
-      publishedAt: '11 miesięcy temu',
-      views: '1 mld wyświetleń',
+      publishedAt: '2023-10-30T19:21:20Z',
+      views: '1 mld',
       title: 'Hodujemy gatunek, który będzie dominował nad nami Hodujemy gatunek, który będzie dominował nad nami',
     },
     {
@@ -20,8 +20,8 @@ export const VideosRoute = () => {
       thumbnail: thumbnail,
       avatar: thumbnail,
       authorName: 'Test Testowski',
-      publishedAt: '2 lata temu',
-      views: '10 mln wyświetleń',
+      publishedAt: '2021-08-10T16:41:20Z',
+      views: '10 mln',
       title: 'To jest Test To jest Test To jest Test To jest Test To jest Test',
     },
   ];

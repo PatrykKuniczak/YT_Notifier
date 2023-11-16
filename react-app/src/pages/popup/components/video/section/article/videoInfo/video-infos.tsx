@@ -9,19 +9,27 @@ interface Video {
   title: string;
 }
 export const StyledVideoInfos = ({ publishedAt, views, title, isLoading }: Video & { isLoading: boolean }) => {
-    const {t} = useTranslation();
-    return (
-        <Stack useFlexGap={true} spacing={1}>
-            {isLoading ? (
-                <StyledSkeleton/>
-            ) : (
-                <Stack direction={'row'} alignItems={'center'} useFlexGap={true} spacing={2}>
-                    <StyledVideoInfo>{publishedAt}{t('timeAgo', { date: new Date(2021, 1, 1) })}</StyledVideoInfo>
-                    <StyledVideoInfo>{views}{t('views')}</StyledVideoInfo>
-                </Stack>
-            )}
+  const { t } = useTranslation();
 
-            {isLoading ? <StyledSkeleton/> : <StyledVideoTitle>{title}</StyledVideoTitle>}
+  const publishedDate = new Date(publishedAt);
+  const year = publishedDate.getFullYear();
+  const month = publishedDate.getMonth();
+  const day = publishedDate.getDate();
+
+  return (
+    <Stack useFlexGap={true} spacing={1}>
+      {isLoading ? (
+        <StyledSkeleton />
+      ) : (
+        <Stack direction={'row'} alignItems={'center'} justifyContent={'center'} useFlexGap={true} spacing={2}>
+          <StyledVideoInfo>{t('timeAgo', { date: new Date(year, month, day) })}</StyledVideoInfo>
+          <StyledVideoInfo>
+            {views} {t('views')}
+          </StyledVideoInfo>
         </Stack>
-    );
-}
+      )}
+
+      {isLoading ? <StyledSkeleton /> : <StyledVideoTitle>{title}</StyledVideoTitle>}
+    </Stack>
+  );
+};
