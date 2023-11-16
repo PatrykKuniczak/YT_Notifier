@@ -20,7 +20,7 @@ async function bootstrap() {
   const sessionRepository = app.get(DataSource).getRepository(SessionsEntity);
 
   app.enableCors({
-    origin: configService.get('FE_URL'),
+    origin: '*',
     credentials: true,
   });
 
