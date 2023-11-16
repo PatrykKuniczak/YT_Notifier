@@ -11,7 +11,7 @@ export const VideosRoute = () => {
       thumbnail: thumbnail,
       avatar: thumbnail,
       authorName: 'XYZ Franko',
-      whenPublished: '11 miesięcy temu',
+      publishedAt: '11 miesięcy temu',
       views: '1 mld wyświetleń',
       title: 'Hodujemy gatunek, który będzie dominował nad nami Hodujemy gatunek, który będzie dominował nad nami',
     },
@@ -20,7 +20,7 @@ export const VideosRoute = () => {
       thumbnail: thumbnail,
       avatar: thumbnail,
       authorName: 'Test Testowski',
-      whenPublished: '2 lata temu',
+      publishedAt: '2 lata temu',
       views: '10 mln wyświetleń',
       title: 'To jest Test To jest Test To jest Test To jest Test To jest Test',
     },
@@ -46,17 +46,8 @@ export const VideosRoute = () => {
 
   return (
     <StyledVideosSection>
-      {filteredVideos?.map(({ id, thumbnail, avatar, authorName, whenPublished, views, title }) => (
-        <StyledVideoArticle
-          key={id}
-          thumbnail={thumbnail}
-          avatar={avatar}
-          authorName={authorName}
-          whenPublished={whenPublished}
-          views={views}
-          title={title}
-          isLoading={isLoading}
-        />
+      {filteredVideos?.map(({ id, ...restProps }) => (
+        <StyledVideoArticle key={id} {...restProps} isLoading={isLoading} />
       ))}
     </StyledVideosSection>
   );

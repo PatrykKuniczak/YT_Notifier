@@ -5,6 +5,15 @@ import { StyledVideoInfos } from '@pages/popup/components/video/section/article/
 import { TComponentTag } from '@types';
 import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
+interface Video {
+  thumbnail: string;
+  authorName: string;
+  avatar: string;
+  publishedAt: string;
+  views: string;
+  title: string;
+}
+
 const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
   theme.unstable_sx({
     justifyContent: 'center',
@@ -24,22 +33,14 @@ export const StyledVideoArticle = ({
   thumbnail,
   avatar,
   authorName,
-  whenPublished,
+  publishedAt,
   views,
   title,
   isLoading,
-}: {
-  thumbnail: string;
-  authorName: string;
-  avatar: string;
-  whenPublished: string;
-  views: string;
-  title: string;
-  isLoading: boolean;
-}) => (
+}: Video & { isLoading: boolean }) => (
   <VideoArticleStyles component={'article'}>
     {isLoading ? <StyledSkeleton width={240} height={142} /> : <StyledThumbnail src={thumbnail} aria-hidden={true} />}
     <StyledAuthorInfo avatar={avatar} authorName={authorName} isLoading={isLoading} />
-    <StyledVideoInfos whenPublished={whenPublished} views={views} title={title} isLoading={isLoading} />
+    <StyledVideoInfos publishedAt={publishedAt} views={views} title={title} isLoading={isLoading} />
   </VideoArticleStyles>
 );
