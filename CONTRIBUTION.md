@@ -8,8 +8,7 @@
 
 ### Procedures <a name="procedures"></a>
 
-1. Create `.env.local` in `envs` directory by copying `.env.example` and if necessary change to yours environment
-   values.
+1. Create `.env.local` in `envs` directory by copying `.env.example` and if necessary adjust to your needs.
 2. Run `npm ci`
 
 ## And next, depending on the needs:
@@ -47,7 +46,7 @@
 
 [postgresql](https://www.postgresql.org/download/)
 
-    - Check node v20.8.0 is installed on your machine, if not:
+    - Check node v20 is installed on your machine, if not:
 
 [node](https://nodejs.org/en/download)
 
@@ -82,11 +81,11 @@ $ npm ci
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
-# watch mode *PREFERRED*
+# development(watch mode)
 $ npm run start:dev
+
+#remote development
+$ npm run start:dev:remote
 
 # production mode
 $ npm run start:prod

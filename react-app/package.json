@@ -1,9 +1,6 @@
 {
   "name": "yt-plugin-frontend",
-  "version": "0.0.1",
-  "description": "YT Plugin for subscribe keywords",
   "type": "module",
-  "license": "MIT",
   "scripts": {
     "build": "tsc --noEmit && vite build",
     "build:firefox": "tsc --noEmit && cross-env __FIREFOX__=true vite build",
