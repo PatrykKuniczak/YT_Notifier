@@ -48,7 +48,7 @@ export const VideosRoute = () => {
     });
   }, []);
 
-  if (isLoading === true) {
+  if (isLoading) {
     return (
       <StyledVideosSection>
         <StyledVideoArticleSkeleton />
