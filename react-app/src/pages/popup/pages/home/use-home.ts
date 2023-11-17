@@ -13,7 +13,7 @@ export const useHome = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    setTitle(pathname === '/videos' ? t('foundVideos') : t('savedKeywords'));
+    setTitle(pathname === '/store' ? t('foundVideos') : t('savedKeywords'));
   }, [pathname, t]);
 
   return { title, location, ref, focus };
