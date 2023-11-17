@@ -28,6 +28,11 @@ interface IUser {
   displayName: string;
   email: string;
   avatar: string;
+  userYtVideos: {
+    id: number;
+    lastFetch: string;
+    playlistId: string | null;
+  };
 }
 
 interface IEditKeywordRef {

@@ -13,6 +13,8 @@ const HomePage = () => {
   const { user } = useContext(AuthContext);
   const { title, ref, focus } = useHome();
 
+  const playlistId = user?.userYtVideos.playlistId;
+
   if (!user) {
     return <Navigate to={'/auth/login'} />;
   }
@@ -29,7 +31,7 @@ const HomePage = () => {
         <Outlet />
       </StyledMainContent>
 
-      <StyledNavbar focus={focus} />
+      <StyledNavbar playlistId={playlistId} focus={focus} />
     </StyledHomePageWrapper>
   );
 };
