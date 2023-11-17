@@ -12,7 +12,7 @@ import { UsersModule } from './users/users.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      expandVariables: true,
+      expandVariables: process.env.NODE_ENV === 'development',
       envFilePath: [
         `${process.cwd()}${
           process.env.NODE_ENV === 'production'
