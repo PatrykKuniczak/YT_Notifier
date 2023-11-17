@@ -3,18 +3,9 @@ import { StyledAuthorInfo } from '@pages/popup/components/video/section/article/
 import { StyledThumbnail } from '@pages/popup/components/video/section/article/thumbnail/thumbnail';
 import { StyledVideoInfos } from '@pages/popup/components/video/section/article/videoInfo/video-infos';
 import { TComponentTag } from '@types';
-import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
+import { IVideo } from '@interfaces';
 
-interface Video {
-  thumbnail: string;
-  authorName: string;
-  avatar: string;
-  publishedAt: string;
-  views: string;
-  title: string;
-}
-
-const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
+export const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
   theme.unstable_sx({
     justifyContent: 'center',
     gap: 1,
@@ -29,18 +20,10 @@ const VideoArticleStyles = styled(Stack)<TComponentTag>(({ theme }) =>
   }),
 );
 
-export const StyledVideoArticle = ({
-  thumbnail,
-  avatar,
-  authorName,
-  publishedAt,
-  views,
-  title,
-  isLoading,
-}: Video & { isLoading: boolean }) => (
+export const StyledVideoArticle = ({ thumbnail, avatar, authorName, publishedAt, views, title }: IVideo) => (
   <VideoArticleStyles component={'article'}>
-    {isLoading ? <StyledSkeleton width={240} height={142} /> : <StyledThumbnail src={thumbnail} aria-hidden={true} />}
-    <StyledAuthorInfo avatar={avatar} authorName={authorName} isLoading={isLoading} />
-    <StyledVideoInfos publishedAt={publishedAt} views={views} title={title} isLoading={isLoading} />
+    <StyledThumbnail src={thumbnail} aria-hidden={true} />
+    <StyledAuthorInfo avatar={avatar} authorName={authorName} />
+    <StyledVideoInfos publishedAt={publishedAt} views={views} title={title} />
   </VideoArticleStyles>
 );

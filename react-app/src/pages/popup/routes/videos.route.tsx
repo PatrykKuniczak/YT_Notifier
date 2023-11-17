@@ -3,28 +3,32 @@ import { StyledVideoArticle } from '@pages/popup/components/video/section/articl
 import { StyledVideosSection } from '@pages/popup/components/video/section/videos-section';
 import { useDeferredValue, useEffect, useMemo } from 'react';
 import thumbnail from '@assets/img/thumbnail.png';
+import { StyledVideoArticleSkeleton } from '@pages/popup/components/video/section/skeleton/video-article-skeleton';
 
 export const VideosRoute = () => {
-  const videos = [
-    {
-      id: '1',
-      thumbnail: thumbnail,
-      avatar: thumbnail,
-      authorName: 'XYZ Franko',
-      publishedAt: '2023-10-30T19:21:20Z',
-      views: '1 mld',
-      title: 'Hodujemy gatunek, który będzie dominował nad nami Hodujemy gatunek, który będzie dominował nad nami',
-    },
-    {
-      id: '2',
-      thumbnail: thumbnail,
-      avatar: thumbnail,
-      authorName: 'Test Testowski',
-      publishedAt: '2021-08-10T16:41:20Z',
-      views: '10 mln',
-      title: 'To jest Test To jest Test To jest Test To jest Test To jest Test',
-    },
-  ];
+  const videos = useMemo(
+    () => [
+      {
+        id: '1',
+        thumbnail: thumbnail,
+        avatar: thumbnail,
+        authorName: 'XYZ Franko',
+        publishedAt: '2023-10-30T19:21:20Z',
+        views: '1 mld',
+        title: 'Hodujemy gatunek, który będzie dominował nad nami Hodujemy gatunek, który będzie dominował nad nami',
+      },
+      {
+        id: '2',
+        thumbnail: thumbnail,
+        avatar: thumbnail,
+        authorName: 'Test Testowski',
+        publishedAt: '2021-08-10T16:41:20Z',
+        views: '10 mln',
+        title: 'To jest Test To jest Test To jest Test To jest Test To jest Test',
+      },
+    ],
+    [],
+  );
 
   const isLoading = false;
 
@@ -44,11 +48,18 @@ export const VideosRoute = () => {
     });
   }, []);
 
-  return (
-    <StyledVideosSection>
-      {filteredVideos?.map(({ id, ...restProps }) => (
-        <StyledVideoArticle key={id} {...restProps} isLoading={isLoading} />
-      ))}
-    </StyledVideosSection>
-  );
+  if (isLoading === true) {
+    return (
+      <StyledVideosSection>
+        <StyledVideoArticleSkeleton />
+        <StyledVideoArticleSkeleton />
+      </StyledVideosSection>
+    );
+  } else {
+    return (
+      <StyledVideosSection>
+        {filteredVideos?.map(({ id, ...restProps }) => <StyledVideoArticle key={id} {...restProps} />)}
+      </StyledVideosSection>
+    );
+  }
 };
