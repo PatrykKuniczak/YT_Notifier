@@ -45,7 +45,7 @@ async function bootstrap() {
     }),
   );
 
-  app.use(cookieParser());
+  app.use(cookieParser(configService.get('SESSION_SECRET')));
   app.use(passport.initialize());
   app.use(passport.session());
 

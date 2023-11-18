@@ -8,6 +8,7 @@ import {
   Post,
   Req,
   Res,
+  Session,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -24,8 +25,8 @@ import { OAuth2Client } from 'google-auth-library';
 import { SESSION_COOKIE_NAME } from '../constants';
 import { AuthResponse } from '../swagger/response-examples/auth.response';
 import { ErrorResponse } from '../swagger/response-examples/error.response';
-import { UsersService } from '../users/users.service';
 import { ReqUserId } from '../users/decorators/user.decorator';
+import { UsersService } from '../users/users.service';
 import { GoogleAuthGuard } from './googleAuth/google.guard';
 import { OAUTH2_GOOGLE_CLIENT } from './oauth2.module';
 import { SessionsGuard } from './sessions/sessions.guard';
@@ -59,10 +60,12 @@ export class AuthController {
   @ApiOkResponse()
   @Get('redirect')
   @UseGuards(GoogleAuthGuard)
-  async handleRedirect(@Res({ passthrough: true }) res: Response) {
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async handleRedirect(@Res({ passthrough: true }) res: Response, @Session() session: Record<string, any>) {
     const htmlContent =
       '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Redirect</title></head><body><script>window.close();</script></body></html>';
 
+    res.cookie(SESSION_COOKIE_NAME, session.id, session.cookie);
     res.status(200).send(htmlContent);
   }
 
