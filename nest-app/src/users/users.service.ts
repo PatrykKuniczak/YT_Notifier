@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectDataSource, InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
+import { ErrorLogsService } from '../error-logs/error-logs.service';
 import { UserYtVideosEntity } from '../user-yt-videos/model/user-yt-videos.entity';
 import { UsersEntity } from './model/users.entity';
 import { IProfile } from './users.types';
@@ -11,6 +12,7 @@ export class UsersService {
     @InjectRepository(UsersEntity)
     private readonly userRepository: Repository<UsersEntity>,
     @InjectDataSource() private readonly dataSource: DataSource,
+    private readonly errorLogsService: ErrorLogsService,
   ) {}
 
   async findOrCreate(refreshToken: string | undefined, profile: IProfile): Promise<UsersEntity | null> {
@@ -31,11 +33,7 @@ export class UsersService {
         return (await transactionalEntityManager.save(userYtVideos)).user;
       });
     } else if (user && refreshToken) {
-      const result = await this.updateRefreshToken(user.id, refreshToken);
-
-      if (!result) {
-        throw new InternalServerErrorException('Error on updating user');
-      }
+      await this.updateRefreshToken(user.id, refreshToken);
 
       return this.userRepository.findOneBy({ email });
     }
@@ -55,7 +53,14 @@ export class UsersService {
   }
 
   async updateRefreshToken(id: number, refreshToken: string) {
-    const { affected } = await this.userRepository.update({ id }, { refreshToken });
+    const { affected } = await this.userRepository.update({ id }, { refreshToken }).catch(async err => {
+      await this.errorLogsService.create({
+        message: Object.assign(err, { errorMessage: err.message }),
+        userId: id,
+      });
+
+      throw new InternalServerErrorException('Error on updating user');
+    });
 
     return !!affected;
   }
