@@ -84,11 +84,14 @@ $ npm ci
 # development(watch mode)
 $ npm run start:dev
 
-#remote development
+# remote development
 $ npm run start:dev:remote
 
 # production mode
 $ npm run start:prod
+
+# generate migration
+$ npm run migration:generate src/database/migrations/migration-name
 ```
 
 ## Getting started
