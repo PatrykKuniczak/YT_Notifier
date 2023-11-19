@@ -13,6 +13,7 @@ import { Cache } from 'cache-manager';
 import { OAuth2Client } from 'google-auth-library';
 import { Repository } from 'typeorm';
 import { OAUTH2_GOOGLE_CLIENT } from '../auth/oauth2.module';
+import { ErrorLogsService } from '../error-logs/error-logs.service';
 import { UpdateUserYtVideosDto } from './dto/update-user-yt-videos.dto';
 import { UserYtVideosEntity } from './model/user-yt-videos.entity';
 
@@ -25,6 +26,7 @@ export class UserYtVideosService {
     @InjectRepository(UserYtVideosEntity)
     private readonly userYtVideosRepository: Repository<UserYtVideosEntity>,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    private readonly errorLogsService: ErrorLogsService,
   ) {
     this.youtubeClient = youtube({ version: 'v3', auth: this.oAuth2GoogleClient });
   }
@@ -96,7 +98,7 @@ export class UserYtVideosService {
 
         return filteredResponseData;
       } catch (err) {
-        this.handleQuotaLimitFromError(err);
+        await this.handleQuotaLimitFromError(err, userId);
       }
     }
   }
@@ -130,7 +132,7 @@ export class UserYtVideosService {
       const { data } = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
       playlistData = data;
     } catch (err) {
-      this.handleQuotaLimitFromError(err);
+      await this.handleQuotaLimitFromError(err, userId);
     }
 
     const videoExistsInPlaylist = playlistData.items.some(({ snippet }) => snippet.resourceId.videoId === videoId);
@@ -152,12 +154,12 @@ export class UserYtVideosService {
           },
         },
       })
-      .catch(err => {
+      .catch(async err => {
         if (err.status === 404) {
           throw new NotFoundException({ reason: 'Video not found', cause: 'video_for_playlist_not_found' });
         }
 
-        this.handleQuotaLimitFromError(err);
+        await this.handleQuotaLimitFromError(err, userId);
       });
   }
 
@@ -167,10 +169,15 @@ export class UserYtVideosService {
     });
   }
 
-  private handleQuotaLimitFromError(err: { [key: string]: unknown }) {
+  private async handleQuotaLimitFromError(err: { [key: string]: unknown }, userId: number) {
     if ((err.status === 403 && err.errors[0].domain === 'youtube.quota') || err.status === 429) {
       throw new ForbiddenException({ reason: 'You reach the requests limit for youtube', cause: 'quota_limit' });
     }
+
+    await this.errorLogsService.create({
+      errorValues: { ...err, message: err.message },
+      userId,
+    });
 
     throw err;
   }

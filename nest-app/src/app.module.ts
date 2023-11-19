@@ -7,6 +7,7 @@ import { typeOrmFactory } from './database/config/typeorm.config';
 import { KeyWordsModule } from './key-words/key-words.module';
 import { UserYtVideosModule } from './user-yt-videos/user-yt-videos.module';
 import { UsersModule } from './users/users.module';
+import { ErrorLogsModule } from './error-logs/error-logs.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UsersModule } from './users/users.module';
     OAuth2Module,
     KeyWordsModule,
     UserYtVideosModule,
+    ErrorLogsModule,
   ],
 })
 export class AppModule {}

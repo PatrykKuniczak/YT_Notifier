@@ -1,6 +1,7 @@
 import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { ErrorLogsService } from '../error-logs/error-logs.service';
 import { IUser } from '../users/users.types';
 import { CreateKeyWordDto } from './dto/create-key-word.dto';
 import { UpdateKeyWordDto } from './dto/update-key-word.dto';
@@ -11,6 +12,7 @@ export class KeyWordsService {
   constructor(
     @InjectRepository(KeyWordEntity)
     private readonly keyWordRepository: Repository<KeyWordEntity>,
+    private readonly errorLogsService: ErrorLogsService,
   ) {}
 
   async findAll(userId: number) {
@@ -29,7 +31,11 @@ export class KeyWordsService {
     if (!keyWord) {
       const keyWordEntity = this.keyWordRepository.create({ content, user: { id } });
 
-      return this.keyWordRepository.save(keyWordEntity).catch(err => {
+      return this.keyWordRepository.save(keyWordEntity).catch(async err => {
+        await this.errorLogsService.create({
+          errorValues: { ...err, message: err.message },
+          userId: id,
+        });
         throw new InternalServerErrorException(`Error on creating user: ${err.message}`);
       });
     }
@@ -44,7 +50,11 @@ export class KeyWordsService {
       throw new ConflictException({ reason: 'This keyword already exists', cause: 'duplicated_keyword' });
     }
 
-    this.keyWordRepository.update(id, { content }).catch(err => {
+    this.keyWordRepository.update(id, { content }).catch(async err => {
+      await this.errorLogsService.create({
+        errorValues: { ...err, message: err.message },
+        userId: id,
+      });
       throw new InternalServerErrorException(`Error on updating user: ${err.message}`);
     });
   }
