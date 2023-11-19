@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthController } from './auth.controller';
 import { GoogleAuthGuard } from './googleAuth/google.guard';
 import { GoogleStrategy } from './googleAuth/google.strategy';
-import { SessionsEntity } from './sessions/sessions.entity';
+import { SessionsEntity } from './sessions/model/sessions.entity';
 import { SessionsGuard } from './sessions/sessions.guard';
 import { SessionsSerializer } from './sessions/sessions.serializer';
 import { SessionsService } from './sessions/sessions.service';
