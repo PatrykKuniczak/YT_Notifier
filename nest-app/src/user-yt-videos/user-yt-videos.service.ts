@@ -13,6 +13,7 @@ import { Cache } from 'cache-manager';
 import { OAuth2Client } from 'google-auth-library';
 import { Repository } from 'typeorm';
 import { OAUTH2_GOOGLE_CLIENT } from '../auth/oauth2.module';
+import { DEFAULT_FETCH_DATE } from '../constants';
 import { ErrorLogsService } from '../error-logs/error-logs.service';
 import { UpdateUserYtVideosDto } from './dto/update-user-yt-videos.dto';
 import { UserYtVideosEntity } from './model/user-yt-videos.entity';
@@ -53,7 +54,7 @@ export class UserYtVideosService {
               part: ['snippet'],
               maxResults: 10,
               order: 'date',
-              publishedAfter: lastFetch.toISOString(),
+              publishedAfter: (lastFetch || DEFAULT_FETCH_DATE).toISOString(),
               q: content,
               type: ['video'],
             }),
