@@ -175,7 +175,7 @@ export class UserYtVideosService {
     }
 
     await this.errorLogsService.create({
-      message: Object.assign(err, { errorMessage: err.message }),
+      errorValues: { ...err, message: err.message },
       userId,
     });
 

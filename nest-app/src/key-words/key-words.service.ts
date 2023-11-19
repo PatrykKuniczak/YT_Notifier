@@ -33,7 +33,7 @@ export class KeyWordsService {
 
       return this.keyWordRepository.save(keyWordEntity).catch(async err => {
         await this.errorLogsService.create({
-          message: Object.assign(err, { errorMessage: err.message }),
+          errorValues: { ...err, message: err.message },
           userId: id,
         });
         throw new InternalServerErrorException(`Error on creating user: ${err.message}`);
@@ -52,7 +52,7 @@ export class KeyWordsService {
 
     this.keyWordRepository.update(id, { content }).catch(async err => {
       await this.errorLogsService.create({
-        message: Object.assign(err, { errorMessage: err.message }),
+        errorValues: { ...err, message: err.message },
         userId: id,
       });
       throw new InternalServerErrorException(`Error on updating user: ${err.message}`);
