@@ -45,7 +45,7 @@ async function bootstrap() {
     }),
   );
 
-  app.use(cookieParser());
+  app.use(cookieParser(configService.get('SESSION_SECRET')));
   app.use(passport.initialize());
   app.use(passport.session());
 
@@ -60,7 +60,7 @@ async function bootstrap() {
 
   IS_DEVELOPMENT && SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app, swaggerConfig));
 
-  await app.listen(configService.get('SERVER_PORT'), '0.0.0.0');
+  await app.listen(configService.get('PORT') || 3000, '0.0.0.0');
 }
 
 bootstrap();

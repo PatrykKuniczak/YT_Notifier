@@ -96,7 +96,7 @@ $ npm run migration:generate src/database/migrations/migration-name
 
 ## Getting started
 
-To run docs open in browser: https://localhost:3001/api/docs (or other port, if you change SERVER_PORT in env)
+To run docs open in browser: https://localhost:3001/api/docs (or other port, if you change PORT in env)
 And there you can find next steps to authorize yourself, to have permission to use endpoints.
 Follow the instructions from swagger description (On the top of the page)
 
