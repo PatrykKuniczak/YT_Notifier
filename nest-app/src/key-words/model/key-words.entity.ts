@@ -1,8 +1,8 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
 import { UsersEntity } from '../../users/model/users.entity';
 
-@Entity('key-word')
-export class KeyWordEntity {
+@Entity('key-words')
+export class KeyWordsEntity {
   @PrimaryGeneratedColumn()
   readonly id: number;
 

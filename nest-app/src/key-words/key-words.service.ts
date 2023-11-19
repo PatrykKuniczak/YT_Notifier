@@ -5,13 +5,13 @@ import { ErrorLogsService } from '../error-logs/error-logs.service';
 import { IUser } from '../users/users.types';
 import { CreateKeyWordDto } from './dto/create-key-word.dto';
 import { UpdateKeyWordDto } from './dto/update-key-word.dto';
-import { KeyWordEntity } from './model/key-word.entity';
+import { KeyWordsEntity } from './model/key-words.entity';
 
 @Injectable()
 export class KeyWordsService {
   constructor(
-    @InjectRepository(KeyWordEntity)
-    private readonly keyWordRepository: Repository<KeyWordEntity>,
+    @InjectRepository(KeyWordsEntity)
+    private readonly keyWordRepository: Repository<KeyWordsEntity>,
     private readonly errorLogsService: ErrorLogsService,
   ) {}
 

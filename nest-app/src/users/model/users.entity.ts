@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
+import { KeyWordsEntity } from '../../key-words/model/key-words.entity';
 import { ErrorLogsEntity } from '../../error-logs/model/error-logs.entity';
-import { KeyWordEntity } from '../../key-words/model/key-word.entity';
 import { UserYtVideosEntity } from '../../user-yt-videos/model/user-yt-videos.entity';
 
 @Entity('users')
@@ -25,10 +25,10 @@ export class UsersEntity {
   })
   readonly userYtVideos: Relation<UserYtVideosEntity>;
 
-  @OneToMany(() => KeyWordEntity, keyword => keyword.user, {
+  @OneToMany(() => KeyWordsEntity, keyword => keyword.user, {
     cascade: true,
   })
-  readonly keywords: Relation<KeyWordEntity[]>;
+  readonly keywords: Relation<KeyWordsEntity[]>;
 
   @OneToMany(() => ErrorLogsEntity, errorLogs => errorLogs.user, {
     cascade: true,

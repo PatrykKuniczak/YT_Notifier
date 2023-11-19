@@ -8,7 +8,7 @@ import session from 'express-session';
 import passport from 'passport';
 import { DataSource } from 'typeorm';
 import { AppModule } from './app.module';
-import { SessionsEntity } from './auth/sessions/sessions.entity';
+import { SessionsEntity } from './auth/sessions/model/sessions.entity';
 import { COOKIE_MAX_AGE, SESSION_COOKIE_NAME, SESSION_TTL } from './constants';
 import swaggerConfig from './swagger/swagger.config';
 
