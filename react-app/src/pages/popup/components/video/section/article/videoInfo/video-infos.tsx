@@ -7,12 +7,10 @@ import { IVideo } from '@interfaces';
 export const StyledVideoInfos = ({ publishedAt, views, title }: Pick<IVideo, 'publishedAt' | 'views' | 'title'>) => {
   const { t } = useTranslation();
 
-  const publishedDate = new Date(publishedAt);
-
   return (
     <Stack useFlexGap={true} spacing={1}>
       <Stack direction={'row'} alignItems={'center'} justifyContent={'center'} useFlexGap={true} spacing={2}>
-        <StyledVideoInfo>{t('timeAgo', { date: new Date(publishedDate) })}</StyledVideoInfo>
+        <StyledVideoInfo>{t('timeAgo', { date: new Date(publishedAt) })}</StyledVideoInfo>
         <StyledVideoInfo>
           {views} {t('views')}
         </StyledVideoInfo>
