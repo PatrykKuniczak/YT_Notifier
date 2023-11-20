@@ -46,5 +46,6 @@
   "successfulLogout": "Pomyślnie wylogowano",
   "successfulDeleteAccount": "Pomyślnie usunięto konto",
   "videosLoaded": "Znaleziono {{loadedVideosAmount}} wideo podczas przeszukiwania podanych słów kluczowych. Proszę sprawdzić we wtyczce.",
-  "fallbackError": "Wystąpił niespodziewany błąd, skontaktuj sie z developerem"
+  "fallbackError": "Wystąpił niespodziewany błąd, skontaktuj sie z developerem",
+  "noPlaylistFound": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć"
 }

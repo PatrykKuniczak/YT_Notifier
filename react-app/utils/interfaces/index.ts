@@ -28,6 +28,13 @@ interface IUser {
   displayName: string;
   email: string;
   avatar: string;
+  userYtVideos: IUserYtVideos;
+}
+
+interface IUserYtVideos {
+  id: number;
+  lastFetch: string;
+  playlistId: string | null;
 }
 
 interface IEditKeywordRef {
@@ -51,5 +58,6 @@ export {
   IStyledStoreItem,
   IEditKeywordRef,
   IUser,
+  IUserYtVideos,
   IErrorWithCause,
 };
