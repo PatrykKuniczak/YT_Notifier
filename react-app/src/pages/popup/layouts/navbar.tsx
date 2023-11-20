@@ -7,7 +7,7 @@ import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { TComponentTag, TVoid } from '@types';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { IUser } from '@interfaces';
+import { IUserYtVideos } from '@interfaces';
 import { toast } from 'react-toastify';
 
 const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
@@ -32,7 +32,7 @@ const NavbarStyles = styled(Stack)<TComponentTag>(({ theme }) =>
   }),
 );
 
-export const StyledNavbar = ({ playlistId, focus }: Pick<IUser['userYtVideos'], 'playlistId'> & { focus: TVoid }) => {
+export const StyledNavbar = ({ playlistId, focus }: Pick<IUserYtVideos, 'playlistId'> & { focus: TVoid }) => {
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
