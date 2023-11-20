@@ -54,7 +54,7 @@
 
 [set up google dev project](https://console.cloud.google.com/apis/credentials?hl=pl)
 
-    - Set up project, name could be 'YT Plugin DEV'
+    - Set up project, name could be 'YT Notifier DEV'
 
     - Enable this api:
 

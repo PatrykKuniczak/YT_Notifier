@@ -1,7 +1,7 @@
 import { DocumentBuilder } from '@nestjs/swagger';
 
 const swaggerConfig = new DocumentBuilder()
-  .setTitle('YT Plugin')
+  .setTitle('YT Notifier')
   .setVersion('0.0.1')
   .setDescription(
     `If you want to authenticate click 'Authorize' button and the same inside modal (*ignore client_id input*),

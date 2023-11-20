@@ -1,5 +1,5 @@
 {
-  "name": "yt-plugin-backend",
+  "name": "yt-notifier-backend",
   "main": "dist/main",
   "scripts": {
     "start:dev": "cross-env NODE_ENV=development nest start --watch",

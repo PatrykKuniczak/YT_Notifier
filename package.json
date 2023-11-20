@@ -1,6 +1,6 @@
 {
-	"name": "yt-plugin",
-	"description": "YT Plugin for subscribe keywords",
+	"name": "yt-notifier",
+	"description": "Get all of yours, the most important notification in one place, and get new info on every browser start",
 	"version": "0.0.1",
 	"type": "module",
 	"license": "MIT",
