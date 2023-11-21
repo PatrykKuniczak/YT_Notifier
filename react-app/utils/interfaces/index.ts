@@ -50,6 +50,15 @@ interface IErrorWithCause {
   };
 }
 
+interface IVideo {
+  thumbnail: string;
+  authorName: string;
+  avatar: string;
+  publishedAt: string;
+  views: string;
+  title: string;
+}
+
 export {
   IUseFocus,
   IKeyword,
@@ -60,4 +69,5 @@ export {
   IUser,
   IUserYtVideos,
   IErrorWithCause,
+  IVideo,
 };
