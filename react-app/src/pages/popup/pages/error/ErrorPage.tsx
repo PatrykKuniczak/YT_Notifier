@@ -39,12 +39,13 @@ export const ErrorPage = () => {
           <StyledIcon
             style={{ marginBottom: '15px' }}
             src={octagonError}
-            alt={'Boundary error icon'}
+            alt={''}
+            aria-hidden={true}
             width={60}
             height={60}
           />
-          <h1>{t('fallbackError.header')}!</h1>
-          <p style={{ fontSize: '16px' }}>{t('fallbackError.paragraph')}</p>
+          <h1>{t('fallbackError.heading')}!</h1>
+          <p style={{ fontSize: '16px' }}>{t('fallbackError.content')}</p>
         </StyledErrorContainer>
       </StyledHomePageWrapper>
     </>
