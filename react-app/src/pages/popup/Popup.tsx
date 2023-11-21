@@ -1,4 +1,3 @@
-import useLanguageSwitch from '@hooks/use-language-switch';
 import withErrorBoundary from '@hooks/with-error-boundary';
 import httpClient, { AxiosError } from '@http-client';
 import { IUser } from '@interfaces';
@@ -39,9 +38,6 @@ const hashRouting = createHashRouter([
 ]);
 
 const Popup = () => {
-
-  useLanguageSwitch();
-
   const {
     data: user,
     error,
@@ -60,9 +56,7 @@ const Popup = () => {
     });
   }
 
-  return (
-    <ProvidersWrapper authProviderValues={{ user, userIsLoading }} hashRouting={hashRouting} />
-  );
+  return <ProvidersWrapper authProviderValues={{ user, userIsLoading }} hashRouting={hashRouting} />;
 };
 
 export default withErrorBoundary(Popup, <ErrorPage />);

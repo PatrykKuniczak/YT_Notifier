@@ -5,6 +5,7 @@ import { StyledIcon } from '@pages/popup/components/shared/icon';
 import octagonError from '@assets/img/exclamation-octagon-icon.svg';
 import { StyledHomePageWrapper } from '@pages/popup/pages/home/home-wrapper';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const StyledErrorContainer = styled(Stack)(({ theme }) =>
   theme.unstable_sx({
@@ -28,6 +29,8 @@ const StyledErrorContainer = styled(Stack)(({ theme }) =>
 );
 
 export const ErrorPage = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <GlobalStyles />
@@ -40,10 +43,8 @@ export const ErrorPage = () => {
             width={60}
             height={60}
           />
-          <h1>BŁĄD !</h1>
-          <p style={{ fontSize: '16px' }}>
-            Wystąpił błąd krytyczny, uruchom ponownie wtyczkę, gdy to nie pomoże, skontaktuj się z developerem
-          </p>
+          <h1>{t('fallbackError.header')}!</h1>
+          <p style={{ fontSize: '16px' }}>{t('fallbackError.paragraph')}</p>
         </StyledErrorContainer>
       </StyledHomePageWrapper>
     </>

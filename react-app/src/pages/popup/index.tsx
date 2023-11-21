@@ -1,3 +1,4 @@
+import useLanguageSwitch from '@hooks/use-language-switch';
 import Popup from '@pages/popup/Popup';
 import queryClient, { QueryClientProvider } from '@query-client';
 import React from 'react';
@@ -9,11 +10,14 @@ import darkTheme from '@utils/data/themes/dark-theme';
 import lightTheme from '@utils/data/themes/light-theme';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import '../internationalization';
 
 refreshOnUpdate('pages/popup');
 
 const App = () => {
   const { isDarkMode } = useTernaryDarkMode();
+
+  useLanguageSwitch();
 
   return (
     <QueryClientProvider client={queryClient}>
