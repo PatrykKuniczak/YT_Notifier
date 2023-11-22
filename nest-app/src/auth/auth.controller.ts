@@ -21,6 +21,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { Request, Response } from 'express';
+import { SessionData } from 'express-session';
 import { OAuth2Client } from 'google-auth-library';
 import { SESSION_COOKIE_NAME } from '../constants';
 import { AuthResponse } from '../swagger/response-examples/auth.response';
@@ -60,8 +61,11 @@ export class AuthController {
   @ApiOkResponse()
   @Get('redirect')
   @UseGuards(GoogleAuthGuard)
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async handleRedirect(@Res({ passthrough: true }) res: Response, @Session() session: Record<string, any>) {
+  async handleRedirect(
+    @Res({ passthrough: true }) res: Response,
+    @Session()
+    session: Omit<SessionData, 'cookie.secure'> & { cookie: { secure: boolean } },
+  ) {
     const htmlContent =
       '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Redirect</title></head><body><script>window.close();</script></body></html>';
 
