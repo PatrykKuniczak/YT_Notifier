@@ -44,8 +44,8 @@ export const ErrorPage = () => {
             width={60}
             height={60}
           />
-          <h1>{t('fallbackError.heading')}!</h1>
-          <p style={{ fontSize: '16px' }}>{t('fallbackError.content')}</p>
+          <h1>{t('heading')}</h1>
+          <p style={{ fontSize: '16px' }}>{t('fallbackError')}</p>
         </StyledErrorContainer>
       </StyledHomePageWrapper>
     </>
