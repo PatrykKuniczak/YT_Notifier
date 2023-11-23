@@ -1,5 +1,5 @@
 {
-  "name": "yt-plugin-frontend",
+  "name": "yt-notifier-frontend",
   "type": "module",
   "scripts": {
     "build": "tsc --noEmit && vite build",
