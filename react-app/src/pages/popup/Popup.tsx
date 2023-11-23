@@ -14,8 +14,8 @@ import urls from '@utils/endpoints/urls';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { createHashRouter } from 'react-router-dom';
-import '../internationalization';
 import { toast } from 'react-toastify';
+import '../internationalization';
 
 const hashRouting = createHashRouter([
   {
@@ -39,6 +39,7 @@ const hashRouting = createHashRouter([
     element: <AuthPage />,
   },
 ]);
+
 const Popup = () => {
   const { isDarkMode } = useTernaryDarkMode();
 

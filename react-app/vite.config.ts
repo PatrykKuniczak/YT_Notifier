@@ -1,11 +1,10 @@
 import react from '@vitejs/plugin-react';
-import path, { resolve } from 'path';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import manifest from './manifest';
-import addHmr from './utils/core/hmr-core/plugins/add-hmr';
-import customDynamicImport from './utils/core/hmr-core/plugins/custom-dynamic-import';
-import makeManifest from './utils/core/hmr-core/plugins/make-manifest';
-import watchRebuild from './utils/core/hmr-core/plugins/watch-rebuild';
+import addHmr from './utils/core/plugins/add-hmr';
+import customDynamicImport from './utils/core/plugins/custom-dynamic-import';
+import makeManifest from './utils/core/plugins/make-manifest';
+import watchRebuild from './utils/core/plugins/watch-rebuild';
 
 const rootDir = resolve(__dirname);
 const outDir = resolve(rootDir, 'dist');
@@ -49,11 +48,11 @@ export default defineConfig({
     },
   },
   plugins: [
+    makeManifest(),
     react(),
-    makeManifest(manifest, { isDev }),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
-    watchRebuild(),
+    isDev && watchRebuild(),
   ],
   publicDir,
   build: {
@@ -71,18 +70,7 @@ export default defineConfig({
       output: {
         entryFileNames: 'src/pages/[name]/index.js',
         chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
-        assetFileNames: assetInfo => {
-          const { dir, name: _name } = path.parse(assetInfo.name);
-          const assetFolder = dir.split('/').at(-1);
-          const name = assetFolder + firstUpperCase(_name);
-          return `assets/[ext]/${name}.chunk.[ext]`;
-        },
       },
     },
   },
 });
-
-function firstUpperCase(str: string) {
-  const firstAlphabet = new RegExp(/( |^)[a-z]/, 'g');
-  return str.toLowerCase().replace(firstAlphabet, L => L.toUpperCase());
-}
