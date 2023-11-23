@@ -1,9 +1,9 @@
-import packageJson from '../package.json';
+import packageJson from '../package.json' assert { type: 'json' };
 
 /**
  * After changing, please reload the extension at `chrome://extensions`
  */
-const manifest: chrome.runtime.ManifestV3 = {
+const manifest = {
   manifest_version: 3,
   name: packageJson.name,
   version: packageJson.version,
@@ -21,7 +21,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     default_icon: 'icon-34.png',
   },
   icons: {
-    '128': 'icon-128.png',
+    128: 'icon-128.png',
   },
   content_scripts: [
     {
@@ -31,7 +31,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   ],
   web_accessible_resources: [
     {
-      resources: ['assets/js/*.js', 'assets/svg/*.svg', 'icon-128.png', 'icon-34.png'],
+      resources: ['assets/js/*.js', 'assets/css/*.css', 'assets/svg/*.svg', 'icon-128.png', 'icon-34.png'],
       matches: ['*://*/*'],
     },
   ],

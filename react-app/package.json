@@ -6,8 +6,8 @@
     "build:firefox": "tsc --noEmit && cross-env __FIREFOX__=true vite build",
     "build:watch": "cross-env __DEV__=true vite build -w --mode development",
     "build:firefox:watch": "cross-env __DEV__=true __FIREFOX__=true vite build -w --mode development",
-    "build:hmr": "rollup --config utils/core/hmr-core/reload/rollup.config.mjs",
-    "wss": "node utils/core/hmr-core/reload/initReloadServer.js",
+    "build:hmr": "rollup --config utils/core/reload/rollup.config.mjs",
+    "wss": "node utils/core/reload/initReloadServer.js",
     "dev": "npm run build:hmr && (run-p wss build:watch)",
     "dev:firefox": "npm run build:hmr && (run-p wss build:firefox:watch)",
     "lint": "eslint src --ext .ts",
@@ -45,7 +45,7 @@
     "@types/ws": "8.5.7",
     "@typescript-eslint/eslint-plugin": "6.7.5",
     "@typescript-eslint/parser": "6.7.5",
-    "@vitejs/plugin-react": "4.1.0",
+    "@vitejs/plugin-react": "4.2.0",
     "chokidar": "3.5.3",
     "cross-env": "7.0.3",
     "eslint": "8.51.0",
@@ -59,10 +59,10 @@
     "fs-extra": "11.1.1",
     "npm-run-all": "4.1.5",
     "prettier": "3.0.3",
-    "rollup": "4.2.0",
+    "rollup": "4.3.0",
     "ts-loader": "9.5.0",
     "typescript": "5.2.2",
-    "vite": "4.4.11",
+    "vite": "5.0.2",
     "ws": "8.14.2"
   }
 }
