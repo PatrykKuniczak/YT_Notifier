@@ -1,7 +1,4 @@
-import useLanguageSwitch from '@hooks/use-language-switch';
-import useTernaryDarkMode from '@hooks/use-ternary-darkmode';
 import withErrorBoundary from '@hooks/with-error-boundary';
-import withSuspense from '@hooks/with-suspense';
 import httpClient, { AxiosError } from '@http-client';
 import { IUser } from '@interfaces';
 import AuthPage from '@pages/popup/pages/auth/auth.page';
@@ -15,7 +12,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { createHashRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import '../internationalization';
+import { ErrorPage } from '@pages/popup/pages/error/ErrorPage';
 
 const hashRouting = createHashRouter([
   {
@@ -41,10 +38,6 @@ const hashRouting = createHashRouter([
 ]);
 
 const Popup = () => {
-  const { isDarkMode } = useTernaryDarkMode();
-
-  useLanguageSwitch();
-
   const {
     data: user,
     error,
@@ -63,9 +56,7 @@ const Popup = () => {
     });
   }
 
-  return (
-    <ProvidersWrapper isDarkMode={isDarkMode} authProviderValues={{ user, userIsLoading }} hashRouting={hashRouting} />
-  );
+  return <ProvidersWrapper authProviderValues={{ user, userIsLoading }} hashRouting={hashRouting} />;
 };
 
-export default withErrorBoundary(withSuspense(Popup, <div> Loading </div>), <div> Error </div>);
+export default withErrorBoundary(Popup, <ErrorPage />);
