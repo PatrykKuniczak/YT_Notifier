@@ -2,18 +2,18 @@ import chevronDownIcon from '@assets/img/chevron-down-icon.svg';
 import chevronUpIcon from '@assets/img/chevron-up-icon.svg';
 import { AuthContext } from '@authentication';
 import httpClient from '@http-client';
+import { useTranslation } from '@internationalization';
 import { Dropdown, Menu, MenuButton, MenuItem } from '@mui/base';
 import { styled, useTheme } from '@mui/system';
 import { StyledAvatar } from '@pages/popup/components/shared/avatar';
+import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
+import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
+import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useContext, useState } from 'react';
-import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
-import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
-import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
 const StyledListbox = styled('ul')(({ theme }) =>
   theme.unstable_sx({
@@ -76,10 +76,7 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
 
 const StyledProfile = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    user: { avatar },
-    userIsLoading,
-  } = useContext(AuthContext);
+  const { user, userIsLoading } = useContext(AuthContext);
 
   const theme = useTheme();
 
@@ -113,7 +110,7 @@ const StyledProfile = () => {
         {userIsLoading ? (
           <StyledSkeleton circle={true} width={40} height={40} />
         ) : (
-          <StyledAvatar src={avatar} aria-hidden={true} alt={''} width={40} height={40} />
+          <StyledAvatar src={user?.avatar} aria-hidden={true} alt={''} width={40} height={40} />
         )}
         <StyledIcon
           src={collapsed ? chevronUpIcon : chevronDownIcon}

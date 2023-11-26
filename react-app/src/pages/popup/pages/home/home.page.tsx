@@ -13,7 +13,7 @@ const HomePage = () => {
   const { user } = useContext(AuthContext);
   const { title, ref, focus } = useHome();
 
-  const playlistId = user?.userYtVideos.playlistId;
+  const playlistId = user?.userYtVideos.playlistId ?? null;
 
   if (!user) {
     return <Navigate to={'/auth/login'} />;

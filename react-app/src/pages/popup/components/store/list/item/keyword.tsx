@@ -1,7 +1,8 @@
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
 import useValidate from '@hooks/use-validate';
 import httpClient from '@http-client';
-import { IErrorWithCause, IEditKeywordRef, IStyledKeyword } from '@interfaces';
+import { IEditKeywordRef, IErrorWithCause, IStyledKeyword } from '@interfaces';
+import { useTranslation } from '@internationalization';
 import { FormControl } from '@mui/base';
 import { styled } from '@mui/system';
 import { StyledErrorMessage } from '@pages/popup/components/shared/error';
@@ -11,7 +12,6 @@ import { useMutation } from '@root/utils/libs/query-client';
 import { textMixin } from '@utils/data/mixins/text-mixin';
 import urls from '@utils/endpoints/urls';
 import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 const keywordStyles = {

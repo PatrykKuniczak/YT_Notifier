@@ -3,15 +3,13 @@ import chevronUpIcon from '@assets/img/chevron-up-icon.svg';
 import englishFlag from '@assets/img/english-flag.svg';
 import polishFlag from '@assets/img/polish-flag.svg';
 import useLanguageSwitch from '@hooks/use-language-switch';
+import { changeLanguage, i18n, useTranslation } from '@internationalization';
 import { Dropdown, Menu } from '@mui/base';
 import { useTheme } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledListbox, StyledMenuButton, StyledMenuItem } from '@pages/popup/components/shared/dropdown';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
-import i18n, { changeLanguage } from 'i18next';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLocalStorage } from 'usehooks-ts';
+import { useState } from 'react';
 
 const languages = {
   en: { icon: englishFlag, nativeName: 'English' },
@@ -39,7 +37,7 @@ const LanguageSelector = () => {
   return (
     <Dropdown onOpenChange={handleOpenChange}>
       <StyledMenuButton aria-label={t('aria-labels.openLanguageMenuButton')}>
-        <StyledIcon src={languages[i18n.resolvedLanguage].icon} alt={''} height={16} />
+        <StyledIcon src={languages[i18n.resolvedLanguage || 'en'].icon} alt={''} height={16} />
         <StyledIcon
           src={collapsed ? chevronUpIcon : chevronDownIcon}
           alt={''}

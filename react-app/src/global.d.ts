@@ -1,3 +1,4 @@
+import { resources } from '@internationalization';
 import Chrome from 'chrome';
 
 declare namespace chrome {
@@ -34,4 +35,11 @@ declare module '*.png' {
 declare module '*.json' {
   const content: string;
   export default content;
+}
+
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    defaultNS: 'translation';
+    resources: (typeof resources)['en'] | (typeof resources)['en'][];
+  }
 }

@@ -2,8 +2,8 @@ import { IUser } from '@interfaces';
 import { createContext } from 'react';
 
 interface IAuthContextValues {
-  user: IUser;
+  user?: IUser;
   userIsLoading: boolean;
 }
 
-export const AuthContext = createContext<IAuthContextValues>(null);
+export const AuthContext = createContext<IAuthContextValues>({ userIsLoading: true });

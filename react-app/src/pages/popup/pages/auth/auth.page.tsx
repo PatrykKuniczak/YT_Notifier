@@ -1,12 +1,12 @@
 import googleLogo from '@assets/img/google-icon.svg';
 import { AuthContext } from '@authentication';
+import { useTranslation } from '@internationalization';
 import { StyledAuthWrapper } from '@pages/popup/components/auth/auth-wrapper';
 import { StyledGoogleButton, StyledGoogleIconWrapper, StyledGoogleText } from '@pages/popup/components/auth/google';
 import { StyledThemeSwitch } from '@pages/popup/components/shared/theme-switch';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { POPUP_HEIGHT, POPUP_POSITION_LEFT, POPUP_POSITION_TOP, POPUP_WIDTH } from '@pages/popup/constant';
 import { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Navigate } from 'react-router-dom';
 
 const googleLogin = () =>

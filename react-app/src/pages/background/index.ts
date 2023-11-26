@@ -10,10 +10,10 @@ const createProperties: CreateProperties = {
   contexts: ['selection'],
 };
 
-chrome.contextMenus.create(createProperties, () => console.log('Context menu created!'));
+chrome.contextMenus.create(createProperties);
 
 chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
-  if (selectionText.length > 255) {
+  if ((selectionText ?? '').length > 255) {
     //TODO: show error message
     return;
   }
@@ -31,6 +31,4 @@ chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
     .catch(err => console.log(err));
 
   //TODO: show success or error message
-
-  console.log('Context menu clicked!', selectionText);
 });

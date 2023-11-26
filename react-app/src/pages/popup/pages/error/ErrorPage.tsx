@@ -1,11 +1,11 @@
-import { Stack, styled } from '@mui/system';
-import { textMixin } from '@utils/data/mixins/text-mixin';
-import GlobalStyles from '@utils/data/global-styles';
-import { StyledIcon } from '@pages/popup/components/shared/icon';
 import octagonError from '@assets/img/exclamation-octagon-icon.svg';
+import { useTranslation } from '@internationalization';
+import { Stack, styled } from '@mui/system';
+import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledHomePageWrapper } from '@pages/popup/pages/home/home-wrapper';
+import GlobalStyles from '@utils/data/global-styles';
+import { textMixin } from '@utils/data/mixins/text-mixin';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 const StyledErrorContainer = styled(Stack)(({ theme }) =>
   theme.unstable_sx({

@@ -1,4 +1,4 @@
-import { IStyledStoreItem, IEditKeywordRef } from '@interfaces';
+import { IEditKeywordRef, IStyledStoreItem } from '@interfaces';
 import { Stack, styled } from '@mui/system';
 import { StyledDeleteButton } from '@pages/popup/components/store/list/item/deleteButton/delete-button';
 import { StyledEditButton } from '@pages/popup/components/store/list/item/editButton/edit-button';
@@ -52,7 +52,7 @@ export const StyledStoreItem = ({
         <StyledEditButton
           id={id}
           openedInputId={openedInputId}
-          changeOpenedInputId={() => ref.current.handleApplyingChanges()}
+          changeOpenedInputId={() => ref.current?.handleApplyingChanges()}
         />
         <StyledDeleteButton
           setKeywordToRemove={() => setKeywordToRemove(id)}

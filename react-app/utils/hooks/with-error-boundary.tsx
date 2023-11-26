@@ -30,7 +30,7 @@ class ErrorBoundary extends Component<
 
 function withErrorBoundary<T extends Record<string, unknown>>(
   Component: ComponentType<T>,
-  ErrorComponent: ReactElement = null,
+  ErrorComponent: ReactElement,
 ) {
   return function WithErrorBoundary(props: T) {
     return (

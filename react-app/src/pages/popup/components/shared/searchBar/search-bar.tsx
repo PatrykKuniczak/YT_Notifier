@@ -1,13 +1,13 @@
 import searchIcon from '@assets/img/search-icon.svg';
 import useHandleKeyEvents from '@hooks/use-handle-key-events';
 import useSearch from '@hooks/use-search';
+import { useTranslation } from '@internationalization';
 import { useTheme } from '@mui/system';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledSearchBarInput } from '@pages/popup/components/shared/searchBar/search-bar-input';
 import { StyledSearchBarWrapper } from '@pages/popup/components/shared/searchBar/search-bar-wrapper';
 import { TVoid } from '@types';
 import { forwardRef } from 'react';
-import { useTranslation } from 'react-i18next';
 
 export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_, ref) => {
   const theme = useTheme();
