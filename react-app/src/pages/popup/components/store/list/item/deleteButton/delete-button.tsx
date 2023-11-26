@@ -1,8 +1,8 @@
 import trashIcon from '@assets/img/trash-icon.svg';
+import { useTranslation } from '@internationalization';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { TVoid } from '@types';
-import { useTranslation } from 'react-i18next';
 
 export const StyledDeleteButton = ({
   setKeywordToRemove,

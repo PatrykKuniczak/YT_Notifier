@@ -1,17 +1,17 @@
 import useSearch from '@hooks/use-search';
 import httpClient from '@http-client';
 import { IErrorWithCause, IKeyword } from '@interfaces';
+import { useTranslation } from '@internationalization';
 import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/delete-modal';
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import { StyledItemsContainer } from '@pages/popup/components/shared/items-container';
+import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 import StyledAddInput from '@pages/popup/components/store/list/item/addingKeyword/add-input';
 import { StyledStoreItem } from '@pages/popup/components/store/list/item/store-value';
 import queryClient, { useMutation, useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useDeferredValue, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 
 export const StoreRoute = () => {
   const [keywordToRemove, setKeywordToRemove] = useState(0);

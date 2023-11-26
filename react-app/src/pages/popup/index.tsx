@@ -1,16 +1,16 @@
 import useLanguageSwitch from '@hooks/use-language-switch';
+import useTernaryDarkMode from '@hooks/use-ternary-darkmode';
+import '@internationalization';
+import { ThemeProvider } from '@mui/system';
 import Popup from '@pages/popup/Popup';
 import queryClient, { QueryClientProvider } from '@query-client';
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-import useTernaryDarkMode from '@hooks/use-ternary-darkmode';
-import { ThemeProvider } from '@mui/system';
 import darkTheme from '@utils/data/themes/dark-theme';
 import lightTheme from '@utils/data/themes/light-theme';
-import 'react-toastify/dist/ReactToastify.css';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 import { ToastContainer } from 'react-toastify';
-import '../internationalization';
+import 'react-toastify/dist/ReactToastify.css';
+import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 
 refreshOnUpdate('pages/popup');
 

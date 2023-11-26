@@ -1,8 +1,8 @@
 import useValidate from '@hooks/use-validate';
+import { useTranslation } from '@internationalization';
 import { useFormControlContext } from '@mui/base';
 import { styled } from '@mui/system';
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 export const StyledErrorMessage = styled(props => {
   const formControlContext = useFormControlContext();

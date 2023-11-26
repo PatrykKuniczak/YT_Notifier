@@ -1,9 +1,9 @@
+import { useTranslation } from '@internationalization';
 import { Stack, styled } from '@mui/system';
-import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { StyledModalButton } from '@pages/popup/components/shared/delete-modal/delete-modal-button';
+import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { TVoid } from '@types';
 import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
 
 const ModalContentStyles = styled(Stack)(({ theme }) =>
   theme.unstable_sx({

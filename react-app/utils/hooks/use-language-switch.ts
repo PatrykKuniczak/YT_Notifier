@@ -1,4 +1,4 @@
-import { changeLanguage } from 'i18next';
+import { changeLanguage } from '@internationalization';
 import { useEffect } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 

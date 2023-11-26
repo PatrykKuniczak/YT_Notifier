@@ -16,6 +16,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./src/global.d.ts", "node_modules/@types"],
+    "strictNullChecks": true,
     "paths": {
       "@root/*": ["./*"],
       "@src/*": ["src/*"],
@@ -28,6 +29,7 @@
       "@authentication": ["utils/libs/authentication/index.ts"],
       "@http-client": ["utils/libs/http-client/index.ts"],
       "@query-client": ["utils/libs/query-client/index.ts"],
+      "@internationalization": ["utils/libs/internationalization/index.ts"],
       "virtual:reload-on-update-in-background-script": ["./src/global.d.ts"],
       "virtual:reload-on-update-in-view": ["./src/global.d.ts"]
     }

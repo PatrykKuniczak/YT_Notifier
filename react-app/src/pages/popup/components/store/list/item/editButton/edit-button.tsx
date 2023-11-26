@@ -1,10 +1,10 @@
 import editIcon from '@assets/img/edit-icon.svg';
 import { IStyledEditButton } from '@interfaces';
+import { useTranslation } from '@internationalization';
 import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
 
 const EditButtonStyles = styled(StyledButton)(({ theme }) =>
   theme.unstable_sx({

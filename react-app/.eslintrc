@@ -47,6 +47,14 @@
             "name": "usehooks-ts",
             "importNames": ["useTernaryDarkMode"],
             "message": "Please import from '@hooks/use-ternary-darkmode.ts' instead"
+          },
+          {
+            "name": "react-i18next",
+            "message": "Please import from '@internationalization' instead"
+          },
+          {
+            "name": "i18next",
+            "message": "Please import from '@internationalization' instead"
           }
         ]
       }

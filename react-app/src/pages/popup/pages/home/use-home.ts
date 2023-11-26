@@ -1,6 +1,6 @@
 import useFocus from '@hooks/use-focus';
+import { useTranslation } from '@internationalization';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 export const useHome = () => {

@@ -1,9 +1,9 @@
 import exclamationOctagonIcon from '@assets/img/exclamation-octagon-icon.svg';
+import { useTranslation } from '@internationalization';
 import { useSnackbar } from '@mui/base/useSnackbar';
 import { StyledSnackbar } from '@pages/popup/components/shared/errorSnackbar/error-snackbar';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useUpdateEffect } from 'usehooks-ts';
 
 const useErrorSnackbar = () => {

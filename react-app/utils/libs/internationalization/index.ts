@@ -1,28 +1,30 @@
-import I18NextHttpBackend from 'i18next-http-backend';
-import { initReactI18next } from 'react-i18next';
-import i18n from 'i18next';
+import translationEn from '@root/public/locales/en/translation.json';
+import translationPl from '@root/public/locales/pl/translation.json';
 import { formatDistanceStrict, isDate } from 'date-fns';
 import { enUS, pl } from 'date-fns/locale';
-import translationEn from '../../public/locales/en/translation.json';
-import translationPl from '../../public/locales/pl/translation.json';
+import i18n from 'i18next';
+import I18NextHttpBackend from 'i18next-http-backend';
+import { initReactI18next } from 'react-i18next';
 
 const locales = { en: enUS, pl };
 
-const resources = {
+export const resources = {
   en: {
     translation: translationEn,
   },
   pl: {
     translation: translationPl,
   },
-};
+} as const;
 
 i18n
   .use(I18NextHttpBackend)
   .use(initReactI18next)
   .init({
-    resources,
     fallbackLng: 'en',
+    defaultNS: 'translation',
+    ns: ['translation'],
+    resources,
 
     interpolation: {
       escapeValue: false,
@@ -31,7 +33,7 @@ i18n
         if (isDate(value)) {
           if (format === 'ago')
             return formatDistanceStrict(value, new Date(), {
-              locale: locales[lng],
+              locale: locales[lng ?? 'en'],
               addSuffix: true,
             });
         }
@@ -40,4 +42,7 @@ i18n
       },
     },
   });
+
 export { i18n };
+export { changeLanguage } from 'i18next';
+export { useTranslation } from 'react-i18next';

@@ -1,8 +1,8 @@
+import { IVideo } from '@interfaces';
+import { useTranslation } from '@internationalization';
 import { Stack } from '@mui/system';
 import { StyledVideoInfo } from '@pages/popup/components/video/section/article/videoInfo/video-info';
 import { StyledVideoTitle } from '@pages/popup/components/video/section/article/videoInfo/video-title';
-import { useTranslation } from 'react-i18next';
-import { IVideo } from '@interfaces';
 
 export const StyledVideoInfos = ({ publishedAt, views, title }: Pick<IVideo, 'publishedAt' | 'views' | 'title'>) => {
   const { t } = useTranslation();
