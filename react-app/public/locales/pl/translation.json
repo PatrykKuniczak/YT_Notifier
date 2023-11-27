@@ -14,7 +14,10 @@
   "logout": "Wyloguj się",
   "unauthorized": "Zostałeś wylogowany, Twoja sesja wygasła, zaloguj się ponownie",
   "loggingInFailed": "Logowanie nie powiodło się",
-  "languages": { "pl": "Polski", "en": "Angielski" },
+  "languages": {
+    "pl": "Polski",
+    "en": "Angielski"
+  },
   "timeAgo": "{{ date, ago }}",
   "validation": "Podaj od 3 do 255 znaków!",
   "provideKeyword": "Podaj słowo kluczowe!",
@@ -48,5 +51,6 @@
   "videosLoaded": "Znaleziono {{loadedVideosAmount}} wideo podczas przeszukiwania podanych słów kluczowych. Proszę sprawdzić we wtyczce.",
   "fallbackError": "Wystąpił niespodziewany błąd, skontaktuj sie z developerem!",
   "fatalErrorHeading": "BŁĄD",
-  "noPlaylistFound": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć"
+  "noPlaylistFound": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć",
+  "pluginLogo": "Logo"
 }
