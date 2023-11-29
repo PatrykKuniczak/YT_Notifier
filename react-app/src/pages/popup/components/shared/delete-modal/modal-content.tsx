@@ -8,8 +8,10 @@ import { ReactNode } from 'react';
 const ModalContentStyles = styled(Stack)(({ theme }) =>
   theme.unstable_sx({
     width: 220,
-    height: 220,
+    height: 'auto',
 
+    paadingTop: 2,
+    paddingBottom: 2,
     borderRadius: 1,
 
     backgroundColor: 'background.primary',
