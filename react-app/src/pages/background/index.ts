@@ -1,5 +1,7 @@
 import urls from '@utils/endpoints/urls';
 import reloadOnUpdate from 'virtual:reload-on-update-in-background-script';
+import { toast } from 'react-toastify';
+import { useTranslation } from '@internationalization';
 import CreateProperties = chrome.contextMenus.CreateProperties;
 
 reloadOnUpdate('pages/background');
@@ -13,9 +15,12 @@ const createProperties: CreateProperties = {
 chrome.contextMenus.create(createProperties);
 
 chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
+  const { t } = useTranslation();
+
   if ((selectionText ?? '').length > 255) {
-    //TODO: show error message
-    return;
+    toast.error(t('validation'), {
+      toastId: 'validation',
+    });
   }
 
   fetch(`${import.meta.env.VITE_API_URL}${urls.keyWords}`, {
@@ -25,9 +30,13 @@ chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
   })
     .then(res => res.json())
     .then(res => console.log(res))
-    .catch(err => console.log(err));
-
-  //TODO: show success or error message
+    .catch(err => {
+      if (err.response.status === 401) {
+        toast.error(t('unauthorized'));
+      } else {
+        toast.error(t('fallbackError'));
+      }
+    });
 });
 
 let stopFetching = false;
