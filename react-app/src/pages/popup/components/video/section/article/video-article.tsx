@@ -35,7 +35,7 @@ export const StyledVideoArticle = ({ video, channel }: IUserVideo) => {
     <VideoArticleStyles component={'article'}>
       <StyledThumbnail src={thumbnail} aria-hidden={true} onClick={() => window.open(videoUrl)} />
       <StyledAuthorInfo thumbnail={avatar} title={authorName} channelUrl={channelUrl} />
-      <StyledVideoInfos publishedAt={publishedAt} views={views} title={title} videoUrl={videoUrl} />
+      <StyledVideoInfos publishedAt={publishedAt} views={views} title={title} id={videoId} videoUrl={videoUrl} />
     </VideoArticleStyles>
   );
 };

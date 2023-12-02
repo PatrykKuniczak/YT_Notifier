@@ -21,7 +21,7 @@ function App() {
         toastId: 'notification',
       });
     } else if (videosFetchingError) {
-      toast.info(t(`${videosFetchingError}`, 'fallbackError'), {
+      toast.error(t([`playlistErrors.${videosFetchingError}`, 'fallbackError']), {
         toastId: 'notification',
       });
     }

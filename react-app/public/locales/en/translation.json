@@ -52,5 +52,15 @@
   "fallbackError": "Unexpected error occurred, please contact with developer!",
   "fatalErrorHeading": "ERROR",
   "noPlaylistFound": "Your playlist doesn't exist yet, add something from your list of videos to create it",
+  "playlist": {
+    "title": "Watch Later - YT Notifier",
+    "description": "Your saved videos via YT Notifier plugin",
+    "updated": "Successfully updated your playlist"
+  },
+  "playlistErrors": {
+    "quota_limit": "Requests limit was reached, you must wait for next day, to fetch more videos",
+    "video_for_playlist_not_found": "Video was not found",
+    "duplicated_video_for_playlist": "That video is already on your playlist"
+  },
   "pluginLogo": "Logo"
 }
