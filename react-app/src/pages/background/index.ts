@@ -22,9 +22,6 @@ chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify({ content: selectionText }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
   })
     .then(res => res.json())
     .then(res => console.log(res))
@@ -33,15 +30,16 @@ chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
   //TODO: show success or error message
 });
 
-let shouldFetch = true;
+let stopFetching = false;
 
-chrome.runtime.onMessage.addListener(({ isNotDefaultPage }) => {
-  if (shouldFetch && isNotDefaultPage) {
+chrome.runtime.onMessage.addListener(({ shouldFetch }) => {
+  if (!shouldFetch) {
+    stopFetching = true;
+  }
+
+  if (shouldFetch && !stopFetching) {
     fetch(`${import.meta.env.VITE_API_URL}${urls.ytVideos.getVideos}`, {
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
     })
       .then(res => res.json())
       .then(res => {
@@ -52,8 +50,6 @@ chrome.runtime.onMessage.addListener(({ isNotDefaultPage }) => {
             videosFetchingError: res.cause,
           });
         });
-
-        shouldFetch = false;
       });
   }
 });
