@@ -136,9 +136,17 @@ export class UserYtVideosService {
         await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId });
       }
 
-      const { data } = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
-      playlistData = data;
+      await this.youtubeClient.playlistItems
+        .list({
+          part: ['snippet'],
+          playlistId,
+        })
+        .then(res => (playlistData = res.data));
     } catch (err) {
+      if (err.status === 404 && err.errors[0].reason === 'playlistNotFound') {
+        await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId: null });
+        return this.updatePlaylist(userId, { videoId, title, description });
+      }
       await this.handleQuotaLimitFromError(err, userId);
     }
 
