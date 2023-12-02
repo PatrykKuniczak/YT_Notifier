@@ -15,6 +15,9 @@ class VideoResponse {
 
   @ApiProperty({ example: 'https://i.ytimg.com/vi/no8pm-VM2h4/mqdefault.jpg' })
   thumbnail: string;
+
+  @ApiProperty({ example: 4000 })
+  views: number;
 }
 
 class ChannelResponse {

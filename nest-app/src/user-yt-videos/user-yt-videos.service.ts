@@ -70,6 +70,11 @@ export class UserYtVideosService {
                 part: ['snippet'],
               });
 
+              const { data: videoStatisticsData } = await this.youtubeClient.videos.list({
+                id: [videoData.items[index].id.videoId],
+                part: ['statistics'],
+              });
+
               return {
                 video: {
                   id: videoData.items[index].id.videoId,
@@ -77,6 +82,7 @@ export class UserYtVideosService {
                   description: videoData.items[index].snippet.description,
                   publishedAt: videoData.items[index].snippet.publishedAt,
                   thumbnail: videoData.items[index].snippet.thumbnails.medium.url,
+                  views: videoStatisticsData.items[0].statistics.viewCount,
                 },
                 channel: {
                   id: channelId,
