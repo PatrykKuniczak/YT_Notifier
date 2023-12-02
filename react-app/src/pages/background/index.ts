@@ -26,9 +26,34 @@ chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
       'Content-Type': 'application/json',
     },
   })
-    .then(r => r.json())
-    .then(r => console.log(r))
+    .then(res => res.json())
+    .then(res => console.log(res))
     .catch(err => console.log(err));
 
   //TODO: show success or error message
+});
+
+let shouldFetch = true;
+
+chrome.runtime.onMessage.addListener(({ isNotDefaultPage }) => {
+  if (shouldFetch && isNotDefaultPage) {
+    fetch(`${import.meta.env.VITE_API_URL}${urls.ytVideos.getVideos}`, {
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+          const activeTab = tabs[0];
+          chrome.tabs.sendMessage(activeTab.id!, {
+            loadedVideosAmount: res.cause ? 0 : res.length,
+            videosFetchingError: res.cause,
+          });
+        });
+
+        shouldFetch = false;
+      });
+  }
 });

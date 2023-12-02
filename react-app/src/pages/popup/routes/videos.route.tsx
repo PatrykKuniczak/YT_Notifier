@@ -3,8 +3,7 @@ import useSearch from '@hooks/use-search';
 import { StyledVideoArticle } from '@pages/popup/components/video/section/article/video-article';
 import { StyledVideoArticleSkeleton } from '@pages/popup/components/video/section/skeleton/video-article-skeleton';
 import { StyledVideosSection } from '@pages/popup/components/video/section/videos-section';
-import { useDeferredValue, useEffect, useMemo } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
+import { useDeferredValue, useMemo } from 'react';
 
 export const VideosRoute = () => {
   const videos = useMemo(
@@ -36,19 +35,11 @@ export const VideosRoute = () => {
   const { searchParamValue } = useSearch();
 
   const deferredSearchParam = useDeferredValue(searchParamValue);
-  const [lang] = useLocalStorage('language', 'en');
 
   const filteredVideos = useMemo(
     () => videos?.filter(({ title }) => title.includes(deferredSearchParam)),
     [deferredSearchParam, videos],
   );
-
-  useEffect(() => {
-    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-      const activeTab = tabs[0];
-      chrome.tabs.sendMessage(activeTab.id!, { loadedVideosAmount: 5, lang });
-    });
-  }, [lang]);
 
   if (isLoading) {
     return (

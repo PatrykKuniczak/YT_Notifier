@@ -6,6 +6,7 @@ const urls = {
     me: 'auth/me',
   },
   keyWords: 'key-words',
+  ytVideos: { getVideos: 'user-yt-videos', updatePlaylist: 'user-yt-videos/update-playlist' },
 };
 
 export default urls;
