@@ -26,6 +26,7 @@ const manifest = {
   content_scripts: [
     {
       matches: ['<all_urls>'],
+      exclude_matches: ['https://accounts.google.com/*'],
       js: ['src/pages/content/index.js'],
     },
   ],
