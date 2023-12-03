@@ -1,6 +1,6 @@
 import watchLaterIcon from '@assets/img/watch-later-icon.svg';
 import httpClient from '@http-client';
-import { IErrorWithCause, IUserVideo } from '@interfaces';
+import { IErrorWithCause, IVideo } from '@interfaces';
 import { useTranslation } from '@internationalization';
 import { Stack } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
@@ -17,7 +17,7 @@ export const StyledVideoInfos = ({
   title,
   id: videoId,
   videoUrl,
-}: Pick<IUserVideo['video'], 'publishedAt' | 'title' | 'views' | 'id'> & { videoUrl: string }) => {
+}: Pick<IVideo, 'publishedAt' | 'title' | 'views' | 'id'> & { videoUrl: string }) => {
   const { t } = useTranslation();
 
   const { mutate: updatePlaylist } = useMutation({

@@ -80,5 +80,7 @@ export {
   IUser,
   IUserYtVideos,
   IErrorWithCause,
+  IVideo,
+  IChannel,
   IUserVideo,
 };

@@ -1,4 +1,4 @@
-import { IUserVideo } from '@interfaces';
+import { IVideo } from '@interfaces';
 import { Stack } from '@mui/system';
 import { StyledAvatar } from '@pages/popup/components/shared/avatar';
 import { StyledAuthorName } from '@pages/popup/components/video/section/article/authorInfo/autor-name';
@@ -7,7 +7,7 @@ export const StyledAuthorInfo = ({
   thumbnail: avatar,
   title: authorName,
   channelUrl,
-}: Pick<IUserVideo['video'], 'thumbnail' | 'title'> & { channelUrl: string }) => (
+}: Pick<IVideo, 'thumbnail' | 'title'> & { channelUrl: string }) => (
   <Stack
     direction={'row'}
     alignItems={'center'}
