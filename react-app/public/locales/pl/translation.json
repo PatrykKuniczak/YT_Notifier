@@ -51,12 +51,12 @@
   "videosLoaded": "Znaleziono {{loadedVideosAmount}} wideo podczas przeszukiwania podanych słów kluczowych. Proszę sprawdzić we wtyczce.",
   "fallbackError": "Wystąpił niespodziewany błąd, skontaktuj sie z developerem!",
   "fatalErrorHeading": "BŁĄD",
-  "noPlaylistFound": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć",
   "playlist": {
     "title": "Do Obejrzenia - YT Notifier",
     "description": "Twoje zapisane wideo poprzez wtyczkę YT Notifier",
-    "updated": "Pomyślnie zaktualizowano twoją playlistę"
-  },
+    "updated": "Pomyślnie zaktualizowano twoją playlistę",
+    "notFound": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć"
+},
   "playlistErrors": {
     "quota_limit": "Osiągnięto limit zapytań o wideo, musisz poczekać do jutra aby pobrać nowe",
     "video_for_playlist_not_found": "Nie znaleziono video",
