@@ -9,7 +9,7 @@
     "duplicated_keyword": "To słowo kluczowe już istnieje",
     "keyword_not_found": "Nie znaleziono tego słowa kluczowego"
   },
-  "views": "wyświetleń",
+  "views": "{{ amount, abbreviations }} wyświetleń",
   "deleteAccount": "Usuń konto",
   "logout": "Wyloguj się",
   "unauthorized": "Zostałeś wylogowany, Twoja sesja wygasła, zaloguj się ponownie",

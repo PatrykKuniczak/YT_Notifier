@@ -9,7 +9,7 @@
     "duplicated_keyword": "This keyword already exists",
     "keyword_not_found": "Keyword not found"
   },
-  "views": "views",
+  "views": "{{ amount, abbreviations }} views",
   "deleteAccount": "Delete account",
   "logout": "Logout",
   "unauthorized": "You were logged out, your session has expired, please login again",

@@ -42,9 +42,7 @@ export const StyledVideoInfos = ({
         <StyledVideoInfo onClick={() => window.open(videoUrl)}>
           {t('timeAgo', { date: new Date(publishedAt) })}
         </StyledVideoInfo>
-        <StyledVideoInfo onClick={() => window.open(videoUrl)}>
-          {views} {t('views')}
-        </StyledVideoInfo>
+        <StyledVideoInfo onClick={() => window.open(videoUrl)}>{t('views', { amount: views })}</StyledVideoInfo>
         <StyledButton title={t('nav.watchLater')} aria-label={t('nav.watchLater')} onClick={() => updatePlaylist()}>
           <StyledIcon src={watchLaterIcon} alt={''} width={14} height={14} />
         </StyledButton>
