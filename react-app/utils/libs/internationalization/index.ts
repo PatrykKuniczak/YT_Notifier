@@ -52,9 +52,9 @@ i18n
             locale: locales[lng ?? 'en'],
             addSuffix: true,
           });
-        } else if (format === 'abbreviations' && +value) {
+        } else if (format === 'abbreviations' && !isNaN(value)) {
           const currentSuffixesArray = lng === 'pl' ? plSuffixes : enSuffixes;
-          return parseViews(+value, currentSuffixesArray);
+          return parseViews(value, currentSuffixesArray);
         }
 
         return value;

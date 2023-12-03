@@ -56,7 +56,7 @@ interface IVideo {
   description: string;
   publishedAt: string;
   thumbnail: string;
-  views: string;
+  views: number;
 }
 
 interface IChannel {

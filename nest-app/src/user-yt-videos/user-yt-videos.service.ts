@@ -82,7 +82,7 @@ export class UserYtVideosService {
                   description: videoData.items[index].snippet.description,
                   publishedAt: videoData.items[index].snippet.publishedAt,
                   thumbnail: videoData.items[index].snippet.thumbnails.medium.url,
-                  views: videoStatisticsData.items[0].statistics.viewCount,
+                  views: +videoStatisticsData.items[0].statistics.viewCount,
                 },
                 channel: {
                   id: channelId,
