@@ -15,7 +15,7 @@ function App() {
   const { t } = useTranslation();
   const [shouldFetch, setShouldFetch] = useState(true);
 
-  chrome.runtime.onMessage.addListener(({ loadedVideosAmount, videosFetchingError }) => {
+  chrome.runtime.onMessage.addListener(({ loadedVideosAmount, videosFetchingError, closeNotification }) => {
     i18n.changeLanguage(window.navigator.language);
     if (loadedVideosAmount) {
       toast(<p style={{ marginLeft: '15px' }}>{t('videosLoaded', { loadedVideosAmount })}</p>, {
@@ -23,9 +23,17 @@ function App() {
         toastId: 'notification',
       });
     } else if (videosFetchingError) {
-      toast.error(t([`playlistErrors.${videosFetchingError}`, 'fallbackError']), {
-        toastId: 'notification',
-      });
+      toast.error(
+        t([
+          videosFetchingError === 'unauthorized' ? videosFetchingError : `playlistErrors.${videosFetchingError}`,
+          'fallbackError',
+        ]),
+        {
+          toastId: 'notification',
+        },
+      );
+    } else if (closeNotification) {
+      toast.dismiss('notification');
     }
   });
 

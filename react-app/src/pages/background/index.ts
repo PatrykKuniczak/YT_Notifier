@@ -35,6 +35,11 @@ let stopFetching = false;
 chrome.runtime.onMessage.addListener(({ shouldFetch }) => {
   if (!shouldFetch) {
     stopFetching = true;
+    chrome.tabs.query({}, tabs => {
+      tabs.forEach(tab => {
+        chrome.tabs.sendMessage(tab.id!, { closeNotification: true });
+      });
+    });
   }
 
   if (shouldFetch && !stopFetching) {
