@@ -51,5 +51,6 @@
   "videosLoaded": "From under provided keywords, {{loadedVideosAmount}} videos were fetched, check them out in extension",
   "fallbackError": "Unexpected error occurred, please contact with developer!",
   "fatalErrorHeading": "ERROR",
-  "noPlaylistFound": "Your playlist doesn't exist yet, add something from your list of videos to create it"
+  "noPlaylistFound": "Your playlist doesn't exist yet, add something from your list of videos to create it",
+  "pluginLogo": "Logo"
 }

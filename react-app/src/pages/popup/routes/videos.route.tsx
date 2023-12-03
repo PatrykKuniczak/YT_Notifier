@@ -46,7 +46,7 @@ export const VideosRoute = () => {
   useEffect(() => {
     chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
       const activeTab = tabs[0];
-      chrome.tabs.sendMessage(activeTab.id!, { loadedVideos: 5, lang });
+      chrome.tabs.sendMessage(activeTab.id!, { loadedVideosAmount: 5, lang });
     });
   }, [lang]);
 

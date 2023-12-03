@@ -3,21 +3,20 @@ import { Portal } from '@mui/base';
 import { ThemeProvider } from '@mui/system';
 import GlobalStyles from '@utils/data/global-styles';
 import theme from '@utils/data/themes/dark-theme';
-import React, { useState } from 'react';
+import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { injectStyle } from 'react-toastify/dist/inject-style';
 
 injectStyle();
 
 function App() {
-  const [loadedVideosAmount, setLoadedVideosAmount] = useState(0);
   const { t } = useTranslation();
 
-  chrome.runtime.onMessage.addListener(({ loadedVideos, lang }) => {
-    if (loadedVideos) {
+  chrome.runtime.onMessage.addListener(({ loadedVideosAmount, lang }) => {
+    if (loadedVideosAmount) {
       i18n.changeLanguage(lang);
-      setLoadedVideosAmount(loadedVideos);
-      toast.info(t('videosLoaded', { loadedVideosAmount }), {
+      toast(<p style={{ marginLeft: '15px' }}>{t('videosLoaded', { loadedVideosAmount })}</p>, {
+        icon: <img alt={t('pluginLogo')} src={chrome.runtime.getURL('logo-32.png')} />,
         toastId: 'notification',
       });
     }
