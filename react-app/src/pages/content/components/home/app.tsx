@@ -23,12 +23,16 @@ function App() {
         toastId: 'notification',
       });
     } else if (videosFetchingError) {
-      toast.error(
-        t([
-          videosFetchingError === 'unauthorized' ? videosFetchingError : `playlistErrors.${videosFetchingError}`,
-          'fallbackError',
-        ]),
+      toast(
+        <p style={{ marginLeft: '15px' }}>
+          {t([
+            videosFetchingError === 'unauthorized' ? videosFetchingError : `playlistErrors.${videosFetchingError}`,
+            'fallbackError',
+          ])}
+        </p>,
         {
+          icon: <img alt={t('pluginLogo')} src={chrome.runtime.getURL('logo-32.png')} />,
+          style: { backgroundColor: '#f8e1e1' },
           toastId: 'notification',
         },
       );
