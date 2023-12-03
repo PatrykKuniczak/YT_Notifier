@@ -10,9 +10,9 @@ const locales = { en: enUS, pl };
 const plSuffixes = { 1: '', 1000: 'tys.', 1000000: 'mln', 1000000000: 'mld' };
 const enSuffixes = { 1: '', 1000: 'K', 1000000: 'M', 1000000000: 'B' };
 
-const parseViews = (value: number, suffixesArray: { [key: number]: string }) => {
+const parseViews = (value: number, suffixesObj: typeof plSuffixes) => {
   const createParsedString = (zerosAmount: number): string =>
-    `${value.toString().slice(0, -zerosAmount)} ${suffixesArray[+`1e${zerosAmount}`]}`;
+    `${value.toString().slice(0, -zerosAmount)} ${suffixesObj[+`1e${zerosAmount}`]}`;
 
   if (value >= 1e9) {
     return createParsedString(9); // Billion
@@ -53,8 +53,8 @@ i18n
             addSuffix: true,
           });
         } else if (format === 'abbreviations' && !isNaN(value)) {
-          const currentSuffixesArray = lng === 'pl' ? plSuffixes : enSuffixes;
-          return parseViews(value, currentSuffixesArray);
+          const currentSuffixesObj = lng === 'pl' ? plSuffixes : enSuffixes;
+          return parseViews(value, currentSuffixesObj);
         }
 
         return value;
