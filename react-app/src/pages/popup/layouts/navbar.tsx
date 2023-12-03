@@ -68,8 +68,8 @@ export const StyledNavbar = ({ playlistId, focus }: Pick<IUserYtVideos, 'playlis
         aria-label={t('nav.watchLater')}
         onClick={() => {
           if (playlistId === null) {
-            toast.info(t('noPlaylistFound'), {
-              toastId: 'noPlaylistFound',
+            toast.info(t('playlist.notFound'), {
+              toastId: 'playlist_notFound',
             });
           } else chrome.tabs.create({ url: `https://www.youtube.com/playlist?list=${playlistId}` });
         }}>

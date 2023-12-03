@@ -1,56 +1,40 @@
-import thumbnail from '@assets/img/thumbnail.png';
 import useSearch from '@hooks/use-search';
+import httpClient from '@http-client';
+import { IErrorWithCause, IUserVideo } from '@interfaces';
+import { useTranslation } from '@internationalization';
 import { StyledVideoArticle } from '@pages/popup/components/video/section/article/video-article';
 import { StyledVideoArticleSkeleton } from '@pages/popup/components/video/section/skeleton/video-article-skeleton';
 import { StyledVideosSection } from '@pages/popup/components/video/section/videos-section';
-import { useDeferredValue, useEffect, useMemo } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
+import { useQuery } from '@query-client';
+import urls from '@utils/endpoints/urls';
+import { useDeferredValue, useMemo } from 'react';
+import { toast } from 'react-toastify';
 
 export const VideosRoute = () => {
-  const videos = useMemo(
-    () => [
-      {
-        id: '1',
-        thumbnail: thumbnail,
-        avatar: thumbnail,
-        authorName: 'XYZ Franko',
-        publishedAt: '2023-10-30T19:21:20Z',
-        views: '1 mld',
-        title: 'Hodujemy gatunek, który będzie dominował nad nami Hodujemy gatunek, który będzie dominował nad nami',
-      },
-      {
-        id: '2',
-        thumbnail: thumbnail,
-        avatar: thumbnail,
-        authorName: 'Test Testowski',
-        publishedAt: '2021-08-10T16:41:20Z',
-        views: '10 mln',
-        title: 'To jest Test To jest Test To jest Test To jest Test To jest Test',
-      },
-    ],
-    [],
-  );
+  const {
+    data: videos,
+    isLoading: videosIsLoading,
+    error: videosError,
+  } = useQuery<IUserVideo[], IErrorWithCause>({
+    queryKey: [urls.ytVideos.getVideos],
+    queryFn: () => httpClient.get(urls.ytVideos.getVideos).then(({ data }) => data),
+  });
 
-  const isLoading = false;
-
+  const { t } = useTranslation();
   const { searchParamValue } = useSearch();
 
   const deferredSearchParam = useDeferredValue(searchParamValue);
-  const [lang] = useLocalStorage('language', 'en');
 
   const filteredVideos = useMemo(
-    () => videos?.filter(({ title }) => title.includes(deferredSearchParam)),
+    () => videos?.filter(({ video: { title } }) => title.includes(deferredSearchParam)),
     [deferredSearchParam, videos],
   );
 
-  useEffect(() => {
-    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-      const activeTab = tabs[0];
-      chrome.tabs.sendMessage(activeTab.id!, { loadedVideosAmount: 5, lang });
+  if (videosError) {
+    toast.error(t([`playlistErrors.${videosError.response.data.cause}`, 'fallbackError']), {
+      toastId: 'playlist_updating_error',
     });
-  }, [lang]);
-
-  if (isLoading) {
+  } else if (videosIsLoading) {
     return (
       <StyledVideosSection>
         <StyledVideoArticleSkeleton />
@@ -60,7 +44,7 @@ export const VideosRoute = () => {
   } else {
     return (
       <StyledVideosSection>
-        {filteredVideos?.map(({ id, ...restProps }) => <StyledVideoArticle key={id} {...restProps} />)}
+        {filteredVideos?.map(userVideo => <StyledVideoArticle key={userVideo.video.id} {...userVideo} />)}
       </StyledVideosSection>
     );
   }

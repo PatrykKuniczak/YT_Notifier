@@ -22,13 +22,39 @@ chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify({ content: selectionText }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
   })
-    .then(r => r.json())
-    .then(r => console.log(r))
+    .then(res => res.json())
+    .then(res => console.log(res))
     .catch(err => console.log(err));
 
   //TODO: show success or error message
+});
+
+let stopFetching = false;
+
+chrome.runtime.onMessage.addListener(({ shouldFetch }) => {
+  if (!shouldFetch) {
+    stopFetching = true;
+    chrome.tabs.query({}, tabs => {
+      tabs.forEach(tab => {
+        chrome.tabs.sendMessage(tab.id!, { closeNotification: true });
+      });
+    });
+  }
+
+  if (shouldFetch && !stopFetching) {
+    fetch(`${import.meta.env.VITE_API_URL}${urls.ytVideos.getVideos}`, {
+      credentials: 'include',
+    })
+      .then(res => res.json())
+      .then(res => {
+        chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+          const activeTab = tabs[0];
+          chrome.tabs.sendMessage(activeTab.id!, {
+            loadedVideosAmount: res.cause ? 0 : res.length,
+            videosFetchingError: res.cause,
+          });
+        });
+      });
+  }
 });

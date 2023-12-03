@@ -70,6 +70,11 @@ export class UserYtVideosService {
                 part: ['snippet'],
               });
 
+              const { data: videoStatisticsData } = await this.youtubeClient.videos.list({
+                id: [videoData.items[index].id.videoId],
+                part: ['statistics'],
+              });
+
               return {
                 video: {
                   id: videoData.items[index].id.videoId,
@@ -77,6 +82,7 @@ export class UserYtVideosService {
                   description: videoData.items[index].snippet.description,
                   publishedAt: videoData.items[index].snippet.publishedAt,
                   thumbnail: videoData.items[index].snippet.thumbnails.medium.url,
+                  views: +videoStatisticsData.items[0].statistics.viewCount,
                 },
                 channel: {
                   id: channelId,
@@ -130,9 +136,17 @@ export class UserYtVideosService {
         await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId });
       }
 
-      const { data } = await this.youtubeClient.playlistItems.list({ part: ['snippet'], playlistId });
-      playlistData = data;
+      await this.youtubeClient.playlistItems
+        .list({
+          part: ['snippet'],
+          playlistId,
+        })
+        .then(res => (playlistData = res.data));
     } catch (err) {
+      if (err.status === 404 && err.errors[0].reason === 'playlistNotFound') {
+        await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId: null });
+        return this.updatePlaylist(userId, { videoId, title, description });
+      }
       await this.handleQuotaLimitFromError(err, userId);
     }
 

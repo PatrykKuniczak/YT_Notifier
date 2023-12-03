@@ -1,7 +1,8 @@
 export const scrollbarMixin = {
   pb: 12,
 
-  overflow: 'scroll',
+  overflowY: 'scroll',
+  overflowX: 'hidden',
 
   '&:hover': {
     '&::-webkit-scrollbar-thumb': {

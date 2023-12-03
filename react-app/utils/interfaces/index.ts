@@ -51,12 +51,23 @@ interface IErrorWithCause {
 }
 
 interface IVideo {
-  thumbnail: string;
-  authorName: string;
-  avatar: string;
-  publishedAt: string;
-  views: string;
+  id: number;
   title: string;
+  description: string;
+  publishedAt: string;
+  thumbnail: string;
+  views: number;
+}
+
+interface IChannel {
+  id: string;
+  title: string;
+  thumbnail: string;
+}
+
+interface IUserVideo {
+  video: IVideo;
+  channel: IChannel;
 }
 
 export {
@@ -70,4 +81,6 @@ export {
   IUserYtVideos,
   IErrorWithCause,
   IVideo,
+  IChannel,
+  IUserVideo,
 };

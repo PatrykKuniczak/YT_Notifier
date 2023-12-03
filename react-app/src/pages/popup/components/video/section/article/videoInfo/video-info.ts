@@ -5,8 +5,6 @@ export const StyledVideoInfo = styled('span')(({ theme }) =>
   theme.unstable_sx({
     ...textMixin,
 
-    maxWidth: 93,
-
     fontWeight: 'fontWeight.normal',
     fontSize: 'fontSize.sm',
 
