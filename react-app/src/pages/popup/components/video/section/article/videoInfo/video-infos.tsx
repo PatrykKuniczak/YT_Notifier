@@ -7,7 +7,7 @@ import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledVideoInfo } from '@pages/popup/components/video/section/article/videoInfo/video-info';
 import { StyledVideoTitle } from '@pages/popup/components/video/section/article/videoInfo/video-title';
-import { useMutation } from '@query-client';
+import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { toast } from 'react-toastify';
 
@@ -29,6 +29,7 @@ export const StyledVideoInfos = ({
       }),
     onSuccess: () => {
       toast.success(t('playlist.updated'));
+      queryClient.invalidateQueries([urls.auth.me]);
     },
     onError: (error: IErrorWithCause) =>
       toast.error(t([`playlistErrors.${error.response.data.cause}`, 'fallbackError']), {

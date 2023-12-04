@@ -50,4 +50,16 @@ export class UserYtVideosController {
   async updatePlaylist(@ReqUserId() userId: number, @Body() updateUserYtVideosDto: UpdateUserYtVideosDto) {
     return this.ytVideosService.updatePlaylist(userId, updateUserYtVideosDto);
   }
+
+  @ApiOkResponse()
+  @ApiNotFoundResponse({ description: 'Playlist not found, cause: playlist_not_found' })
+  @ApiUnauthorizedResponse({
+    type: ErrorResponse,
+    description: 'cause: unauthorized',
+  })
+  @Get('check-playlist')
+  @UseGuards(SessionsGuard)
+  async checkPlaylist(@ReqUserId() userId: number) {
+    return this.ytVideosService.checkPlaylist(userId);
+  }
 }

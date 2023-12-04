@@ -6,7 +6,11 @@ const urls = {
     me: 'auth/me',
   },
   keyWords: 'key-words',
-  ytVideos: { getVideos: 'user-yt-videos', updatePlaylist: 'user-yt-videos/update-playlist' },
+  ytVideos: {
+    getVideos: 'user-yt-videos',
+    updatePlaylist: 'user-yt-videos/update-playlist',
+    checkPlaylist: 'user-yt-videos/check-playlist',
+  },
 };
 
 export default urls;
