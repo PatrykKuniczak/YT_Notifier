@@ -32,7 +32,7 @@ function App() {
         </p>,
         {
           icon: <img alt={t('pluginLogo')} src={chrome.runtime.getURL('logo-32.png')} />,
-          style: { backgroundColor: '#f8e1e1' },
+          style: { backgroundColor: '#B71C1C' },
           toastId: 'notification',
         },
       );
@@ -53,12 +53,12 @@ function App() {
           position="bottom-right"
           theme="dark"
           autoClose={false}
+          closeOnClick={false}
           closeButton={
             <button
               style={{
                 alignItems: 'self-start',
                 height: 'fit-content',
-                marginTop: '10px',
                 cursor: 'pointer',
                 backgroundColor: 'transparent',
               }}
