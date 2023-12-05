@@ -54,13 +54,13 @@
   "playlist": {
     "title": "Do Obejrzenia - YT Notifier",
     "description": "Twoje zapisane wideo poprzez wtyczkę YT Notifier",
-    "updated": "Pomyślnie zaktualizowano twoją playlistę",
-    "notFound": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć"
+    "updated": "Pomyślnie zaktualizowano twoją playlistę"
 },
   "playlistErrors": {
     "quota_limit": "Osiągnięto limit zapytań o wideo, musisz poczekać do jutra aby pobrać nowe",
     "video_for_playlist_not_found": "Nie znaleziono video",
-    "duplicated_video_for_playlist": "To wideo jest już na twojej playliście"
+    "duplicated_video_for_playlist": "To wideo jest już na twojej playliście",
+    "playlist_not_found": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć"
   },
   "pluginLogo": "Logo"
 }

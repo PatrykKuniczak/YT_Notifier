@@ -178,6 +178,30 @@ export class UserYtVideosService {
       });
   }
 
+  async checkPlaylist(userId: number) {
+    const { playlistId } = await this.userYtVideosRepository.findOneBy({ user: { id: userId } });
+
+    if (playlistId) {
+      const {
+        data: {
+          pageInfo: { totalResults },
+        },
+      } = await this.youtubeClient.playlists.list({
+        part: ['snippet'],
+        id: [playlistId],
+      });
+
+      if (!totalResults) {
+        await this.userYtVideosRepository.update({ user: { id: userId } }, { playlistId: null });
+        throw new NotFoundException({ reason: 'Playlist not found', cause: 'playlist_not_found' });
+      }
+
+      return;
+    }
+
+    throw new NotFoundException({ reason: 'Playlist not found', cause: 'playlist_not_found' });
+  }
+
   private async updateLastFetchDate(userId: number) {
     return this.userYtVideosRepository.update({ user: { id: userId } }, { lastFetch: new Date() }).catch(err => {
       throw new InternalServerErrorException('Error on updating fetch date of user: ' + err.message);

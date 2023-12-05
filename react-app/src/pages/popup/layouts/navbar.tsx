@@ -1,12 +1,15 @@
 import savedTagsIcon from '@assets/img/saved-tags-icon.svg';
 import searchIcon from '@assets/img/search-icon.svg';
 import watchLaterIcon from '@assets/img/watch-later-icon.svg';
+import httpClient from '@http-client';
 import { IUserYtVideos } from '@interfaces';
 import { useTranslation } from '@internationalization';
 import { Stack, styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
+import queryClient from '@query-client';
 import { TComponentTag, TVoid } from '@types';
+import urls from '@utils/endpoints/urls';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -67,11 +70,24 @@ export const StyledNavbar = ({ playlistId, focus }: Pick<IUserYtVideos, 'playlis
         title={t('nav.watchLater')}
         aria-label={t('nav.watchLater')}
         onClick={() => {
-          if (playlistId === null) {
-            toast.info(t('playlist.notFound'), {
+          if (!playlistId) {
+            toast.info(t('playlistErrors.playlist_not_found'), {
               toastId: 'playlist_notFound',
             });
-          } else chrome.tabs.create({ url: `https://www.youtube.com/playlist?list=${playlistId}` });
+          } else {
+            httpClient
+              .get(urls.ytVideos.checkPlaylist)
+              .then(() => {
+                chrome.tabs.create({ url: `https://www.youtube.com/playlist?list=${playlistId}` });
+              })
+              .catch(err => {
+                toast.info(t([`playlistErrors.${err.response.data.cause}`, 'fallbackError']), {
+                  toastId: 'playlist_notFound',
+                });
+
+                queryClient.invalidateQueries([urls.auth.me]);
+              });
+          }
         }}>
         <StyledIcon src={watchLaterIcon} alt={''} width={20} height={20} />
       </StyledButton>
