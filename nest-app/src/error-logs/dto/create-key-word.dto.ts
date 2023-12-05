@@ -1,4 +1,4 @@
 export class CreateErrorLogDto {
-  errorValues: object;
+  message: string;
   userId: number;
 }

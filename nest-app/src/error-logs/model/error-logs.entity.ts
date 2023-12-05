@@ -6,8 +6,8 @@ export class ErrorLogsEntity {
   @PrimaryGeneratedColumn()
   readonly id: number;
 
-  @Column('json')
-  readonly errorValues: object;
+  @Column('text')
+  readonly message: string;
 
   @ManyToOne(() => UsersEntity, user => user.errorLogs, {
     nullable: false,

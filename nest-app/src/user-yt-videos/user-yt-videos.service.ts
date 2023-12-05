@@ -208,13 +208,14 @@ export class UserYtVideosService {
     });
   }
 
-  private async handleQuotaLimitFromError(err: { [key: string]: unknown }, userId: number) {
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private async handleQuotaLimitFromError(err: { [key: string]: any }, userId: number) {
     if ((err.status === 403 && err.errors[0].domain === 'youtube.quota') || err.status === 429) {
       throw new ForbiddenException({ reason: 'You reach the requests limit for youtube', cause: 'quota_limit' });
     }
 
     await this.errorLogsService.create({
-      errorValues: { ...err, message: err.message },
+      message: err.response.data.error.errors[0],
       userId,
     });
 
