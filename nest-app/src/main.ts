@@ -5,6 +5,7 @@ import { SwaggerModule } from '@nestjs/swagger';
 import { TypeormStore } from 'connect-typeorm';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import helmet from 'helmet';
 import passport from 'passport';
 import { DataSource } from 'typeorm';
 import { AppModule } from './app.module';
@@ -18,6 +19,16 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const sessionRepository = app.get(DataSource).getRepository(SessionsEntity);
+
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          scriptSrc: ["'self'", "'unsafe-inline'"],
+        },
+      },
+    }),
+  );
 
   app.enableCors({
     origin: '*',
