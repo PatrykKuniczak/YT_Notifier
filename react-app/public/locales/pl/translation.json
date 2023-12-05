@@ -10,8 +10,11 @@
     "keyword_not_found": "Nie znaleziono tego słowa kluczowego"
   },
   "views": "{{ amount, abbreviations }} wyświetleń",
-  "deleteAccount": "Usuń konto",
-  "logout": "Wyloguj się",
+  "menu":{
+    "logout": "Wyloguj się",
+    "deleteAccount": "Usuń konto",
+    "collectErrors": "Zbierz dane o błędach i pobierz je"
+  },
   "unauthorized": "Zostałeś wylogowany, Twoja sesja wygasła, zaloguj się ponownie",
   "loggingInFailed": "Logowanie nie powiodło się",
   "languages": {

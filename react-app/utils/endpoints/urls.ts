@@ -11,6 +11,7 @@ const urls = {
     updatePlaylist: 'user-yt-videos/update-playlist',
     checkPlaylist: 'user-yt-videos/check-playlist',
   },
+  getErrors: 'error-logs',
 };
 
 export default urls;

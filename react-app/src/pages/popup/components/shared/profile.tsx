@@ -21,7 +21,7 @@ const StyledListbox = styled('ul')(({ theme }) =>
 
     right: '-30px',
 
-    minWidth: '200px',
+    minWidth: '220px',
 
     margin: '12px 0',
     padding: '6px',
@@ -74,6 +74,18 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
   }),
 );
 
+const StyledDownloadItemLink = styled('a')(({ theme }) =>
+  theme.unstable_sx({
+    color: '#fff',
+
+    textDecoration: 'none',
+  }),
+);
+
+const StyledSeparatorLine = styled('hr')(({ theme }) =>
+  theme.unstable_sx({ height: '2px', backgroundColor: 'background.purple' }),
+);
+
 const StyledProfile = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { user, userIsLoading } = useContext(AuthContext);
@@ -124,8 +136,14 @@ const StyledProfile = () => {
         />
       </StyledMenuButton>
       <Menu slots={{ listbox: StyledListbox }}>
-        <StyledMenuItem onClick={changeModalVisibility}>{t('deleteAccount')}</StyledMenuItem>
-        <StyledMenuItem onClick={() => signOut()}>{t('logout')}</StyledMenuItem>
+        <StyledMenuItem onClick={() => signOut()}>{t('menu.logout')}</StyledMenuItem>
+        <StyledMenuItem onClick={changeModalVisibility}>{t('menu.deleteAccount')}</StyledMenuItem>
+        <StyledSeparatorLine />
+        <StyledMenuItem>
+          <StyledDownloadItemLink href={`${import.meta.env.VITE_API_URL}${urls.getErrors}`} download={''}>
+            {t('menu.collectErrors')}
+          </StyledDownloadItemLink>
+        </StyledMenuItem>
       </Menu>
       <StyledDeleteModal
         open={open}
