@@ -1,5 +1,6 @@
 import { AuthContext } from '@authentication';
 import { StyledSearchBar } from '@pages/popup/components/shared/searchBar/search-bar';
+import Seo from '@pages/popup/components/shared/seo';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { StyledHeaderContainer } from '@pages/popup/layouts/header-container';
 import { StyledMainContent } from '@pages/popup/layouts/main-content';
@@ -17,6 +18,7 @@ const HomePage = () => {
 
   return (
     <StyledHomePageWrapper>
+      <Seo title={`YT Plugin | ${title}`} />
       <StyledHeaderContainer />
 
       <StyledMainContent>
