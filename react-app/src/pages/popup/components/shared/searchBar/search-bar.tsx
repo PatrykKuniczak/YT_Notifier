@@ -16,7 +16,7 @@ export const StyledSearchBar = () => {
   const { t } = useTranslation();
 
   return (
-    <StyledSearchBarWrapper>
+    <StyledSearchBarWrapper onSubmit={event => event.preventDefault()}>
       <StyledIcon
         src={searchIcon}
         alt={''}
@@ -31,6 +31,7 @@ export const StyledSearchBar = () => {
         aria-label={t('search')}
         placeholder={t('search')}
         value={searchParamValue}
+        name="q"
         onChange={event => handleSearchParamsChange(event.target.value)}
         onKeyDown={event => handleKeyEvent(event, clearSearchParamValue)}
       />

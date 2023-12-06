@@ -1,6 +1,6 @@
 import { styled } from '@mui/system';
 
-export const StyledSearchBarWrapper = styled('div')(({ theme }) =>
+export const StyledSearchBarWrapper = styled('form')(({ theme }) =>
   theme.unstable_sx({
     display: 'flex',
     alignItems: 'center',
