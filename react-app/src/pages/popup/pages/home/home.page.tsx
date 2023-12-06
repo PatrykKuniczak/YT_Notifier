@@ -12,7 +12,7 @@ import { Outlet } from 'react-router-dom';
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
-  const { title, ref, focus } = useHome();
+  const { title, focus } = useHome();
 
   const playlistId = user?.userYtVideos.playlistId ?? null;
 
@@ -24,7 +24,7 @@ const HomePage = () => {
       <StyledMainContent>
         <StyledTitle>{title}</StyledTitle>
 
-        <StyledSearchBar ref={ref} focus={focus} />
+        <StyledSearchBar />
 
         <Outlet />
       </StyledMainContent>

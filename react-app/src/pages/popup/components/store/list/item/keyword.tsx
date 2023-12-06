@@ -95,7 +95,6 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
         value={inputValue}
         style={{ width: '100%', position: 'relative' }}>
         <StyledKeywordInput
-          autoFocus
           placeholder={t('provideKeyword')}
           onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
         />
