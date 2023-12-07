@@ -31,6 +31,11 @@ interface IUser {
   userYtVideos: IUserYtVideos;
 }
 
+interface IProvidedAuthValues {
+  user?: IUser;
+  userIsLoading: boolean;
+}
+
 interface IUserYtVideos {
   id: number;
   lastFetch: string;
@@ -83,4 +88,5 @@ export {
   IVideo,
   IChannel,
   IUserVideo,
+  IProvidedAuthValues,
 };
