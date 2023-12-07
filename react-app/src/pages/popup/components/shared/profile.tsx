@@ -79,6 +79,10 @@ const StyledDownloadItemLink = styled('a')(({ theme }) =>
     color: '#fff',
 
     textDecoration: 'none',
+
+    ':focus-visible': {
+      outline: `transparent`,
+    },
   }),
 );
 
@@ -139,8 +143,11 @@ const StyledProfile = () => {
         <StyledMenuItem onClick={() => signOut()}>{t('menu.logout')}</StyledMenuItem>
         <StyledMenuItem onClick={changeModalVisibility}>{t('menu.deleteAccount')}</StyledMenuItem>
         <StyledSeparatorLine />
-        <StyledMenuItem>
-          <StyledDownloadItemLink href={`${import.meta.env.VITE_API_URL}${urls.getErrors}`} download={''}>
+        <StyledMenuItem onClick={() => document.getElementById('download_errors_link')!.click()}>
+          <StyledDownloadItemLink
+            id={'download_errors_link'}
+            href={`${import.meta.env.VITE_API_URL}${urls.getErrors}`}
+            download={''}>
             {t('menu.collectErrors')}
           </StyledDownloadItemLink>
         </StyledMenuItem>
