@@ -11,7 +11,6 @@ import { StoreRoute } from '@pages/popup/routes/store.route';
 import { VideosRoute } from '@pages/popup/routes/videos.route';
 import { useQuery } from '@query-client';
 import urls from '@utils/endpoints/urls';
-import React, { useMemo } from 'react';
 import { createHashRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -61,7 +60,7 @@ const Popup = () => {
     });
   }
 
-  const authProviderValues: IProvidedAuthValues = useMemo(() => ({ user, userIsLoading }), [user, userIsLoading]);
+  const authProviderValues: IProvidedAuthValues = { user, userIsLoading };
 
   return <ProvidersWrapper authProviderValues={authProviderValues} hashRouting={hashRouting(authProviderValues)} />;
 };

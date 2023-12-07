@@ -1,9 +1,9 @@
-import { Component, ComponentType, ReactElement } from 'react';
+import { Component, ComponentType, ReactNode } from 'react';
 
 class ErrorBoundary extends Component<
   {
-    children: ReactElement;
-    fallback: ReactElement;
+    children: ReactNode;
+    fallback: ReactNode;
   },
   {
     hasError: boolean;
@@ -28,10 +28,7 @@ class ErrorBoundary extends Component<
   }
 }
 
-function withErrorBoundary<T extends Record<string, unknown>>(
-  Component: ComponentType<T>,
-  ErrorComponent: ReactElement,
-) {
+function withErrorBoundary<T extends Record<string, unknown>>(Component: ComponentType<T>, ErrorComponent: ReactNode) {
   return function WithErrorBoundary(props: T) {
     return (
       <ErrorBoundary fallback={ErrorComponent}>
