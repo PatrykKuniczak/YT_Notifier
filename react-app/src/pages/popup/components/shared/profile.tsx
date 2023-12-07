@@ -12,7 +12,7 @@ import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 
 const StyledListbox = styled('ul')(({ theme }) =>
@@ -93,6 +93,7 @@ const StyledSeparatorLine = styled('hr')(({ theme }) =>
 const StyledProfile = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { user, userIsLoading } = useContext(AuthContext);
+  const ref = useRef<HTMLAnchorElement>(null);
 
   const theme = useTheme();
 
@@ -143,11 +144,13 @@ const StyledProfile = () => {
         <StyledMenuItem onClick={() => signOut()}>{t('menu.logout')}</StyledMenuItem>
         <StyledMenuItem onClick={changeModalVisibility}>{t('menu.deleteAccount')}</StyledMenuItem>
         <StyledSeparatorLine />
-        <StyledMenuItem onClick={() => document.getElementById('download_errors_link')!.click()}>
-          <StyledDownloadItemLink
-            id={'download_errors_link'}
-            href={`${import.meta.env.VITE_API_URL}${urls.getErrors}`}
-            download={''}>
+        <StyledMenuItem
+          onClick={e => {
+            if (e.type !== 'click') {
+              ref.current!.click();
+            }
+          }}>
+          <StyledDownloadItemLink ref={ref} href={`${import.meta.env.VITE_API_URL}${urls.getErrors}`} download={''}>
             {t('menu.collectErrors')}
           </StyledDownloadItemLink>
         </StyledMenuItem>
