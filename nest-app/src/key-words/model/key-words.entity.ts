@@ -6,7 +6,7 @@ export class KeyWordsEntity {
   @PrimaryGeneratedColumn()
   readonly id: number;
 
-  @Column({ length: 255 })
+  @Column({ length: 255, nullable: false })
   readonly content: string;
 
   @ManyToOne(() => UsersEntity, user => user.keywords, {

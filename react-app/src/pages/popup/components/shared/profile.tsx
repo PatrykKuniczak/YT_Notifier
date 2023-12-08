@@ -12,7 +12,7 @@ import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 
 const StyledListbox = styled('ul')(({ theme }) =>
@@ -21,7 +21,7 @@ const StyledListbox = styled('ul')(({ theme }) =>
 
     right: '-30px',
 
-    minWidth: '200px',
+    minWidth: '220px',
 
     margin: '12px 0',
     padding: '6px',
@@ -74,9 +74,26 @@ const StyledMenuButton = styled(MenuButton)(({ theme }) =>
   }),
 );
 
+const StyledDownloadItemLink = styled('a')(({ theme }) =>
+  theme.unstable_sx({
+    color: '#fff',
+
+    textDecoration: 'none',
+
+    ':focus-visible': {
+      outline: `transparent`,
+    },
+  }),
+);
+
+const StyledSeparatorLine = styled('hr')(({ theme }) =>
+  theme.unstable_sx({ height: '2px', backgroundColor: 'background.purple' }),
+);
+
 const StyledProfile = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { user, userIsLoading } = useContext(AuthContext);
+  const ref = useRef<HTMLAnchorElement>(null);
 
   const theme = useTheme();
 
@@ -124,8 +141,19 @@ const StyledProfile = () => {
         />
       </StyledMenuButton>
       <Menu slots={{ listbox: StyledListbox }}>
-        <StyledMenuItem onClick={changeModalVisibility}>{t('deleteAccount')}</StyledMenuItem>
-        <StyledMenuItem onClick={() => signOut()}>{t('logout')}</StyledMenuItem>
+        <StyledMenuItem onClick={() => signOut()}>{t('menu.logout')}</StyledMenuItem>
+        <StyledMenuItem onClick={changeModalVisibility}>{t('menu.deleteAccount')}</StyledMenuItem>
+        <StyledSeparatorLine />
+        <StyledMenuItem
+          onClick={e => {
+            if (e.type !== 'click') {
+              ref.current!.click();
+            }
+          }}>
+          <StyledDownloadItemLink ref={ref} href={`${import.meta.env.VITE_API_URL}${urls.getErrors}`} download={''}>
+            {t('menu.collectErrors')}
+          </StyledDownloadItemLink>
+        </StyledMenuItem>
       </Menu>
       <StyledDeleteModal
         open={open}

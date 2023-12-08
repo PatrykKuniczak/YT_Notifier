@@ -15,8 +15,8 @@ export class ErrorLogsService {
     return this.errorLogsRepository.findBy({ user: { id: userId } });
   }
 
-  async create({ errorValues, userId }: CreateErrorLogDto) {
-    const errorLogEntity = this.errorLogsRepository.create({ errorValues, user: { id: userId } });
+  async create({ message, userId }: CreateErrorLogDto) {
+    const errorLogEntity = this.errorLogsRepository.create({ message, user: { id: userId } });
 
     return this.errorLogsRepository.save(errorLogEntity).catch(err => {
       throw new InternalServerErrorException(`Error on saving error message: ${err.message}`);

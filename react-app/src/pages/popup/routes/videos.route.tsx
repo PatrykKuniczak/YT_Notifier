@@ -26,7 +26,7 @@ export const VideosRoute = () => {
   const deferredSearchParam = useDeferredValue(searchParamValue);
 
   const filteredVideos = useMemo(
-    () => videos?.filter(({ video: { title } }) => title.includes(deferredSearchParam)),
+    () => (videos || []).filter(({ video: { title } }) => title.includes(deferredSearchParam)),
     [deferredSearchParam, videos],
   );
 

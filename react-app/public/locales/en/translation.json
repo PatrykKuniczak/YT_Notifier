@@ -10,8 +10,11 @@
     "keyword_not_found": "Keyword not found"
   },
   "views": "{{ amount, abbreviations }} views",
-  "deleteAccount": "Delete account",
-  "logout": "Logout",
+  "menu": {
+    "logout": "Logout",
+    "deleteAccount": "Delete account",
+    "collectErrors": "Collect and download errors data"
+  },
   "unauthorized": "You were logged out, your session has expired, please login again",
   "loggingInFailed": "Logging in failed",
   "languages": {

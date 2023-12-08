@@ -55,7 +55,7 @@ export class UsersService {
   async updateRefreshToken(id: number, refreshToken: string) {
     const { affected } = await this.userRepository.update({ id }, { refreshToken }).catch(async err => {
       await this.errorLogsService.create({
-        errorValues: { ...err, message: err.message },
+        message: err.driverError,
         userId: id,
       });
 
