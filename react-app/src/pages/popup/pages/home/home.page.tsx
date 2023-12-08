@@ -7,17 +7,13 @@ import { StyledNavbar } from '@pages/popup/layouts/navbar';
 import { StyledHomePageWrapper } from '@pages/popup/pages/home/home-wrapper';
 import { useHome } from '@pages/popup/pages/home/use-home';
 import React, { useContext } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
   const { title, ref, focus } = useHome();
 
   const playlistId = user?.userYtVideos.playlistId ?? null;
-
-  if (!user) {
-    return <Navigate to={'/auth/login'} />;
-  }
 
   return (
     <StyledHomePageWrapper>

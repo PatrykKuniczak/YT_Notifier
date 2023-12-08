@@ -1,5 +1,5 @@
 import { AuthContext } from '@authentication';
-import { IUser } from '@interfaces';
+import { IProvidedAuthValues } from '@interfaces';
 import { Router as RemixRouter } from '@remix-run/router/dist/router';
 import GlobalStyles from '@utils/data/global-styles';
 import React from 'react';
@@ -10,7 +10,7 @@ const ProvidersWrapper = ({
   authProviderValues,
   hashRouting,
 }: {
-  authProviderValues: { user?: IUser; userIsLoading: boolean };
+  authProviderValues: IProvidedAuthValues;
   hashRouting: RemixRouter;
 }) => {
   return (
