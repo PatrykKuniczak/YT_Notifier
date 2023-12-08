@@ -6,7 +6,7 @@ export const StyledVideoButton = styled(StyledButton)(({ theme }) =>
     height: 'auto',
 
     '&.Mui-focusVisible': {
-      outline: `1px solid #fff`,
+      borderRadius: '8px',
     },
   }),
 );
