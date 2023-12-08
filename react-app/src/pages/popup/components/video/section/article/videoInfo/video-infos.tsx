@@ -42,9 +42,7 @@ export const StyledVideoInfos = ({
     <Stack useFlexGap={true} spacing={1}>
       <Stack direction={'row'} alignItems={'center'} useFlexGap={true} spacing={2}>
         <StyledVideoButton onClick={() => window.open(videoUrl)}>
-          <StyledVideoInfo onClick={() => window.open(videoUrl)}>
-            {t('timeAgo', { date: new Date(publishedAt) })}
-          </StyledVideoInfo>
+          <StyledVideoInfo>{t('timeAgo', { date: new Date(publishedAt) })}</StyledVideoInfo>
           <StyledVideoInfo>{t('views', { amount: views })}</StyledVideoInfo>
         </StyledVideoButton>
         <StyledButton title={t('nav.watchLater')} aria-label={t('nav.watchLater')} onClick={() => updatePlaylist()}>
