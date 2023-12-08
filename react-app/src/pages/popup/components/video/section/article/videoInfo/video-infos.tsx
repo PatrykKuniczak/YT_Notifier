@@ -41,7 +41,7 @@ export const StyledVideoInfos = ({
   return (
     <Stack useFlexGap={true} spacing={1}>
       <Stack direction={'row'} alignItems={'center'} useFlexGap={true} spacing={2}>
-        <StyledVideoButton onClick={() => window.open(videoUrl)}>
+        <StyledVideoButton sx={{ display: 'flex', gap: '16px' }} onClick={() => window.open(videoUrl)}>
           <StyledVideoInfo>{t('timeAgo', { date: new Date(publishedAt) })}</StyledVideoInfo>
           <StyledVideoInfo>{t('views', { amount: views })}</StyledVideoInfo>
         </StyledVideoButton>
