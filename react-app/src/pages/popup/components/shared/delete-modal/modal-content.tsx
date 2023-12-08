@@ -10,7 +10,6 @@ const ModalContentStyles = styled(Stack)(({ theme }) =>
     width: 220,
     height: 'auto',
 
-    paadingTop: 2,
     paddingBottom: 2,
     borderRadius: 1,
 
