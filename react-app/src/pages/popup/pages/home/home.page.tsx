@@ -18,7 +18,7 @@ const HomePage = () => {
 
   return (
     <StyledHomePageWrapper>
-      <Seo title={`YT Plugin | ${title}`} />
+      <Seo title={`YT Notifier | ${title}`} />
       <StyledHeaderContainer />
 
       <StyledMainContent>
