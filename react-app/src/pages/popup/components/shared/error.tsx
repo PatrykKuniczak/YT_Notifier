@@ -4,7 +4,7 @@ import { useFormControlContext } from '@mui/base';
 import { styled } from '@mui/system';
 import { useEffect } from 'react';
 
-export const StyledErrorMessage = styled(props => {
+export const StyledErrorMessage = styled(({ isDirty, ...props }: { isDirty: boolean }) => {
   const formControlContext = useFormControlContext();
   const { isValid, handleValidation } = useValidate();
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ export const StyledErrorMessage = styled(props => {
     handleValidation(value);
   }, [formControlContext, handleValidation, value]);
 
-  return !isValid ? <p {...props}>{t('validation')}</p> : null;
+  return !isValid && isDirty ? <p {...props}>{t('validation')}</p> : null;
 })(({ theme }) =>
   theme.unstable_sx({
     p: 1,
