@@ -98,7 +98,7 @@ export const StyledKeyword = forwardRef<IEditKeywordRef, IStyledKeyword>(
           placeholder={t('provideKeyword')}
           onKeyDown={event => handleKeyEvent(event, handleApplyingChanges, handleApplyingChanges)}
         />
-        <StyledErrorMessage />
+        <StyledErrorMessage isDirty={isDirty} />
       </FormControl>
     ) : (
       <StyledKeywordSpan>{inputValue}</StyledKeywordSpan>
