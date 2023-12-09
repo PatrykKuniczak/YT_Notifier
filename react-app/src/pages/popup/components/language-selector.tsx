@@ -6,7 +6,6 @@ import useLanguageSwitch from '@hooks/use-language-switch';
 import { changeLanguage, i18n, useTranslation } from '@internationalization';
 import { Dropdown, Menu } from '@mui/base';
 import { useTheme } from '@mui/system';
-import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledListbox, StyledMenuButton, StyledMenuItem } from '@pages/popup/components/shared/dropdown';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { useState } from 'react';
@@ -29,7 +28,7 @@ const LanguageSelector = () => {
 
   const setLanguage = useLanguageSwitch();
 
-  const handleClick = (language: string) => {
+  const handleChangeLanguage = (language: string) => {
     changeLanguage(language);
     setLanguage(language);
   };
@@ -50,15 +49,13 @@ const LanguageSelector = () => {
       </StyledMenuButton>
       <Menu slots={{ listbox: StyledListbox }}>
         {Object.keys(languages).map(language => (
-          <StyledMenuItem key={language}>
-            <StyledButton
-              sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
-              type="submit"
-              onClick={() => handleClick(language)}
-              aria-label={languages[language].nativeName}>
-              <StyledIcon src={languages[language].icon} alt={''} height={16} />
-              {t(`languages.${language}`)}
-            </StyledButton>
+          <StyledMenuItem
+            key={language}
+            sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+            onClick={() => handleChangeLanguage(language)}
+            aria-label={languages[language].nativeName}>
+            <StyledIcon src={languages[language].icon} alt={''} height={16} />
+            {t(`languages.${language}`)}
           </StyledMenuItem>
         ))}
       </Menu>
