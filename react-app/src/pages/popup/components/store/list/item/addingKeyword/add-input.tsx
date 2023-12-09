@@ -100,7 +100,7 @@ const StyledAddInput = () => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <FormControl onChange={handleChange} value={keyword} style={{ width: '100%', position: 'relative' }}>
-        <StyledKeywordInput placeholder={t('addKeyword')} />
+        <StyledKeywordInput placeholder={t('addKeyword')} name="keyword-name" aria-label={t('addKeyword')} />
       </FormControl>
       <StyledSubmitButton disabled={!isValid} type={'submit'} aria-label={t('aria-labels.addKeywordButton')}>
         <StyledIcon src={plusIcon} alt={''} width={20} height={20} />

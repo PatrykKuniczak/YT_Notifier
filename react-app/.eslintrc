@@ -62,7 +62,6 @@
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "react/display-name": "off",
-    "jsx-a11y/no-autofocus": "off",
     "import/named": "off"
   },
   "overrides": [

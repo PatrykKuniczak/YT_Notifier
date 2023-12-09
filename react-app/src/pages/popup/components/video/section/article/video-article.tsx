@@ -2,6 +2,7 @@ import { IUserVideo } from '@interfaces';
 import { Stack, styled } from '@mui/system';
 import { StyledAuthorInfo } from '@pages/popup/components/video/section/article/authorInfo/author-info';
 import { StyledThumbnail } from '@pages/popup/components/video/section/article/thumbnail/thumbnail';
+import { StyledVideoButton } from '@pages/popup/components/video/section/article/video-button';
 import { StyledVideoInfos } from '@pages/popup/components/video/section/article/videoInfo/video-infos';
 import { TComponentTag } from '@types';
 
@@ -33,7 +34,9 @@ export const StyledVideoArticle = ({ video, channel }: IUserVideo) => {
 
   return (
     <VideoArticleStyles component={'article'}>
-      <StyledThumbnail src={thumbnail} aria-hidden={true} onClick={() => window.open(videoUrl)} />
+      <StyledVideoButton onClick={() => window.open(videoUrl)}>
+        <StyledThumbnail src={thumbnail} aria-hidden={true} />
+      </StyledVideoButton>
       <StyledAuthorInfo thumbnail={avatar} title={authorName} channelUrl={channelUrl} />
       <StyledVideoInfos publishedAt={publishedAt} views={views} title={title} id={videoId} videoUrl={videoUrl} />
     </VideoArticleStyles>

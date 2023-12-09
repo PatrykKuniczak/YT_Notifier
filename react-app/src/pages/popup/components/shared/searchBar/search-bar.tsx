@@ -6,10 +6,8 @@ import { useTheme } from '@mui/system';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledSearchBarInput } from '@pages/popup/components/shared/searchBar/search-bar-input';
 import { StyledSearchBarWrapper } from '@pages/popup/components/shared/searchBar/search-bar-wrapper';
-import { TVoid } from '@types';
-import { forwardRef } from 'react';
 
-export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_, ref) => {
+export const StyledSearchBar = () => {
   const theme = useTheme();
 
   const { handleKeyEvent } = useHandleKeyEvents();
@@ -18,7 +16,7 @@ export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_
   const { t } = useTranslation();
 
   return (
-    <StyledSearchBarWrapper>
+    <StyledSearchBarWrapper onSubmit={event => event.preventDefault()}>
       <StyledIcon
         src={searchIcon}
         alt={''}
@@ -30,14 +28,13 @@ export const StyledSearchBar = forwardRef<HTMLInputElement, { focus: TVoid }>((_
       />
 
       <StyledSearchBarInput
-        ref={ref}
-        autoFocus={true}
         aria-label={t('search')}
         placeholder={t('search')}
         value={searchParamValue}
+        name="q"
         onChange={event => handleSearchParamsChange(event.target.value)}
         onKeyDown={event => handleKeyEvent(event, clearSearchParamValue)}
       />
     </StyledSearchBarWrapper>
   );
-});
+};

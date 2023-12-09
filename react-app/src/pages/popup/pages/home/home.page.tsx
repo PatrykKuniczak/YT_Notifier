@@ -1,5 +1,6 @@
 import { AuthContext } from '@authentication';
 import { StyledSearchBar } from '@pages/popup/components/shared/searchBar/search-bar';
+import Seo from '@pages/popup/components/shared/seo';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { StyledHeaderContainer } from '@pages/popup/layouts/header-container';
 import { StyledMainContent } from '@pages/popup/layouts/main-content';
@@ -11,18 +12,19 @@ import { Outlet } from 'react-router-dom';
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
-  const { title, ref, focus } = useHome();
+  const { title, focus } = useHome();
 
   const playlistId = user?.userYtVideos.playlistId ?? null;
 
   return (
     <StyledHomePageWrapper>
+      <Seo title={`YT Notifier | ${title}`} />
       <StyledHeaderContainer />
 
       <StyledMainContent>
         <StyledTitle>{title}</StyledTitle>
 
-        <StyledSearchBar ref={ref} focus={focus} />
+        <StyledSearchBar />
 
         <Outlet />
       </StyledMainContent>
