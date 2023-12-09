@@ -63,5 +63,5 @@ i18n
   });
 
 export { i18n };
-export { changeLanguage } from 'i18next';
+export { changeLanguage, t, TFunction } from 'i18next';
 export { useTranslation } from 'react-i18next';
