@@ -8,13 +8,15 @@ reloadOnUpdate('pages/background');
 
 i18n.changeLanguage(navigator.language);
 
-const createProperties: CreateProperties = {
-  id: 'acae3286',
-  title: `${t('subscribe')} '%s'`,
-  contexts: ['selection'],
-};
+chrome.runtime.onInstalled.addListener(() => {
+  const createProperties: CreateProperties = {
+    id: 'acae3286',
+    title: `${t('subscribe')} '%s'`,
+    contexts: ['selection'],
+  };
 
-chrome.contextMenus.create(createProperties);
+  chrome.contextMenus.create(createProperties);
+});
 
 chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
   if ((selectionText ?? '').length >= 3 && (selectionText ?? '').length <= 255) {
