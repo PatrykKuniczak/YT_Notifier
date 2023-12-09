@@ -77,10 +77,14 @@ chrome.runtime.onMessage.addListener(({ shouldFetch }) => {
       .then(res => {
         chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
           const activeTab = tabs[0];
-          chrome.tabs.sendMessage(activeTab.id!, {
-            loadedVideosAmount: res.cause ? 0 : res.length,
-            videosFetchingError: res.cause,
-          });
+          chrome.tabs
+            .sendMessage(activeTab.id!, {
+              loadedVideosAmount: res.cause ? 0 : res.length,
+              videosFetchingError: res.cause,
+            })
+            .catch(() => {
+              // THIS IS BECAUSE SOME PAGES DON'T ALLOW CONTENT SCRIPT OR if ISN't LOADED YET, THEN ERROR HAPPENED
+            });
         });
       });
   }
