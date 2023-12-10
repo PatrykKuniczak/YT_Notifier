@@ -8,9 +8,14 @@ config({ path: 'envs/.env.local' });
  */
 const manifest = {
   manifest_version: 3,
-  name: packageJson.name,
+  default_locale: 'en',
+  /**
+   * if you want to support multiple languages, you can use the following reference
+   * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization
+   */
+  name: 'yt-notifier',
   version: packageJson.version,
-  description: packageJson.description,
+  description: '__MSG_extensionDescription__',
   permissions: ['cookies', 'contextMenus'],
   host_permissions: [`${process.env.VITE_API_URL}*`],
   options_page: 'src/pages/options/index.html',
