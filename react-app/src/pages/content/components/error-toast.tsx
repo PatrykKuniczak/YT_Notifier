@@ -1,11 +1,11 @@
 import { TFunction } from '@internationalization';
-import { toast } from 'react-toastify';
+import { toast, ToastOptions } from 'react-toastify';
 
-export const CustomToast = (t: TFunction, message: string, restProps?: { [key: string]: unknown }) =>
+export const customToast = (t: TFunction, message: string, restProps: ToastOptions) =>
   toast(<p style={{ marginLeft: '15px' }}>{message}</p>, {
     icon: <img alt={t('pluginLogo')} src={chrome.runtime.getURL('logo-32.png')} />,
     ...restProps,
   });
 
-export const ErrorToast = (t: TFunction, message: string, restProps?: { [key: string]: unknown }) =>
-  CustomToast(t, message, { ...restProps, style: { backgroundColor: '#f60633' } });
+export const errorToast = (t: TFunction, message: string, restProps?: ToastOptions) =>
+  customToast(t, message, { ...restProps, style: { backgroundColor: '#f60633' } });

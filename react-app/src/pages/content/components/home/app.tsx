@@ -1,7 +1,7 @@
 import { i18n, useTranslation } from '@internationalization';
 import { Portal } from '@mui/base';
 import { ThemeProvider } from '@mui/system';
-import { CustomToast, ErrorToast } from '@pages/content/components/error-toast';
+import { customToast, errorToast } from '@pages/content/components/error-toast';
 import GlobalStyles from '@utils/data/global-styles';
 import theme from '@utils/data/themes/dark-theme';
 import { useEffect, useState } from 'react';
@@ -25,7 +25,7 @@ function App() {
     }) => {
       i18n.changeLanguage(navigator.language);
       if (loadedVideosAmount) {
-        CustomToast(t, t('videosLoaded', { loadedVideosAmount }), {
+        customToast(t, t('videosLoaded', { loadedVideosAmount }), {
           toastId: 'notification',
           onClick: () => setShouldFetch(false),
           autoClose: 7000,
@@ -36,7 +36,7 @@ function App() {
           'fallbackError',
         ]);
 
-        ErrorToast(t, message, {
+        errorToast(t, message, {
           toastId: 'notificationError',
           onClick: () => setShouldFetch(false),
           autoClose: 7000,
@@ -45,15 +45,15 @@ function App() {
         toast.dismiss('notification');
         toast.dismiss('notificationError');
       } else if (contentMenuValidationError) {
-        ErrorToast(t, t('validation'), { toastId: 'validation' });
+        errorToast(t, t('validation'), { toastId: 'validation' });
       } else if (contentMenuErrorCause) {
         const message = t([
           contentMenuErrorCause === 'unauthorized' ? contentMenuErrorCause : `keywordErrors.${contentMenuErrorCause}`,
           'fallbackError',
         ]);
-        ErrorToast(t, message, { toastId: 'loginError' });
+        errorToast(t, message, { toastId: 'loginError' });
       } else if (contentMenuSuccess) {
-        CustomToast(t, t('createdKeyword'), { toastId: 'createdKeyword' });
+        customToast(t, t('createdKeyword'), { toastId: 'createdKeyword' });
       }
     },
   );
