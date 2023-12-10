@@ -30,5 +30,5 @@ If applicable, add screenshots to help explain your problem.
 **Additional context**
 Add any other context about the problem here.
 
-You can also attach logs, for do that, open menu (click on your avatar)
-and then 'Collect and download errors data', and attach there. 
+You can also attach logs. To do that, open the menu (click on your avatar) 
+and then select 'Collect and Download Errors Data'. And let's attach the logs there.
