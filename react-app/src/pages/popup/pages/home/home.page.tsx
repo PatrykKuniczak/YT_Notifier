@@ -1,4 +1,5 @@
 import { AuthContext } from '@authentication';
+import { StyledGitHubLink } from '@pages/popup/components/shared/github-link';
 import { StyledSearchBar } from '@pages/popup/components/shared/searchBar/search-bar';
 import Seo from '@pages/popup/components/shared/seo';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
@@ -28,7 +29,7 @@ const HomePage = () => {
 
         <Outlet />
       </StyledMainContent>
-
+      <StyledGitHubLink />
       <StyledNavbar playlistId={playlistId} focus={focus} />
     </StyledHomePageWrapper>
   );

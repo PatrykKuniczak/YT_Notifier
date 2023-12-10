@@ -15,6 +15,8 @@ const THEME = createTheme({
       focusOutline: '#fff',
       closeButtonHover: '#876aea',
       closeButtonActive: '#7c62d7',
+      gitHubIconBackgroundFilter:
+        'brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(4034%) hue-rotate(248deg) brightness(98%) contrast(92%)',
     },
     color: {
       primary: '#E6E6E6',
