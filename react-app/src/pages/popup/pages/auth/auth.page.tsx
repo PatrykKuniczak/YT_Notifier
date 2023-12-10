@@ -2,7 +2,7 @@ import googleLogo from '@assets/img/google-icon.svg';
 import { useTranslation } from '@internationalization';
 import { StyledAuthWrapper } from '@pages/popup/components/auth/auth-wrapper';
 import { StyledGoogleButton, StyledGoogleIconWrapper, StyledGoogleText } from '@pages/popup/components/auth/google';
-import { StyledGitHubIcon } from '@pages/popup/components/shared/github-icon';
+import { StyledGitHubLink } from '@pages/popup/components/shared/github-link';
 import { StyledThemeSwitch } from '@pages/popup/components/shared/theme-switch';
 import { StyledTitle } from '@pages/popup/components/shared/title-header';
 import { POPUP_HEIGHT, POPUP_POSITION_LEFT, POPUP_POSITION_TOP, POPUP_WIDTH } from '@pages/popup/constant';
@@ -35,7 +35,7 @@ const AuthPage = () => {
         <StyledGoogleText>{t('loginByGoogle')}</StyledGoogleText>
       </StyledGoogleButton>
 
-      <StyledGitHubIcon />
+      <StyledGitHubLink />
     </StyledAuthWrapper>
   );
 };
