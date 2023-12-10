@@ -31,4 +31,4 @@ If applicable, add screenshots to help explain your problem.
 Add any other context about the problem here.
 
 You can also attach logs. To do that, open the menu (click on your avatar) 
-and then select 'Collect and Download Errors Data'. And let's attach the logs there.
+and then select 'Collect and Download Errors Data'. And let's attach the logs here.
