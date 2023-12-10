@@ -61,7 +61,9 @@ chrome.runtime.onMessage.addListener(({ shouldFetch }) => {
     stopFetching = true;
     chrome.tabs.query({}, tabs => {
       tabs.forEach(tab => {
-        chrome.tabs.sendMessage(tab.id!, { closeNotification: true });
+        chrome.tabs.sendMessage(tab.id!, { closeNotification: true }).catch(() => {
+          // THIS IS BECAUSE SOME PAGES DON'T ALLOW CONTENT SCRIPT OR IF ISN'T LOADED YET, THEN ERROR HAPPENED
+        });
       });
     });
   }
