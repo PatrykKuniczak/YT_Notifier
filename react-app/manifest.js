@@ -1,4 +1,7 @@
+import { config } from 'dotenv';
 import packageJson from '../package.json' assert { type: 'json' };
+
+config({ path: 'envs/.env.local' });
 
 /**
  * After changing, please reload the extension at `chrome://extensions`
@@ -9,7 +12,7 @@ const manifest = {
   version: packageJson.version,
   description: packageJson.description,
   permissions: ['cookies', 'contextMenus'],
-  host_permissions: ['http://localhost:3001/api/*'],
+  host_permissions: [`${process.env.VITE_API_URL}*`],
   options_page: 'src/pages/options/index.html',
   background: {
     service_worker: 'src/pages/background/index.js',

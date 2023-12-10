@@ -5,6 +5,7 @@
   "foundVideos": "Found Videos",
   "search": "Search",
   "addKeyword": "Add keyword",
+  "createdKeyword": "Successfully created keyword",
   "keywordErrors": {
     "duplicated_keyword": "This keyword already exists",
     "keyword_not_found": "Keyword not found"
@@ -65,5 +66,6 @@
     "duplicated_video_for_playlist": "That video is already on your playlist",
     "playlist_not_found": "Your playlist doesn't exist yet, add something from your list of videos to create it"
   },
-  "pluginLogo": "Logo"
+  "pluginLogo": "Logo",
+  "subscribe": "Subscribe"
 }

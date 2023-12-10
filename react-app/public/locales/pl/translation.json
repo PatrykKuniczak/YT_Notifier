@@ -5,6 +5,7 @@
   "foundVideos": "Znalezione Wideo",
   "search": "Szukaj",
   "addKeyword": "Dodaj słowo kluczowe",
+  "createdKeyword": "Pomyślnie dodano słowo kluczowe",
   "keywordErrors": {
     "duplicated_keyword": "To słowo kluczowe już istnieje",
     "keyword_not_found": "Nie znaleziono tego słowa kluczowego"
@@ -65,5 +66,6 @@
     "duplicated_video_for_playlist": "To wideo jest już na twojej playliście",
     "playlist_not_found": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć"
   },
-  "pluginLogo": "Logo"
+  "pluginLogo": "Logo",
+  "subscribe": "Zasubskrybuj"
 }
