@@ -8,6 +8,15 @@ reloadOnUpdate('pages/background');
 
 i18n.changeLanguage(navigator.language);
 
+const sendQueryToActiveTab = (message: { [key: string]: unknown }) => {
+  chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+    const activeTab = tabs[0];
+    chrome.tabs.sendMessage(activeTab.id!, message).catch(() => {
+      // THIS IS BECAUSE SOME PAGES DON'T ALLOW CONTENT SCRIPT OR IF ISN'T LOADED YET, THEN ERROR HAPPENED
+    });
+  });
+};
+
 chrome.runtime.onInstalled.addListener(() => {
   const createProperties: CreateProperties = {
     id: 'acae3286',
@@ -32,28 +41,16 @@ chrome.contextMenus.onClicked.addListener(({ selectionText }) => {
         if (res.status !== 201) {
           const jsonRes = await res.json();
 
-          chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-            const activeTab = tabs[0];
-            chrome.tabs.sendMessage(activeTab.id!, { contentMenuErrorCause: jsonRes.cause });
-          });
+          sendQueryToActiveTab({ contentMenuErrorCause: jsonRes.cause });
         } else {
-          chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-            const activeTab = tabs[0];
-            chrome.tabs.sendMessage(activeTab.id!, { contentMenuSuccess: true });
-          });
+          sendQueryToActiveTab({ contentMenuSuccess: true });
         }
       })
       .catch((err: IErrorWithCause) => {
-        chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-          const activeTab = tabs[0];
-          chrome.tabs.sendMessage(activeTab.id!, { contentMenuErrorCause: err.response.data.cause });
-        });
+        sendQueryToActiveTab({ contentMenuErrorCause: err.response.data.cause });
       });
   } else {
-    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-      const activeTab = tabs[0];
-      chrome.tabs.sendMessage(activeTab.id!, { contentMenuValidationError: true });
-    });
+    sendQueryToActiveTab({ contentMenuValidationError: true });
   }
 });
 
@@ -75,16 +72,9 @@ chrome.runtime.onMessage.addListener(({ shouldFetch }) => {
     })
       .then(res => res.json())
       .then(res => {
-        chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-          const activeTab = tabs[0];
-          chrome.tabs
-            .sendMessage(activeTab.id!, {
-              loadedVideosAmount: res.cause ? 0 : res.length,
-              videosFetchingError: res.cause,
-            })
-            .catch(() => {
-              // THIS IS BECAUSE SOME PAGES DON'T ALLOW CONTENT SCRIPT OR if ISN't LOADED YET, THEN ERROR HAPPENED
-            });
+        sendQueryToActiveTab({
+          loadedVideosAmount: res.cause ? 0 : res.length,
+          videosFetchingError: res.cause,
         });
       });
   }
