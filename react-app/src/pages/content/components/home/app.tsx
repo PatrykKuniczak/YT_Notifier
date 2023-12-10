@@ -2,10 +2,11 @@ import { i18n, useTranslation } from '@internationalization';
 import { Portal } from '@mui/base';
 import { ThemeProvider } from '@mui/system';
 import { customToast, errorToast } from '@pages/content/components/error-toast';
+import { StyledToastContainer } from '@pages/content/components/toast-container';
 import GlobalStyles from '@utils/data/global-styles';
 import theme from '@utils/data/themes/dark-theme';
 import { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { injectStyle } from 'react-toastify/dist/inject-style';
 
 injectStyle();
@@ -65,8 +66,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+
       <Portal>
-        <ToastContainer position="bottom-right" theme="dark" autoClose={3000} />
+        <StyledToastContainer
+          position={'bottom-right'}
+          theme="dark"
+          draggablePercent={50}
+          closeOnClick={true}
+          autoClose={3000}
+        />
       </Portal>
     </ThemeProvider>
   );
