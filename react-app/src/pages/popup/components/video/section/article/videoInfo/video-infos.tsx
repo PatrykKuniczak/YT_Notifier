@@ -2,7 +2,7 @@ import watchLaterIcon from '@assets/img/watch-later-icon.svg';
 import httpClient from '@http-client';
 import { IErrorWithCause, IVideo } from '@interfaces';
 import { useTranslation } from '@internationalization';
-import { Stack } from '@mui/system';
+import { Stack, useTheme } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledVideoButton } from '@pages/popup/components/video/section/article/video-button';
@@ -20,6 +20,9 @@ export const StyledVideoInfos = ({
   videoUrl,
 }: Pick<IVideo, 'publishedAt' | 'title' | 'views' | 'id'> & { videoUrl: string }) => {
   const { t } = useTranslation();
+  const {
+    palette: { color },
+  } = useTheme();
 
   const { mutate: updatePlaylist } = useMutation({
     mutationFn: () =>
@@ -46,7 +49,15 @@ export const StyledVideoInfos = ({
           <StyledVideoInfo>{t('views', { amount: views })}</StyledVideoInfo>
         </StyledVideoButton>
         <StyledButton title={t('nav.watchLater')} aria-label={t('nav.watchLater')} onClick={() => updatePlaylist()}>
-          <StyledIcon src={watchLaterIcon} alt={''} width={14} height={14} />
+          <StyledIcon
+            src={watchLaterIcon}
+            alt={''}
+            width={14}
+            height={14}
+            sx={{
+              filter: `${color.watchLaterIconFilter}`,
+            }}
+          />
         </StyledButton>
       </Stack>
       <StyledVideoButton onClick={() => window.open(videoUrl)}>
