@@ -8,6 +8,7 @@ import { styled } from '@mui/system';
 import { StyledButton } from '@pages/popup/components/shared/button';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import StyledInput from '@pages/popup/components/shared/input';
+import { GLOBAL_TRANSITION_DURATION } from '@pages/popup/constant';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { ChangeEvent, FormEvent, useState } from 'react';
@@ -100,7 +101,12 @@ const StyledAddInput = () => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <FormControl onChange={handleChange} value={keyword} style={{ width: '100%', position: 'relative' }}>
-        <StyledKeywordInput placeholder={t('addKeyword')} name="keyword-name" aria-label={t('addKeyword')} />
+        <StyledKeywordInput
+          placeholder={t('addKeyword')}
+          name="keyword-name"
+          aria-label={t('addKeyword')}
+          style={{ transition: `all ${GLOBAL_TRANSITION_DURATION} ease` }}
+        />
       </FormControl>
       <StyledSubmitButton disabled={!isValid} type={'submit'} aria-label={t('aria-labels.addKeywordButton')}>
         <StyledIcon src={plusIcon} alt={''} width={20} height={20} />
