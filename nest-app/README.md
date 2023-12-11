@@ -1,7 +1,9 @@
 <div>
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+
+<br/>
+<p align="center">
+    <img src="../react-app/public/logo-128.png" alt="Logo">
+</p>
 
 <h2 align="center">YT Notifier</h2>
 </div>
