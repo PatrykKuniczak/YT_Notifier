@@ -19,6 +19,7 @@
 
 ## Built With
 
+* [![NPM][npm-shield]][npm-url]
 * [![Typescript][typescript-shield]][typescript-url]
 * [![NestJS][nestjs-shield]][nestjs-url] with default([![express][expressjs-shield]][expressjs-url]) core
 * [Express Session](https://github.com/expressjs/session)
@@ -46,6 +47,10 @@ Distributed under the MIT License.
 See [LICENSE](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/LICENCE) for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
+
+[npm-shield]: https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white
+
+[npm-url]: https://www.npmjs.com/
 
 [typescript-shield]: https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white
 
