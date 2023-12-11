@@ -23,6 +23,8 @@ const THEME = createTheme({
       placeholder: '#D3D3D3',
       snackbarContent: '#1f1f1f',
       danger: '#fa2525',
+      watchLaterIconFilter:
+        'brightness(0) saturate(100%) invert(100%) sepia(51%) saturate(1127%) hue-rotate(187deg) brightness(119%) contrast(80%)',
     },
   },
   typography: {
