@@ -6,7 +6,5 @@ export const StyledHomePageWrapper = styled(Stack)(({ theme }) =>
     ...pageMixin,
 
     position: 'relative',
-
-    transitionDuration: '0.5s',
   }),
 );
