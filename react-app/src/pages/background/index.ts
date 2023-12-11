@@ -17,7 +17,7 @@ const sendQueryToActiveTab = (message: { [key: string]: unknown }) => {
   });
 };
 
-chrome.runtime.onInstalled.addListener(() => {
+chrome.contextMenus.removeAll(() => {
   const createProperties: CreateProperties = {
     id: 'acae3286',
     title: `${t('subscribe')} '%s'`,
