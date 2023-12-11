@@ -16,7 +16,7 @@ export const StyledSearchBar = () => {
   const { t } = useTranslation();
 
   return (
-    <StyledSearchBarWrapper onSubmit={event => event.preventDefault()}>
+    <StyledSearchBarWrapper onSubmit={event => event.preventDefault()} autoComplete={'off'}>
       <StyledIcon
         src={searchIcon}
         alt={''}
