@@ -28,7 +28,7 @@ function App() {
       if (loadedVideosAmount) {
         customToast(t, t('videosLoaded', { loadedVideosAmount }), {
           toastId: 'notification',
-          onClick: () => setShouldFetch(false),
+          onClose: () => setShouldFetch(false),
           autoClose: 5000,
         });
       } else if (videosFetchingError) {
@@ -39,7 +39,7 @@ function App() {
 
         errorToast(t, message, {
           toastId: 'notificationError',
-          onClick: () => setShouldFetch(false),
+          onClose: () => setShouldFetch(false),
           autoClose: 5000,
         });
       } else if (closeNotification) {
