@@ -8,7 +8,7 @@ export const StyledButton = styled(Button)(({ theme }) =>
     background: 'none',
 
     '&:hover': {
-      opacity: 0.8,
+      opacity: 0.9,
       filter: 'blur(0.3px)',
       cursor: 'pointer',
     },
