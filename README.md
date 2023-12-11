@@ -109,10 +109,10 @@ Feel free to open [Issue](https://github.com/PatrykKuniczak/YT_Search_Plugin/iss
 
 [nestjs-url]: https://nestjs.com
 
-[auth-page-screenshot]: assets/auth-page.png
+[auth-page-screenshot]: screenshots/auth-page.png
 
-[keywords-screenshot]: assets/keywords.png
+[keywords-screenshot]: screenshots/keywords.png
 
-[videos-screenshot]: assets/videos.png
+[videos-screenshot]: screenshots/videos.png
 
-[notification-screenshot]: assets/notification.png
+[notification-screenshot]: screenshots/notification.png
