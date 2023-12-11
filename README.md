@@ -40,6 +40,7 @@
 
 ### Built With
 
+* [![NPM][npm-shield]][npm-url]
 * [![Typescript][typescript-shield]][typescript-url]
 * [![NestJS][nestjs-shield]][nestjs-url]
   [Backend README](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/nest-app/README.md)
@@ -70,6 +71,10 @@ Feel free to open [Issue](https://github.com/PatrykKuniczak/YT_Search_Plugin/iss
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
+
+[npm-shield]: https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white
+
+[npm-url]: https://www.npmjs.com/
 
 [typescript-shield]: https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white
 
