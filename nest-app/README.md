@@ -35,7 +35,7 @@
 
 - Call google api via oAuth2 protocol and authorize user
 - User session is expiring after 7 days of inactivity
-- Then user can manage them keywords (CRUD)
+- Then user can manage theirs keywords (CRUD)
 - Get videos (once per day), if user want to have data in the same day again, it's goes from cache
 - If any fatal error(500) occurs then logs of this error is collecting in DB, user can download it and attach to bug
   issue
