@@ -38,50 +38,27 @@
 ### Features:
 
 - Login with google account
-- Theme switching as you can see in the left top corner
-- You can contact with use via github issues, by clicking link on left bottom corner
   <br/>
   ![Auth Page Screen Shot][auth-page-screenshot]
   <br/>
   <br/>
-
-- Loadings for better user experience
-  <br/>
-  ![Main Loading Screen Shot][main-loading-screenshot]
-  ![Content Loading Screen Shot][content-loading-screenshot]
-  <br/>
-  <br/>
-
-- Adding,Editing, Deleting and Searching keywords/titles
-  <br/>
-  <br/>
-  ![Keywords Screen Shot][keywords-screenshot]
-  <br/>
-  <br/>
-
-- Once per day user have notification about found videos, if something new was released.
-  <br/>
-  ![Notification Screen Shot][notification-screenshot]
-  <br/>
-  And he can see that videos on plugin popup, and searching for them.
-  <br/>
-  And on click user can be redirect to the video/channel source,
+- Theme switching (light/dark)
+- You can contact with us via github issues, by clicking link (icon) on left bottom corner
+- Adding, Editing, Deleting and Searching keywords/titles
+- Changing language
+- This videos is interactive, you can easly add it to your watch later or open in new tab.
   <br/>
   ![Videos Screen Shot][videos-screenshot]
   <br/>
   <br/>
-- Changing language
+- Once per day user have notification about found videos, if something new was released.
   <br/>
-  ![Language Swtich Screen Shot][language-switch-screenshot]
-  <br/>
-  <br/>
-- In menu over standard functions we have collecting option for user which want to inform us about bugs
-  <br/>
-  They can attach information about errors, which help us to solve issue quickly  
-  <br/>
-  ![Language Swtich Screen Shot][menu-screenshot]
+  ![Notification Screen Shot][notification-screenshot]
   <br/>
   <br/>
+- Users have option to collect info about errors, when they want to submit bug issue, can attach this data, which help
+  us to solve issue quickly
+- We also handle loading and error events for better user experience
 
 ### Built With
 
@@ -134,16 +111,8 @@ Feel free to open [Issue](https://github.com/PatrykKuniczak/YT_Search_Plugin/iss
 
 [auth-page-screenshot]: assets/auth-page.png
 
-[main-loading-screenshot]: assets/main-loading-screen.png
-
-[content-loading-screenshot]: assets/content-loading.png
-
 [keywords-screenshot]: assets/keywords.png
 
 [videos-screenshot]: assets/videos.png
 
 [notification-screenshot]: assets/notification.png
-
-[language-switch-screenshot]: assets/language-switch.png
-
-[menu-screenshot]: assets/menu.png
