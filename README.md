@@ -37,28 +37,37 @@
 
 ### Features:
 
+#### Auth:
+
 - Login with google account
   <br/>
   ![Auth Page Screen Shot][auth-page-screenshot]
   <br/>
   <br/>
-- Theme switching (light/dark)
-- You can contact with us via github issues, by clicking link (icon) on left bottom corner
-- Adding, Editing, Deleting and Searching keywords/titles
-- Changing language
-- This videos is interactive, you can easly add it to your watch later or open in new tab.
+
+#### Videos:
+
+- Adding, Editing, Deleting and Searching keywords/titles (from which videos was found)
+- Videos is interactive, you can easly add it to your watch later or open in new tab.
   <br/>
   ![Videos Screen Shot][videos-screenshot]
   <br/>
   <br/>
-- Once per day user have notification about found videos, if something new was released.
+- For open watch later, click the same icon on navbar
+- Once per day you will receive a notification about found videos, if something new was released.
   <br/>
   ![Notification Screen Shot][notification-screenshot]
   <br/>
   <br/>
-- Users have option to collect info about errors, when they want to submit bug issue, can attach this data, which help
-  us to solve issue quickly
-- We also handle loading and error events for better user experience
+
+#### Rest Features:
+
+- Theme switching (light/dark)
+- Changing language
+- Link (icon) on left bottom corner redirecting to github issues, where you can contact with us
+- You have option to collect info about errors, when you want to submit bug issue, you can download and attach this
+  data, which help us to solve issue quickly
+- Loading and error events handling for better experience
 
 ### Built With
 
