@@ -3,4 +3,6 @@ export const pageMixin = {
   height: 600,
 
   backgroundColor: 'background.primary',
+
+  transitionDuration: '0.5s',
 };
