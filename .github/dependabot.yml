@@ -5,19 +5,23 @@ updates:
     schedule:
       interval: "daily"
     enable-beta-ecosystems: true
-    assignees: "PatrykKuniczak"
+    assignees:
+      - "PatrykKuniczak"
     commit-message: 
       prefix: "react-package"
     labels: "package"
-    reviewers: "PatrykKuniczak"
+    reviewers: 
+      - "PatrykKuniczak"
     
   - package-ecosystem: "npm"
     directory: "/nest-app" 
     schedule:
       interval: "daily"
     enable-beta-ecosystems: true
-    assignees: "PatrykKuniczak"
+    assignees: 
+      - "PatrykKuniczak"
     commit-message: 
       prefix: "nest-package"
     labels: "package"
-    reviewers: "PatrykKuniczak"
+    reviewers: 
+      - "PatrykKuniczak"
