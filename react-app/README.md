@@ -29,13 +29,18 @@
 * [Prettier](https://prettier.io)
 * [Husky](https://typicode.github.io/husky)
 
+- Loadings components are created with [React Loading Skeleton](https://www.npmjs.com/package/react-loading-skeleton),
+  except main spinner, that was created with [React Spinners](https://www.davidhu.io/react-spinners/)
+
 ## How it works
 
-- Auth was on backend completely, here only a cookie was grabbed from there
+- Authentication is completely handled on the backend.
+  Here only a cookie is grabbed and a request is sent for user data.
+  For more information on authentication, please visit
+  the [Backend README](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/nest-app/README.md).
 - Auth credentials are available via react context api
-- User was redirecting with react-router-dom to home page
+- Users are redirected to the home page using [React Router Dom](https://reactrouter.com/en/main)
 - Can manage keywords and interact with fetched videos
-- Most of loading components was created with react-loading-skeleton, but main was created with react-spinners
 - Once per day have custom toast notification, it was built on react-toastify
 
 ## License
