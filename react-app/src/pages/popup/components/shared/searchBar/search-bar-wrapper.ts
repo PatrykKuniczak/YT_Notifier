@@ -1,4 +1,5 @@
 import { styled } from '@mui/system';
+import { GLOBAL_TRANSITION_DURATION } from '@pages/popup/constant';
 
 export const StyledSearchBarWrapper = styled('form')(({ theme }) =>
   theme.unstable_sx({
@@ -13,5 +14,7 @@ export const StyledSearchBarWrapper = styled('form')(({ theme }) =>
     borderRadius: 10,
 
     backgroundColor: 'background.searchBar',
+
+    transition: `all ${GLOBAL_TRANSITION_DURATION} ease`,
   }),
 );

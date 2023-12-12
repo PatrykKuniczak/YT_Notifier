@@ -8,6 +8,7 @@ import { Dropdown, Menu } from '@mui/base';
 import { useTheme } from '@mui/system';
 import { StyledListbox, StyledMenuButton, StyledMenuItem } from '@pages/popup/components/shared/dropdown';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
+import { GLOBAL_TRANSITION_DURATION } from '@pages/popup/constant';
 import { useState } from 'react';
 
 const languages = {
@@ -44,6 +45,7 @@ const LanguageSelector = () => {
           height={16}
           sx={{
             filter: `${theme.palette.background.searchIconFilter}`,
+            transition: `all ${GLOBAL_TRANSITION_DURATION} ease`,
           }}
         />
       </StyledMenuButton>

@@ -10,6 +10,7 @@ import { StyledDeleteModal } from '@pages/popup/components/shared/delete-modal/d
 import { useDeleteModal } from '@pages/popup/components/shared/delete-modal/use-delete-modal';
 import { StyledIcon } from '@pages/popup/components/shared/icon';
 import { StyledSkeleton } from '@pages/popup/components/shared/styled-skeleton';
+import { GLOBAL_TRANSITION_DURATION } from '@pages/popup/constant';
 import queryClient, { useMutation } from '@query-client';
 import urls from '@utils/endpoints/urls';
 import { useContext, useState } from 'react';
@@ -133,6 +134,7 @@ const StyledProfile = () => {
           height={16}
           sx={{
             filter: `${theme.palette.background.searchIconFilter}`,
+            transition: `all ${GLOBAL_TRANSITION_DURATION} ease`,
           }}
         />
       </StyledMenuButton>
