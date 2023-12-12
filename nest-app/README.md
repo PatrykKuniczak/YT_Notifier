@@ -13,7 +13,7 @@
 <h3>Table of Contents</h3>
   <ol>
     <li><a href="#built-with">Built With</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
     <li><a href="#licence">Licence</a></li>
   </ol>
 
@@ -21,7 +21,7 @@
 
 * [![NPM][npm-shield]][npm-url]
 * [![Typescript][typescript-shield]][typescript-url]
-* [![NestJS][nestjs-shield]][nestjs-url] with default([![express][expressjs-shield]][expressjs-url]) core
+* [![NestJS][nestjs-shield]][nestjs-url]
 * [Express Session](https://github.com/expressjs/session)
   with [Connect TypeORM](https://www.npmjs.com/package/connect-typeorm)
 * [![Postgreqsql][postgresql-shield]][postgresql-url] v15, as ORM [TypeORM](https://typeorm.io/)
@@ -31,14 +31,14 @@
 * [Prettier](https://prettier.io)
 * [Husky](https://typicode.github.io/husky)
 
-## Roadmap
+## How it works
 
 - Call google api via oAuth2 protocol and authorize user
-- User session is expiring after 7 days of inactivity
+- Set user session to expire after 7 days of inactivity
 - Then user can manage theirs keywords (CRUD)
-- Get videos (once per day), if user want to have data in the same day again, it's goes from cache
-- If any fatal error(500) occurs then logs of this error is collecting in DB, user can download it and attach to bug
-  issue
+- Fetching videos (once per day), if user want to have data in the same day again, it's goes from cache
+- If any fatal error(500) occurs then logs of this error are collecting in database, user can download it and attach to
+  bug issue
 
 ## License
 
@@ -63,10 +63,6 @@ See [LICENSE](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/LICEN
 [nestjs-shield]: https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white
 
 [nestjs-url]: https://nestjs.com
-
-[expressjs-shield]: https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
-
-[expressjs-url]: https://expressjs.com
 
 [google-shield]: https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white
 

@@ -13,7 +13,7 @@
 <h3>Table of Contents</h3>
   <ol>
     <li><a href="#built-with">Built With</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
     <li><a href="#licence">Licence</a></li>
   </ol>
 
@@ -23,19 +23,20 @@
 * [![Typescript][typescript-shield]][typescript-url]
 * [![React][react-shield]][react-url]
 * [![React-Query][react-query-shield]][react-query-url]
-* [![MUI][mui-shield]][mui-url] with * [![Styled components][styled-components-shield]][styled-components-url]
+* [![MUI][mui-shield]][mui-url] with [![Styled components][styled-components-shield]][styled-components-url]
 * [i18n](https://www.i18next.com/)
 * [Axios](https://axios-http.com/)
 * [Prettier](https://prettier.io)
 * [Husky](https://typicode.github.io/husky)
 
-## Roadmap
+## How it works
 
 - Auth was on backend completely, here only a cookie was grabbed from there
-- Auth credentials is available via react context api
-- User was redirecting with react-router-dom
+- Auth credentials are available via react context api
+- User was redirecting with react-router-dom to home page
+- Can manage keywords and interact with fetched videos
 - Most of loading components was created with react-loading-skeleton, but main was created with react-spinners
-- We created custom toast notifications, it was built on react-toastify
+- Once per day have custom toast notification, it was built on react-toastify
 
 ## License
 

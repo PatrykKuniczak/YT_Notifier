@@ -44,7 +44,6 @@
   [Backend README](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/nest-app/README.md)
 * [![React][react-shield]][react-url]
   [Frontend README](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/react-app/README.md)
-*
 
 ### Features:
 
@@ -60,7 +59,7 @@
 
 - Adding, Editing, Deleting and Searching keywords/titles (from which videos was found)
 - Videos are interactive, you can easly add it to your watch later or open in new tab.
-- For open your watch later playlist, click the same icon on navbar
+- To open your watch later playlist, click the same icon on navbar
   <br/>
   ![Videos Dark Mode Screen Shot][videos-dark-screenshot]
   ![Videos Light Mode Screen Shot][videos-light-screenshot]
