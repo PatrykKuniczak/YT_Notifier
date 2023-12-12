@@ -58,7 +58,7 @@
 #### Videos:
 
 - Adding, Editing, Deleting and Searching keywords/titles (from which videos was found)
-- Videos are interactive, you can easly add it to your watch later or open in new tab.
+- Videos are interactive, you can easily add it to your watch later or open in new tab.
 - To open your watch later playlist, click the same icon on navbar
   <br/>
   ![Videos Dark Mode Screen Shot][videos-dark-screenshot]
