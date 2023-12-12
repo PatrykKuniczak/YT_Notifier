@@ -1,0 +1,71 @@
+{
+  "welcome": "Welcome to YT Plugin",
+  "loginByGoogle": "Login by Google",
+  "savedKeywords": "Saved Keywords",
+  "foundVideos": "Found Videos",
+  "search": "Search",
+  "addKeyword": "Add keyword",
+  "createdKeyword": "Successfully created keyword",
+  "keywordErrors": {
+    "duplicated_keyword": "This keyword already exists",
+    "keyword_not_found": "Keyword not found"
+  },
+  "views": "{{ amount, abbreviations }} views",
+  "menu": {
+    "logout": "Logout",
+    "deleteAccount": "Delete account",
+    "collectErrors": "Collect and download errors data"
+  },
+  "unauthorized": "You were logged out, your session has expired, please login again",
+  "loggingInFailed": "Logging in failed",
+  "languages": {
+    "pl": "Polish",
+    "en": "English"
+  },
+  "timeAgo": "{{ date, ago }}",
+  "validation": "Provide from 3 to 255 characters!",
+  "provideKeyword": "Provide keyword",
+  "deleteModal": {
+    "confirm": "Yes, delete",
+    "cancel": "Cancel"
+  },
+  "deleteAccountModal": {
+    "content1": "Are you sure, you want to delete your account?",
+    "content2": "Your data will be lost. This action is irreversible."
+  },
+  "deleteModalContent": "Are you sure, you want to delete this?",
+  "nav": {
+    "foundVideo": "Found video",
+    "savedKeywords": "Saved keywords",
+    "watchLater": "Watch later"
+  },
+  "aria-labels": {
+    "deleteButton": "Delete",
+    "editButton": "Edit",
+    "addKeywordButton": "Add keyword",
+    "openProfileMenuButton": "Open profile menu",
+    "openLanguageMenuButton": "Open language menu",
+    "themeSwitch": "Change theme"
+  },
+  "alts": {
+    "exclamationOctagon": "Exclamation octagon"
+  },
+  "successfulLogout": "Successfully logged out",
+  "successfulDeleteAccount": "Successfully deleted account",
+  "videosLoaded": "From under provided keywords, {{loadedVideosAmount}} videos were fetched, check them out in extension",
+  "fallbackError": "Unexpected error occurred, please contact with developer!",
+  "fatalErrorHeading": "ERROR",
+  "playlist": {
+    "title": "Watch Later - YT Notifier",
+    "description": "Your saved videos via YT Notifier plugin",
+    "updated": "Successfully updated your playlist"
+  },
+  "playlistErrors": {
+    "quota_limit": "Requests limit was reached, you must wait for next day, to fetch more videos",
+    "video_for_playlist_not_found": "Video was not found",
+    "duplicated_video_for_playlist": "That video is already on your playlist",
+    "playlist_not_found": "Your playlist doesn't exist yet, add something from your list of videos to create it"
+  },
+  "pluginLogo": "Logo",
+  "subscribe": "Subscribe"
+}

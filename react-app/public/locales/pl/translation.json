@@ -1,0 +1,71 @@
+{
+  "welcome": "Witaj w YT Plugin",
+  "loginByGoogle": "Zaloguj się przez Google",
+  "savedKeywords": "Zapisane Frazy",
+  "foundVideos": "Znalezione Wideo",
+  "search": "Szukaj",
+  "addKeyword": "Dodaj słowo kluczowe",
+  "createdKeyword": "Pomyślnie dodano słowo kluczowe",
+  "keywordErrors": {
+    "duplicated_keyword": "To słowo kluczowe już istnieje",
+    "keyword_not_found": "Nie znaleziono tego słowa kluczowego"
+  },
+  "views": "{{ amount, abbreviations }} wyświetleń",
+  "menu":{
+    "logout": "Wyloguj się",
+    "deleteAccount": "Usuń konto",
+    "collectErrors": "Zbierz dane o błędach i pobierz je"
+  },
+  "unauthorized": "Zostałeś wylogowany, Twoja sesja wygasła, zaloguj się ponownie",
+  "loggingInFailed": "Logowanie nie powiodło się",
+  "languages": {
+    "pl": "Polski",
+    "en": "Angielski"
+  },
+  "timeAgo": "{{ date, ago }}",
+  "validation": "Podaj od 3 do 255 znaków!",
+  "provideKeyword": "Podaj słowo kluczowe!",
+  "deleteModal": {
+    "confirm": "Tak, usuń",
+    "cancel": "Anuluj"
+  },
+  "deleteAccountModal": {
+    "content1": "Czy jesteś pewien, że chcesz usunąć konto?",
+    "content2": "Twoje dane zostaną trwale usunięte."
+  },
+  "deleteModalContent": "Czy jesteś pewien, że chcesz to usunąć?",
+  "nav": {
+    "foundVideo": "Znalezione Wideo",
+    "savedKeywords": "Zapisane słowa kluczowe",
+    "watchLater": "Obejrzyj później"
+  },
+  "aria-labels": {
+    "deleteButton": "Usuń",
+    "editButton": "Edytuj",
+    "addKeywordButton": "Dodaj słowo kluczowe",
+    "openProfileMenuButton": "Otwórz menu profilu",
+    "openLanguageMenuButton": "Otwórz menu języka",
+    "themeSwitch": "Przełącz motyw"
+  },
+  "alts": {
+    "exclamationOctagon": "Ikona ostrzeżenia"
+  },
+  "successfulLogout": "Pomyślnie wylogowano",
+  "successfulDeleteAccount": "Pomyślnie usunięto konto",
+  "videosLoaded": "Znaleziono {{loadedVideosAmount}} wideo podczas przeszukiwania podanych słów kluczowych. Proszę sprawdzić we wtyczce.",
+  "fallbackError": "Wystąpił niespodziewany błąd, skontaktuj sie z developerem!",
+  "fatalErrorHeading": "BŁĄD",
+  "playlist": {
+    "title": "Do Obejrzenia - YT Notifier",
+    "description": "Twoje zapisane wideo poprzez wtyczkę YT Notifier",
+    "updated": "Pomyślnie zaktualizowano twoją playlistę"
+},
+  "playlistErrors": {
+    "quota_limit": "Osiągnięto limit zapytań o wideo, musisz poczekać do jutra aby pobrać nowe",
+    "video_for_playlist_not_found": "Nie znaleziono video",
+    "duplicated_video_for_playlist": "To wideo jest już na twojej playliście",
+    "playlist_not_found": "Twoja playlista jeszcze nie istnieje, dodaj coś z listy wideo, aby ją stworzyć"
+  },
+  "pluginLogo": "Logo",
+  "subscribe": "Zasubskrybuj"
+}
