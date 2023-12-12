@@ -2,7 +2,7 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-<br />
+<br/>
 <div>
 <p align="center">
     <img src="react-app/public/logo-128.png" alt="Logo">
@@ -15,7 +15,7 @@
     only from keywords/titles which you want to.
     <br/>
     <br/>
-    You can 'subscribe' a word, and get only videos, which title contain this word. 
+    You can 'subscribe' a word, and get videos which title contain that word. 
   </p>
 </div>
 
@@ -27,6 +27,7 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#features">Features</a></li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -34,6 +35,16 @@
   </ol>
 
 ## About The Project
+
+## Built With
+
+* [![NPM][npm-shield]][npm-url]
+* [![Typescript][typescript-shield]][typescript-url]
+* [![NestJS][nestjs-shield]][nestjs-url]
+  [Backend README](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/nest-app/README.md)
+* [![React][react-shield]][react-url]
+  [Frontend README](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/react-app/README.md)
+*
 
 ### Features:
 
@@ -48,17 +59,23 @@
 #### Videos:
 
 - Adding, Editing, Deleting and Searching keywords/titles (from which videos was found)
-- Videos is interactive, you can easly add it to your watch later or open in new tab.
+- Videos are interactive, you can easly add it to your watch later or open in new tab.
+- For open your watch later playlist, click the same icon on navbar
   <br/>
-  ![Videos Screen Shot][videos-screenshot]
-  <br/>
-  <br/>
-- For open watch later, click the same icon on navbar
-- Once per day you will receive a notification about found videos, if something new was released.
-  <br/>
-  ![Notification Screen Shot][notification-screenshot]
+  ![Videos Dark Mode Screen Shot][videos-dark-screenshot]
+  ![Videos Light Mode Screen Shot][videos-light-screenshot]
   <br/>
   <br/>
+  ![Keywords Dark Mode Screen Shot][keywords-dark-screenshot]
+  ![Keywords Light Mode Screen Shot][keywords-light-screenshot]
+  <br/>
+  <br/>
+
+    - Once per day you will receive a notification about found videos, if something new was released.
+      <br/>
+      ![Notification Screen Shot][notification-screenshot]
+      <br/>
+      <br/>
 
 #### Rest Features:
 
@@ -67,16 +84,7 @@
 - Link (icon) on left bottom corner redirecting to github issues, where you can contact with us
 - You have option to collect info about errors, when you want to submit bug issue, you can download and attach this
   data, which help us to solve issue quickly
-- Loading and error events handling for better experience
-
-### Built With
-
-* [![NPM][npm-shield]][npm-url]
-* [![Typescript][typescript-shield]][typescript-url]
-* [![NestJS][nestjs-shield]][nestjs-url]
-  [Backend README](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/nest-app/README.md)
-* [![React][react-shield]][react-url]
-  [Frontend README](https://github.com/PatrykKuniczak/YT_Search_Plugin/blob/main/react-app/README.md)
+- Loadings make waiting more pleasant and error notification inform you what's going wrong
 
 ## Contributing
 
@@ -122,6 +130,12 @@ Feel free to open [Issue](https://github.com/PatrykKuniczak/YT_Search_Plugin/iss
 
 [keywords-screenshot]: screenshots/keywords.png
 
-[videos-screenshot]: screenshots/videos.png
+[videos-dark-screenshot]: screenshots/videos-dark.png
+
+[videos-light-screenshot]: screenshots/videos-light.png
+
+[keywords-dark-screenshot]: screenshots/keywords-dark.png
+
+[keywords-light-screenshot]: screenshots/keywords-light.png
 
 [notification-screenshot]: screenshots/notification.png
