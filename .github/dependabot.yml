@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/react-app" 
+    schedule:
+      interval: "daily"
+    enable-beta-ecosystems: true
+    assignees: "PatrykKuniczak"
+    commit-message: 
+      prefix: "react-package"
+    labels: "package"
+    reviewers: "PatrykKuniczak"
+    
+  - package-ecosystem: "npm"
+    directory: "/nest-app" 
+    schedule:
+      interval: "daily"
+    enable-beta-ecosystems: true
+    assignees: "PatrykKuniczak"
+    commit-message: 
+      prefix: "nest-package"
+    labels: "package"
+    reviewers: "PatrykKuniczak"
