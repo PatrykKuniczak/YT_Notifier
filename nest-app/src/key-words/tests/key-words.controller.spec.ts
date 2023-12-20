@@ -9,8 +9,7 @@ import { UpdateKeyWordDto } from '../dto/update-key-word.dto';
 import { KeyWordsController } from '../key-words.controller';
 import { KeyWordsService } from '../key-words.service';
 import { KeyWordsEntity } from '../model/key-words.entity';
-
-const generateRandomInt = (max: number) => Math.floor(Math.random() * max);
+import { generateRandomInt } from './helpers';
 
 describe('KeyWordsController', () => {
   let keyWordsController: KeyWordsController;
