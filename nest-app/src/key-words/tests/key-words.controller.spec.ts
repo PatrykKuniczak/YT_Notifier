@@ -76,7 +76,7 @@ describe('KeyWordsController', () => {
     const moduleRef = await Test.createTestingModule({
       controllers: [KeyWordsController],
       providers: [
-        KeyWordsService,
+        { provide: KeyWordsService, useValue: keyWordsServiceMock },
         { provide: UsersService, useValue: usersServiceMock },
         {
           provide: SessionsGuard,
@@ -91,10 +91,7 @@ describe('KeyWordsController', () => {
           useValue: oAuth2ClientProviderMock,
         },
       ],
-    })
-      .overrideProvider(KeyWordsService)
-      .useValue(keyWordsServiceMock)
-      .compile();
+    }).compile();
 
     keyWordsController = moduleRef.get<KeyWordsController>(KeyWordsController);
   });
