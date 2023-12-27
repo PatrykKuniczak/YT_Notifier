@@ -3,7 +3,6 @@ import { Portal } from '@mui/base';
 import { ThemeProvider } from '@mui/system';
 import { customToast, errorToast } from '@pages/content/components/error-toast';
 import { StyledToastContainer } from '@pages/content/components/toast-container';
-import GlobalStyles from '@utils/data/global-styles';
 import theme from '@utils/data/themes/dark-theme';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -65,8 +64,6 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-
       <Portal>
         <StyledToastContainer
           position={'bottom-right'}
