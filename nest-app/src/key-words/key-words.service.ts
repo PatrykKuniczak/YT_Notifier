@@ -2,7 +2,7 @@ import { ConflictException, Injectable, InternalServerErrorException, NotFoundEx
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ErrorLogsService } from '../error-logs/error-logs.service';
-import { IUser } from '../users/users.types';
+import { UsersEntity } from '../users/model/users.entity';
 import { CreateKeyWordDto } from './dto/create-key-word.dto';
 import { UpdateKeyWordDto } from './dto/update-key-word.dto';
 import { KeyWordsEntity } from './model/key-words.entity';
@@ -25,7 +25,7 @@ export class KeyWordsService {
     });
   }
 
-  async create({ content }: CreateKeyWordDto, { id }: IUser) {
+  async create({ content }: CreateKeyWordDto, { id }: UsersEntity) {
     const keyWord = await this.keyWordRepository.findOneBy({ content, user: { id } });
 
     if (!keyWord) {
