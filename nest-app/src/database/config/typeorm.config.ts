@@ -12,6 +12,7 @@ export const typeOrmFactory: TypeOrmModuleAsyncOptions = {
     username: configService.get('DB_USERNAME'),
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_DATABASE'),
+    ssl: process.env.NODE_ENV === 'production',
     extra: {
       charset: 'utf8mb4_unicode_ci',
       ssl:
