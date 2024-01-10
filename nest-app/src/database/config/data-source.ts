@@ -4,7 +4,7 @@ import { DataSource } from 'typeorm';
 
 dotenvExpand.expand(
   dotenv.config({
-    path: `${process.cwd()}${process.env.NODE_ENV === 'production' ? '\\envs\\prod.env' : '\\envs\\local.env'}`,
+    path: `${process.cwd()}${process.env.NODE_ENV === 'development' ? '\\envs\\local.env' : '\\envs\\prod.env'}`,
   }),
 );
 
@@ -15,7 +15,15 @@ export default new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  extra: { charset: 'utf8mb4_unicode_ci' },
+  extra: {
+    charset: 'utf8mb4_unicode_ci',
+    ssl:
+      process.env.NODE_ENV === 'production'
+        ? {
+            rejectUnauthorized: false,
+          }
+        : false,
+  },
   entities: ['dist/**/*.entity.js'],
   migrations: ['dist/database/migrations/*.js'],
 });

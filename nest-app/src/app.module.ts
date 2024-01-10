@@ -4,10 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { OAuth2Module } from './auth/oauth2.module';
 import { typeOrmFactory } from './database/config/typeorm.config';
+import { ErrorLogsModule } from './error-logs/error-logs.module';
 import { KeyWordsModule } from './key-words/key-words.module';
 import { UserYtVideosModule } from './user-yt-videos/user-yt-videos.module';
 import { UsersModule } from './users/users.module';
-import { ErrorLogsModule } from './error-logs/error-logs.module';
 
 @Module({
   imports: [
@@ -15,13 +15,7 @@ import { ErrorLogsModule } from './error-logs/error-logs.module';
       isGlobal: true,
       expandVariables: process.env.NODE_ENV === 'development',
       envFilePath: [
-        `${process.cwd()}${
-          process.env.NODE_ENV === 'production'
-            ? '\\envs\\prod.env'
-            : process.env.NODE_ENV === 'development'
-            ? '\\envs\\local.env'
-            : '\\envs\\dev-remote.env'
-        }`,
+        `${process.cwd()}${process.env.NODE_ENV === 'development' ? '\\envs\\local.env' : '\\envs\\prod.env'}`,
       ],
     }),
     TypeOrmModule.forRootAsync(typeOrmFactory),
