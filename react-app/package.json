@@ -10,7 +10,7 @@
     "wss": "node utils/core/reload/initReloadServer.js",
     "dev": "npm run build:hmr && (run-p wss build:watch)",
     "dev:firefox": "npm run build:hmr && (run-p wss build:firefox:watch)",
-    "lint": "eslint src --ext .ts",
+    "lint": "eslint src --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "prettier . --write"
   },
