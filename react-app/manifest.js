@@ -15,7 +15,7 @@ const manifest = {
    * if you want to support multiple languages, you can use the following reference
    * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization
    */
-  name: 'yt-notifier',
+  name: 'YT Notifier',
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   permissions: ['cookies', 'contextMenus'],
@@ -27,7 +27,7 @@ const manifest = {
   },
   action: {
     default_popup: 'src/pages/popup/index.html',
-    default_title: 'YT Plugin',
+    default_title: 'YT Notifier',
     default_icon: 'logo-32.png',
   },
   icons: {
