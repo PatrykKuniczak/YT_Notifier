@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 import fs from 'node:fs';
 
-const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
 
 config({ path: 'envs/.env.local' });
 
