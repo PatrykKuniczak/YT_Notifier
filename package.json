@@ -1,25 +1,28 @@
 {
-	"name": "yt-notifier",
-	"description": "Get all of yours, the most important notification in one place, and get new info on every browser start",
-	"version": "0.0.1",
-	"type": "module",
-	"license": "MIT",
-	"author": "Patryk Kuniczak",
-	"contributors": ["Maciej Pochroń", "Bartosz Wysowski"],
-	"scripts": {
-		"commitlint": "commitlint --edit",
-		"prepare": "husky install"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "17.7.2",
-		"@commitlint/config-conventional": "17.7.0",
-		"husky": "8.0.3",
-		"lint-staged": "14.0.1"
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": [
-			"prettier --write",
-			"eslint --fix"
-		]
-	}
+  "name": "yt-notifier",
+  "description": "Get all of yours, the most important youtube notifications in one place, and get new info on everyday, first browser start.",
+  "version": "1.1.0",
+  "type": "module",
+  "license": "MIT",
+  "author": "Patryk Kuniczak",
+  "contributors": [
+    "Maciej Pochroń",
+    "Bartosz Wysowski"
+  ],
+  "scripts": {
+    "commitlint": "commitlint --edit",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.7.2",
+    "@commitlint/config-conventional": "17.7.0",
+    "husky": "8.0.3",
+    "lint-staged": "14.0.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
 }
