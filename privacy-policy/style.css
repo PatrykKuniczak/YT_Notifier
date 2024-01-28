@@ -1,0 +1,125 @@
+:root {
+  --primary: #16121e;
+  --secondary: #ffffff0c;
+  --loadingBase: #242626;
+  --loadingHighlight: #3a3a3a;
+  --purple: #7846f0;
+  --grey: #5b5b5e;
+  --searchBar: #26203b;
+  --searchBarFocusOutline: #5215e3;
+  --snackbarBackground: #ffbbbb;
+  --focusOutline: #fff;
+  --closeButtonHover: #876aea;
+  --closeButtonActive: #7c62d7;
+  --gitHubIconBackgroundFilter: brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(4034%) hue-rotate(248deg) brightness(98%) contrast(92%);
+
+  --color-primary: #e6e6e6;
+  --color-placeholder: #d3d3d3;
+  --color-snackbarContent: #1f1f1f;
+  --color-danger: #fa2525;
+  --watchLaterIconFilter: brightness(0) saturate(100%) invert(100%) sepia(51%) saturate(1127%) hue-rotate(187deg) brightness(119%) contrast(80%);
+
+  --font-sm: "12px";
+  --font-md: "18px";
+  --font-l: "20px";
+  --font-xl: "24px";
+
+  --borderRadius: 6;
+}
+
+*,
+html {
+  scroll-behavior: smooth !important;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  position: relative;
+  background-color: var(--primary);
+  color: var(--color-primary);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4em 3em 4em 0;
+  width: 100%;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 2em;
+}
+
+nav,
+#polish-policy,
+#english-policy {
+  padding: 3rem;
+}
+
+#polish-policy h2,
+#english-policy h2 {
+  margin: 4em 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+li {
+  margin: 1.3em 0;
+  font-size: 14px;
+  font-weight: thin;
+  line-height: 32px;
+}
+
+ol > li::marker {
+  font-weight: bold;
+}
+
+ol,
+ul {
+  line-height: 24px;
+}
+
+a {
+  color: #0d4de4;
+  color: var(--closeButtonHover);
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  #polish-policy,
+  #english-policy {
+    padding: 1rem 4em;
+  }
+
+  #polish-policy h2,
+  #english-policy h2 {
+    margin: 2em 0;
+    font-size: 24px;
+  }
+
+  li {
+    margin: 0.8em 0;
+    font-size: 18px;
+  }
+
+  ol,
+  ul {
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  #polish-policy,
+  #english-policy {
+    padding: 4em;
+  }
+}
