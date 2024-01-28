@@ -18,7 +18,7 @@ const manifest = {
   name: 'YT Notifier',
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
-  permissions: ['cookies', 'contextMenus'],
+  permissions: ['cookies', 'contextMenus', 'storage'],
   host_permissions: [`${process.env.VITE_API_URL}*`],
   options_page: 'src/pages/options/index.html',
   background: {

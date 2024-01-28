@@ -78,6 +78,8 @@ chrome.runtime.onMessage.addListener(({ shouldFetch }) => {
           loadedVideosAmount: res.cause ? 0 : res.length,
           videosFetchingError: res.cause,
         });
+
+        chrome.storage.local.set({ lastFetch: Date.now() });
       });
   }
 });

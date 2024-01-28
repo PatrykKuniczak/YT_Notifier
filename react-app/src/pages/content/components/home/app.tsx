@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/system';
 import { customToast, errorToast } from '@pages/content/components/error-toast';
 import { StyledToastContainer } from '@pages/content/components/toast-container';
 import theme from '@utils/data/themes/dark-theme';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { injectStyle } from 'react-toastify/dist/inject-style';
 
@@ -12,7 +12,6 @@ injectStyle();
 
 function App() {
   const { t } = useTranslation();
-  const [shouldFetch, setShouldFetch] = useState(true);
 
   chrome.runtime.onMessage.addListener(
     ({
@@ -27,7 +26,6 @@ function App() {
       if (loadedVideosAmount) {
         customToast(t, t('videosLoaded', { loadedVideosAmount }), {
           toastId: 'notification',
-          onClose: () => setShouldFetch(false),
           autoClose: 5000,
         });
       } else if (videosFetchingError) {
@@ -38,7 +36,6 @@ function App() {
 
         errorToast(t, message, {
           toastId: 'notificationError',
-          onClose: () => setShouldFetch(false),
           autoClose: 5000,
         });
       } else if (closeNotification) {
@@ -59,8 +56,13 @@ function App() {
   );
 
   useEffect(() => {
-    chrome.runtime.sendMessage({ shouldFetch });
-  }, [shouldFetch]);
+    chrome.storage.local.get('lastFetch').then(({ lastFetch }: { lastFetch: number }) => {
+      const currentDay = new Date().setHours(0, 0, 0, 0);
+      const lastFetchDay = new Date(lastFetch).setHours(0, 0, 0, 0);
+
+      chrome.runtime.sendMessage({ shouldFetch: currentDay > lastFetchDay });
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
